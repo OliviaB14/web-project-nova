@@ -23,9 +23,11 @@ Route::get('/accueil', function () {
     return view('accueil');
 });
 
+
 // Routes avec controlleurs
 
-Route::get('utilisateurs', 'UtilisateurController@index');/*
+Route::get('villes', 'VilleController@GetVilles');
+Route::get('utilisateurs', 'UtilisateurController@GetUtilisateurs');/*
 Route::get('todo2', 'todoController@index2');
 
 Route::post('{id}', 'todoController@delete');
