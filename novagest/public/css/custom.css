@@ -1,0 +1,17 @@
+#dash-sidebar{
+	  height: 500px;
+  background: #130101;
+}
+#sidebar {
+  color: white;
+}
+
+#sidebar .material-icons{
+	font-weight: bold;
+	margin: 10px;
+	cursor: pointer;
+}
+
+#sidebar .material-icons:hover{
+	color: red;
+}
