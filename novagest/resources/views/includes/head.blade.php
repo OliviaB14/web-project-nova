@@ -16,9 +16,10 @@
 
     @yield('css-links')
    
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/dataTables.material.min.css"/>
     
     <script src="{{ asset('js/jquery-3.3.1.js') }}"></script>
      <!-- Compiled and minified JavaScript -->
-     <script
-    src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+     <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
   </head>

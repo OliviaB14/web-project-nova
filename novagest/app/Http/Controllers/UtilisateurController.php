@@ -12,11 +12,11 @@ use Input;
 
 class UtilisateurController extends Controller
 {
-	public function index()
+	public function GetUtilisateurs()
 	{
-		$users = DB::table('utilisateur')
+		$utilisateurs = DB::table('utilisateur')
         ->get();
-        dd($users);
-		return view('utilisateur', ['users' => $users]);
+        //dd($utilisateurs);
+		return view('utilisateur', ['users' => $utilisateurs]);
 	}
 }
