@@ -22,3 +22,11 @@ Route::get('/login', function () {
 Route::get('/accueil', function () {
     return view('accueil');
 });
+
+// Routes avec controlleurs
+
+Route::get('utilisateurs', 'UtilisateurController@index');/*
+Route::get('todo2', 'todoController@index2');
+
+Route::post('{id}', 'todoController@delete');
+Route::post('todo2/add', 'todoController@ajouter');*/
