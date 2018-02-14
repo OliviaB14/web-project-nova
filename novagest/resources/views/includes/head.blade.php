@@ -12,11 +12,13 @@
    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css"/>
     <link href="{{ asset('css/animate.css') }}" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="{{ asset('css/custom.css')}}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/nav.css')}}"/>
+
+    @yield('css-links')
    
     
     <script src="{{ asset('js/jquery-3.3.1.js') }}"></script>
      <!-- Compiled and minified JavaScript -->
      <script
     src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
-    <script src="{{ asset('js/dash-sidebar.js') }}"></script>
   </head>
