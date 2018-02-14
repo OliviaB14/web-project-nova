@@ -1,14 +1,15 @@
 #dash-sidebar{
-  height: 100%;
+  height: 95%;
+  position: fixed;
   background: #130101;
   overflow: hidden;
   color: white;
+  text-align: center;
 }
 
 #sidebar .col.l12 {
     border-bottom: 2px solid;
     padding: 10% 0 10% 0;
-    text-align: center;
 }
 
 #sidebar .material-icons{
