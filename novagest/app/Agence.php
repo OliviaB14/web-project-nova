@@ -10,4 +10,8 @@ class Agence extends Model
     protected $table = 'agence';
 
     public $timestamps = false;
+
+    protected $connection = 'mysql';
+
+    protected $guarded = ['id'];
 }

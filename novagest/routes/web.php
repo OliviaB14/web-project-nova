@@ -33,6 +33,10 @@ Route::get('/agence', function () {
 Route::get('villes', 'VilleController@GetVilles');
 Route::get('utilisateurs', 'UtilisateurController@GetUtilisateurs');
 
+Route::resources([
+    'agences' => 'AgenceController'
+]);
+
 /*
 Route::post('{id}', 'todoController@delete');
 Route::post('todo2/add', 'todoController@ajouter');*/
