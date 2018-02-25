@@ -23,12 +23,16 @@ Route::get('/accueil', function () {
     return view('accueil');
 });
 
+Route::get('/agence', function () {
+    return view('agence');
+});
+
 
 // Routes avec controlleurs
 
 Route::get('villes', 'VilleController@GetVilles');
-Route::get('utilisateurs', 'UtilisateurController@GetUtilisateurs');/*
-Route::get('todo2', 'todoController@index2');
+Route::get('utilisateurs', 'UtilisateurController@GetUtilisateurs');
 
+/*
 Route::post('{id}', 'todoController@delete');
 Route::post('todo2/add', 'todoController@ajouter');*/
