@@ -30,7 +30,7 @@
     </div>
     <div class="footer-copyright">
       <div class="container">
-      Made by <a class="orange-text text-lighten-3" href="http://materializecss.com">♥</a> from NOVA
+      Made with <a class="orange-text text-lighten-3" href="http://materializecss.com">♥</a> by NOVA
       </div>
     </div>
   </footer>

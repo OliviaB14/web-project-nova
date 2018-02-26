@@ -7,7 +7,7 @@ Route::get('/login', function () {
     return view('/auth/login');
 });
 
-Route::get('/agence', function () {
+Route::get('/agences', function () {
     return view('agence');
 });
 
@@ -21,7 +21,7 @@ Route::get('/', 'AccueilController@index');
 
 Route::get('villes', 'VilleController@GetVilles');
 Route::get('utilisateurs', 'UtilisateurController@GetUtilisateurs');
-Route::get('agence', 'AgenceController@index');
+Route::get('agences', 'AgenceController@index');
 
 Route::resources([
     'agences' => 'AgenceController'

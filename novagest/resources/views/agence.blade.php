@@ -52,7 +52,7 @@
 <section>
 <ul class="collapsible" data-collapsible="accordion">
     <li>
-      <div class="collapsible-header"><i class="material-icons">filter_drama</i>Ajouter</div>
+      <div class="collapsible-header"><i class="material-icons">add</i>Ajouter</div>
       <div class="collapsible-body">
       <div class="row">
         {{ Form::open(array('url' => 'agence/add')) }}
@@ -102,11 +102,11 @@
       </div>
     </li>
     <li>
-      <div class="collapsible-header"><i class="material-icons">place</i>Editer</div>
+      <div class="collapsible-header"><i class="material-icons">edit</i>Editer</div>
       <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
     </li>
     <li>
-      <div class="collapsible-header"><i class="material-icons">whatshot</i>Données</div>
+      <div class="collapsible-header"><i class="material-icons">dvr</i>Données</div>
       <div class="collapsible-body">
       <table id="example" class="mdl-data-table responsive-table" cellspacing="0" width="100%">
                     <thead>
