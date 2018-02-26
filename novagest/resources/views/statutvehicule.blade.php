@@ -11,7 +11,7 @@
     </style>
 @stop   
 
-@section('title', 'Clients')
+@section('title', 'Statut_vehicule')
 
 @section('content')
 
@@ -49,9 +49,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                    @foreach($clients as $client)
+                    @foreach($statutvehicules as $statutvehicule)
                         <tr>
-                            <td>{{$client->statut_vehicule}}</td>
+                            <td>{{$statutvehicule->statut_vehicule}}</td>
                         </tr>
                     @endforeach
                     </tbody>
