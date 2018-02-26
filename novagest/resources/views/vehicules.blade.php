@@ -13,7 +13,7 @@
     	<div class="row">
 			<div class="info-box col valign-wrapper">
 				<div class="col blue">
-					<span class="timer" data-from="0" data-to="80"></span>
+					<span><b class="timer" id="lollipop" data-to="3" data-speed="1500"></b></span>
 				</div>
 				<div class="col">
 			      <span class="blue-text text-darken-2">Nombre total de véhicules</span> 
