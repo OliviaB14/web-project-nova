@@ -50,7 +50,7 @@
 </section>-->
 
 <section>
-<ul class="collapsible" data-collapsible="accordion">
+<ul class="collapsible" style="margin-left:2%" data-collapsible="accordion">
     <li>
       <div class="collapsible-header"><i class="material-icons">add</i>Ajouter</div>
       <div class="collapsible-body">
