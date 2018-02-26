@@ -1,7 +1,11 @@
 <ul id="dropdown1" class="dropdown-content">
+  <!-- Main catagories ( les autres sont des sous categories presentes dans les pages maitres) -->
   <li><a href="#!">Agences</a></li>
-  <li><a href="#!">Agents</a></li>
-  <li><a href="#!">Véhicules</a></li>
+  <li><a href="#!">Clients</a></li>
+  <li><a href="#!">Droits</a></li>
+  <li><a href="#!">Vehicules</a></li>
+  <li><a href="#!">Utilisateurs</a></li>
+  <li><a href="#!">Lieux</a></li>
 </ul>
 <ul id="dropdown2" class="dropdown-content">
   <li><a href="#!">Voir</a></li>
@@ -13,11 +17,13 @@
 <div class="navbar-fixed">
   <nav class="light-blue lighten-1" role="navigation">
     <div class="nav-wrapper container">
-      <a href="!#">Harry Potter (administrateur)</a>
+      <a href="!#">Spyro (RooooaaaaaAAAARR!!!)</a>
       <ul class="right hide-on-med-and-down">
         <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Gestion<i class="material-icons right">arrow_drop_down</i></a></li>
+        <!-- 
         <li><a href="#">Navbar Link</a></li>
         <li><a href="#">Navbar Link</a></li>
+        -->
         <li><a class="dropdown-button" href="#!" data-activates="dropdown2">Mon profil<i class="material-icons right">arrow_drop_down</i></a></li>
       </ul>
 
