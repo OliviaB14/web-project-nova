@@ -41,7 +41,3 @@ Route::get('agence', 'AgenceController@index');
 Route::resources([
     'agences' => 'AgenceController'
 ]);
-
-/*
-Route::post('{id}', 'todoController@delete');
-Route::post('todo2/add', 'todoController@ajouter');*/

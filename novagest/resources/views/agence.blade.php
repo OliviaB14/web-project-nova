@@ -70,6 +70,12 @@
                         {{ Form::text('adresse', null,array('class'=>'validate', 'required' => 'required'))}}
                     </div>
                 </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        {{ Form::label('adresse', 'Adresse')}}
+                        {{Form::select('size', array('L' => 'Large', 'S' => 'Small'))}}
+                    </div>
+                </div>
             </div>
             {{ Form::submit('Ajouter', array('class' => 'btn-sm btn-success')) }}
         {{ Form::close() }}
