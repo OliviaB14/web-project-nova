@@ -36,6 +36,7 @@ Route::get('/vehicules', function () {
 
 Route::get('villes', 'VilleController@GetVilles');
 Route::get('utilisateurs', 'UtilisateurController@GetUtilisateurs');
+Route::get('agence', 'AgenceController@index');
 
 Route::resources([
     'agences' => 'AgenceController'

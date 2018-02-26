@@ -13,7 +13,7 @@
 
 @section('title', 'Agences')
 
-@section('content')
+@section('content')<!-- 
 <section>
     <div class="container">
         <div class="row">
@@ -47,5 +47,87 @@
             <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
         </ul>
     </div>
+</section>-->
+
+<section>
+    <div class="container">
+        <div class="row">
+        {{ Form::open(array('url' => 'agence/add')) }}
+            <div class="col s12">
+                <div class="row">
+                    <div class="input-field col s6">
+                        {{ Form::label('nom', 'Nom de l\'agence')}}
+                        {{ Form::text('nom', null,array('class'=>'validate', 'required' => 'required'))}}
+                    </div>
+                    <div class="input-field col s6">
+                        {{ Form::label('code_postal', 'Code postal')}}
+                        {{ Form::text('code_postal', null,array('class'=>'validate', 'required' => 'required'))}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        {{ Form::label('adresse', 'Adresse')}}
+                        {{ Form::text('adresse', null,array('class'=>'validate', 'required' => 'required'))}}
+                    </div>
+                </div>
+            </div>
+            {{ Form::submit('Ajouter', array('class' => 'btn-sm btn-success')) }}
+        {{ Form::close() }}
+        </div>
+    </div>
 </section>
+
+<section>
+<div class="container">
+<div class="row" style="padding-top:15px">
+<!--<a class="btn btn-floating btn-large cyan pulse"><i class="material-icons">add</i></a>-->
+</div>
+        <div class="row" style="padding-top:10px">
+        <div>
+            <table id="example" class="mdl-data-table responsive-table" cellspacing="0" width="100%">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Nom</th>
+                            <th>Adresse</th>
+                            <th>Code postal</th>
+                            <th>Ville</th>
+                            <th>Téléphone</th>
+                            <th>fax</th>
+                            <th>mail</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    @foreach($agences as $agence)
+                        <tr>
+                            <td>{{$agence->id}}</td>
+                            <td>{{$agence->nom}}</td>
+                            <td>{{$agence->adresse}}</td>
+                            <td>{{$agence->code_postal}}</td>
+                            <td>{{$agence->idville}}</td>
+                            <td>{{$agence->telephone}}</td>
+                            <td>{{$agence->fax}}</td>
+                            <td>{{$agence->mail}}</td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+        </div>
+    </div>
+</div>
+</section>
+
+<script>
+$(document).ready(function() {
+    $('#example').DataTable( {
+        columnDefs: [
+            {
+                targets: [ 0, 1],
+                className: 'mdl-data-table__cell--non-numeric'
+            }
+        ]
+    } );
+} );
+          
+</script>
 @stop
