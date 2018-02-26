@@ -49,6 +49,7 @@
     </div>
 </section>-->
 
+<section>
 <ul class="collapsible" data-collapsible="accordion">
     <li>
       <div class="collapsible-header"><i class="material-icons">add</i>Ajouter</div>
@@ -138,9 +139,24 @@
       </div>
     </li>
   </ul>
+</section>
 
+<section>
 
+</section>
 
+<section>
+<div class="">
+<div class="row" style="padding-top:15px">
+<!--<a class="btn btn-floating btn-large cyan pulse"><i class="material-icons">add</i></a>-->
+</div>
+        <div class="row" style="padding-top:10px">
+        <div>
+            
+        </div>
+    </div>
+</div>
+</section>
 
 <script>
 $(document).ready(function() {
