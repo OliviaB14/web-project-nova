@@ -27,6 +27,10 @@ Route::get('/agence', function () {
     return view('agence');
 });
 
+Route::get('/vehicules', function () {
+    return view('vehicules');
+});
+
 
 // Routes avec controlleurs
 

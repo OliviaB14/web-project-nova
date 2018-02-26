@@ -6,31 +6,31 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Utilisateur;
+use App\Client;
 use DB;
 use Input;
 
-class UtilisateurController extends Controller
+class ClientController extends Controller
 {
-	// public function GetUtilisateurs()
+	// public function GetClients()
 	// {
-	// 	$utilisateurs = DB::table('utilisateur')
+	// 	$clients = DB::table('Client')
     //     ->get();
-    //     //dd($utilisateurs);
-	// 	return view('utilisateur', ['users' => $utilisateurs]);
+    //     //dd($clients);
+	// 	return view('Client', ['Clients' => $clients]);
 	// }
 
 	public function index()
     {
-        $utilisateur = Utilisateur::all();
-        return $this->sendResponse(true, null, $utilisateur);
+        $client = Client::all();
+        return $this->sendResponse(true, null, $client);
     }
 
     public function show($id)
     {
-        $utilisateur = Utilisateur::find($id);
-        if ($utilisateur != null) {
-            return $this->sendResponse(true, null, $utilisateur);
+        $client = Client::find($id);
+        if ($client != null) {
+            return $this->sendResponse(true, null, $client);
         }
         return $this->sendResponse(false, "Data not found.", null);
     }
@@ -40,13 +40,13 @@ class UtilisateurController extends Controller
         // @TODO @Nathan please validate the data
 
         // Find the corresponding record
-        $utilisateur = Utilisateur::find($id);
+        $client = Client::find($id);
         // Populate data
-        if ($utilisateur != null) {
-            $this->populateData($utilisateur, $request);
+        if ($client != null) {
+            $this->populateData($client, $request);
             // Save
-            $utilisateur->save();
-            return $this->sendResponse(true, null, $utilisateur);
+            $client->save();
+            return $this->sendResponse(true, null, $client);
         }
         return $this->sendResponse(false, "Data not found.", null);
     }
@@ -55,22 +55,22 @@ class UtilisateurController extends Controller
     {
         // @TODO @Nathan please validate the data
 
-        // Create a new utilisateur from request param
-        $utilisateur = new Utilisateur;
+        // Create a new Client from request param
+        $client = new Client;
         // Populate data
         $this->populateData($agence, $request);
         // Save
-        $utilisateur->save();
-        return $this->sendResponse(true, null, $utilisateur);
+        $client->save();
+        return $this->sendResponse(true, null, $client);
     }
 
     public function destroy($id)
     {
         // Find the corresponding record
-        $utilisateur = Utilisateur::find($id);
+        $client = Client::find($id);
         // Delete record
-        if ($utilisateur != null) {
-            $utilisateur->delete();
+        if ($client != null) {
+            $client->delete();
             return $this->sendResponse(true, null, null);
         }
         return $this->sendResponse(false, "Data not found.", null);

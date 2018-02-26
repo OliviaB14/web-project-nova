@@ -6,31 +6,31 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Utilisateur;
+use App\Droit;
 use DB;
 use Input;
 
-class UtilisateurController extends Controller
+class DroitController extends Controller
 {
-	// public function GetUtilisateurs()
+	// public function GetDroits()
 	// {
-	// 	$utilisateurs = DB::table('utilisateur')
+	// 	$droits = DB::table('Droit')
     //     ->get();
-    //     //dd($utilisateurs);
-	// 	return view('utilisateur', ['users' => $utilisateurs]);
+    //     //dd($droits);
+	// 	return view('Droit', ['Droits' => $droits]);
 	// }
 
 	public function index()
     {
-        $utilisateur = Utilisateur::all();
-        return $this->sendResponse(true, null, $utilisateur);
+        $droit = Droit::all();
+        return $this->sendResponse(true, null, $droit);
     }
 
     public function show($id)
     {
-        $utilisateur = Utilisateur::find($id);
-        if ($utilisateur != null) {
-            return $this->sendResponse(true, null, $utilisateur);
+        $droit = Droit::find($id);
+        if ($droit != null) {
+            return $this->sendResponse(true, null, $droit);
         }
         return $this->sendResponse(false, "Data not found.", null);
     }
@@ -40,13 +40,13 @@ class UtilisateurController extends Controller
         // @TODO @Nathan please validate the data
 
         // Find the corresponding record
-        $utilisateur = Utilisateur::find($id);
+        $droit = Droit::find($id);
         // Populate data
-        if ($utilisateur != null) {
-            $this->populateData($utilisateur, $request);
+        if ($droit != null) {
+            $this->populateData($droit, $request);
             // Save
-            $utilisateur->save();
-            return $this->sendResponse(true, null, $utilisateur);
+            $droit->save();
+            return $this->sendResponse(true, null, $droit);
         }
         return $this->sendResponse(false, "Data not found.", null);
     }
@@ -55,22 +55,22 @@ class UtilisateurController extends Controller
     {
         // @TODO @Nathan please validate the data
 
-        // Create a new utilisateur from request param
-        $utilisateur = new Utilisateur;
+        // Create a new Droit from request param
+        $droit = new Droit;
         // Populate data
         $this->populateData($agence, $request);
         // Save
-        $utilisateur->save();
-        return $this->sendResponse(true, null, $utilisateur);
+        $droit->save();
+        return $this->sendResponse(true, null, $droit);
     }
 
     public function destroy($id)
     {
         // Find the corresponding record
-        $utilisateur = Utilisateur::find($id);
+        $droit = Droit::find($id);
         // Delete record
-        if ($utilisateur != null) {
-            $utilisateur->delete();
+        if ($droit != null) {
+            $droit->delete();
             return $this->sendResponse(true, null, null);
         }
         return $this->sendResponse(false, "Data not found.", null);

@@ -6,31 +6,31 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Utilisateur;
+use App\Vehicule;
 use DB;
 use Input;
 
-class UtilisateurController extends Controller
+class VehiculeController extends Controller
 {
-	// public function GetUtilisateurs()
+	// public function GetVehicules()
 	// {
-	// 	$utilisateurs = DB::table('utilisateur')
+	// 	$vehicules = DB::table('Vehicule')
     //     ->get();
-    //     //dd($utilisateurs);
-	// 	return view('utilisateur', ['users' => $utilisateurs]);
+    //     //dd($vehicules);
+	// 	return view('Vehicule', ['Vehicules' => $vehicules]);
 	// }
 
 	public function index()
     {
-        $utilisateur = Utilisateur::all();
-        return $this->sendResponse(true, null, $utilisateur);
+        $vehicule = Vehicule::all();
+        return $this->sendResponse(true, null, $vehicule);
     }
 
     public function show($id)
     {
-        $utilisateur = Utilisateur::find($id);
-        if ($utilisateur != null) {
-            return $this->sendResponse(true, null, $utilisateur);
+        $vehicule = Vehicule::find($id);
+        if ($vehicule != null) {
+            return $this->sendResponse(true, null, $vehicule);
         }
         return $this->sendResponse(false, "Data not found.", null);
     }
@@ -40,13 +40,13 @@ class UtilisateurController extends Controller
         // @TODO @Nathan please validate the data
 
         // Find the corresponding record
-        $utilisateur = Utilisateur::find($id);
+        $vehicule = Vehicule::find($id);
         // Populate data
-        if ($utilisateur != null) {
-            $this->populateData($utilisateur, $request);
+        if ($vehicule != null) {
+            $this->populateData($vehicule, $request);
             // Save
-            $utilisateur->save();
-            return $this->sendResponse(true, null, $utilisateur);
+            $vehicule->save();
+            return $this->sendResponse(true, null, $vehicule);
         }
         return $this->sendResponse(false, "Data not found.", null);
     }
@@ -55,22 +55,22 @@ class UtilisateurController extends Controller
     {
         // @TODO @Nathan please validate the data
 
-        // Create a new utilisateur from request param
-        $utilisateur = new Utilisateur;
+        // Create a new Vehicule from request param
+        $vehicule = new Vehicule;
         // Populate data
         $this->populateData($agence, $request);
         // Save
-        $utilisateur->save();
-        return $this->sendResponse(true, null, $utilisateur);
+        $vehicule->save();
+        return $this->sendResponse(true, null, $vehicule);
     }
 
     public function destroy($id)
     {
         // Find the corresponding record
-        $utilisateur = Utilisateur::find($id);
+        $vehicule = Vehicule::find($id);
         // Delete record
-        if ($utilisateur != null) {
-            $utilisateur->delete();
+        if ($vehicule != null) {
+            $vehicule->delete();
             return $this->sendResponse(true, null, null);
         }
         return $this->sendResponse(false, "Data not found.", null);
