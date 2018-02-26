@@ -25,7 +25,7 @@
 	              <span class="card-title"><b class="timer" id="lollipop" data-to="{{$vehicules}}" data-speed="1500"></b> véhicules</span>
 	            </div>
 	            <div class="card-action">
-	              <a href="vehicules">Gérer</a>
+	              <a href="#">Gérer</a>
 	            </div>
 	        </div>
 		</div>
