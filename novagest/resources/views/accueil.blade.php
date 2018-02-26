@@ -53,6 +53,11 @@
 		</div>
 	</div>
 
+	<div class="container center-align">
+		<a class="btn btn-floating btn-large orange accent-2 animated bounce"><i class="material-icons">keyboard_arrow_down</i></a>
+		<i class="material-icons"></i>
+	</div>
+
 <script type="text/javascript">
   $('.timer').countTo();
 </script>
