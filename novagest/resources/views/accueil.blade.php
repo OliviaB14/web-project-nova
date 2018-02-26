@@ -12,7 +12,7 @@
 		<div class="col l6">
 			<div class="card purple lighten-1">
 	            <div class="card-content">
-	              <span class="card-title white-text"><b class="timer" data-to="15" data-speed="1500"></b> agences</span>
+	              <span class="card-title white-text"><b class="timer" data-to="{{$agences}}" data-speed="1500"></b> agences</span>
 	            </div>
 	            <div class="card-action">
 	              <a href="#">Gérer</a>
@@ -22,7 +22,7 @@
 		<div class="col l6">
 			<div class="card teal lighten-1">
 	            <div class="card-content white-text">
-	              <span class="card-title"><b class="timer" id="lollipop" data-to="80" data-speed="1500"></b> véhicules</span>
+	              <span class="card-title"><b class="timer" id="lollipop" data-to="{{$vehicules}}" data-speed="1500"></b> véhicules</span>
 	            </div>
 	            <div class="card-action">
 	              <a href="#">Gérer</a>
@@ -34,7 +34,7 @@
 		<div class="col l6">
 			<div class="card red lighten-1">
 	            <div class="card-content white-text">
-	              <span class="card-title"><b class="timer" id="lollipop" data-to="30" data-speed="1500"></b> agents</span>
+	              <span class="card-title"><b class="timer" id="lollipop" data-to="{{$utilisateurs}}" data-speed="1500"></b> agents</span>
 	            </div>
 	            <div class="card-action">
 	              <a href="#">Gérer</a>
