@@ -15,7 +15,7 @@
 </ul>
 <!-- Dropdown Structure -->
 <div class="navbar-fixed">
-  <nav class="light-blue lighten-1" role="navigation">
+  <nav role="navigation">
     <div class="nav-wrapper container">
       
       <a href="!#"><img style="height:90%;margin:3px" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnP4lX8kGiyTaEE86mtYmSZYnvz38igpLK3lHmQAlNQcAuDHdx" alt="" class="circle responsive-img"></a>

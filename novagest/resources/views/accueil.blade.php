@@ -5,7 +5,7 @@
 @section('title', 'Accueil')
 
 @section('content')
-	<div class="col l12">
+	<div class="col l12 center-align">
 		<h1>Welcome to NovaGest</h1>
 	</div>
 	<div class='row center-align'>
@@ -42,7 +42,7 @@
 	          </div>
 		</div>
 		<div class="col s6">
-			<div class="card blue-grey darken-1">
+			<div class="card  amber accent-4">
 	            <div class="card-content white-text">
 	              <span class="card-title">Statuts</span>
 	            </div>
@@ -53,10 +53,7 @@
 		</div>
 	</div>
 
-	<div class="container center-align">
-		<a class="btn btn-floating btn-large orange accent-2 animated bounce"><i class="material-icons">keyboard_arrow_down</i></a>
-		<i class="material-icons"></i>
-	</div>
+
 
 <script type="text/javascript">
   $('.timer').countTo();
