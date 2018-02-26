@@ -1,27 +1,94 @@
 <html>
+
 <head>
-<title>Look at me Login</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+    <style>
+        body {
+            display: flex;
+            min-height: 100vh;
+            flex-direction: column;
+        }
+        
+        main {
+            flex: 1 0 auto;
+        }
+        
+        body {
+            background: #fff;
+        }
+        
+        .input-field input[type=date]:focus+label,
+        .input-field input[type=text]:focus+label,
+        .input-field input[type=email]:focus+label,
+        .input-field input[type=password]:focus+label {
+            color: #487AA1;
+        }
+        
+        .input-field input[type=date]:focus,
+        .input-field input[type=text]:focus,
+        .input-field input[type=email]:focus,
+        .input-field input[type=password]:focus {
+            border-bottom: 2px solid #487AA1;
+            box-shadow: none;
+        }
+    </style>
 </head>
-<body><
 
-{{ Form::open(array('url' => 'login')) }}
-<h1>Login</h1>
+<body>
+    <div class="section"></div>
+    <main>
+        <center>
+            <!--<img class="responsive-img" style="width: 250px;" src="https://i.imgur.com/ax0NCsK.gif" />-->
+            <div class="section"></div>
 
-<!-- if there are login errors, show them here -->
-<p>
-    {{ $errors->first('email') }}
-    {{ $errors->first('password') }}
-</p>
+            <h5 style="color:#487AA1">Merci de vous connecter</h5>
+            <div class="section"></div>
 
-<p>
-    {{ Form::label('email', 'Email Address') }}
-    {{ Form::text('email', Input::old('email'), array('placeholder' => 'awesome@awesome.com')) }}
-</p>
+            <div class="container">
+                <div class="z-depth-1 grey lighten-4 row" style="display: inline-block; padding: 32px 48px 0px 48px; border: 1px solid #EEE;">
 
-<p>
-    {{ Form::label('password', 'Password') }}
-    {{ Form::password('password') }}
-</p>
+                    <form class="col s12" method="post">
+                        <div class='row'>
+                            <div class='col s12'>
+                            </div>
+                        </div>
 
-<p>{{ Form::submit('Submit!') }}</p>
-{{ Form::close() }}
+                        <div class='row'>
+                            <div class='input-field col s12'>
+                                <input class='validate' type='email' name='email' id='email' />
+                                <label for='email'>Email</label>
+                            </div>
+                        </div>
+
+                        <div class='row'>
+                            <div class='input-field col s12'>
+                                <input class='validate' type='password' name='password' id='password' />
+                                <label for='password'>Mot de passe</label>
+                            </div>
+                            <label style='float: right;'>
+								<a class='pink-text' href='#!'><b>Mot de passe oublié?</b></a>
+							</label>
+                        </div>
+
+                        <br />
+                        <center>
+                            <div class='row'>
+                                <button type='submit' name='btn_login' class='col s12 btn btn-large waves-effect' style="background-color:#487AA1">Connection</button>
+                            </div>
+                        </center>
+                    </form>
+                </div>
+            </div>
+            <!--<a href="#!">Create account</a>-->
+        </center>
+
+        <div class="section"></div>
+        <div class="section"></div>
+    </main>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+</body>
+
+</html>

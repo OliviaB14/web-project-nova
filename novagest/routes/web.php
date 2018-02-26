@@ -3,8 +3,8 @@ Route::get('/', function () {
     return view('accueil');
 });
 
-Route::get('/login', function () {
-    return view('/auth/login');
+Route::get('/logintest', function () {
+    return view('login');
 });
 
 Route::get('/agences', function () {
