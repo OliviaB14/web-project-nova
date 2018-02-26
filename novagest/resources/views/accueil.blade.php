@@ -15,7 +15,7 @@
 	              <span class="card-title white-text"><b class="timer" data-to="{{$agences}}" data-speed="1500"></b> agences</span>
 	            </div>
 	            <div class="card-action">
-	              <a href="agence">Gérer</a>
+	              <a href="agences">Gérer</a>
 	            </div>
 	        </div>
 		</div>
