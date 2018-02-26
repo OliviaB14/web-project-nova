@@ -1,4 +1,12 @@
 
+  
+  
+  <style>
+  @media screen and (max-width: 640px) {
+  footer {margin-top:100%
+  }
+}
+  </style>
   <footer class="page-footer brown-text darken-4"></footer>
     <div class="container">
       <div class="row">
