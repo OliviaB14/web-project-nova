@@ -11,7 +11,7 @@ class AgenceController extends BasicController
     public function index()
     {
         $agences = Agence::all();
-        return $this->sendResponse(true, null, $agences);
+        return view('agence', ['agences' => $agences]);
     }
 
     public function show($id)
