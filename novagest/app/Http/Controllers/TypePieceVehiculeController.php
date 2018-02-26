@@ -6,31 +6,31 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Ville;
+use App\TypePieceVehicule;
 use DB;
 use Input;
 
-class VilleController extends Controller
+class TypePieceVehiculeController extends Controller
 {
-	// public function GetVilles()
+	// public function Get$typePieceVehicules()
 	// {
-	// 	$villes = DB::table('ville')
+	// 	$$typePieceVehicules = DB::table('$typePieceVehicule')
     //     ->get();
-    //     //dd($villes);
-	// 	return view('ville', ['villes' => $villes]);
+    //     //dd($$typePieceVehicules);
+	// 	return view('$typePieceVehicule', ['$typePieceVehicules' => $$typePieceVehicules]);
 	// }
 
 	public function index()
     {
-        $ville = Ville::all();
-        return $this->sendResponse(true, null, $ville);
+        $$typePieceVehicule = $typePieceVehicule::all();
+        return $this->sendResponse(true, null, $$typePieceVehicule);
     }
 
     public function show($id)
     {
-        $ville = Ville::find($id);
-        if ($ville != null) {
-            return $this->sendResponse(true, null, $ville);
+        $$typePieceVehicule = $typePieceVehicule::find($id);
+        if ($$typePieceVehicule != null) {
+            return $this->sendResponse(true, null, $$typePieceVehicule);
         }
         return $this->sendResponse(false, "Data not found.", null);
     }
@@ -40,13 +40,13 @@ class VilleController extends Controller
         // @TODO @Nathan please validate the data
 
         // Find the corresponding record
-        $ville = Ville::find($id);
+        $$typePieceVehicule = $typePieceVehicule::find($id);
         // Populate data
-        if ($ville != null) {
-            $this->populateData($ville, $request);
+        if ($$typePieceVehicule != null) {
+            $this->populateData($$typePieceVehicule, $request);
             // Save
-            $ville->save();
-            return $this->sendResponse(true, null, $ville);
+            $$typePieceVehicule->save();
+            return $this->sendResponse(true, null, $$typePieceVehicule);
         }
         return $this->sendResponse(false, "Data not found.", null);
     }
@@ -55,22 +55,22 @@ class VilleController extends Controller
     {
         // @TODO @Nathan please validate the data
 
-        // Create a new ville from request param
-        $ville = new Ville;
+        // Create a new $typePieceVehicule from request param
+        $$typePieceVehicule = new $typePieceVehicule;
         // Populate data
         $this->populateData($agence, $request);
         // Save
-        $ville->save();
-        return $this->sendResponse(true, null, $ville);
+        $$typePieceVehicule->save();
+        return $this->sendResponse(true, null, $$typePieceVehicule);
     }
 
     public function destroy($id)
     {
         // Find the corresponding record
-        $ville = Ville::find($id);
+        $$typePieceVehicule = $typePieceVehicule::find($id);
         // Delete record
-        if ($ville != null) {
-            $ville->delete();
+        if ($$typePieceVehicule != null) {
+            $$typePieceVehicule->delete();
             return $this->sendResponse(true, null, null);
         }
         return $this->sendResponse(false, "Data not found.", null);
