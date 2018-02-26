@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Agence;
+use App\Ville;
 use App\Http\Controllers\BasicController;
 use Illuminate\Http\Request;
 
@@ -11,7 +12,8 @@ class AgenceController extends BasicController
     public function index()
     {
         $agences = Agence::all();
-        return view('agence', ['agences' => $agences]);
+        $villes = Ville::orderBy('id')->pluck('nom', 'id');
+        return view('agence', ['agences' => $agences, 'villes' => $villes]);
     }
 
     public function show($id)
