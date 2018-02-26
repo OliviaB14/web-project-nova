@@ -11,7 +11,7 @@
     </style>
 @stop   
 
-@section('title', 'Clients')
+@section('title', 'Type_utilisateur')
 
 @section('content')
 
@@ -19,12 +19,12 @@
 <section>
     <div class="container">
         <div class="row">
-        {{ Form::open(array('url' => 'statut_vehicule/add')) }}
+        {{ Form::open(array('url' => 'type_utilisateur/add')) }}
             <div class="col s12">
                 <div class="row">
                     <div class="input-field col s6">
-                        {{ Form::label('statut_vehicule', 'Statut du véhicule')}}
-                        {{ Form::text('statut_vehicule', null,array('class'=>'validate', 'required' => 'required'))}}
+                        {{ Form::label('libelle', 'Libelle')}}
+                        {{ Form::text('libelle', null,array('class'=>'validate', 'required' => 'required'))}}
                     </div>
                 </div>
             </div>
@@ -45,13 +45,13 @@
             <table id="example" class="mdl-data-table responsive-table" cellspacing="0" width="100%">
                     <thead>
                         <tr>
-                            <th>Statut du véhicule</th>
+                            <th>Type utilisateur</th>
                         </tr>
                     </thead>
                     <tbody>
-                    @foreach($clients as $client)
+                    @foreach($typeutilisateurs as $typeutilisateur)
                         <tr>
-                            <td>{{$client->statut_vehicule}}</td>
+                            <td>{{$typeutilisateur->libelle}}</td>
                         </tr>
                     @endforeach
                     </tbody>
