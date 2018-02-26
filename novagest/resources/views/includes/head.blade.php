@@ -19,6 +19,9 @@
    <!-- <script src="{{ asset('js/materialize.js') }}"></script>-->
    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
     <script src="{{ asset('js/init.js') }}"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+     <script src="http://code.jquery.com/qunit/qunit-1.11.0.js"></script>
+     <script type="text/javascript" src="{{ asset('js/jqueryCountTo.js') }}"></script>
 
      <!-- Compiled and minified JavaScript -->
      <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
