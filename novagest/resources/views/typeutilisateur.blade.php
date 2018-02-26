@@ -11,7 +11,7 @@
     </style>
 @stop   
 
-@section('title', 'Type_client')
+@section('title', 'Type_utilisateur')
 
 @section('content')
 
@@ -19,7 +19,7 @@
 <section>
     <div class="container">
         <div class="row">
-        {{ Form::open(array('url' => 'type_client/add')) }}
+        {{ Form::open(array('url' => 'type_utilisateur/add')) }}
             <div class="col s12">
                 <div class="row">
                     <div class="input-field col s6">
@@ -45,13 +45,13 @@
             <table id="example" class="mdl-data-table responsive-table" cellspacing="0" width="100%">
                     <thead>
                         <tr>
-                            <th>Type de client</th>
+                            <th>Type utilisateur</th>
                         </tr>
                     </thead>
                     <tbody>
-                    @foreach($typeclients as $typeclient)
+                    @foreach($typeutilisateurs as $typeutilisateur)
                         <tr>
-                            <td>{{$typeclient->libelle}}</td>
+                            <td>{{$typeutilisateur->libelle}}</td>
                         </tr>
                     @endforeach
                     </tbody>
