@@ -1,23 +1,12 @@
-<header>
-        <nav class="navbar-fixed" style="position: fixed;">
-           <div class="nav-wrapper">
-             <a href="/" class="brand-logo">NovaGest</a>
-             <ul id="nav-mobile" class="right hide-on-med-and-down">
-              <li>
-                <form>
-                  <div class="input-field text-center">
-                    <input id="search" type="search" required>
-                    <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-                    <i class="material-icons">close</i>
-                  </div>
-                </form>
-              </li>
-               <li><a href="#">Agents</a></li>
-               <li><a href="agence">Agences</a></li>
-               <li><a href="vehicules">Véhicules</a></li>
-              <li><a href="#"><i class="material-icons">notifications</i></a></li>
-             </ul>
-           </div>
-         </nav>
+<nav class="light-blue lighten-1" role="navigation">
+  <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Logo</a>
+    <ul class="right hide-on-med-and-down">
+      <li><a href="#">Navbar Link</a></li>
+    </ul>
 
-    </header>
+    <ul id="nav-mobile" class="side-nav">
+      <li><a href="#">Navbar Link</a></li>
+    </ul>
+    <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+  </div>
+</nav>

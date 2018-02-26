@@ -1,14 +1,10 @@
 @extends('layout.dashboard')
 
-@section('css-links')
-<link rel="stylesheet" type="text/css" href="{{ asset('css/welcome.css')}}"/>
-@stop
+
 
 @section('title', 'Accueil')
 
 @section('content')
-<section>
-<div class="container">
 	<div class="col l12">
 		<h1>Welcome to NovaGest</h1>
 	</div>
@@ -56,7 +52,6 @@
 	          </div>
 		</div>
 	</div>
-</div>
-</section>
+
 @stop
 
