@@ -95,7 +95,7 @@
                 </div>
             </div>
             
-            {{ Form::submit('Ajouter', array('class' => 'btn-sm btn-success')) }}
+            {{ Form::submit('Ajouter', array('class' => 'waves-effect waves-light btn')) }}
         {{ Form::close() }}
         </div>
       </div>
