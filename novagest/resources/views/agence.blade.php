@@ -50,8 +50,7 @@
 </section>-->
 
 <section>
-    <div class="container">
-        <div class="row">
+<div class="row">
         {{ Form::open(array('url' => 'agence/add')) }}
             <div class="col s12">
                 <div class="row">
@@ -72,19 +71,34 @@
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        {{ Form::label('adresse', 'Adresse')}}
-                        {{Form::select('size', array('L' => 'Large', 'S' => 'Small'))}}
+                        <!-- SELECT -->
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        {{ Form::label('telephone', 'Téléphone')}}
+                        {{ Form::text('telephone', null,array('class'=>'validate', 'required' => 'required'))}}
+                    </div>
+                    <div class="input-field col s6">
+                        {{ Form::label('fax', 'Fax')}}
+                        {{ Form::text('fax', null,array('class'=>'validate', 'required' => 'required'))}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        {{ Form::label('email', 'Email')}}
+                        {{ Form::text('email', null,array('class'=>'validate', 'required' => 'required'))}}
                     </div>
                 </div>
             </div>
+            
             {{ Form::submit('Ajouter', array('class' => 'btn-sm btn-success')) }}
         {{ Form::close() }}
         </div>
-    </div>
 </section>
 
 <section>
-<div class="container">
+<div class="">
 <div class="row" style="padding-top:15px">
 <!--<a class="btn btn-floating btn-large cyan pulse"><i class="material-icons">add</i></a>-->
 </div>
