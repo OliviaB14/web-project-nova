@@ -70,12 +70,12 @@
                         </tr>
                     </thead>
                     <tbody>
-                    @foreach($clients as $client)
+                    @foreach($pieceVehicules as $pieceVehicule)
                         <tr>
-                            <td>{{$client->id}}</td>
-                            <td>{{$client->date_entree}}</td>
-                            <td>{{$client->idtypeetatpiece}}</td>
-                            <td>{{$client->idtypepiece}}</td>
+                            <td>{{$pieceVehicule->id}}</td>
+                            <td>{{$pieceVehicule->date_entree}}</td>
+                            <td>{{$pieceVehicule->idtypeetatpiece}}</td>
+                            <td>{{$pieceVehicule->idtypepiece}}</td>
                         </tr>
                     @endforeach
                     </tbody>

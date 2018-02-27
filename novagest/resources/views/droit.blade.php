@@ -51,7 +51,7 @@
                     <tbody>
                     @foreach($droits as $droit)
                         <tr>
-                            <td>{{$client->libelle}}</td>
+                            <td>{{$droit->libelle}}</td>
                         </tr>
                     @endforeach
                     </tbody>
