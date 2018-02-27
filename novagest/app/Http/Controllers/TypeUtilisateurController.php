@@ -22,8 +22,8 @@ class TypeUtilisateurController extends Controller
 
 	public function index()
     {
-        $typeUtilisateur = TypeUtilisateur::all();
-        return $this->sendResponse(true, null, $typeUtilisateur);
+        $typeUtilisateurs = TypeUtilisateur::all();
+        return view('typeUtilisateur', ['typeUtilisateurs' => $typeUtilisateurs]);
     }
 
     public function show($id)

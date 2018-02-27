@@ -22,8 +22,8 @@ class PieceVehiculeController extends Controller
 
 	public function index()
     {
-        $pieceVehicule = PieceVehicule::all();
-        return $this->sendResponse(true, null, $pieceVehicule);
+        $piecevehicule = PieceVehicule::all();
+        return view('piecevehicule', ['piecevehicule' => $piecevehicule]);
     }
 
     public function show($id)

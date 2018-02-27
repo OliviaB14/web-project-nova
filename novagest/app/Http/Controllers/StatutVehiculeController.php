@@ -22,8 +22,8 @@ class StatutVehiculeController extends Controller
 
 	public function index()
     {
-        $statutVehicule = StatutVehicule::all();
-        return $this->sendResponse(true, null, $statutVehicule);
+        $statutvehicule = StatutVehicule::all();
+        return view('statutvehicule', ['statutvehicule' => $statutvehicule]);
     }
 
     public function show($id)
