@@ -13,41 +13,76 @@
 
 @section('title', 'Agences')
 
-@section('content')<!-- 
-<section>
-    <div class="container">
-        <div class="row">
-        <div class="col m4">
-            <div class="card horizontal">
-                <div class="card-image">
-                    <img src="https://www.2tout2rien.fr/wp-content/uploads/2016/09/Aurore-la-princesse-chatte-1.jpg" alt="DOHHH"/>
-                </div>
-                <div class="card-stacked">
-                    <div class="card-content">
-                        <span class="card-title">Nom agence</span>
-                        <p><i class="tiny material-icons" style="color: #3097d1;">home</i> Adresse agence</p>
-                        <p><i class="tiny material-icons" style="color: #3097d1;">local_phone</i> Téléphone agence</p>
+@section('content')
+<!-- Modal Structure -->
+<div id="modal1" class="modal modal-fixed-footer">
+  <div class="modal-content">
+    <h4>Modal Header</h4>
+    <p>A bunch of text</p>
+    {{ Form::open(array('url' => 'agence/add')) }}
+            <div class="col s12">
+                <div class="row">
+                    <div class="input-field col s6">
+                        {{ Form::label('enoml', 'Nom de l\'agence')}}
+                        {{ Form::text('enom', null,array('class'=>'validate', 'required' => 'required'))}}
                     </div>
-                    <div class="card-action">
-                        <a href="#"><i class="material-icons">edit</i></a>
-                        <a href="#"><i class="material-icons">delete</i></a>
+                    <div class="input-field col s6">
+                        {{ Form::label('ecode_postal', 'Code postal')}}
+                        {{ Form::text('ecode_postal', null,array('class'=>'validate', 'required' => 'required'))}}
                     </div>
                 </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        {{ Form::label('eadresse', 'Adresse')}}
+                        {{ Form::text('eadresse', null,array('class'=>'validate', 'required' => 'required'))}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <!-- SELECT -->
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        {{ Form::label('etelephone', 'Téléphone')}}
+                        {{ Form::text('etelephone', null,array('class'=>'validate', 'required' => 'required'))}}
+                    </div>
+                    <div class="input-field col s6">
+                        {{ Form::label('efax', 'Fax')}}
+                        {{ Form::text('efax', null,array('class'=>'validate', 'required' => 'required'))}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        {{ Form::label('email', 'Email')}} 
+                        {{ Form::text('email', null,array('class'=>'validate', 'required' => 'required'))}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                    {{ Form::label('eidville', 'Ville')}} 
+                         </br>
+                         {{ Form::select('eidville', $villes) }}
+                    </div>
+                <p>Psdf</p>
                 </div>
             </div>
-        </div>
+            
+            {{ Form::submit('Ajouter', array('class' => 'waves-effect waves-light btn')) }}
+        {{ Form::close() }}
+  </div>
+  <div class="modal-footer">
+    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat " href="#">Modifier</a>
+  </div>
+</div>
 
-        <ul class="pagination">
-            <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
-            <li class="waves-effect"><a href="#!">1</a></li>
-            <li class="waves-effect"><a href="#!">2</a></li>
-            <li class="waves-effect"><a href="#!">3</a></li>
-            <li class="waves-effect"><a href="#!">4</a></li>
-            <li class="waves-effect"><a href="#!">5</a></li>
-            <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
-        </ul>
-    </div>
-</section>-->
+<script>
+$(document).ready(function(){
+    // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
+    $('.modal').modal();
+  });
+</script>
+
 
 <section>
 <ul class="collapsible" style="margin-left:2%" data-collapsible="accordion">
@@ -146,7 +181,7 @@
                             <td>{{$agence->telephone}}</td>
                             <td>{{$agence->fax}}</td>
                             <td>{{$agence->mail}}</td>
-                            <td><a class="btn-floating btn-large waves-effect waves-light red" href="/agence/destroy/{{$agence->id}}"><i class="material-icons">cancel</i><a class="btn-floating btn-large waves-effect waves-light yellow" href="agence/edit/{{$agence->id}}"><i class="material-icons">edit</i></a></a></td>
+                            <td><a class="btn-floating btn-large waves-effect waves-light red" href="/agence/destroy/{{$agence->id}}"><i class="material-icons">cancel</i><a id="{{$agence->id}}" class="btn-floating btn-large waves-effect waves-light yellow edit" href="#modal1"><i class="material-icons">edit</i></a></a></td>
                         </tr>
                     @endforeach
                     </tbody>
@@ -174,6 +209,24 @@
 </section>
 
 <script>
+$(".edit").on('click',function(){
+    console.log("ajax");
+    var data = $('.edit').attr('id')
+    $.ajax({
+          url: 'agences/show/' + data,
+          type: "get",
+           success: function(response){
+            console.log(response); 
+            $('#modal1').modal('open');
+            $('#enom').val(response['nom']);
+            $('#enom').attr('class', 'active');
+            },
+            error: function(response){
+                alert('Error'+response);
+                }
+        });
+});
+
 $(document).ready(function() {
     $('#example').DataTable( {
         columnDefs: [
@@ -186,6 +239,9 @@ $(document).ready(function() {
     $(document).ready(function(){
     $('.collapsible').collapsible();
   });
+
+
+
 
   $(document).ready(function() {
     $('select').material_select();

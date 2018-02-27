@@ -13,7 +13,7 @@ class AgenceController extends BasicController
 {
     public function index()
     {
-        $agences = Agence::all();
+        $agences = Agence::all()->where('status' ,'==','0');
         //$villes = Ville::orderBy('id')->pluck('nom', 'id');
         //$villes = DB::table('ville')->get();
         $villes = Ville::pluck('nom','id');
@@ -24,10 +24,8 @@ class AgenceController extends BasicController
     public function show($id)
     {
         $agence = Agence::find($id);
-        if ($agence != null) {
-            return $this->sendResponse(true, null, $agence);
-        }
-        return $this->sendResponse(false, "Data not found.", null);
+  
+        return response()->json($agence);
     }
 
     public function update($id, Request $request)
