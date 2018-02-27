@@ -47,7 +47,7 @@
 	              <span class="card-title">Statuts</span>
 	            </div>
 	            <div class="card-action">
-	              <a href="#">Gérer</a>
+	              <a href="#">Gérer</a>	
 	            </div>
 	          </div>
 		</div>

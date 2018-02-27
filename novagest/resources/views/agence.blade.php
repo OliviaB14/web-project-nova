@@ -55,6 +55,15 @@
       <div class="collapsible-header"><i class="material-icons">add</i>Ajouter</div>
       <div class="collapsible-body">
       <div class="row">
+      @if ($errors->any())
+        <div style="font-color:red">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+      @endif
         {{ Form::open(array('url' => 'agence/add')) }}
             <div class="col s12">
                 <div class="row">
@@ -90,9 +99,14 @@
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        {{ Form::label('email', 'Email')}}
-                        {{ Form::text('email', null,array('class'=>'validate', 'required' => 'required'))}}
+                        {{ Form::label('mail', 'Email')}} 
+                        {{ Form::text('mail', null,array('class'=>'validate', 'required' => 'required'))}}
                     </div>
+                </div>
+                <div class="row">
+                <label>Browser Select</label>
+                
+                <p>Psdf</p>
                 </div>
             </div>
             

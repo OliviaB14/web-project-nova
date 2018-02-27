@@ -6,14 +6,19 @@ use App\Agence;
 use App\Ville;
 use App\Http\Controllers\BasicController;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Validator;
 
 class AgenceController extends BasicController
 {
     public function index()
     {
         $agences = Agence::all();
-        $villes = Ville::orderBy('id')->pluck('nom', 'id');
-        return view('agence', ['agences' => $agences, 'villes' => $villes]);
+        //$villes = Ville::orderBy('id')->pluck('nom', 'id');
+        //$villes = DB::table('ville')->get();
+        $villes = Ville::pluck('nom','id')->all();
+        //dd($villes);
+        return view('agence', ['agences' => $agences,'villes' => $villes]);
     }
 
     public function show($id)
@@ -43,7 +48,24 @@ class AgenceController extends BasicController
 
     public function store(Request $request)
     {
-        // @TODO @Nathan please validate the data
+        //Validator
+dd($request);
+        $validator = Validator::make($request->all(), [
+            'nom' => 'required|max:64',
+            'adresse' => 'required|max:256',
+            'code_postal' => 'required|max:12',
+            'idville' => 'required',
+            'telephone' => 'required|max:24',
+            'fax' => 'required|max:24',
+            'mail' => 'required|email|max:64'
+        ]);
+
+        if ($validator->fails()) {
+            dd($validator);
+            return redirect('agences')
+                        ->withErrors($validator)
+                        ->withInput();
+        }
 
         // Create a new agence from request param
         $agence = new Agence;

@@ -21,7 +21,11 @@ Route::get('/', 'AccueilController@index');
 
 Route::get('villes', 'VilleController@GetVilles');
 Route::get('utilisateurs', 'UtilisateurController@GetUtilisateurs');
-Route::get('agences', 'AgenceController@index');
+//Agence
+Route::get('agences', 'AgenceController@index'); // index
+Route::post('agence/add', 'AgenceController@store'); // add
+Route::get('agences', 'AgenceController@index'); // show id
+//Fin agence
 
 Route::resources([
     'agences' => 'AgenceController'
