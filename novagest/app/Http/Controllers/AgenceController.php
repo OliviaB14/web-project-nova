@@ -16,7 +16,7 @@ class AgenceController extends BasicController
         $agences = Agence::all();
         //$villes = Ville::orderBy('id')->pluck('nom', 'id');
         //$villes = DB::table('ville')->get();
-        $villes = Ville::pluck('nom','id')->all();
+        $villes = Ville::pluck('nom','id');
         //dd($villes);
         return view('agence', ['agences' => $agences,'villes' => $villes]);
     }
@@ -49,7 +49,7 @@ class AgenceController extends BasicController
     public function store(Request $request)
     {
         //Validator
-dd($request);
+
         $validator = Validator::make($request->all(), [
             'nom' => 'required|max:64',
             'adresse' => 'required|max:256',
@@ -61,7 +61,7 @@ dd($request);
         ]);
 
         if ($validator->fails()) {
-            dd($validator);
+            //dd($validator);
             return redirect('agences')
                         ->withErrors($validator)
                         ->withInput();
@@ -73,7 +73,7 @@ dd($request);
         $this->populateData($agence, $request);
         // Save
         $agence->save();
-        return $this->sendResponse(true, null, $agence);
+        return redirect('agences');
     }
 
     public function destroy($id)
@@ -83,8 +83,8 @@ dd($request);
         // Delete record
         if ($agence != null) {
             $agence->delete();
-            return $this->sendResponse(true, null, null);
+            return redirect('agences');
         }
-        return $this->sendResponse(false, "Data not found.", null);
+        return redirect('agences');
     }
 }

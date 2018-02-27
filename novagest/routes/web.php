@@ -1,15 +1,6 @@
 <?php
-Route::get('/', function () {
-    return view('accueil');
-});
-
-Route::get('/logintest', function () {
-    return view('login');
-});
-
-Route::get('/', 'AccueilController@index');
-
 // Routes avec controlleurs
+Route::get('/','AccueilController@index');
 
 Route::get('villes', 'VilleController@GetVilles');
 Route::get('utilisateurs', 'UtilisateurController@GetUtilisateurs');
@@ -18,6 +9,7 @@ Route::get('utilisateurs', 'UtilisateurController@GetUtilisateurs');
 Route::get('agences', 'AgenceController@index'); // index
 Route::post('agence/add', 'AgenceController@store'); // add
 Route::get('agences', 'AgenceController@index'); // show id
+Route::get('agence/destroy/{id}', 'AgenceController@destroy');
 //Fin agence
 Route::get('villes', 'VilleController@index');
 Route::get('utilisateurs', 'UtilisateurController@index');
@@ -34,12 +26,18 @@ Route::get('typehistoriqueevenement', 'TypeHistoriqueEvenementController@index')
 Route::get('typepiecevehicule', 'TypePieceVehiculeController@index');
 Route::get('typeutilisateur', 'TypeUtilisateurController@index');
 Route::get('typevehicule', 'TypeVehiculeController@index');
+<<<<<<< HEAD
 Route::get('vehicules', 'VehiculeController@index');
 
 //authentification
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
+=======
+Route::get('vehicule', 'VehiculeController@index');
+
+Route::get('lieux', 'LieuxController@index');
+>>>>>>> 62bdfad0d28498662262aa37d4ed21001fef962c
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
