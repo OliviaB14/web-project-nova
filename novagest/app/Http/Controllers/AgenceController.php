@@ -14,10 +14,7 @@ class AgenceController extends BasicController
     public function index()
     {
         $agences = Agence::all()->where('status' ,'==','0');
-        //$villes = Ville::orderBy('id')->pluck('nom', 'id');
-        //$villes = DB::table('ville')->get();
         $villes = Ville::pluck('nom','id');
-        //dd($villes);
         return view('agence', ['agences' => $agences,'villes' => $villes]);
     }
 

@@ -183,10 +183,6 @@ $(document).ready(function(){
 </section>
 
 <section>
-
-</section>
-
-<section>
 <div class="">
 <div class="row" style="padding-top:15px">
 <!--<a class="btn btn-floating btn-large cyan pulse"><i class="material-icons">add</i></a>-->
@@ -237,8 +233,6 @@ $(document).ready(function() {
     $(document).ready(function(){
     $('.collapsible').collapsible();
   });
-
-
 
 
   $(document).ready(function() {
