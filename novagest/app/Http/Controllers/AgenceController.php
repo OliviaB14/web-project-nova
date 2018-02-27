@@ -14,10 +14,7 @@ class AgenceController extends BasicController
     public function index()
     {
         $agences = Agence::all()->where('status' ,'==','0');
-        //$villes = Ville::orderBy('id')->pluck('nom', 'id');
-        //$villes = DB::table('ville')->get();
         $villes = Ville::pluck('nom','id');
-        //dd($villes);
         return view('agence', ['agences' => $agences,'villes' => $villes]);
     }
 
@@ -74,8 +71,6 @@ class AgenceController extends BasicController
             'mail' => 'required|email|max:64'
         ]);
 
-        if ($validator->fails()) {
-            //dd($validator);
             return redirect('agences')
                         ->withErrors($validator)
                         ->withInput();
