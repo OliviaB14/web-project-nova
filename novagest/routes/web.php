@@ -3,10 +3,7 @@ Route::get('/', function () {
     return view('accueil');
 });
 
-Route::get('/logintest', function () {
-    return view('login');
-});
-
+Route::auth()
 Route::get('/', 'AccueilController@index');
 
 // Routes avec controlleurs
@@ -35,3 +32,6 @@ Route::get('typepiecevehicule', 'TypePieceVehiculeController@index');
 Route::get('typeutilisateur', 'TypeUtilisateurController@index');
 Route::get('typevehicule', 'TypeVehiculeController@index');
 Route::get('vehicule', 'VehiculeController@index');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
