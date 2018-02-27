@@ -86,12 +86,12 @@
                     <tbody>
                     @foreach($historique_vehicules as $historique_vehicule)
                         <tr>
-                            <td>{{$client->id}}</td>
-                            <td>{{$client->date_ligne}}</td>
-                            <td>{{$client->commentaire}}</td>
-                            <td>{{$client->idutilisateur}}</td>
-                            <td>{{$client->idtypeevenement}}</td>
-                            <td>{{$client->idvehicule}}</td>
+                            <td>{{$historique_vehicule->id}}</td>
+                            <td>{{$historique_vehicule->date_ligne}}</td>
+                            <td>{{$historique_vehicule->commentaire}}</td>
+                            <td>{{$historique_vehicule->idutilisateur}}</td>
+                            <td>{{$historique_vehicule->idtypeevenement}}</td>
+                            <td>{{$historique_vehicule->idvehicule}}</td>
                         </tr>
                     @endforeach
                     </tbody>
