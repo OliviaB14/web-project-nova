@@ -14,7 +14,10 @@ class AgenceController extends BasicController
     public function index()
     {
         $agences = Agence::all()->where('status' ,'==','0');
+        //$villes = Ville::orderBy('id')->pluck('nom', 'id');
+        //$villes = DB::table('ville')->get();
         $villes = Ville::pluck('nom','id');
+        //dd($villes);
         return view('agence', ['agences' => $agences,'villes' => $villes]);
     }
 
@@ -46,13 +49,14 @@ class AgenceController extends BasicController
                         ->withInput();
         }
 
+        // Find the corresponding record 
         $agence = Agence::find($id);
         $agence->nom = $request["enom"];
-        $agence->adresse = $request["eadresse"];
-        $agence->idville = $request["eidville"];
-        $agence->telephone = $request["etelephone"];
-        $agence->fax = $request["efax"];
-        $agence->mail = $request["email"];
+        $agence->nom = $request["eadresse"];
+        $agence->nom = $request["eidville"];
+        $agence->nom = $request["etelephone"];
+        $agence->nom = $request["efax"];
+        $agence->nom = $request["email"];
         $agence->save();
 
         return redirect('agences');
@@ -71,6 +75,8 @@ class AgenceController extends BasicController
             'mail' => 'required|email|max:64'
         ]);
 
+        if ($validator->fails()) {
+            //dd($validator);
             return redirect('agences')
                         ->withErrors($validator)
                         ->withInput();
