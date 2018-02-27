@@ -22,8 +22,8 @@ class UtilisateurController extends Controller
 
 	public function index()
     {
-        $utilisateur = Utilisateur::all();
-        return $this->sendResponse(true, null, $utilisateur);
+        $utilisateurs = Utilisateur::all();
+        return view('utilisateur', ['utilisateurs' => $utilisateurs]);
     }
 
     public function show($id)

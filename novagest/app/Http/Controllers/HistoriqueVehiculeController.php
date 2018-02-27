@@ -23,7 +23,7 @@ class HistoriqueVehiculeController extends Controller
 	public function index()
     {
         $historiqueVehicule = HistoriqueVehicule::all();
-        return $this->sendResponse(true, null, $historiqueVehicule);
+        return view('historiqueVehicule', ['historiqueVehicule' => $historiqueVehicule]);
     }
 
     public function show($id)

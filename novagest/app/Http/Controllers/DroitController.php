@@ -22,8 +22,8 @@ class DroitController extends Controller
 
 	public function index()
     {
-        $droit = Droit::all();
-        return $this->sendResponse(true, null, $droit);
+        $droits = Droit::all();
+        return view('droit', ['droits' => $droits]);
     }
 
     public function show($id)

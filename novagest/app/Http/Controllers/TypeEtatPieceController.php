@@ -22,8 +22,8 @@ class TypeEtatPieceController extends Controller
 
 	public function index()
     {
-        $typeEtatPiece = TypeEtatPiece::all();
-        return $this->sendResponse(true, null, $typeEtatPiece);
+        $typeetatpiece = TypeEtatPiece::all();
+        return view('typeetatpiece', ['typeetatpiece' => $typeetatpiece]);
     }
 
     public function show($id)

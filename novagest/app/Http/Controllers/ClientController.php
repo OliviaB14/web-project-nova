@@ -22,8 +22,9 @@ class ClientController extends Controller
 
 	public function index()
     {
-        $client = Client::all();
-        return $this->sendResponse(true, null, $client);
+        $clients = Client::all();
+        $villes = Ville::orderBy('id')->pluck('nom', 'id');
+        return view('client', ['clients' => $clients, 'villes' => $villes]);
     }
 
     public function show($id)

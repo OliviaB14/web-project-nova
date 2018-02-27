@@ -22,8 +22,8 @@ class TypeHistoriqueEvenementController extends Controller
 
 	public function index()
     {
-        $typeHistoriqueEvenement = TypeHistoriqueEvenement::all();
-        return $this->sendResponse(true, null, $typeHistoriqueEvenement);
+        $typeHistoriqueEvenements = TypeHistoriqueEvenement::all();
+        return view('typeHistoriqueEvenement', ['typeHistoriqueEvenements' => $typeHistoriqueEvenements]);
     }
 
     public function show($id)

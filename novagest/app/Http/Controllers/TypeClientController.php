@@ -22,8 +22,8 @@ class TypeClientController extends Controller
 
 	public function index()
     {
-        $typeClient = TypeClient::all();
-        return $this->sendResponse(true, null, $typeClient);
+        $typeclient = TypeClient::all();
+        return view('typeclient', ['typeclient' => $typeclient]);
     }
 
     public function show($id)

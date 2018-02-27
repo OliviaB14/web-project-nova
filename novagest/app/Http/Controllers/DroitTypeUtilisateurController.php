@@ -22,8 +22,8 @@ class DroitTypeUtilisateurController extends Controller
 
 	public function index()
     {
-        $droitTypeUtilisateur = DroitTypeUtilisateur::all();
-        return $this->sendResponse(true, null, $droitTypeUtilisateur);
+        $droitTypeUtilisateurs = DroitTypeUtilisateur::all();
+        return view('droittypeutilisateur', ['droitTypeUtilisateurs' => $droitTypeUtilisateurs]);
     }
 
     public function show($id)

@@ -22,8 +22,8 @@ class VilleController extends Controller
 
 	public function index()
     {
-        $ville = Ville::all();
-        return $this->sendResponse(true, null, $ville);
+        $villes = Ville::all();
+        return view('ville', ['villes' => $villes]);
     }
 
     public function show($id)

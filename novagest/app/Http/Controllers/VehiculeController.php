@@ -22,8 +22,8 @@ class VehiculeController extends Controller
 
 	public function index()
     {
-        $vehicule = Vehicule::all();
-        return $this->sendResponse(true, null, $vehicule);
+        $vehicules = Vehicule::all();
+        return view('vehicule', ['vehicules' => $vehicules]);
     }
 
     public function show($id)
