@@ -10,22 +10,22 @@ Route::get('/logintest', function () {
 Route::get('/', 'AccueilController@index');
 
 // Routes avec controlleurs
-Route::get('villes', 'VilleController@GetVilles');
-Route::get('utilisateurs', 'UtilisateurController@GetUtilisateurs');
+Route::get('villes', 'VilleController@index');
+Route::get('utilisateurs', 'UtilisateurController@index');
 Route::get('agences', 'AgenceController@index');
-Route::get('clients', 'ClientController@GetClients');
-Route::get('droits', 'DroitController@GetDroits');
-Route::get('droittypeutilisateurs', 'DroitTypeUtilisateurs@GetDroitTypeUtilisateurs');
-Route::get('historiquevehicule', 'HistoriqueVehicule@GetHistoriqueVehicule');
-Route::get('piecevehicule', 'PieceVehicule@GetPieceVehicule');
-Route::get('statutvehicule', 'StatutVehicule@GetStatutVehicule');
-Route::get('typeclient', 'TypeClient@TypeClient');
-Route::get('typeetatpiece', 'TypeEtatPiece@TypeEtatPiece');
-Route::get('typehistoriqueevenement', 'TypeHistoriqueEvenement@GetTypeHistoriqueEvenement');
-Route::get('typepiecevehicule', 'TypePieceVehicule@GetTypePieceVehicule');
-Route::get('typeutilisateur', 'TypeUtilisateur@GetTypeUtilisateur');
-Route::get('typevehicule', 'TypeVehicule@GetTypeVehicule');
-Route::get('vehicule', 'Vehicule@GetVehicule');
+Route::get('clients', 'ClientController@index');
+Route::get('droits', 'DroitController@index');
+Route::get('droittypeutilisateurs', 'DroitTypeUtilisateursController@index');
+Route::get('historiquevehicule', 'HistoriqueVehiculeController@index');
+Route::get('piecevehicule', 'PieceVehiculeController@index');
+Route::get('statutvehicule', 'StatutVehiculeController@index');
+Route::get('typeclient', 'TypeClientController@index');
+Route::get('typeetatpiece', 'TypeEtatPieceController@index');
+Route::get('typehistoriqueevenement', 'TypeHistoriqueEvenementController@index');
+Route::get('typepiecevehicule', 'TypePieceVehiculeController@index');
+Route::get('typeutilisateur', 'TypeUtilisateurController@index');
+Route::get('typevehicule', 'TypeVehiculeController@index');
+Route::get('vehicule', 'VehiculeController@index');
 
 //vérifier utilité
 Route::resources([
