@@ -8,62 +8,89 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Client;
 use App\Ville;
+use App\TypeClient;
 use DB;
 use Input;
 
 class ClientController extends Controller
 {
-	// public function GetClients()
-	// {
-	// 	$clients = DB::table('Client')
-    //     ->get();
-    //     //dd($clients);
-	// 	return view('Client', ['Clients' => $clients]);
-	// }
 
 	public function index()
     {
-        $clients = Client::all();
-        $villes = Ville::orderBy('id')->pluck('nom', 'id');
+        $clients = Client::all()->where('status' ,'==','0');
+        $villes = Ville::pluck('nom','id');
+        $typeclients = TypeClient::pluck('libelle','id');
         return view('client', ['clients' => $clients, 'villes' => $villes]);
     }
 
     public function show($id)
     {
-        $client = Client::find($id);
-        if ($client != null) {
-            return $this->sendResponse(true, null, $client);
-        }
-        return $this->sendResponse(false, "Data not found.", null);
+        $client = Client::find($id);  
+        return response()->json($client);
     }
 
     public function update($id, Request $request)
     {
-        // @TODO @Nathan please validate the data
+        //Validator
+        //dd($request);
+        $validator = Validator::make($request->all(), [
+            'eraison_sociale' => 'required|max:64',
+            'eadresse' => 'required|max:256',
+            'eidville' => 'required',
+            'etelephone' => 'required|max:24',
+            'efax' => 'required|max:24',
+            'email' => 'required|email|max:64',
+            'eidtype' => 'required'
+        ]);
 
-        // Find the corresponding record
-        $client = Client::find($id);
-        // Populate data
-        if ($client != null) {
-            $this->populateData($client, $request);
-            // Save
-            $client->save();
-            return $this->sendResponse(true, null, $client);
+        if ($validator->fails()) {
+            dd($validator);
+            
+            return redirect('clients')
+                        ->withErrors($validator)
+                        ->withInput();
         }
-        return $this->sendResponse(false, "Data not found.", null);
+
+        $client = Client::find($id);
+        $client->nom = $request["eraison_sociale"];
+        $client->adresse = $request["eadresse"];
+        $client->idville = $request["eidville"];
+        $client->telephone = $request["etelephone"];
+        $client->fax = $request["efax"];
+        $client->mail = $request["email"];
+        $client->idtype = $request["eidtype"];
+        $client->save();
+
+        return redirect('clients');
     }
 
     public function store(Request $request)
     {
-        // @TODO @Nathan please validate the data
+        //Validator
 
-        // Create a new Client from request param
+        $validator = Validator::make($request->all(), [
+            'raison_sociale' => 'required|max:64',
+            'adresse' => 'required|max:256',
+            'idville' => 'required',
+            'telephone' => 'required|max:24',
+            'fax' => 'required|max:24',
+            'mail' => 'required|email|max:64',
+            'idtype' => 'required'
+        ]);
+
+        if ($validator->fails()) {
+            return redirect('agences')
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+
+        // Create a new client from request param
         $client = new Client;
         // Populate data
-        $this->populateData($agence, $request);
+        $this->populateData($client, $request);
         // Save
         $client->save();
-        return $this->sendResponse(true, null, $client);
+        return redirect('clients');
     }
 
     public function destroy($id)
@@ -73,8 +100,8 @@ class ClientController extends Controller
         // Delete record
         if ($client != null) {
             $client->delete();
-            return $this->sendResponse(true, null, null);
+            return redirect('clients');
         }
-        return $this->sendResponse(false, "Data not found.", null);
+        return redirect('clients');
     }
 }
