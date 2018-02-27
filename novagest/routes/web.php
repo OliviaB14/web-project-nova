@@ -27,18 +27,15 @@ Route::get('typehistoriqueevenement', 'TypeHistoriqueEvenementController@index')
 Route::get('typepiecevehicule', 'TypePieceVehiculeController@index');
 Route::get('typeutilisateur', 'TypeUtilisateurController@index');
 Route::get('typevehicule', 'TypeVehiculeController@index');
-<<<<<<< HEAD
 Route::get('vehicules', 'VehiculeController@index');
 
 //authentification
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
-=======
 Route::get('vehicule', 'VehiculeController@index');
 
 Route::get('lieux', 'LieuxController@index');
->>>>>>> 62bdfad0d28498662262aa37d4ed21001fef962c
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
