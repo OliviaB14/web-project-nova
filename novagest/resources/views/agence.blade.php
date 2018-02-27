@@ -17,18 +17,14 @@
 <!-- Modal Structure -->
 <div id="modal1" class="modal modal-fixed-footer">
   <div class="modal-content">
-    <h4>Modal Header</h4>
-    <p>A bunch of text</p>
-    {{ Form::open(array('url' => 'agence/add')) }}
+  {{ Form::open(array('url' => 'agence/update/', 'id'=>'form')) }}
+    <h4>Edition</h4>
+    
             <div class="col s12">
-                <div class="row">
-                    <div class="input-field col s6">
-                        {{ Form::label('enoml', 'Nom de l\'agence')}}
+            <div class="row">
+                    <div class="input-field col s12">
+                    {{ Form::label('enom', 'Nom de l\'agence')}}
                         {{ Form::text('enom', null,array('class'=>'validate', 'required' => 'required'))}}
-                    </div>
-                    <div class="input-field col s6">
-                        {{ Form::label('ecode_postal', 'Code postal')}}
-                        {{ Form::text('ecode_postal', null,array('class'=>'validate', 'required' => 'required'))}}
                     </div>
                 </div>
                 <div class="row">
@@ -64,16 +60,16 @@
                          </br>
                          {{ Form::select('eidville', $villes) }}
                     </div>
-                <p>Psdf</p>
                 </div>
             </div>
             
-            {{ Form::submit('Ajouter', array('class' => 'waves-effect waves-light btn')) }}
-        {{ Form::close() }}
+            {{ Form::submit('Modifier', array('class' => 'waves-effect waves-light btn yellow')) }}
+        
   </div>
   <div class="modal-footer">
     <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat " href="#">Modifier</a>
   </div>
+  {{ Form::close() }}
 </div>
 
 <script>
@@ -102,13 +98,9 @@ $(document).ready(function(){
         {{ Form::open(array('url' => 'agence/add')) }}
             <div class="col s12">
                 <div class="row">
-                    <div class="input-field col s6">
-                        {{ Form::label('nom', 'Nom de l\'agence')}}
+                    <div class="input-field col s12">
+                    {{ Form::label('nom', 'Nom de l\'agence')}}
                         {{ Form::text('nom', null,array('class'=>'validate', 'required' => 'required'))}}
-                    </div>
-                    <div class="input-field col s6">
-                        {{ Form::label('code_postal', 'Code postal')}}
-                        {{ Form::text('code_postal', null,array('class'=>'validate', 'required' => 'required'))}}
                     </div>
                 </div>
                 <div class="row">
@@ -144,7 +136,6 @@ $(document).ready(function(){
                          </br>
                          {{ Form::select('idville', $villes) }}
                     </div>
-                <p>Psdf</p>
                 </div>
             </div>
             
@@ -219,7 +210,14 @@ $(".edit").on('click',function(){
             console.log(response); 
             $('#modal1').modal('open');
             $('#enom').val(response['nom']);
-            $('#enom').attr('class', 'active');
+            $('#ecode_postal').val(response['code_postal']);
+            $('#eadresse').val(response['adresse']);
+            $('#etelephone').val(response['telephone']);
+            $('#efax').val(response['fax']);
+            $('#email').val(response['mail']);
+            $('#eville').val(response['ville']);
+            $('#form').attr('action', 'agence/update/' + response['id']);
+            Materialize.updateTextFields();
             },
             error: function(response){
                 alert('Error'+response);

@@ -11,6 +11,7 @@ Route::post('agence/add', 'AgenceController@store'); // add
 Route::get('agences', 'AgenceController@index'); // show id
 Route::get('agence/destroy/{id}', 'AgenceController@destroy');
 Route::get('agences/show/{id}', 'AgenceController@show'); // index
+Route::post('agence/update/{id}', 'AgenceController@update');
 //Fin agence
 Route::get('villes', 'VilleController@index');
 Route::get('utilisateurs', 'UtilisateurController@index');

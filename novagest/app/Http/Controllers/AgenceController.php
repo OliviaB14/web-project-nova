@@ -30,18 +30,35 @@ class AgenceController extends BasicController
 
     public function update($id, Request $request)
     {
-        // @TODO @Nathan please validate the data
+        //Validator
+        //dd($request);
+        $validator = Validator::make($request->all(), [
+            'enom' => 'required|max:64',
+            'eadresse' => 'required|max:256',
+            'eidville' => 'required',
+            'etelephone' => 'required|max:24',
+            'efax' => 'required|max:24',
+            'email' => 'required|email|max:64'
+        ]);
 
-        // Find the corresponding record
-        $agence = Agence::find($id);
-        // Populate data
-        if ($agence != null) {
-            $this->populateData($agence, $request);
-            // Save
-            $agence->save();
-            return $this->sendResponse(true, null, $agence);
+        if ($validator->fails()) {
+            dd($validator);
+            
+            return redirect('agences')
+                        ->withErrors($validator)
+                        ->withInput();
         }
-        return $this->sendResponse(false, "Data not found.", null);
+
+        $agence = Agence::find($id);
+        $agence->nom = $request["enom"];
+        $agence->adresse = $request["eadresse"];
+        $agence->idville = $request["eidville"];
+        $agence->telephone = $request["etelephone"];
+        $agence->fax = $request["efax"];
+        $agence->mail = $request["email"];
+        $agence->save();
+
+        return redirect('agences');
     }
 
     public function store(Request $request)
@@ -51,7 +68,6 @@ class AgenceController extends BasicController
         $validator = Validator::make($request->all(), [
             'nom' => 'required|max:64',
             'adresse' => 'required|max:256',
-            'code_postal' => 'required|max:12',
             'idville' => 'required',
             'telephone' => 'required|max:24',
             'fax' => 'required|max:24',
