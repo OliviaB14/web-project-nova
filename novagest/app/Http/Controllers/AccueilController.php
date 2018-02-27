@@ -9,7 +9,6 @@ use App\Http\Controllers\Controller;
 use App\Agence;
 use App\Vehicule;
 use App\Utilisateur;
-use DB;
 use Input;
 
 class AccueilController extends Controller

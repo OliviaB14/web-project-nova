@@ -104,8 +104,11 @@
                     </div>
                 </div>
                 <div class="row">
-                <label>Browser Select</label>
-                
+                    <div class="input-field col s12">
+                    {{ Form::label('idville', 'Ville')}} 
+                         </br>
+                         {{ Form::select('idville', $villes) }}
+                    </div>
                 <p>Psdf</p>
                 </div>
             </div>
@@ -114,10 +117,6 @@
         {{ Form::close() }}
         </div>
       </div>
-    </li>
-    <li>
-      <div class="collapsible-header"><i class="material-icons">edit</i>Editer</div>
-      <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
     </li>
     <li>
       <div class="collapsible-header"><i class="material-icons">dvr</i>Données</div>
@@ -133,6 +132,7 @@
                             <th>Téléphone</th>
                             <th>fax</th>
                             <th>mail</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -146,6 +146,7 @@
                             <td>{{$agence->telephone}}</td>
                             <td>{{$agence->fax}}</td>
                             <td>{{$agence->mail}}</td>
+                            <td><a class="btn-floating btn-large waves-effect waves-light red" href="/agence/destroy/{{$agence->id}}"><i class="material-icons">cancel</i><a class="btn-floating btn-large waves-effect waves-light yellow" href="agence/edit/{{$agence->id}}"><i class="material-icons">edit</i></a></a></td>
                         </tr>
                     @endforeach
                     </tbody>
@@ -185,6 +186,10 @@ $(document).ready(function() {
     $(document).ready(function(){
     $('.collapsible').collapsible();
   });
+
+  $(document).ready(function() {
+    $('select').material_select();
+});
 } );
           
 </script>
