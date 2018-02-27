@@ -18,7 +18,7 @@
 <div id="modal1" class="modal modal-fixed-footer">
   <div class="modal-content">
   {{ Form::open(array('url' => 'agence/update/', 'id'=>'form')) }}
-    <h4>Edition</h4>
+    <h4 style="position: fixed;left: 0;top: 0;width: 100%;text-align: center;">Edition</h4>
     
             <div class="col s12">
             <div class="row">
@@ -31,11 +31,6 @@
                     <div class="input-field col s12">
                         {{ Form::label('eadresse', 'Adresse')}}
                         {{ Form::text('eadresse', null,array('class'=>'validate', 'required' => 'required'))}}
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="input-field col s12">
-                        <!-- SELECT -->
                     </div>
                 </div>
                 <div class="row">
@@ -62,13 +57,9 @@
                     </div>
                 </div>
             </div>
-            
-            {{ Form::submit('Modifier', array('class' => 'waves-effect waves-light btn yellow')) }}
-        
+            {{ Form::submit('Modifier', array('class' => 'waves-effect waves-light btn','style' => 'position: fixed;left: 0;bottom: 0;width: 100%;text-align: center;')) }}
   </div>
-  <div class="modal-footer">
-    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat " href="#">Modifier</a>
-  </div>
+  
   {{ Form::close() }}
 </div>
 
@@ -107,11 +98,6 @@ $(document).ready(function(){
                     <div class="input-field col s12">
                         {{ Form::label('adresse', 'Adresse')}}
                         {{ Form::text('adresse', null,array('class'=>'validate', 'required' => 'required'))}}
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="input-field col s12">
-                        <!-- SELECT -->
                     </div>
                 </div>
                 <div class="row">

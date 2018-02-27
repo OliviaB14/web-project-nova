@@ -52,11 +52,11 @@ class AgenceController extends BasicController
         // Find the corresponding record 
         $agence = Agence::find($id);
         $agence->nom = $request["enom"];
-        $agence->nom = $request["eadresse"];
-        $agence->nom = $request["eidville"];
-        $agence->nom = $request["etelephone"];
-        $agence->nom = $request["efax"];
-        $agence->nom = $request["email"];
+        $agence->adresse = $request["eadresse"];
+        $agence->idville = $request["eidville"];
+        $agence->telephone = $request["etelephone"];
+        $agence->fax = $request["efax"];
+        $agence->mail = $request["email"];
         $agence->save();
 
         return redirect('agences');
