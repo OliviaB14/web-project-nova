@@ -139,9 +139,15 @@ $(document).ready(function(){
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
+<<<<<<< HEAD
                     {{ Form::label('typeclient', 'Type de client')}} 
                          </br>
                          {{ Form::select('typeclient', $typeclients) }}
+=======
+                    {{ Form::label('idtypeclient', 'idtypeclient')}} 
+                         </br>
+                         {{ Form::select('idtypeclient', $typeclients) }}
+>>>>>>> 8ca5cef04bfe113df1e7d2c014339db9e464ba7a
                     </div>
                 </div>
             </div>
@@ -163,6 +169,7 @@ $(document).ready(function(){
                             <th>Fax</th>
                             <th>Mail</th>
                             <th>Type de client</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -199,6 +206,10 @@ $(document).ready(function(){
 </section>
 
 <script>
+$(document).ready(function(){
+    $('select').material_select();
+});
+
 $(".edit").on('click',function(){
     console.log("ajax");
     var data = $('.edit').attr('id')
@@ -225,6 +236,7 @@ $(".edit").on('click',function(){
 });
 
 $(document).ready(function() {
+    
     $('#example').DataTable( {
         columnDefs: [
             {
@@ -233,14 +245,10 @@ $(document).ready(function() {
             }
         ]
     } );
+
     $(document).ready(function(){
     $('.collapsible').collapsible();
   });
-
-
-  $(document).ready(function() {
-    $('select').material_select();
-});
 } );
           
 </script>
