@@ -139,15 +139,9 @@ $(document).ready(function(){
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-<<<<<<< HEAD
-                    {{ Form::label('typeclient', 'Type de client')}} 
-                         </br>
-                         {{ Form::select('typeclient', $typeclients) }}
-=======
                     {{ Form::label('idtypeclient', 'idtypeclient')}} 
                          </br>
                          {{ Form::select('idtypeclient', $typeclients) }}
->>>>>>> 8ca5cef04bfe113df1e7d2c014339db9e464ba7a
                     </div>
                 </div>
             </div>
