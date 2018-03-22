@@ -13,7 +13,7 @@ class AgenceController extends BasicController
 {
     public function index()
     {
-        $agences = Agence::all()->where('desactive' ,'==','0');
+        $agences = Agence::all();
         $villes = Ville::pluck('nom','id');
         return view('agence', ['agences' => $agences,'villes' => $villes]);
     }
@@ -90,14 +90,11 @@ class AgenceController extends BasicController
 
     public function destroy($id)
     {
-        // Find the corresponding record
+        // Find the corresponding record 
         $agence = Agence::find($id);
-        // Delete record
-        // ne plus supprimer mais changer la valeur de desactive
-        if ($agence != null) {
-            $agence->delete();
-            return redirect('agences');
-        }
+        $agence->desactive = 1;
+        $agence->save();
+        
         return redirect('agences');
     }
 }

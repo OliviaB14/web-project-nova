@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Vehicule;
+use App\TypeVehicule;
 use DB;
 use Input;
 
@@ -23,7 +24,8 @@ class VehiculeController extends Controller
 	public function index()
     {
         $vehicules = Vehicule::all();
-        return view('vehicules', ['vehicules' => $vehicules]);
+        $typevehicule = TypeVehicule::all();
+        return view('vehicules', ['vehicules' => $vehicules,'typevehicules' => $typevehicule]);
     }
 
     public function show($id)

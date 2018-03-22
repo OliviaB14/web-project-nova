@@ -10,11 +10,54 @@
 @section('title', 'Vehicules')
 
 @section('content')
+<button class="active btn" id="all">Show All</button>
+@foreach($typevehicules as $type)
+    <button class="btn" id="{{$type->id}}">{{$type->modele}}</button>
+@endforeach
+
+<script>
+var $btns = $('.btn').click(function() {
+  if (this.id == 'all') {
+    $('#parent > div').fadeIn(450);
+    console.log("1");
+  } else {
+    var $el = $('.' + this.id).fadeIn(450);
+    $('#parent > div').not($el).hide();
+    console.log($el);
+  }
+})
+</script>
+
 <div class='row'> 
 	<div class="page-header"> 
 		<h3>Véhicules</h3> 
 	</div> 
 </div> 
+<div class="row parent">
+  @foreach($vehicules as $car)
+  <?php
+    $test = DB::table('type_vehicule')->where('id', '=',$car->idtypevehicule)->first();
+    ?>
+      <div class="col s6 m6 {{$test->id}}">
+        <div class="card">
+          <div class="card-image">
+            <img style="width:300px" src="https://goo.gl/XdBFhy">
+            <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
+          </div>
+          <div class="card-content">
+            <h1>
+            <?php
+              $test = DB::table('type_vehicule')->where('id', '=',$car->idtypevehicule)->first();
+              ?>
+              {{$test->modele}}
+            </h1>
+          </div>
+        </div>
+      </div>
+    @endforeach 
+</div>
+  
+
 
 <ul class="collapsible" style="margin-left:2%" data-collapsible="accordion"> 
     <li> 
