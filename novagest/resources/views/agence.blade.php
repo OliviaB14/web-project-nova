@@ -216,14 +216,14 @@ $(".edit").on('click',function(){
 });
 
 $(document).ready(function() {
-    $('#example').DataTable( {
-        columnDefs: [
-            {
-                targets: [ 0, 1],
-                className: 'mdl-data-table__cell--non-numeric'
-            }
-        ]
-    } );
+        $('#example').DataTable( {
+            columnDefs: [
+                {
+                    targets: [ 0, 1],
+                    className: 'mdl-data-table__cell--non-numeric'
+                }
+            ]
+        } );
     $(document).ready(function(){
     $('.collapsible').collapsible();
   });
