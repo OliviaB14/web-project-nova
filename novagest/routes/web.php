@@ -1,7 +1,6 @@
 <?php
 // Routes avec controlleurs
 Route::get('/','AccueilController@index');
-
 Route::get('villes', 'VilleController@GetVilles');
 Route::get('utilisateurs', 'UtilisateurController@GetUtilisateurs');
 
@@ -13,10 +12,18 @@ Route::get('agence/destroy/{id}', 'AgenceController@destroy');
 Route::get('agences/show/{id}', 'AgenceController@show'); // index
 Route::post('agence/update/{id}', 'AgenceController@update');
 //Fin agence
+
+//Clients
+Route::get('clients', 'ClientController@index'); // index
+Route::post('client/add', 'ClientController@store'); // add
+Route::get('clients', 'ClientController@index'); // show id
+Route::get('client/destroy/{id}', 'ClientController@destroy');
+Route::get('clients/show/{id}', 'ClientController@show'); // index
+Route::post('client/update/{id}', 'ClientController@update');
+//Fin clients
+
 Route::get('villes', 'VilleController@index');
 Route::get('utilisateurs', 'UtilisateurController@index');
-Route::get('agences', 'AgenceController@index');
-Route::get('clients', 'ClientController@index');
 Route::get('droits', 'DroitController@index');
 Route::get('droittypeutilisateurs', 'DroitTypeUtilisateursController@index');
 Route::get('historiquevehicule', 'HistoriqueVehiculeController@index');
@@ -33,10 +40,7 @@ Route::get('vehicules', 'VehiculeController@index');
 //authentification
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
-
 Route::get('vehicule', 'VehiculeController@index');
-
 Route::get('lieux', 'VilleController@index');
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
