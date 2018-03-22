@@ -17,7 +17,7 @@ class ClientController extends Controller
 
 	public function index()
     {
-        $clients = Client::all()->where('status' ,'==','0');
+        $clients = Client::all()->where('desactive' ,'==','0');
         $villes = Ville::pluck('nom','id');
         $typeclients = TypeClient::pluck('libelle','id');
         return view('client', ['clients' => $clients, 'villes' => $villes, 'typeclients' => $typeclients]);

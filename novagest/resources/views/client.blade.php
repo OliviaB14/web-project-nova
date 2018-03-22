@@ -173,7 +173,7 @@ $(document).ready(function(){
                             <td>{{$client->fax}}</td>
                             <td>{{$client->mail}}</td>
                             <td>{{$client->idtypeclient}}</td>
-                            <td><a class="btn-floating btn-large waves-effect waves-light red" href="/agence/destroy/{{$agence->id}}"><i class="material-icons">cancel</i><a id="{{$agence->id}}" class="btn-floating btn-large waves-effect waves-light yellow edit" href="#modal1"><i class="material-icons">edit</i></a></a></td>
+                            <td><a class="btn-floating btn-large waves-effect waves-light red" href="/client/destroy/{{$client->id}}"><i class="material-icons">cancel</i><a id="{{$client->id}}" class="btn-floating btn-large waves-effect waves-light yellow edit" href="#modal1"><i class="material-icons">edit</i></a></a></td>
                         </tr>
                     @endforeach
                     </tbody>
