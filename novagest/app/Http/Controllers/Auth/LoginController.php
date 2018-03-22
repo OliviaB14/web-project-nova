@@ -38,6 +38,6 @@ class LoginController extends Controller
     }
 
     public function testLogin(){
-        $this->validateLogin()
+        $this->validateLogin();
     }
 }
