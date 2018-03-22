@@ -55,13 +55,14 @@ class ClientController extends Controller
         }
 
         $client = Client::find($id);
-        $client->nom = $request["eraison_sociale"];
+        $client->raison_sociale = $request["eraison_sociale"];
         $client->adresse = $request["eadresse"];
         $client->idville = $request["eidville"];
         $client->telephone = $request["etelephone"];
         $client->fax = $request["efax"];
         $client->mail = $request["email"];
         $client->idtypeclient = $request["eidtypeclient"];
+        
         $client->save();
 
         return redirect('clients');
@@ -98,13 +99,10 @@ class ClientController extends Controller
 
     public function destroy($id)
     {
-        // Find the corresponding record
         $client = Client::find($id);
-        // Delete record
-        if ($client != null) {
-            $client->delete();
-            return redirect('clients');
-        }
+        $client->desactive = 1;
+        $client->save();
+
         return redirect('clients');
     }
 }

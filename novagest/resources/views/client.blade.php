@@ -59,9 +59,9 @@
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                    {{ Form::label('etypeclient', 'Type client')}} 
+                    {{ Form::label('eidtypeclient', 'Type client')}} 
                          </br>
-                         {{ Form::select('etypeclient', $typeclients) }}
+                         {{ Form::select('eidtypeclient', $typeclients) }}
                     </div>
                 </div>
             </div>
@@ -176,7 +176,7 @@ $(document).ready(function(){
                             <td>{{$client->fax}}</td>
                             <td>{{$client->mail}}</td>
                             <td>{{$client->idtypeclient}}</td>
-                            <td><a class="btn-floating btn-large waves-effect waves-light red" href="/client/destroy/{{$client->id}}"><i class="material-icons">cancel</i><a id="{{$client->id}}" class="btn-floating btn-large waves-effect waves-light yellow edit" href="#modal1"><i class="material-icons">edit</i></a></a></td>
+                            <td><a class="btn-floating btn-large waves-effect waves-light red" href="client/destroy/{{$client->id}}"><i class="material-icons">cancel</i><a id="{{$client->id}}" class="btn-floating btn-large waves-effect waves-light yellow edit" href="#modal1"><i class="material-icons">edit</i></a></a></td>
                         </tr>
                     @endforeach
                     </tbody>
