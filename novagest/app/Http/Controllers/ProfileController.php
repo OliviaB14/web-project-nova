@@ -21,4 +21,45 @@ class ProfileController extends Controller
         	'user' => $user
         ]);
     }
+
+    public function update($id, Request $request)
+    {
+        //Validator
+        //dd($request["eidville"]);
+        $validator = Validator::make($request->all(), [
+            'enom' => 'max:32',
+            'eprenom' => 'max:32',
+            'epseudo' => 'max:32',
+            'etelephone' => 'max:24',
+            'efax' => 'max:24',
+        ]);
+
+        if ($validator->fails()) {
+            dd($validator);
+            
+            return redirect('profil/parametres')
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+
+        // Find the corresponding record 
+        $user = Utilisateur::find($id);
+
+        $user->nom = $this->updated($request["enom"], $user->nom);
+        $user->prenom = $this->updated($request["eprenom"], $user->prenom);
+        $user->username = $this->updated($request["epseudo"], $user->username);
+        $user->telephone = $this->updated($request["etelephone"], $user->telephone);
+        $user->fax = $this->updated($request["efax"], $user->fax);
+
+        $user->save();
+
+        return redirect('profil/parametres');
+    }
+
+    public function updated($new, $old){
+    	if(($new != null)&&($new != $old)){
+    		return $new;
+    	} else { return $old; }
+    }
+
 }

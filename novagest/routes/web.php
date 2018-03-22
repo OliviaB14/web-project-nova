@@ -54,4 +54,4 @@ Route::get('lieux', 'VilleController@index');
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('profil', 'ProfileController@index')->name('profile'); 
-
+Route::get('profil/parametres', 'ProfileController@update')->name('profile');

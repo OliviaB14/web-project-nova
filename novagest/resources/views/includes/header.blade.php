@@ -10,8 +10,8 @@
   
 </ul>
 <ul id="dropdown2" class="dropdown-content">
-  <li><a href="#!">Voir</a></li>
-  <li><a href="#!">Paramètres</a></li>
+  <li><a href="/profil">Voir</a></li>
+  <li><a href="/profil/parametres">Paramètres</a></li>
   <li class="divider"></li>
   <li><a href="#!" class="red-text">Déconnexion</a></li>
 </ul>
@@ -31,13 +31,14 @@
       </ul>
 
       <ul id="nav-mobile" class="side-nav">
-      <li><a href="agences">Agences</a></li>
-      <li><a href="clients">Clients</a></li>
-      <li><a href="droits">Droits</a></li>
-      <li><a href="vehicules">Vehicules</a></li>
-      <li><a href="utilisateurs">Utilisateurs</a></li>
-      <li><a href="villes">Villes</a></li>
-      <li><a href="statutvehicule">Statuts</a></li>
+      <li><a href="/accueil"><i class="material-icons">home</i> Tableau de bord</a></li>
+      <li><a href="agences"><i class="material-icons">work</i> Agences</a></li>
+      <li><a href="clients"><i class="material-icons">people</i> Clients</a></li>
+      <li><a href="droits"><i class="material-icons">assignment_ind</i> Droits</a></li>
+      <li><a href="vehicules"><i class="material-icons">directions_car</i> Vehicules</a></li>
+      <li><a href="utilisateurs"><i class="material-icons">supervisor_account</i> Utilisateurs</a></li>
+      <li><a href="villes"><i class="material-icons">location_city</i> Villes</a></li>
+      <li><a href="statutvehicule"><i class="material-icons">view_list</i> Statuts</a></li>
         
       </ul>
       <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
