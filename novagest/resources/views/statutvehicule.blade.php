@@ -39,8 +39,8 @@
             <div class="col s12">
                 <div class="row">
                     <div class="input-field col s12">
-                    {{ Form::label('nom', 'Libellé du statut')}}
-                        {{ Form::text('nom', null,array('class'=>'validate', 'required' => 'required'))}}
+                    {{ Form::label('libelle', 'Libellé du statut')}}
+                        {{ Form::text('libelle', null,array('class'=>'validate', 'required' => 'required'))}}
                     </div>
                 </div>
             </div>
@@ -62,7 +62,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                    @foreach($statuts as $statut)
+                    @foreach($statutvehicule as $statut)
                         <tr>
                              <td>{{$statut->id}}</td>
                             <td>{{$statut->libelle}}</td>
@@ -84,8 +84,8 @@
             <div class="col s12">
                 <div class="row">
                     <div class="input-field col s12">
-                    {{ Form::label('enom', 'Libellé du statut')}}
-                        {{ Form::text('enom', null,array('class'=>'validate', 'required' => 'required'))}}
+                    {{ Form::label('elibelle', 'Libellé du statut')}}
+                        {{ Form::text('elibelle', null,array('class'=>'validate', 'required' => 'required'))}}
                     </div>
                 </div>
             </div>
@@ -96,20 +96,59 @@
   </div>
 
 <script>
+$(".edit").on('click',function(){
+    console.log("ajax");
+    var data = $('.edit').attr('id')
+    $.ajax({
+          url: 'statuts/show/' + data,
+          type: "get",
+           success: function(response){
+            console.log(response); 
+            $('#modal1').modal('open'); 
+            $('#elibelle').val(response['libelle']);
+            
+            $('#form').attr('action', 'statut/update/' + response['id']);
+            Materialize.updateTextFields();
+
+            error: function(response){
+                alert('Error'+response);
+                }
+        });
+});
+
 $(document).ready(function() {
-    $('#example').DataTable( {
-        columnDefs: [
-            {
-                targets: [ 0, 1],
-                className: 'mdl-data-table__cell--non-numeric'
-            }
-        ]
-    } );
+        $('#example').DataTable( {
+            columnDefs: [
+                {
+                    targets: [ 0, 1],
+                    className: 'mdl-data-table__cell--non-numeric'
+                }
+            ]
+        } );
     $(document).ready(function(){
-    // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
-    $('.modal').modal();
+    $('.collapsible').collapsible();
   });
+
+
+  $(document).ready(function() {
+    $('select').material_select();
+});
 } );
+
+// $(document).ready(function() {
+//     $('#example').DataTable( {
+//         columnDefs: [
+//             {
+//                 targets: [ 0, 1],
+//                 className: 'mdl-data-table__cell--non-numeric'
+//             }
+//         ]
+//     } );
+//     $(document).ready(function(){
+//     // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
+//     $('.modal').modal();
+//   });
+// } );
           
 </script>
 @stop

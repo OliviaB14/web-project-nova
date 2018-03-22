@@ -65,7 +65,7 @@ class StatutVehiculeController extends BasicController
         // $statutVehicule->save();
         // return $this->sendResponse(true, null, $statutVehicule);
 
-                dd($request);
+                //dd($request);
 
                 //Validator
                 $validator = Validator::make($request->all(), [
