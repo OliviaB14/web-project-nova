@@ -11,6 +11,8 @@ use App\Ville;
 use App\TypeClient;
 use DB;
 use Input;
+use Illuminate\Support\Facades\Validator;
+
 
 class ClientController extends Controller
 {
@@ -80,7 +82,7 @@ class ClientController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return redirect('agences')
+            return redirect('clients')
                         ->withErrors($validator)
                         ->withInput();
         }
