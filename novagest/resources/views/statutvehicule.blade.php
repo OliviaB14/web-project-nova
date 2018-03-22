@@ -77,15 +77,23 @@
 
 
 
-
-</div>
-        <div class="row" style="padding-top:10px">
-        <div>
+<!-- Modal Structure -->
+<div id="modal1" class="modal modal-fixed-footer">
+  <div class="modal-content">
+  {{ Form::open(array('url' => 'agence/add')) }}
+            <div class="col s12">
+                <div class="row">
+                    <div class="input-field col s12">
+                    {{ Form::label('enom', 'Nom de l\'agence')}}
+                        {{ Form::text('enom', null,array('class'=>'validate', 'required' => 'required'))}}
+                    </div>
+                </div>
+            </div>
             
+            {{ Form::submit('Ajouter', array('class' => 'waves-effect waves-light btn')) }}
+        {{ Form::close() }}
         </div>
-    </div>
-</div>
-</section>
+  </div>
 
 <script>
 $(document).ready(function() {
@@ -97,6 +105,10 @@ $(document).ready(function() {
             }
         ]
     } );
+    $(document).ready(function(){
+    // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
+    $('.modal').modal();
+  });
 } );
           
 </script>
