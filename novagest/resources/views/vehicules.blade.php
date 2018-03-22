@@ -33,7 +33,7 @@ var $btns = $('.btn').click(function() {
 		<h3>Véhicules</h3> 
 	</div> 
 </div> 
-<div class="row parent">
+<div class="row" id="parent">
   @foreach($vehicules as $car)
   <?php
     $test = DB::table('type_vehicule')->where('id', '=',$car->idtypevehicule)->first();
