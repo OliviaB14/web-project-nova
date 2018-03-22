@@ -23,6 +23,7 @@ class StatutVehiculeController extends Controller
 	public function index()
     {
         $statutvehicule = StatutVehicule::all();
+
         return view('statutvehicule', ['statutvehicule' => $statutvehicule]);
     }
 

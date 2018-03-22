@@ -16,46 +16,72 @@
 @section('content')
 
 
-<section>
-    <div class="container">
-        <div class="row">
-        {{ Form::open(array('url' => 'statut_vehicule/add')) }}
-            <div class="col s12">
-                <div class="row">
-                    <div class="input-field col s6">
-                        {{ Form::label('statut_vehicule', 'Statut du véhicule')}}
-                        {{ Form::text('statut_vehicule', null,array('class'=>'validate', 'required' => 'required'))}}
-                    </div>
-                </div>
-            </div>
-            {{ Form::submit('Ajouter', array('class' => 'btn-sm btn-success')) }}
-        {{ Form::close() }}
-        </div>
-    </div>
-</section>
-
 
 <section>
 <div class="container">
 <div class="row" style="padding-top:15px">
-<!--<a class="btn btn-floating btn-large cyan pulse"><i class="material-icons">add</i></a>-->
-</div>
-        <div class="row" style="padding-top:10px">
-        <div>
-            <table id="example" class="mdl-data-table responsive-table" cellspacing="0" width="100%">
+
+<ul class="collapsible" style="margin-left:2%" data-collapsible="accordion">
+    <li>
+      <div class="collapsible-header"><i class="material-icons">add</i>Ajouter</div>
+      <div class="collapsible-body">
+      <div class="row">
+      @if ($errors->any())
+        <div style="font-color:red">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li class="w3-red">{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+      @endif
+        {{ Form::open(array('url' => 'agence/add')) }}
+            <div class="col s12">
+                <div class="row">
+                    <div class="input-field col s12">
+                    {{ Form::label('nom', 'Nom de l\'agence')}}
+                        {{ Form::text('nom', null,array('class'=>'validate', 'required' => 'required'))}}
+                    </div>
+                </div>
+            </div>
+            
+            {{ Form::submit('Ajouter', array('class' => 'waves-effect waves-light btn')) }}
+        {{ Form::close() }}
+        </div>
+      </div>
+    </li>
+    <li>
+      <div class="collapsible-header"><i class="material-icons">dvr</i>Données</div>
+      <div class="collapsible-body">
+      <table id="example" class="mdl-data-table responsive-table" cellspacing="0" width="100%">
                     <thead>
                         <tr>
+                            <th>ID</th>
                             <th>Statut du véhicule</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                    @foreach($statutvehicules as $statutvehicule)
+                    @foreach($statutvehicule as $statut)
                         <tr>
-                            <td>{{$statutvehicule->libelle}}</td>
+                             <td>{{$statut->id}}</td>
+                            <td>{{$statut->libelle}}</td>
+                            <td><a class="btn-floating btn-large waves-effect waves-light red" href=""><i class="material-icons">cancel</i><a id="" class="btn-floating btn-large waves-effect waves-light yellow edit" href="#modal1"><i class="material-icons">edit</i></a></a></td>
                         </tr>
                     @endforeach
                     </tbody>
                 </table>
+      </div>
+    </li>
+  </ul>
+
+
+
+
+</div>
+        <div class="row" style="padding-top:10px">
+        <div>
+            
         </div>
     </div>
 </div>
