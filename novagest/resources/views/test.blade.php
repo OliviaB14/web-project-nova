@@ -1,25 +1,9 @@
-<html>
-<head>
-    @include('includes.head')
-</head>
-<body>
-<div class="container">
+<script>
 
-    <header class="row">
-        @include('includes.header')
-    </header>
+$(document).ready(function(){
+    $("p").click(function(){
+        $(this).hide();
+    });
+});
 
-    <div id="main" class="row">
-
-            @yield('content')
-
-    </div>
-
-    <footer class="row">
-        @include('includes.footer')
-    </footer>
-
-</div>
-</body>
-</html>
-
+</script>

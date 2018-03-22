@@ -13,7 +13,7 @@ class AgenceController extends BasicController
 {
     public function index()
     {
-        $agences = Agence::all()->where('status' ,'==','0');
+        $agences = Agence::all()->where('desactive' ,'==','0');
         $villes = Ville::pluck('nom','id');
         return view('agence', ['agences' => $agences,'villes' => $villes]);
     }
