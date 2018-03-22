@@ -139,7 +139,6 @@ $(document).ready(function(){
                             <th>Id</th>
                             <th>Nom</th>
                             <th>Adresse</th>
-                            <th>Code postal</th>
                             <th>Ville</th>
                             <th>Téléphone</th>
                             <th>fax</th>
@@ -153,8 +152,10 @@ $(document).ready(function(){
                             <td>{{$agence->id}}</td>
                             <td>{{$agence->nom}}</td>
                             <td>{{$agence->adresse}}</td>
-                            <td>{{$agence->code_postal}}</td>
-                            <td>{{$agence->idville}}</td>
+                            
+                            <td><?php
+                            $test = DB::table('ville')->where('id', '==',$agence->idville)->first();
+                            echo $test["nom"];?></td>
                             <td>{{$agence->telephone}}</td>
                             <td>{{$agence->fax}}</td>
                             <td>{{$agence->mail}}</td>

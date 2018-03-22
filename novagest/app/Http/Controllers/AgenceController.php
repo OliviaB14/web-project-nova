@@ -28,7 +28,7 @@ class AgenceController extends BasicController
     public function update($id, Request $request)
     {
         //Validator
-        //dd($request);
+        //dd($request["eidville"]);
         $validator = Validator::make($request->all(), [
             'enom' => 'required|max:64',
             'eadresse' => 'required|max:256',
