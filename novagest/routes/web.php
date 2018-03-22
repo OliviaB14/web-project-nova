@@ -22,13 +22,13 @@ Route::get('clients/show/{id}', 'ClientController@show'); // index
 Route::post('client/update/{id}', 'ClientController@update');
 //Fin clients
 
-//Status
+//Statuts
 Route::get('statut', 'StatutVehiculeController@index'); // index
-Route::post('client/add', 'ClientController@store'); // add
-Route::get('clients', 'ClientController@index'); // show id
-Route::get('client/destroy/{id}', 'ClientController@destroy');
-Route::get('clients/show/{id}', 'ClientController@show'); // index
-Route::post('client/update/{id}', 'ClientController@update');
+Route::post('statut/add', 'StatutVehiculeController@store'); // add
+Route::get('statuts', 'StatutVehiculeController@index'); // show id
+Route::get('statut/destroy/{id}', 'StatutVehiculeController@destroy');
+Route::get('statuts/show/{id}', 'StatutVehiculeController@show'); // index
+Route::post('statut/update/{id}', 'StatutVehiculeController@update');
 //Fin Status
 
 Route::get('villes', 'VilleController@index');
