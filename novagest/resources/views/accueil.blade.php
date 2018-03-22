@@ -25,7 +25,7 @@
 	              <span class="card-title"><b class="timer" id="lollipop" data-to="{{$vehicules}}" data-speed="1500"></b> véhicules</span>
 	            </div>
 	            <div class="card-action">
-	              <a href="#">Gérer</a>
+	              <a href="vehicules">Gérer</a>
 	            </div>
 	        </div>
 		</div>
@@ -37,7 +37,7 @@
 	              <span class="card-title"><b class="timer" id="lollipop" data-to="{{$utilisateurs}}" data-speed="1500"></b> agents</span>
 	            </div>
 	            <div class="card-action">
-	              <a href="#">Gérer</a>
+	              <a href="utilisateur">Gérer</a>
 	            </div>
 	          </div>
 		</div>
@@ -47,7 +47,7 @@
 	              <span class="card-title">Statuts</span>
 	            </div>
 	            <div class="card-action">
-	              <a href="#">Gérer</a>	
+	              <a href="statutvehicule">Gérer</a>	
 	            </div>
 	          </div>
 		</div>

@@ -2,7 +2,7 @@
 // Routes avec controlleurs
 Route::get('/','AccueilController@index');
 Route::get('villes', 'VilleController@GetVilles');
-Route::get('utilisateurs', 'UtilisateurController@GetUtilisateurs');
+Route::get('utilisateur', 'UtilisateurController@GetUtilisateurs');
 
 //Agence
 Route::get('agences', 'AgenceController@index'); // index
@@ -32,7 +32,7 @@ Route::post('client/update/{id}', 'ClientController@update');
 //Fin Status
 
 Route::get('villes', 'VilleController@index');
-Route::get('utilisateurs', 'UtilisateurController@index');
+Route::get('utilisateur', 'UtilisateurController@index');
 Route::get('droits', 'DroitController@index');
 Route::get('droittypeutilisateurs', 'DroitTypeUtilisateursController@index');
 Route::get('historiquevehicule', 'HistoriqueVehiculeController@index');
