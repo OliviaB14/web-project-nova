@@ -20,7 +20,7 @@ class ClientController extends Controller
         $clients = Client::all()->where('status' ,'==','0');
         $villes = Ville::pluck('nom','id');
         $typeclients = TypeClient::pluck('libelle','id');
-        return view('client', ['clients' => $clients, 'villes' => $villes]);
+        return view('client', ['clients' => $clients, 'villes' => $villes, 'typeclients' => $typeclients]);
     }
 
     public function show($id)
