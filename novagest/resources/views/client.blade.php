@@ -23,7 +23,7 @@
     
             <div class="col s12">
             <div class="row">
-                    <div class="input-field col s12">
+                <div class="input-field col s12">
                     {{ Form::label('eraison_sociale', 'Raison sociale')}}
                         {{ Form::text('eraison_sociale', null,array('class'=>'validate', 'required' => 'required'))}}
                     </div>
@@ -59,9 +59,9 @@
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                    {{ Form::label('eidtypeclient', 'Type client')}} 
+                    {{ Form::label('etypeclient', 'Type client')}} 
                          </br>
-                         {{ Form::select('eidtypeclient', $typeclients) }}
+                         {{ Form::select('etypeclient', $typeclients) }}
                     </div>
                 </div>
             </div>
@@ -113,9 +113,10 @@ $(document).ready(function(){
                     </div>
                 </div>
                 <div class="row">
-                    <div class="input-field col s6">
-                        {{ Form::label('ville', 'Ville')}}
-                        {{ Form::text('ville', null,array('class'=>'validate', 'required' => 'required'))}}
+                    <div class="input-field col s12">
+                    {{ Form::label('idville', 'Ville')}} 
+                         </br>
+                         {{ Form::select('idville', $villes) }}
                     </div>
                 </div>
                 <div class="row">
@@ -137,9 +138,10 @@ $(document).ready(function(){
                     </div>
                 </div>
                 <div class="row">
-                    <div class="input-field col s6">
-                        {{ Form::label('typeclient', 'Type de client')}}
-                        {{ Form::text('typeclient', null,array('class'=>'validate', 'required' => 'required'))}}
+                    <div class="input-field col s12">
+                    {{ Form::label('typeclient', 'Type de client')}} 
+                         </br>
+                         {{ Form::select('typeclient', $typeclients) }}
                     </div>
                 </div>
             </div>
@@ -212,7 +214,7 @@ $(".edit").on('click',function(){
             $('#etelephone').val(response['telephone']);
             $('#efax').val(response['fax']);
             $('#email').val(response['mail']);
-            $('#etypeclient').val(response['typeclient']);
+            $('#eidtypeclient').val(response['idtypeclient']);
             $('#form').attr('action', 'client/update/' + response['id']);
             Materialize.updateTextFields();
             },

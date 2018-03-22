@@ -20,6 +20,7 @@ class ClientController extends Controller
         $clients = Client::all()->where('desactive' ,'==','0');
         $villes = Ville::pluck('nom','id');
         $typeclients = TypeClient::pluck('libelle','id');
+
         return view('client', ['clients' => $clients, 'villes' => $villes, 'typeclients' => $typeclients]);
     }
 
@@ -40,7 +41,7 @@ class ClientController extends Controller
             'etelephone' => 'required|max:24',
             'efax' => 'required|max:24',
             'email' => 'required|email|max:64',
-            'eidtype' => 'required'
+            'eidtypeclient' => 'required'
         ]);
 
         if ($validator->fails()) {
@@ -58,7 +59,7 @@ class ClientController extends Controller
         $client->telephone = $request["etelephone"];
         $client->fax = $request["efax"];
         $client->mail = $request["email"];
-        $client->idtype = $request["eidtype"];
+        $client->idtypeclient = $request["eidtypeclient"];
         $client->save();
 
         return redirect('clients');
@@ -75,7 +76,7 @@ class ClientController extends Controller
             'telephone' => 'required|max:24',
             'fax' => 'required|max:24',
             'mail' => 'required|email|max:64',
-            'idtype' => 'required'
+            'idtypeclient' => 'required'
         ]);
 
         if ($validator->fails()) {
