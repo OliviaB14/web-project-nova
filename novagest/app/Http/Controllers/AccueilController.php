@@ -18,7 +18,7 @@ class AccueilController extends Controller
         $agences = Agence::all()->count();
         $vehicules = Vehicule::all()->count();
         $utilisateurs = Utilisateur::all()
-        ->where('idtypeutilisateur', '==', 1)
+        ->where('idtypeutilisateur', '==', 2)
         ->count();
 
         return view('accueil', ['agences' => $agences, 'vehicules' => $vehicules, 'utilisateurs' => $utilisateurs]);
