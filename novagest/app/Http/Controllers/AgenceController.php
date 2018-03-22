@@ -93,6 +93,7 @@ class AgenceController extends BasicController
         // Find the corresponding record
         $agence = Agence::find($id);
         // Delete record
+        // ne plus supprimer mais changer la valeur de desactive
         if ($agence != null) {
             $agence->delete();
             return redirect('agences');
