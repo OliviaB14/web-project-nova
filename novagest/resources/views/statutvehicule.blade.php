@@ -35,11 +35,11 @@
             </ul>
         </div>
       @endif
-        {{ Form::open(array('url' => 'agence/add')) }}
+        {{ Form::open(array('url' => 'statut/add')) }}
             <div class="col s12">
                 <div class="row">
                     <div class="input-field col s12">
-                    {{ Form::label('nom', 'Nom de l\'agence')}}
+                    {{ Form::label('nom', 'Libellé du statut')}}
                         {{ Form::text('nom', null,array('class'=>'validate', 'required' => 'required'))}}
                     </div>
                 </div>
@@ -62,7 +62,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                    @foreach($statutvehicule as $statut)
+                    @foreach($statuts as $statut)
                         <tr>
                              <td>{{$statut->id}}</td>
                             <td>{{$statut->libelle}}</td>
@@ -80,11 +80,11 @@
 <!-- Modal Structure -->
 <div id="modal1" class="modal modal-fixed-footer">
   <div class="modal-content">
-  {{ Form::open(array('url' => 'agence/add')) }}
+  {{ Form::open(array('url' => 'statut/add')) }}
             <div class="col s12">
                 <div class="row">
                     <div class="input-field col s12">
-                    {{ Form::label('enom', 'Nom de l\'agence')}}
+                    {{ Form::label('enom', 'Libellé du statut')}}
                         {{ Form::text('enom', null,array('class'=>'validate', 'required' => 'required'))}}
                     </div>
                 </div>
