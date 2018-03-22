@@ -5,7 +5,7 @@
   <li><a href="droits">Droits</a></li>
   <li><a href="vehicules">Vehicules</a></li>
   <li><a href="utilisateurs">Utilisateurs</a></li>
-  <li><a href="lieux">Lieux</a></li>
+  <li><a href="villes">Villes</a></li>
 </ul>
 <ul id="dropdown2" class="dropdown-content">
   <li><a href="#!">Voir</a></li>
@@ -34,7 +34,7 @@
       <li><a href="droits">Droits</a></li>
       <li><a href="vehicules">Vehicules</a></li>
       <li><a href="utilisateurs">Utilisateurs</a></li>
-      <li><a href="lieux">Lieux</a></li>
+      <li><a href="villes">Villes</a></li>
         
       </ul>
       <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>

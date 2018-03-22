@@ -36,7 +36,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('vehicule', 'VehiculeController@index');
 
-Route::get('lieux', 'LieuxController@index');
+Route::get('lieux', 'VilleController@index');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
