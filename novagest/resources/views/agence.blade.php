@@ -18,10 +18,10 @@
 <div id="modal1" class="modal modal-fixed-footer">
   <div class="modal-content">
   {{ Form::open(array('url' => 'agence/update/', 'id'=>'form')) }}
-    <h4 style="position: fixed;left: 0;top: 0;width: 100%;text-align: center;">Edition</h4>
+    <h4 style="position: fixed;left: 0;top: 0;width: 100%;text-align: center;margin-top:15px;margin-bottom:15px;">Edition</h4>
     
             <div class="col s12">
-            <div class="row">
+            <div class="row" style="margin-top:30px">
                     <div class="input-field col s12">
                     {{ Form::label('enom', 'Nom de l\'agence')}}
                         {{ Form::text('enom', null,array('class'=>'validate', 'required' => 'required'))}}
@@ -81,7 +81,7 @@ $(document).ready(function(){
         <div style="font-color:red">
             <ul>
                 @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
+                    <li class="w3-red">{{ $error }}</li>
                 @endforeach
             </ul>
         </div>
@@ -143,7 +143,8 @@ $(document).ready(function(){
                             <th>Téléphone</th>
                             <th>fax</th>
                             <th>mail</th>
-                            <th></th>
+                            <th>Status</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -154,12 +155,15 @@ $(document).ready(function(){
                             <td>{{$agence->adresse}}</td>
                             
                             <td><?php
-                            $test = DB::table('ville')->where('id', '==',$agence->idville)->first();
-                            echo $test["nom"];?></td>
+                            $test = DB::table('ville')->where('id', '=',$agence->idville)->first();
+                            //echo $test["nom"];?>
+                            {{$test->nom}}
+                            </td>
                             <td>{{$agence->telephone}}</td>
                             <td>{{$agence->fax}}</td>
                             <td>{{$agence->mail}}</td>
-                            <td><a class="btn-floating btn-large waves-effect waves-light red" href="/agence/destroy/{{$agence->id}}"><i class="material-icons">cancel</i><a id="{{$agence->id}}" class="btn-floating btn-large waves-effect waves-light yellow edit" href="#modal1"><i class="material-icons">edit</i></a></a></td>
+                            <td>{{$agence->desactive}}</td>
+                            <td><a class="btn-floating btn-large waves-effect waves-light red" href="agence/destroy/{{$agence->id}}"><i class="material-icons">cancel</i><a id="{{$agence->id}}" class="btn-floating btn-large waves-effect waves-light yellow edit" href="#modal1"><i class="material-icons">edit</i></a></a></td>
                         </tr>
                     @endforeach
                     </tbody>
@@ -198,9 +202,12 @@ $(".edit").on('click',function(){
             $('#etelephone').val(response['telephone']);
             $('#efax').val(response['fax']);
             $('#email').val(response['mail']);
-            $('#eville').val(response['ville']);
+            $('#eville').val(response['idville']);
+            
             $('#form').attr('action', 'agence/update/' + response['id']);
             Materialize.updateTextFields();
+            var ville = response["idville"];
+            $('#eville option[value=' + ville + ']').attr('selected','selected');
             },
             error: function(response){
                 alert('Error'+response);
