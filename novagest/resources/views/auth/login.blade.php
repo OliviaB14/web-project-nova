@@ -47,8 +47,7 @@
                 <div class="panel panel-default">
 
                     <div class="panel-body">
-                        <form class="form-horizontal col s12" method="POST" action="{{ route('login') }}">
-                            {{ csrf_field() }}
+                    {{ Form::open(array('url' => 'test')) }}
 
                             <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
                                 <div class="input-field col s12">
@@ -90,11 +89,12 @@
                             <div class="form-group">
                                 <div class="row">
                                     <div class='col s12'>
-                                        <button type='submit' name='btn_login' class='col s12 btn btn-large waves-effect' style="background-color:#487AA1">Connection</button>
+                                    {{ Form::submit('Ajouter', array('class' => 'waves-effect waves-light btn')) }}
                                     </div>
                                 </div>
                             </div>
-                        </form>
+                            
+                        {{ Form::close() }}
                     </div>
                 </div>
             </div>
