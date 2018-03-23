@@ -42,20 +42,63 @@ class VehiculeController extends BasicController
 
     public function update($id, Request $request)
     {
-        // Find the corresponding record
+                //Validator
+
+                $validator = Validator::make($request->all(), [
+                    'eimmatriculation' => 'required|max:16',
+                    'edate_achat' => 'required',
+                    'edate_misecirculation' => 'required',
+                    'eidtypevehicule' => 'required|max:12',
+                    'eidtypeetatvehicule' => 'required|max:12',
+                    'eidstatut' => 'required|max:12',
+                    'eidclient' => 'required|max:12',
+                    'eidagence' => 'required|max:12'
+                ]);
+        
+                if ($validator->fails()) {
+                    //dd($validator);
+                    return redirect('vehicules')
+                                ->withErrors($validator)
+                                ->withInput();
+                }
+        
+        // Find the corresponding record 
         $vehicule = Vehicule::find($id);
-        // Populate data
-        if ($vehicule != null) {
-            $this->populateData($vehicule, $request);
-            // Save
-            $vehicule->save();
-            return $this->sendResponse(true, null, $vehicule);
-        }
-        return $this->sendResponse(false, "Data not found.", null);
+        $vehicule->immatriculation = $request["eimmatriculation"];
+        $vehicule->date_achat = $request["edate_achat"];
+        $vehicule->date_misecirculation = $request["edate_misecirculation"];
+        $vehicule->idtypevehicule = $request["eidtypevehicule"];
+        $vehicule->idtypeetatvehicule = $request["eidtypeetatvehicule"];
+        $vehicule->idstatut = $request["eidstatut"];
+        $vehicule->idclient = $request["eidclient"];
+        $vehicule->idagence = $request["eidagence"];
+        $vehicule->save();
+
+        return redirect('vehicules');
     }
 
     public function store(Request $request)
     {
+                //Validator
+
+                $validator = Validator::make($request->all(), [
+                    'immatriculation' => 'required|max:16',
+                    'date_achat' => 'required',
+                    'date_misecirculation' => 'required',
+                    'idtypevehicule' => 'required|max:12',
+                    'idtypeetatvehicule' => 'required|max:12',
+                    'idstatut' => 'required|max:12',
+                    'idclient' => 'required|max:12',
+                    'idagence' => 'required|max:12'
+                ]);
+        
+                if ($validator->fails()) {
+                    //dd($validator);
+                    return redirect('vehicules')
+                                ->withErrors($validator)
+                                ->withInput();
+                }
+        
         $vehicule = new Vehicule;
         $vehicule->immatriculation = $request["immatriculation"];
         $vehicule->date_achat = $request["date_achat"];
@@ -72,14 +115,12 @@ class VehiculeController extends BasicController
 
     public function destroy($id)
     {
-        // Find the corresponding record
+        // Find the corresponding record 
         $vehicule = Vehicule::find($id);
-        // Delete record
-        if ($vehicule != null) {
-            $vehicule->delete();
-            return $this->sendResponse(true, null, null);
-        }
-        return $this->sendResponse(false, "Data not found.", null);
+        $vehicule->desactive = 1;
+        $vehicule->save();
+        
+        return redirect('vehicules');
     }
 
     public function GetSingle($id)

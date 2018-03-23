@@ -37,42 +37,57 @@ class TypeUtilisateurController extends Controller
 
     public function update($id, Request $request)
     {
-        // @TODO @Nathan please validate the data
+        //Validator
 
-        // Find the corresponding record
-        $typeUtilisateur = TypeUtilisateur::find($id);
-        // Populate data
-        if ($typeUtilisateur != null) {
-            $this->populateData($typeUtilisateur, $request);
-            // Save
-            $typeUtilisateur->save();
-            return $this->sendResponse(true, null, $typeUtilisateur);
+        $validator = Validator::make($request->all(), [
+            'elibelle' => 'required|max:32',
+        ]);
+
+        if ($validator->fails()) {
+            //dd($validator);
+            return redirect('typeutilisateurs')
+                        ->withErrors($validator)
+                        ->withInput();
         }
-        return $this->sendResponse(false, "Data not found.", null);
+
+        // Find the corresponding record 
+        $typeUtilisateur = TypeUtilisateur::find($id);
+        $typeUtilisateur->libelle = $request["elibelle"];
+        $typeUtilisateur->save();
+
+        return redirect('typeutilisateurs');
     }
 
     public function store(Request $request)
     {
-        // @TODO @Nathan please validate the data
+        //Validator
 
-        // Create a new TypeUtilisateur from request param
+        $validator = Validator::make($request->all(), [
+            'libelle' => 'required|max:32',
+        ]);
+
+        if ($validator->fails()) {
+            //dd($validator);
+            return redirect('typeutilisateurs')
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+
+        // Create a new typeutilisateur from request param
         $typeUtilisateur = new TypeUtilisateur;
-        // Populate data
-        $this->populateData($agence, $request);
-        // Save
+        $typeUtilisateur->libelle = $request["libelle"];
         $typeUtilisateur->save();
-        return $this->sendResponse(true, null, $typeUtilisateur);
+
+        return redirect('typeutilisateurs');
     }
 
     public function destroy($id)
     {
-        // Find the corresponding record
+        // Find the corresponding record 
         $typeUtilisateur = TypeUtilisateur::find($id);
-        // Delete record
-        if ($typeUtilisateur != null) {
-            $typeUtilisateur->delete();
-            return $this->sendResponse(true, null, null);
-        }
-        return $this->sendResponse(false, "Data not found.", null);
+        $typeUtilisateur->desactive = 1;
+        $typeUtilisateur->save();
+        
+        return redirect('typeutilisateurs');
     }
 }

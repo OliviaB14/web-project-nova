@@ -37,42 +37,65 @@ class PieceVehiculeController extends Controller
 
     public function update($id, Request $request)
     {
-        // @TODO @Nathan please validate the data
+        //Validator
 
-        // Find the corresponding record
-        $pieceVehicule = PieceVehicule::find($id);
-        // Populate data
-        if ($pieceVehicule != null) {
-            $this->populateData($pieceVehicule, $request);
-            // Save
-            $pieceVehicule->save();
-            return $this->sendResponse(true, null, $pieceVehicule);
+        $validator = Validator::make($request->all(), [
+            'edate_entree' => 'required',
+            'eidtypeetatpiece' => 'required|max:12',
+            'eidtypepiece' => 'required|max:12',
+        ]);
+
+        if ($validator->fails()) {
+            //dd($validator);
+            return redirect('piecevehicules')
+                        ->withErrors($validator)
+                        ->withInput();
         }
-        return $this->sendResponse(false, "Data not found.", null);
+
+        // Find the corresponding record 
+        $pieceVehicule = PieceVehicule::find($id);
+        $pieceVehicule->date_entree = $request["edate_entree"];
+        $pieceVehicule->idtypeetatpiece = $request["eidtypeetatpiece"];
+        $pieceVehicule->idtypepiece = $request["eidtypepiece"];
+        $pieceVehicule->save();
+
+        return redirect('piecevehicules');
     }
 
     public function store(Request $request)
     {
-        // @TODO @Nathan please validate the data
+        //Validator
 
-        // Create a new PieceVehicule from request param
+        $validator = Validator::make($request->all(), [
+            'date_entree' => 'required',
+            'idtypeetatpiece' => 'required|max:12',
+            'idtypepiece' => 'required|max:12',
+        ]);
+
+        if ($validator->fails()) {
+            //dd($validator);
+            return redirect('piecevehicules')
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+
+        // Create a new agence from request param
         $pieceVehicule = new PieceVehicule;
-        // Populate data
-        $this->populateData($agence, $request);
-        // Save
+        $pieceVehicule->date_entree = $request["date_entree"];
+        $pieceVehicule->idtypeetatpiece = $request["idtypeetatpiece"];
+        $pieceVehicule->idtypepiece = $request["idtypepiece"];
         $pieceVehicule->save();
-        return $this->sendResponse(true, null, $pieceVehicule);
+
+        return redirect('piecevehicules');
     }
 
     public function destroy($id)
     {
-        // Find the corresponding record
+        // Find the corresponding record 
         $pieceVehicule = PieceVehicule::find($id);
-        // Delete record
-        if ($pieceVehicule != null) {
-            $pieceVehicule->delete();
-            return $this->sendResponse(true, null, null);
-        }
-        return $this->sendResponse(false, "Data not found.", null);
+        $pieceVehicule->desactive = 1;
+        $pieceVehicule->save();
+        
+        return redirect('piecevehicules');
     }
 }

@@ -37,42 +37,73 @@ class HistoriqueVehiculeController extends Controller
 
     public function update($id, Request $request)
     {
-        // @TODO @Nathan please validate the data
+        //Validator
 
-        // Find the corresponding record
-        $historiqueVehicule = HistoriqueVehicule::find($id);
-        // Populate data
-        if ($historiqueVehicule != null) {
-            $this->populateData($historiqueVehicule, $request);
-            // Save
-            $historiqueVehicule->save();
-            return $this->sendResponse(true, null, $historiqueVehicule);
+        $validator = Validator::make($request->all(), [
+            'edate_ligne' => 'required',
+            'ecommentaire' => 'required',
+            'eidutilisateur' => 'required|max:12',
+            'eidtypeevenement' => 'required|max:12',
+            'eidvehicule' => 'required|max:12',
+        ]);
+
+        if ($validator->fails()) {
+            //dd($validator);
+            return redirect('historiquevehicules')
+                        ->withErrors($validator)
+                        ->withInput();
         }
-        return $this->sendResponse(false, "Data not found.", null);
+
+        // Find the corresponding record 
+        $historiqueVehicule = HistoriqueVehicule::find($id);
+        $historiqueVehicule->date_ligne = $request["edate_ligne"];
+        $historiqueVehicule->commentaire = $request["ecommentaire"];
+        $historiqueVehicule->idutilisateur = $request["eidutilisateur"];
+        $historiqueVehicule->idtypeevenement = $request["eidtypeevenement"];
+        $historiqueVehicule->idvehicule = $request["eidvehicule"];
+        $historiqueVehicule->save();
+
+        return redirect('historiquevehicules');
     }
 
     public function store(Request $request)
     {
-        // @TODO @Nathan please validate the data
+        //Validator
 
-        // Create a new HistoriqueVehicule from request param
+        $validator = Validator::make($request->all(), [
+            'date_ligne' => 'required',
+            'commentaire' => 'required',
+            'idutilisateur' => 'required|max:12',
+            'idtypeevenement' => 'required|max:12',
+            'idvehicule' => 'required|max:12',
+        ]);
+
+        if ($validator->fails()) {
+            //dd($validator);
+            return redirect('historiquevehicules')
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+
+        // Create a new historiquevehicule from request param
         $historiqueVehicule = new HistoriqueVehicule;
-        // Populate data
-        $this->populateData($agence, $request);
-        // Save
+        $historiqueVehicule->date_ligne = $request["date_ligne"];
+        $historiqueVehicule->commentaire = $request["commentaire"];
+        $historiqueVehicule->idutilisateur = $request["idutilisateur"];
+        $historiqueVehicule->idtypeevenement = $request["idtypeevenement"];
+        $historiqueVehicule->idvehicule = $request["idvehicule"];
         $historiqueVehicule->save();
-        return $this->sendResponse(true, null, $historiqueVehicule);
+
+        return redirect('historiquevehicules');
     }
 
     public function destroy($id)
     {
-        // Find the corresponding record
+        // Find the corresponding record 
         $historiqueVehicule = HistoriqueVehicule::find($id);
-        // Delete record
-        if ($historiqueVehicule != null) {
-            $historiqueVehicule->delete();
-            return $this->sendResponse(true, null, null);
-        }
-        return $this->sendResponse(false, "Data not found.", null);
+        $historiqueVehicule->desactive = 1;
+        $historiqueVehicule->save();
+        
+        return redirect('historiquevehicules');
     }
 }

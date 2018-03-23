@@ -37,42 +37,85 @@ class UtilisateurController extends Controller
 
     public function update($id, Request $request)
     {
-        // @TODO @Nathan please validate the data
+        //Validator
 
-        // Find the corresponding record
-        $utilisateur = Utilisateur::find($id);
-        // Populate data
-        if ($utilisateur != null) {
-            $this->populateData($utilisateur, $request);
-            // Save
-            $utilisateur->save();
-            return $this->sendResponse(true, null, $utilisateur);
+        $validator = Validator::make($request->all(), [
+            'enom' => 'required|max:32',
+            'eprenom' => 'required|max:32',
+            'edate_naissance' => 'required',
+            'eidtypeutilisateur' => 'required|max:12',
+            'eusername' => 'required|max:32',
+            'epassword' => 'required|max:256',
+            'etelephone' => 'required|max:24',
+            'efax' => 'required|max:24'
+        ]);
+
+        if ($validator->fails()) {
+            //dd($validator);
+            return redirect('utilisateurs')
+                        ->withErrors($validator)
+                        ->withInput();
         }
-        return $this->sendResponse(false, "Data not found.", null);
+
+        // Find the corresponding record 
+        $utilisateur = Utilisateur::find($id);
+        $utilisateur->nom = $request["enom"];
+        $utilisateur->prenom = $request["eprenom"];
+        $utilisateur->date_naissance = $request["edate_naissance"];
+        $utilisateur->idtypeutilisateur = $request["eidtypeutilisateur"];
+        $utilisateur->username = $request["eusername"];
+        $utilisateur->password = $request["epassword"];
+        $utilisateur->telephone = $request["etelephone"];
+        $utilisateur->fax = $request["efax"];
+        $utilisateur->save();
+
+        return redirect('utilisateurs');
     }
 
     public function store(Request $request)
     {
-        // @TODO @Nathan please validate the data
+        //Validator
+
+        $validator = Validator::make($request->all(), [
+            'nom' => 'required|max:32',
+            'prenom' => 'required|max:32',
+            'date_naissance' => 'required',
+            'idtypeutilisateur' => 'required|max:12',
+            'username' => 'required|max:32',
+            'password' => 'required|max:256',
+            'telephone' => 'required|max:24',
+            'fax' => 'required|max:24'
+        ]);
+
+        if ($validator->fails()) {
+            //dd($validator);
+            return redirect('utilisateurs')
+                        ->withErrors($validator)
+                        ->withInput();
+        }
 
         // Create a new utilisateur from request param
         $utilisateur = new Utilisateur;
-        // Populate data
-        $this->populateData($agence, $request);
-        // Save
+        $utilisateur->nom = $request["nom"];
+        $utilisateur->prenom = $request["prenom"];
+        $utilisateur->date_naissance = $request["date_naissance"];
+        $utilisateur->idtypeutilisateur = $request["idtypeutilisateur"];
+        $utilisateur->username = $request["username"];
+        $utilisateur->password = $request["password"];
+        $utilisateur->telephone = $request["telephone"];
+        $utilisateur->fax = $request["fax"];
         $utilisateur->save();
-        return $this->sendResponse(true, null, $utilisateur);
+
+        return redirect('utilisateurs');
     }
 
     public function destroy($id)
     {
-        // Find the corresponding record
+        // Find the corresponding record 
         $utilisateur = Utilisateur::find($id);
-        // Delete record
-        if ($utilisateur != null) {
-            $utilisateur->delete();
-            return $this->sendResponse(true, null, null);
-        }
-        return $this->sendResponse(false, "Data not found.", null);
+        $utilisateur->desactive = 1;
+        $utilisateur->save();
+        
+        return redirect('utilisateurs');
     }
 }

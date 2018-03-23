@@ -10,7 +10,9 @@
 @section('title', 'Vehicules')
 
 @section('content')
-
+<div class="row">
+    <div class="col s12"><h1><i class="material-icons">build</i> Gestion des véhicules</h1></div>
+</div>
 
 <ul class="collapsible">
 <li>

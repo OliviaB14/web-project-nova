@@ -37,42 +37,57 @@ class TypeEtatPieceController extends Controller
 
     public function update($id, Request $request)
     {
-        // @TODO @Nathan please validate the data
+        //Validator
 
-        // Find the corresponding record
-        $typeEtatPiece = TypeEtatPiece::find($id);
-        // Populate data
-        if ($typeEtatPiece != null) {
-            $this->populateData($typeEtatPiece, $request);
-            // Save
-            $typeEtatPiece->save();
-            return $this->sendResponse(true, null, $typeEtatPiece);
+        $validator = Validator::make($request->all(), [
+            'elibelle' => 'required|max:32',
+        ]);
+
+        if ($validator->fails()) {
+            //dd($validator);
+            return redirect('typeetatpieces')
+                        ->withErrors($validator)
+                        ->withInput();
         }
-        return $this->sendResponse(false, "Data not found.", null);
+
+        // Find the corresponding record 
+        $typeEtatPiece = TypeEtatPiece::find($id);
+        $typeEtatPiece->libelle = $request["elibelle"];
+        $typeEtatPiece->save();
+
+        return redirect('typeetatpieces');
     }
 
     public function store(Request $request)
     {
-        // @TODO @Nathan please validate the data
+        //Validator
 
-        // Create a new TypeEtatPiece from request param
+        $validator = Validator::make($request->all(), [
+            'libelle' => 'required|max:32',
+        ]);
+
+        if ($validator->fails()) {
+            //dd($validator);
+            return redirect('typeetatpieces')
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+
+        // Create a new agence from request param
         $typeEtatPiece = new TypeEtatPiece;
-        // Populate data
-        $this->populateData($agence, $request);
-        // Save
+        $typeEtatPiece->libelle = $request["libelle"];
         $typeEtatPiece->save();
-        return $this->sendResponse(true, null, $typeEtatPiece);
+
+        return redirect('typeetatpieces');
     }
 
     public function destroy($id)
     {
-        // Find the corresponding record
+        // Find the corresponding record 
         $typeEtatPiece = TypeEtatPiece::find($id);
-        // Delete record
-        if ($typeEtatPiece != null) {
-            $typeEtatPiece->delete();
-            return $this->sendResponse(true, null, null);
-        }
-        return $this->sendResponse(false, "Data not found.", null);
+        $typeEtatPiece->desactive = 1;
+        $typeEtatPiece->save();
+        
+        return redirect('typeetatpieces');
     }
 }
