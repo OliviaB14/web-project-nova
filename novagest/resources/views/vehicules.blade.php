@@ -13,6 +13,62 @@
 
 
 <ul class="collapsible">
+<li>
+      <div class="collapsible-header"><i class="material-icons">whatshot</i>Ajouter un vehicule</div>
+      <div class="collapsible-body">
+      {{ Form::open(array('url' => 'vehicule/add')) }}
+            <div class="col s12">
+                <div class="row">
+                    <div class="input-field col s12">
+                        {{ Form::label('immatriculation', 'Immatriculation')}}
+                         {{ Form::text('immatriculation', null,array('class'=>'validate', 'required' => 'required'))}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        {{ Form::label('date_achat', 'Date d\'achat')}}
+                         {{ Form::text('date_achat', null,array('class'=>'datepicker', 'required' => 'required'))}}
+                    </div>
+                    <div class="input-field col s6">
+                        {{ Form::label('date_misecirculation', 'Date de mise en circulation')}}
+                         {{ Form::text('date_misecirculation', null,array('class'=>'datepicker', 'required' => 'required'))}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s4">
+                        {{ Form::label('idtypevehicule', 'Type de vehicule')}} 
+                         </br>
+                         {{ Form::select('idtypevehicule', $idtypevehicule) }}
+                    </div>
+                    <div class="input-field col s4">
+                        {{ Form::label('idtypeetatvehicule', 'Etat du vehicule')}} 
+                         </br>
+                         {{ Form::select('idtypeetatvehicule', $idtypeetatvehicule) }}
+                    </div>
+                    <div class="input-field col s4">
+                        {{ Form::label('idstatut', 'Statut du vehicule')}} 
+                         </br>
+                         {{ Form::select('idstatut', $idstatut) }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        {{ Form::label('idclient', 'Client')}} 
+                         </br>
+                         {{ Form::select('idclient', $idclient) }}
+                    </div>
+                    <div class="input-field col s6">
+                        {{ Form::label('idagence', 'Agence')}} 
+                         </br>
+                         {{ Form::select('idagence', $idagence) }}
+                    </div>
+                </div>
+            </div>
+            
+            {{ Form::submit('Ajouter', array('class' => 'waves-effect waves-light btn')) }}
+        {{ Form::close() }}
+      </div>
+    </li>
     <li>
       <div class="collapsible-header"><i class="material-icons">filter_drama</i>Vehicules</div>
       <div class="collapsible-body">
@@ -78,15 +134,17 @@
             </table> 
       </div>
     </li>
-    <li>
-      <div class="collapsible-header"><i class="material-icons">whatshot</i>Third</div>
-      <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-    </li>
   </ul>
 
 
 <script type="text/javascript">
-  $('.timer').countTo();
+  $(document).ready(function() {
+    $('select').material_select();
+});
+
+
+
+
 </script>
 <script> 
 $(document).ready(function() { 
@@ -116,6 +174,15 @@ var $btns = $('.btn').click(function() {
     console.log($el);
   }
 })
+
+  $('.datepicker').pickadate({
+    selectMonths: true, // Creates a dropdown to control month
+    selectYears: 15, // Creates a dropdown of 15 years to control year,
+    today: 'Aujourd\'hui',
+    clear: 'Effacer',
+    close: 'Valider',
+    closeOnSelect: false // Close upon selecting a date,
+  });
 </script>
 @stop
 

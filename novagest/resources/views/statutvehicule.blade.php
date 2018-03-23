@@ -36,6 +36,7 @@
         </div>
       @endif
         {{ Form::open(array('url' => 'statut/add')) }}
+        {!! Form::token() !!}
             <div class="col s12">
                 <div class="row">
                     <div class="input-field col s12">

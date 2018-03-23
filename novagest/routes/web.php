@@ -4,14 +4,23 @@ Route::get('/','AccueilController@index');
 Route::get('villes', 'VilleController@GetVilles');
 Route::get('utilisateur', 'UtilisateurController@GetUtilisateurs');
 
-//Agence
+//Agences
 Route::get('agences', 'AgenceController@index'); // index
 Route::post('agence/add', 'AgenceController@store'); // add
 Route::get('agences', 'AgenceController@index'); // show id
 Route::get('agence/destroy/{id}', 'AgenceController@destroy');
 Route::get('agences/show/{id}', 'AgenceController@show'); // index
 Route::post('agence/update/{id}', 'AgenceController@update');
-//Fin agence
+//Fin Agences
+
+//Vehicules
+Route::get('vehicules', 'VehiculeController@index'); // index
+Route::post('vehicule/add', 'VehiculeController@store'); // add
+Route::get('vehicules', 'VehiculeController@index'); // show id
+Route::get('vehicule/destroy/{id}', 'VehiculeController@destroy');
+Route::get('vehicule/show/{id}', 'VehiculeController@show'); // index
+Route::post('vehicule/update/{id}', 'VehiculeController@update');
+//Fin Vehicules
 
 //Clients
 Route::get('clients', 'ClientController@index'); // index

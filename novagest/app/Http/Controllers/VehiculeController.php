@@ -8,24 +8,26 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Vehicule;
 use App\TypeVehicule;
+use App\TypeEtatVehicule;
+use App\StatutVehicule;
+use App\Client;
+use App\Agence;
 use DB;
 use Input;
 
-class VehiculeController extends Controller
+class VehiculeController extends BasicController
 {
-	// public function GetVehicules()
-	// {
-	// 	$vehicules = DB::table('Vehicule')
-    //     ->get();
-    //     //dd($vehicules);
-	// 	return view('Vehicule', ['Vehicules' => $vehicules]);
-	// }
-
 	public function index()
     {
         $vehicules = Vehicule::all();
         $typevehicule = TypeVehicule::all();
-        return view('vehicules', ['vehicules' => $vehicules,'typevehicules' => $typevehicule]);
+
+        $idtypevehicule = TypeVehicule::pluck('modele','id');
+        $idtypeetatvehicule = TypeEtatVehicule::pluck('libelle','id');
+        $idstatut = StatutVehicule::pluck('libelle','id');
+        $idclient = Client::pluck('raison_sociale','id');
+        $idagence = Agence::pluck('nom','id');
+        return view('vehicules', ['vehicules' => $vehicules,'idclient' => $idclient,'idagence' => $idagence,'typevehicules' => $typevehicule,'idtypevehicule' => $idtypevehicule,'idtypeetatvehicule' => $idtypeetatvehicule,'idstatut' => $idstatut,]);
     }
 
     public function show($id)
@@ -39,8 +41,6 @@ class VehiculeController extends Controller
 
     public function update($id, Request $request)
     {
-        // @TODO @Nathan please validate the data
-
         // Find the corresponding record
         $vehicule = Vehicule::find($id);
         // Populate data
@@ -55,15 +55,18 @@ class VehiculeController extends Controller
 
     public function store(Request $request)
     {
-        // @TODO @Nathan please validate the data
-
-        // Create a new Vehicule from request param
         $vehicule = new Vehicule;
-        // Populate data
-        $this->populateData($agence, $request);
-        // Save
+        $vehicule->immatriculation = $request["immatriculation"];
+        $vehicule->date_achat = $request["date_achat"];
+        $vehicule->date_misecirculation = $request["date_misecirculation"];
+        $vehicule->idtypevehicule = $request["idtypevehicule"];
+        $vehicule->idtypeetatvehicule = $request["idtypeetatvehicule"];
+        $vehicule->idstatut = $request["idstatut"];
+        $vehicule->idclient = $request["idclient"];
+        $vehicule->idagence = $request["idagence"];
         $vehicule->save();
-        return $this->sendResponse(true, null, $vehicule);
+
+        return redirect('vehicules');
     }
 
     public function destroy($id)
