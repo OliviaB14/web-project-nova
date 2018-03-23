@@ -37,6 +37,13 @@
   <li class="divider"></li>
   <li><a href="logout" class="red-text">Déconnexion</a></li>
 </ul>
+
+<ul class="dropdown-content" id="dropdown3">
+  <li>
+    <a href="whoami">WhoAmI?</a>
+  </li>
+</ul>
+
 <!-- Dropdown Structure -->
 <div class="navbar-fixed">
   <nav role="navigation">
@@ -51,6 +58,7 @@
         <li><a href="#">Navbar Link</a></li>
         -->
         <li><a class="dropdown-button" href="#!" data-activates="dropdown2">Mon profil<i class="material-icons right">arrow_drop_down</i></a></li>
+        <li><a class="dropdown-button" href="#!" data-activates="dropdown3">WhoAmI?<i class="material-icons right">arrow_drop_down</i></a></li>
       </ul>
 
       <ul id="nav-mobile" class="side-nav">
