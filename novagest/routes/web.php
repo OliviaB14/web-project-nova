@@ -1,4 +1,6 @@
 <?php
+Route::get('whoami','BasicController@whoami');
+
 Route::get('logout','BasicController@Logout');
 Route::post('test','BasicController@Login');
 

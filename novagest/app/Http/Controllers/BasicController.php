@@ -42,4 +42,10 @@ class BasicController extends Controller
         }
         return redirect('login');
     }
+
+    protected function whoami()
+    {
+        $user = Auth::user();
+        dd($user->id);
+    }
 }
