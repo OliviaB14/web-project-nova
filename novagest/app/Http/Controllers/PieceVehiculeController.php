@@ -5,12 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\BasicController;
 use App\PieceVehicule;
 use DB;
 use Input;
+use Illuminate\Support\Facades\Validator;
 
-class PieceVehiculeController extends Controller
+class PieceVehiculeController extends BasicController
 {
 	// public function GetPieceVehicules()
 	// {

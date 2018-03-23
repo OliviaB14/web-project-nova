@@ -5,12 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\BasicController;
 use App\TypeClient;
 use DB;
 use Input;
+use Illuminate\Support\Facades\Validator;
 
-class TypeClientController extends Controller
+class TypeClientController extends BasicController
 {
 	// public function GetTypeClients()
 	// {

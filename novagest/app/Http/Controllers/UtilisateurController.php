@@ -5,12 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\BasicController;
 use App\Utilisateur;
 use DB;
 use Input;
+use Illuminate\Support\Facades\Validator;
 
-class UtilisateurController extends Controller
+class UtilisateurController extends BasicController
 {
 	// public function GetUtilisateurs()
 	// {

@@ -5,12 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\BasicController;
 use App\HistoriqueVehicule;
 use DB;
 use Input;
+use Illuminate\Support\Facades\Validator;
 
-class HistoriqueVehiculeController extends Controller
+class HistoriqueVehiculeController extends BasicController
 {
 	// public function GetHistoriqueVehicules()
 	// {

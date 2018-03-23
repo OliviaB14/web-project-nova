@@ -78,7 +78,7 @@ $(document).ready(function(){
             </ul>
         </div>
       @endif
-        {{ Form::open(array('url' => ' ville/add')) }}
+        {{ Form::open(array('url' => 'ville/add')) }}
             <div class="col s12">
                 <div class="row">
                     <div class="input-field col s12">

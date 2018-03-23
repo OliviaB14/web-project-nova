@@ -5,12 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\BasicController;
 use App\TypeEtatPiece;
 use DB;
 use Input;
+use Illuminate\Support\Facades\Validator;
 
-class TypeEtatPieceController extends Controller
+class TypeEtatPieceController extends BasicController
 {
 	// public function GetTypeEtatPieces()
 	// {

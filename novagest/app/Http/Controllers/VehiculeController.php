@@ -15,6 +15,7 @@ use App\Agence;
 use App\Ville;
 use DB;
 use Input;
+use Illuminate\Support\Facades\Validator;
 
 class VehiculeController extends BasicController
 {

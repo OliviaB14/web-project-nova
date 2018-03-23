@@ -5,12 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\BasicController;
 use App\Droit;
 use DB;
 use Input;
+use Illuminate\Support\Facades\Validator;
 
-class DroitController extends Controller
+class DroitController extends BasicController
 {
 	// public function GetDroits()
 	// {
