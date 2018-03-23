@@ -23,7 +23,7 @@ class TypeHistoriqueEvenementController extends Controller
 	public function index()
     {
         $typeHistoriqueEvenements = TypeHistoriqueEvenement::all();
-        return view('typeHistoriqueEvenement', ['typeHistoriqueEvenements' => $typeHistoriqueEvenements]);
+        return view('typeHistoriqueEvenements', ['typeHistoriqueEvenements' => $typeHistoriqueEvenements]);
     }
 
     public function show($id)

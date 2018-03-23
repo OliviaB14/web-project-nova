@@ -24,7 +24,7 @@ class ClientController extends BasicController
         $villes = Ville::pluck('nom','id');
         $typeclients = TypeClient::pluck('libelle','id');
 
-        return view('client', ['clients' => $clients, 'villes' => $villes, 'typeclients' => $typeclients]);
+        return view('clients', ['clients' => $clients, 'villes' => $villes, 'typeclients' => $typeclients]);
     }
 
     public function show($id)

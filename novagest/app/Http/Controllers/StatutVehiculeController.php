@@ -90,6 +90,6 @@ class StatutVehiculeController extends BasicController
                 $statut->desactive = 1;
                 $statut->save();
                 
-                return redirect('statut');
+                return redirect('statuts');
     }
 }

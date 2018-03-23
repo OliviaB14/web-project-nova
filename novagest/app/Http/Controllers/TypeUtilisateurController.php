@@ -23,7 +23,7 @@ class TypeUtilisateurController extends Controller
 	public function index()
     {
         $typeUtilisateurs = TypeUtilisateur::all();
-        return view('typeUtilisateur', ['typeUtilisateurs' => $typeUtilisateurs]);
+        return view('typeUtilisateurs', ['typeUtilisateurs' => $typeUtilisateurs]);
     }
 
     public function show($id)

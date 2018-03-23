@@ -35,7 +35,7 @@ Route::post('client/update/{id}', 'ClientController@update');
 //Fin clients
 
 //Statuts
-Route::get('statut', 'StatutVehiculeController@index'); // index
+Route::get('statuts', 'StatutVehiculeController@index'); // index
 Route::post('statut/add', 'StatutVehiculeController@store'); // add
 Route::get('statuts', 'StatutVehiculeController@index'); // show id
 Route::get('statut/destroy/{id}', 'StatutVehiculeController@destroy');
@@ -44,7 +44,7 @@ Route::post('statut/update/{id}', 'StatutVehiculeController@update');
 //Fin Status
 
 //ville
-Route::get('ville', 'VilleVehiculeController@index'); // index
+Route::get('villes', 'VilleVehiculeController@index'); // index
 Route::post('ville/add', 'VilleVehiculeController@store'); // add
 Route::get('villes', 'VilleVehiculeController@index'); // show id
 Route::get('ville/destroy/{id}', 'VilleVehiculeController@destroy');
@@ -53,7 +53,7 @@ Route::post('ville/update/{id}', 'VilleVehiculeController@update');
 //Fin ville
 
 //utilisateur
-Route::get('utilisateur', 'UtilisateurVehiculeController@index'); // index
+Route::get('utilisateurs', 'UtilisateurVehiculeController@index'); // index
 Route::post('utilisateur/add', 'UtilisateurVehiculeController@store'); // add
 Route::get('utilisateurs', 'UtilisateurVehiculeController@index'); // show id
 Route::get('utilisateur/destroy/{id}', 'UtilisateurVehiculeController@destroy');
@@ -62,7 +62,7 @@ Route::post('utilisateur/update/{id}', 'UtilisateurVehiculeController@update');
 //Fin utilisateur
 
 //droit
-Route::get('droit', 'DroitVehiculeController@index'); // index
+Route::get('droits', 'DroitVehiculeController@index'); // index
 Route::post('droit/add', 'DroitVehiculeController@store'); // add
 Route::get('droits', 'DroitVehiculeController@index'); // show id
 Route::get('droit/destroy/{id}', 'DroitVehiculeController@destroy');
@@ -71,7 +71,7 @@ Route::post('droit/update/{id}', 'DroitVehiculeController@update');
 //Fin droit
 
 //DroitTypeUtilisateur
-Route::get('droittypeutilisateur', 'DroitTypeUtilisateurController@index'); // index
+Route::get('droittypeutilisateurs', 'DroitTypeUtilisateurController@index'); // index
 Route::post('droittypeutilisateur/add', 'DroitTypeUtilisateurController@store'); // add
 Route::get('droittypeutilisateurs', 'DroitTypeUtilisateurController@index'); // show id
 Route::get('droittypeutilisateur/destroy/{id}', 'DroitTypeUtilisateurController@destroy');
@@ -80,7 +80,7 @@ Route::post('droittypeutilisateur/update/{id}', 'DroitTypeUtilisateurController@
 //Fin DroitTypeUtilisateur
 
 //HistoriqueVehicule
-Route::get('historiquevehicule', 'HistoriqueVehiculeController@index'); // index
+Route::get('historiquevehicules', 'HistoriqueVehiculeController@index'); // index
 Route::post('historiquevehicule/add', 'HistoriqueVehiculeController@store'); // add
 Route::get('historiquevehicules', 'HistoriqueVehiculeController@index'); // show id
 Route::get('historiquevehicule/destroy/{id}', 'HistoriqueVehiculeController@destroy');
@@ -89,7 +89,7 @@ Route::post('historiquevehicule/update/{id}', 'HistoriqueVehiculeController@upda
 //Fin HistoriqueVehicule
 
 //PieceVehicule
-Route::get('piecevehicule', 'PieceVehiculeController@index'); // index
+Route::get('piecevehicules', 'PieceVehiculeController@index'); // index
 Route::post('piecevehicule/add', 'PieceVehiculeController@store'); // add
 Route::get('piecevehicules', 'PieceVehiculeController@index'); // show id
 Route::get('piecevehicule/destroy/{id}', 'PieceVehiculeController@destroy');
@@ -98,7 +98,7 @@ Route::post('piecevehicule/update/{id}', 'PieceVehiculeController@update');
 //Fin PieceVehicule
 
 //TypeClient
-Route::get('typeclient', 'TypeClientController@index'); // index
+Route::get('typeclients', 'TypeClientController@index'); // index
 Route::post('typeclient/add', 'TypeClientController@store'); // add
 Route::get('typeclients', 'TypeClientController@index'); // show id
 Route::get('typeclient/destroy/{id}', 'TypeClientController@destroy');
@@ -107,7 +107,7 @@ Route::post('typeclient/update/{id}', 'TypeClientController@update');
 //Fin TypeClient
 
 //TypeEtatPiece
-Route::get('typeetatpiece', 'TypeEtatPieceController@index'); // index
+Route::get('typeetatpieces', 'TypeEtatPieceController@index'); // index
 Route::post('typeetatpiece/add', 'TypeEtatPieceController@store'); // add
 Route::get('typeetatpieces', 'TypeEtatPieceController@index'); // show id
 Route::get('typeetatpiece/destroy/{id}', 'TypeEtatPieceController@destroy');
@@ -116,7 +116,7 @@ Route::post('typeetatpiece/update/{id}', 'TypeEtatPieceController@update');
 //Fin TypeEtatPiece
 
 //TypeHistoriqueEvenement
-Route::get('typehistoriqueevenement', 'TypeHistoriqueEvenementController@index'); // index
+Route::get('typehistoriqueevenements', 'TypeHistoriqueEvenementController@index'); // index
 Route::post('typehistoriqueevenement/add', 'TypeHistoriqueEvenementController@store'); // add
 Route::get('typehistoriqueevenements', 'TypeHistoriqueEvenementController@index'); // show id
 Route::get('typehistoriqueevenement/destroy/{id}', 'TypeHistoriqueEvenementController@destroy');
@@ -125,7 +125,7 @@ Route::post('typehistoriqueevenement/update/{id}', 'TypeHistoriqueEvenementContr
 //Fin TypeHistoriqueEvenement
 
 //typepiecevehicule
-Route::get('typepiecevehicule', 'TypePieceVehiculeController@index'); // index
+Route::get('typepiecevehicules', 'TypePieceVehiculeController@index'); // index
 Route::post('typepiecevehicule/add', 'TypePieceVehiculeController@store'); // add
 Route::get('typepiecevehicules', 'TypePieceVehiculeController@index'); // show id
 Route::get('typepiecevehicule/destroy/{id}', 'TypePieceVehiculeController@destroy');
@@ -134,7 +134,7 @@ Route::post('typepiecevehicule/update/{id}', 'TypePieceVehiculeController@update
 //Fin typepiecevehicule
 
 //typeutilisateur
-Route::get('typeutilisateur', 'TypeUtilisateurController@index'); // index
+Route::get('typeutilisateurs', 'TypeUtilisateurController@index'); // index
 Route::post('typeutilisateur/add', 'TypeUtilisateurController@store'); // add
 Route::get('typeutilisateurs', 'TypeUtilisateurController@index'); // show id
 Route::get('typeutilisateur/destroy/{id}', 'TypeUtilisateurController@destroy');
@@ -143,7 +143,7 @@ Route::post('typeutilisateur/update/{id}', 'TypeUtilisateurController@update');
 //Fin typeutilisateur
 
 //typevehicule
-Route::get('typevehicule', 'TypeVehiculeController@index'); // index
+Route::get('typevehicules', 'TypeVehiculeController@index'); // index
 Route::post('typevehicule/add', 'TypeVehiculeController@store'); // add
 Route::get('typevehicules', 'TypeVehiculeController@index'); // show id
 Route::get('typevehicule/destroy/{id}', 'TypeVehiculeController@destroy');
@@ -151,23 +151,11 @@ Route::get('typevehicules/show/{id}', 'TypeVehiculeController@show'); // index
 Route::post('typevehicule/update/{id}', 'TypeVehiculeController@update');
 //Fin typevehicule
 
-// //vehicules
-// Route::get('vehicules', 'TypeVehiculeController@index'); // index
-// Route::post('vehicules/add', 'TypeVehiculeController@store'); // add
-// Route::get('vehicules', 'TypeVehiculeController@index'); // show id
-// Route::get('vehicules/destroy/{id}', 'TypeVehiculeController@destroy');
-// Route::get('vehicules/show/{id}', 'TypeVehiculeController@show'); // index
-// Route::post('vehicules/update/{id}', 'TypeVehiculeController@update');
-// //Fin vehicules
-
-Route::get('vehicules', 'VehiculeController@index');
 
 //authentification
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('vehicule', 'VehiculeController@index');
-Route::get('lieux', 'VilleController@index');
-Auth::routes();
+//Route::get('lieux', 'VilleController@index');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('profil', 'ProfileController@index')->name('profile'); 
 Route::get('profil/parametres', 'ProfileController@update')->name('profile');

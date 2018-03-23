@@ -23,7 +23,7 @@ class TypePieceVehiculeController extends Controller
 	public function index()
     {
         $typePieceVehicules = TypePieceVehicule::all();
-        return view('typePieceVehicule', ['typePieceVehicules' => $typePieceVehicules]);
+        return view('typePieceVehicules', ['typePieceVehicules' => $typePieceVehicules]);
     }
 
     public function show($id)

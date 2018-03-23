@@ -23,7 +23,7 @@ class TypeClientController extends Controller
 	public function index()
     {
         $typeclient = TypeClient::all();
-        return view('typeclient', ['typeclient' => $typeclient]);
+        return view('typeclients', ['typeclient' => $typeclient]);
     }
 
     public function show($id)

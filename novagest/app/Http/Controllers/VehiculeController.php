@@ -27,7 +27,7 @@ class VehiculeController extends BasicController
         $idstatut = StatutVehicule::pluck('libelle','id');
         $idclient = Client::pluck('raison_sociale','id');
         $idagence = Agence::pluck('nom','id');
-        return view('vehicules', ['vehicules' => $vehicules,'idclient' => $idclient,'idagence' => $idagence,'typevehicules' => $typevehicule,'idtypevehicule' => $idtypevehicule,'idtypeetatvehicule' => $idtypeetatvehicule,'idstatut' => $idstatut,]);
+        return view('vehicule', ['vehicules' => $vehicules,'idclient' => $idclient,'idagence' => $idagence,'typevehicules' => $typevehicule,'idtypevehicule' => $idtypevehicule,'idtypeetatvehicule' => $idtypeetatvehicule,'idstatut' => $idstatut,]);
     }
 
     public function show($id)
@@ -56,7 +56,7 @@ class VehiculeController extends BasicController
         
                 if ($validator->fails()) {
                     //dd($validator);
-                    return redirect('vehicules')
+                    return redirect('vehicule')
                                 ->withErrors($validator)
                                 ->withInput();
                 }
@@ -73,7 +73,7 @@ class VehiculeController extends BasicController
         $vehicule->idagence = $request["eidagence"];
         $vehicule->save();
 
-        return redirect('vehicules');
+        return redirect('vehicule');
     }
 
     public function store(Request $request)
@@ -93,7 +93,7 @@ class VehiculeController extends BasicController
         
                 if ($validator->fails()) {
                     //dd($validator);
-                    return redirect('vehicules')
+                    return redirect('vehicule')
                                 ->withErrors($validator)
                                 ->withInput();
                 }
@@ -109,7 +109,7 @@ class VehiculeController extends BasicController
         $vehicule->idagence = $request["idagence"];
         $vehicule->save();
 
-        return redirect('vehicules');
+        return redirect('vehicule');
     }
 
     public function destroy($id)
@@ -119,6 +119,6 @@ class VehiculeController extends BasicController
         $vehicule->desactive = 1;
         $vehicule->save();
         
-        return redirect('vehicules');
+        return redirect('vehicule');
     }
 }
