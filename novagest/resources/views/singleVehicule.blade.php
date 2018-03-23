@@ -15,19 +15,21 @@
         <image style="width:30%" src="http://shiny4kwallpapers.com/Uploads/2-3-2017/1368/thumb2-mercedes-benz-cls63-vorsteiner-tuning-mercedes-blue-cls-black-wheels.jpg"></image>
       </div>
       <div class="row center">
+      <div class="col s3"></div>
       <table class="col s6 striped centered">
         <tbody>
           <tr>
             <td>Immatriculation</td>
-            <td>Eclair</td>
+            <td>{{$vehicule->immatriculation}}</td>
           </tr>
           <tr>
-            <td>sdfsdf</td>
-            <td>Jellybean</td>
+            <td>Date d'achat</td>
+            <td>{{$vehicule->date_achat}}</td>
           </tr>
         </tbody>
       </table>
       </div>
+      <div class="col s3"></div>
       <div class="row ">
         <div class="col s12">
             <div style="height: 30%; width :70%; margin-left:auto; margin-right:auto;" id="map"></div>
@@ -43,8 +45,6 @@
     </div>
     
     <script>
-    var doc = new jsPDF()
-//doc.save('a4.pdf')
       function initMap() {
         var map = new google.maps.Map(document.getElementById('map'), {
           zoom: 8
