@@ -23,7 +23,7 @@ class VilleController extends Controller
 	public function index()
     {
         $villes = Ville::all(); 
-        return view('villes', ['villes' => $villes]);
+        return view('ville', ['villes' => $villes]);
     }
 
     public function show($id)
