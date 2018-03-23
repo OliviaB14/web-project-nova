@@ -23,7 +23,7 @@ class DroitController extends Controller
 	public function index()
     {
         $droits = Droit::all();
-        return view('droits', ['droits' => $droits]);
+        return view('droit', ['droits' => $droits]);
     }
 
     public function show($id)
