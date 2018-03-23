@@ -114,13 +114,11 @@ class VehiculeController extends BasicController
 
     public function destroy($id)
     {
-        // Find the corresponding record
+        // Find the corresponding record 
         $vehicule = Vehicule::find($id);
-        // Delete record
-        if ($vehicule != null) {
-            $vehicule->delete();
-            return $this->sendResponse(true, null, null);
-        }
-        return $this->sendResponse(false, "Data not found.", null);
+        $vehicule->desactive = 1;
+        $vehicule->save();
+        
+        return redirect('vehicules');
     }
 }

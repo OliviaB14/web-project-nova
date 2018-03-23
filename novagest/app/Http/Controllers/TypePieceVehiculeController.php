@@ -91,13 +91,11 @@ class TypePieceVehiculeController extends Controller
 
     public function destroy($id)
     {
-        // Find the corresponding record
-        $$typePieceVehicule = $typePieceVehicule::find($id);
-        // Delete record
-        if ($$typePieceVehicule != null) {
-            $$typePieceVehicule->delete();
-            return $this->sendResponse(true, null, null);
-        }
-        return $this->sendResponse(false, "Data not found.", null);
+        // Find the corresponding record 
+        $typePieceVehicule = TypePieceVehicule::find($id);
+        $typePieceVehicule->desactive = 1;
+        $typePieceVehicule->save();
+        
+        return redirect('typepiecevehicules');
     }
 }

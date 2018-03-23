@@ -111,13 +111,11 @@ class UtilisateurController extends Controller
 
     public function destroy($id)
     {
-        // Find the corresponding record
+        // Find the corresponding record 
         $utilisateur = Utilisateur::find($id);
-        // Delete record
-        if ($utilisateur != null) {
-            $utilisateur->delete();
-            return $this->sendResponse(true, null, null);
-        }
-        return $this->sendResponse(false, "Data not found.", null);
+        $utilisateur->desactive = 1;
+        $utilisateur->save();
+        
+        return redirect('utilisateurs');
     }
 }

@@ -87,13 +87,11 @@ class VilleController extends Controller
 
     public function destroy($id)
     {
-        // Find the corresponding record
+        // Find the corresponding record 
         $ville = Ville::find($id);
-        // Delete record
-        if ($ville != null) {
-            $ville->delete();
-            return $this->sendResponse(true, null, null);
-        }
-        return $this->sendResponse(false, "Data not found.", null);
+        $ville->desactive = 1;
+        $ville->save();
+        
+        return redirect('villes');
     }
 }

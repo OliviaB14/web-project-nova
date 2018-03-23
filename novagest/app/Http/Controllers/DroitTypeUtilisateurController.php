@@ -87,13 +87,11 @@ class DroitTypeUtilisateurController extends Controller
 
     public function destroy($id)
     {
-        // Find the corresponding record
+        // Find the corresponding record 
         $droitTypeUtilisateur = DroitTypeUtilisateur::find($id);
-        // Delete record
-        if ($droitTypeUtilisateur != null) {
-            $droitTypeUtilisateur->delete();
-            return $this->sendResponse(true, null, null);
-        }
-        return $this->sendResponse(false, "Data not found.", null);
+        $droitTypeUtilisateur->desactive = 1;
+        $droitTypeUtilisateur->save();
+        
+        return redirect('droittypeutilisateurs');
     }
 }

@@ -83,13 +83,11 @@ class TypeEtatPieceController extends Controller
 
     public function destroy($id)
     {
-        // Find the corresponding record
+        // Find the corresponding record 
         $typeEtatPiece = TypeEtatPiece::find($id);
-        // Delete record
-        if ($typeEtatPiece != null) {
-            $typeEtatPiece->delete();
-            return $this->sendResponse(true, null, null);
-        }
-        return $this->sendResponse(false, "Data not found.", null);
+        $typeEtatPiece->desactive = 1;
+        $typeEtatPiece->save();
+        
+        return redirect('typeetatpieces');
     }
 }

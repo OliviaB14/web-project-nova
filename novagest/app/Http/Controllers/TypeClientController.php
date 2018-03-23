@@ -45,7 +45,7 @@ class TypeClientController extends Controller
 
         if ($validator->fails()) {
             //dd($validator);
-            return redirect('typelients')
+            return redirect('typeclients')
                         ->withErrors($validator)
                         ->withInput();
         }
@@ -55,7 +55,7 @@ class TypeClientController extends Controller
         $typeClient->libelle = $request["elibelle"];
         $typeClient->save();
 
-        return redirect('typelients');
+        return redirect('typeclients');
     }
 
     public function store(Request $request)
@@ -68,7 +68,7 @@ class TypeClientController extends Controller
 
         if ($validator->fails()) {
             //dd($validator);
-            return redirect('typelients')
+            return redirect('typeclients')
                         ->withErrors($validator)
                         ->withInput();
         }
@@ -78,18 +78,16 @@ class TypeClientController extends Controller
         $typeClient->libelle = $request["libelle"];
         $typeClient->save();
 
-        return redirect('typelients');
+        return redirect('typeclients');
     }
 
     public function destroy($id)
     {
-        // Find the corresponding record
+        // Find the corresponding record 
         $typeClient = TypeClient::find($id);
-        // Delete record
-        if ($typeClient != null) {
-            $typeClient->delete();
-            return $this->sendResponse(true, null, null);
-        }
-        return $this->sendResponse(false, "Data not found.", null);
+        $typeClient->desactive = 1;
+        $typeClient->save();
+        
+        return redirect('typeclients');
     }
 }

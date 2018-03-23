@@ -83,13 +83,11 @@ class TypeHistoriqueEvenementController extends Controller
 
     public function destroy($id)
     {
-        // Find the corresponding record
+        // Find the corresponding record 
         $typeHistoriqueEvenement = TypeHistoriqueEvenement::find($id);
-        // Delete record
-        if ($typeHistoriqueEvenement != null) {
-            $typeHistoriqueEvenement->delete();
-            return $this->sendResponse(true, null, null);
-        }
-        return $this->sendResponse(false, "Data not found.", null);
+        $typeHistoriqueEvenement->desactive = 1;
+        $typeHistoriqueEvenement->save();
+        
+        return redirect('typehistoriqueevenements');
     }
 }

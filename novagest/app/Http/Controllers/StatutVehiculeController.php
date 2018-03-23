@@ -85,17 +85,6 @@ class StatutVehiculeController extends BasicController
 
     public function destroy($id)
     {
-        // // Find the corresponding record
-        // $statutVehicule = StatutVehicule::find($id);
-        // // Delete record
-        // if ($statutVehicule != null) {
-        //     $statutVehicule->delete();
-        //     return $this->sendResponse(true, null, null);
-        // }
-        // return $this->sendResponse(false, "Data not found.", null);
-
-                //dd($id);
-
                 // Find the corresponding record 
                 $statut = StatutVehicule::find($id);
                 $statut->desactive = 1;

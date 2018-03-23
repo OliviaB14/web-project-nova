@@ -83,13 +83,11 @@ class TypeUtilisateurController extends Controller
 
     public function destroy($id)
     {
-        // Find the corresponding record
+        // Find the corresponding record 
         $typeUtilisateur = TypeUtilisateur::find($id);
-        // Delete record
-        if ($typeUtilisateur != null) {
-            $typeUtilisateur->delete();
-            return $this->sendResponse(true, null, null);
-        }
-        return $this->sendResponse(false, "Data not found.", null);
+        $typeUtilisateur->desactive = 1;
+        $typeUtilisateur->save();
+        
+        return redirect('typeutilisateurs');
     }
 }

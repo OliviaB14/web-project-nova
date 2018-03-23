@@ -83,13 +83,11 @@ class DroitController extends Controller
 
     public function destroy($id)
     {
-        // Find the corresponding record
+        // Find the corresponding record 
         $droit = Droit::find($id);
-        // Delete record
-        if ($droit != null) {
-            $droit->delete();
-            return $this->sendResponse(true, null, null);
-        }
-        return $this->sendResponse(false, "Data not found.", null);
+        $droit->desactive = 1;
+        $droit->save();
+        
+        return redirect('droits');
     }
 }

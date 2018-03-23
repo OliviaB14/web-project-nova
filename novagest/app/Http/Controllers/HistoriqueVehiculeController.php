@@ -99,13 +99,11 @@ class HistoriqueVehiculeController extends Controller
 
     public function destroy($id)
     {
-        // Find the corresponding record
+        // Find the corresponding record 
         $historiqueVehicule = HistoriqueVehicule::find($id);
-        // Delete record
-        if ($historiqueVehicule != null) {
-            $historiqueVehicule->delete();
-            return $this->sendResponse(true, null, null);
-        }
-        return $this->sendResponse(false, "Data not found.", null);
+        $historiqueVehicule->desactive = 1;
+        $historiqueVehicule->save();
+        
+        return redirect('historiquevehicules');
     }
 }
