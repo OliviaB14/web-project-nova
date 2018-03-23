@@ -35,7 +35,7 @@
             </ul>
         </div>
       @endif
-        {{ Form::open(array('url' => 'agence/add')) }}
+        {{ Form::open(array('url' => 'statutvehicuel/add')) }}
             <div class="col s12">
                 <div class="row">
                     <div class="input-field col s12">
@@ -80,11 +80,11 @@
 <!-- Modal Structure -->
 <div id="modal1" class="modal modal-fixed-footer">
   <div class="modal-content">
-  {{ Form::open(array('url' => 'agence/add')) }}
+  {{ Form::open(array('url' => 'statut/add')) }}
             <div class="col s12">
                 <div class="row">
                     <div class="input-field col s12">
-                    {{ Form::label('enom', 'Nom de l\'agence')}}
+                    {{ Form::label('enom', 'Nom du statut')}}
                         {{ Form::text('enom', null,array('class'=>'validate', 'required' => 'required'))}}
                     </div>
                 </div>
