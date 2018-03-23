@@ -23,7 +23,7 @@ class DroitTypeUtilisateurController extends Controller
 	public function index()
     {
         $droitTypeUtilisateurs = DroitTypeUtilisateur::all();
-        return view('droittypeutilisateurs', ['droitTypeUtilisateurs' => $droitTypeUtilisateurs]);
+        return view('droittypeutilisateur', ['droitTypeUtilisateurs' => $droitTypeUtilisateurs]);
     }
 
     public function show($id)

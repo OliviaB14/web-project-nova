@@ -23,7 +23,7 @@ class TypeEtatPieceController extends Controller
 	public function index()
     {
         $typeetatpiece = TypeEtatPiece::all();
-        return view('typeetatpieces', ['typeetatpiece' => $typeetatpiece]);
+        return view('typeetatpiece', ['typeetatpiece' => $typeetatpiece]);
     }
 
     public function show($id)
