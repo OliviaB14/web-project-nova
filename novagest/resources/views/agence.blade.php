@@ -14,6 +14,11 @@
 @section('title', 'Agences')
 
 @section('content')
+
+<div class="row">
+    <div class="col s12"><h1><i class="material-icons">build</i> Gestion des agences</h1></div>
+</div>
+
 <!-- Modal Structure -->
 <div id="modal1" class="modal modal-fixed-footer">
   <div class="modal-content">

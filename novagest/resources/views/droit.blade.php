@@ -16,6 +16,9 @@
 @section('content')
 
 
+<h1><i class="material-icons">settings_application</i> Gérer les droits</h1>
+
+
 <section>
     <div class="container">
         <div class="row">

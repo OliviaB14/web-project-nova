@@ -20,7 +20,7 @@
         <div class="col l3 s12">
           <h5>Gestion</h5>
           <ul>
-            <li><a href="/accueil"><i class="material-icons">home</i> Tableau de bord</a></li>
+            <li><a href="/"><i class="material-icons">home</i> Tableau de bord</a></li>
             <li><a href="agences"><i class="material-icons">work</i> Agences</a></li>
             <li><a href="clients"><i class="material-icons">people</i> Clients</a></li>
             <li><a href="droits"><i class="material-icons">assignment_ind</i> Droits</a></li>
@@ -45,3 +45,7 @@
       </div>
     </div>
   </footer>
+
+  <script>
+     $('.timer').countTo();
+  </script>

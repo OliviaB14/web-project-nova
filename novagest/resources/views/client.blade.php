@@ -15,6 +15,41 @@
 
 @section('content')
 
+<div class="row">
+    <div class="col s12"><h1><i class="material-icons">build</i> Gestion des clients</h1></div>
+</div>
+
+<div class='center-align row'>
+    <div class="col s12">
+        <div class="card amber accent-2">
+            <div class="card-content">
+              <span class="card-title black-text"><b class="timer" data-to="{{$clients->count()+1}}" data-speed="1500"></b> clients</span>
+            </div>
+        </div>
+    </div>
+
+    <?php
+        // count clients for each type : "Commune", "Entreprise"
+        $type['commune'] = DB::table('client')->where('idtypeclient', '=','1')->count();
+        $type['entreprise'] = DB::table('client')->where('idtypeclient', '=','2')->count();
+    ?>
+
+    <div class="col s6">
+        <div class="card teal lighten-3">
+            <div class="card-content">
+              <span class="card-title black-text"><b class="timer" data-to="{{$type['commune']}}" data-speed="1500"></b> communes</span>
+            </div>
+        </div>
+    </div>
+    <div class="col s6">
+        <div class="card brown lighten-3">
+            <div class="card-content">
+              <span class="card-title black-text"><b class="timer" data-to="{{$type['entreprise']}}" data-speed="1500"></b> entreprises</span>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- Modal Structure -->
 <div id="modal1" class="modal modal-fixed-footer">
   <div class="modal-content">
@@ -84,7 +119,7 @@ $(document).ready(function(){
 
 
 <section>
-<ul class="collapsible" style="margin-left:2%" data-collapsible="accordion">
+<ul class="collapsible" data-collapsible="accordion">
     <li>
       <div class="collapsible-header"><i class="material-icons">add</i>Ajouter</div>
       <div class="collapsible-body">
