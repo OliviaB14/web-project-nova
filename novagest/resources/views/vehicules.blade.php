@@ -90,7 +90,7 @@
             <div class="card">
               <div class="card-image">
                 <img style="width:300px" src="https://goo.gl/XdBFhy">
-                <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
+                <a href="single/{{$car->id}}" class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
               </div>
               <div class="card-content">
                 <h1>

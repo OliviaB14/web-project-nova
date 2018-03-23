@@ -12,6 +12,7 @@ use App\TypeEtatVehicule;
 use App\StatutVehicule;
 use App\Client;
 use App\Agence;
+use App\Ville;
 use DB;
 use Input;
 
@@ -79,5 +80,30 @@ class VehiculeController extends BasicController
             return $this->sendResponse(true, null, null);
         }
         return $this->sendResponse(false, "Data not found.", null);
+    }
+
+    public function GetSingle($id)
+    {
+        // Find the corresponding record
+        $vehicule = Vehicule::find($id);
+        //dd($vehicule);
+
+        $agence = Agence::find($vehicule->idagence);
+        $client = Client::find($vehicule->idclient);
+        $type_vehicule = TypeVehicule::find($vehicule->idtypevehicule);
+
+        if($agence != null)
+        {
+            $ville = Ville::find($agence->idville);
+            return view('singleVehicule', ['vehicule' => $vehicule,'type_vehicule' => $type_vehicule,'agence' => $agence,'ville' => $ville]);
+        }
+        elseif($client != null)
+        {
+            $ville = Ville::find($client->idville);
+            return view('singleVehicule', ['vehicule' => $vehicule,'type_vehicule' => $type_vehicule,'client' => $client,'ville' => $ville]);
+        }
+
+        
+        return view('singleVehicule', ['vehicule' => $vehicule,'type_vehicule' => $type_vehicule]);
     }
 }
