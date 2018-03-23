@@ -2,7 +2,7 @@
 // Routes avec controlleurs
 Route::get('/','AccueilController@index');
 Route::get('villes', 'VilleController@GetVilles');
-Route::get('utilisateurs', 'UtilisateurController@GetUtilisateurs');
+Route::get('utilisateur', 'UtilisateurController@GetUtilisateurs');
 
 //Agence
 Route::get('agences', 'AgenceController@index'); // index
@@ -22,17 +22,17 @@ Route::get('clients/show/{id}', 'ClientController@show'); // index
 Route::post('client/update/{id}', 'ClientController@update');
 //Fin clients
 
-//Status
+//Statuts
 Route::get('statut', 'StatutVehiculeController@index'); // index
-Route::post('client/add', 'ClientController@store'); // add
-Route::get('clients', 'ClientController@index'); // show id
-Route::get('client/destroy/{id}', 'ClientController@destroy');
-Route::get('clients/show/{id}', 'ClientController@show'); // index
-Route::post('client/update/{id}', 'ClientController@update');
+Route::post('statut/add', 'StatutVehiculeController@store'); // add
+Route::get('statuts', 'StatutVehiculeController@index'); // show id
+Route::get('statut/destroy/{id}', 'StatutVehiculeController@destroy');
+Route::get('statuts/show/{id}', 'StatutVehiculeController@show'); // index
+Route::post('statut/update/{id}', 'StatutVehiculeController@update');
 //Fin Status
 
 Route::get('villes', 'VilleController@index');
-Route::get('utilisateurs', 'UtilisateurController@index');
+Route::get('utilisateur', 'UtilisateurController@index');
 Route::get('droits', 'DroitController@index');
 Route::get('droittypeutilisateurs', 'DroitTypeUtilisateursController@index');
 Route::get('historiquevehicule', 'HistoriqueVehiculeController@index');
@@ -53,3 +53,5 @@ Route::get('vehicule', 'VehiculeController@index');
 Route::get('lieux', 'VilleController@index');
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('profil', 'ProfileController@index')->name('profile'); 
+Route::get('profil/parametres', 'ProfileController@update')->name('profile');
