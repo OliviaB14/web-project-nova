@@ -37,18 +37,27 @@ class DroitTypeUtilisateurController extends Controller
 
     public function update($id, Request $request)
     {
-        // @TODO @Nathan please validate the data
+        //Validator
 
-        // Find the corresponding record
-        $droitTypeUtilisateur = DroitTypeUtilisateur::find($id);
-        // Populate data
-        if ($droitTypeUtilisateur != null) {
-            $this->populateData($droitTypeUtilisateur, $request);
-            // Save
-            $droitTypeUtilisateur->save();
-            return $this->sendResponse(true, null, $droitTypeUtilisateur);
+        $validator = Validator::make($request->all(), [
+            'eiddroit' => 'required|max:12',
+            'eidtypeutilisateur' => 'required|max:12',
+        ]);
+
+        if ($validator->fails()) {
+            //dd($validator);
+            return redirect('droittypeutilisateurs')
+                        ->withErrors($validator)
+                        ->withInput();
         }
-        return $this->sendResponse(false, "Data not found.", null);
+
+        // Find the corresponding record 
+        $droitTypeUtilisateur = DroitTypeUtilisateur::find($id);
+        $droitTypeUtilisateur->iddroit = $request["eiddroit"];
+        $droitTypeUtilisateur->idtypeutilisateur = $request["eidtypeutilisateur"];
+        $droitTypeUtilisateur->save();
+
+        return redirect('droittypeutilisateurs');
     }
 
     public function store(Request $request)
@@ -78,13 +87,11 @@ class DroitTypeUtilisateurController extends Controller
 
     public function destroy($id)
     {
-        // Find the corresponding record
+        // Find the corresponding record 
         $droitTypeUtilisateur = DroitTypeUtilisateur::find($id);
-        // Delete record
-        if ($droitTypeUtilisateur != null) {
-            $droitTypeUtilisateur->delete();
-            return $this->sendResponse(true, null, null);
-        }
-        return $this->sendResponse(false, "Data not found.", null);
+        $droitTypeUtilisateur->desactive = 1;
+        $droitTypeUtilisateur->save();
+        
+        return redirect('droittypeutilisateurs');
     }
 }

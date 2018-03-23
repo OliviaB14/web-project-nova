@@ -37,18 +37,25 @@ class TypeHistoriqueEvenementController extends Controller
 
     public function update($id, Request $request)
     {
-        // @TODO @Nathan please validate the data
+        //Validator
 
-        // Find the corresponding record
-        $typeHistoriqueEvenement = TypeHistoriqueEvenement::find($id);
-        // Populate data
-        if ($typeHistoriqueEvenement != null) {
-            $this->populateData($typeHistoriqueEvenement, $request);
-            // Save
-            $typeHistoriqueEvenement->save();
-            return $this->sendResponse(true, null, $typeHistoriqueEvenement);
+        $validator = Validator::make($request->all(), [
+            'elibelle' => 'required|max:32',
+        ]);
+
+        if ($validator->fails()) {
+            //dd($validator);
+            return redirect('typehistoriqueevenements')
+                        ->withErrors($validator)
+                        ->withInput();
         }
-        return $this->sendResponse(false, "Data not found.", null);
+
+        // Find the corresponding record 
+        $typeHistoriqueEvenement = TypeHistoriqueEvenement::find($id);
+        $typeHistoriqueEvenement->libelle = $request["elibelle"];
+        $typeHistoriqueEvenement->save();
+
+        return redirect('typehistoriqueevenements');
     }
 
     public function store(Request $request)
@@ -76,13 +83,11 @@ class TypeHistoriqueEvenementController extends Controller
 
     public function destroy($id)
     {
-        // Find the corresponding record
+        // Find the corresponding record 
         $typeHistoriqueEvenement = TypeHistoriqueEvenement::find($id);
-        // Delete record
-        if ($typeHistoriqueEvenement != null) {
-            $typeHistoriqueEvenement->delete();
-            return $this->sendResponse(true, null, null);
-        }
-        return $this->sendResponse(false, "Data not found.", null);
+        $typeHistoriqueEvenement->desactive = 1;
+        $typeHistoriqueEvenement->save();
+        
+        return redirect('typehistoriqueevenements');
     }
 }

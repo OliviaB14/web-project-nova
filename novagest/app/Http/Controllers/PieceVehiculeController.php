@@ -37,18 +37,29 @@ class PieceVehiculeController extends Controller
 
     public function update($id, Request $request)
     {
-        // @TODO @Nathan please validate the data
+        //Validator
 
-        // Find the corresponding record
-        $pieceVehicule = PieceVehicule::find($id);
-        // Populate data
-        if ($pieceVehicule != null) {
-            $this->populateData($pieceVehicule, $request);
-            // Save
-            $pieceVehicule->save();
-            return $this->sendResponse(true, null, $pieceVehicule);
+        $validator = Validator::make($request->all(), [
+            'edate_entree' => 'required',
+            'eidtypeetatpiece' => 'required|max:12',
+            'eidtypepiece' => 'required|max:12',
+        ]);
+
+        if ($validator->fails()) {
+            //dd($validator);
+            return redirect('piecevehicules')
+                        ->withErrors($validator)
+                        ->withInput();
         }
-        return $this->sendResponse(false, "Data not found.", null);
+
+        // Find the corresponding record 
+        $pieceVehicule = PieceVehicule::find($id);
+        $pieceVehicule->date_entree = $request["edate_entree"];
+        $pieceVehicule->idtypeetatpiece = $request["eidtypeetatpiece"];
+        $pieceVehicule->idtypepiece = $request["eidtypepiece"];
+        $pieceVehicule->save();
+
+        return redirect('piecevehicules');
     }
 
     public function store(Request $request)
@@ -80,13 +91,11 @@ class PieceVehiculeController extends Controller
 
     public function destroy($id)
     {
-        // Find the corresponding record
+        // Find the corresponding record 
         $pieceVehicule = PieceVehicule::find($id);
-        // Delete record
-        if ($pieceVehicule != null) {
-            $pieceVehicule->delete();
-            return $this->sendResponse(true, null, null);
-        }
-        return $this->sendResponse(false, "Data not found.", null);
+        $pieceVehicule->desactive = 1;
+        $pieceVehicule->save();
+        
+        return redirect('piecevehicules');
     }
 }

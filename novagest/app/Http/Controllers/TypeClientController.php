@@ -37,18 +37,25 @@ class TypeClientController extends Controller
 
     public function update($id, Request $request)
     {
-        // @TODO @Nathan please validate the data
+        //Validator
 
-        // Find the corresponding record
-        $typeClient = TypeClient::find($id);
-        // Populate data
-        if ($typeClient != null) {
-            $this->populateData($typeClient, $request);
-            // Save
-            $typeClient->save();
-            return $this->sendResponse(true, null, $typeClient);
+        $validator = Validator::make($request->all(), [
+            'elibelle' => 'required|max:32',
+        ]);
+
+        if ($validator->fails()) {
+            //dd($validator);
+            return redirect('typeclients')
+                        ->withErrors($validator)
+                        ->withInput();
         }
-        return $this->sendResponse(false, "Data not found.", null);
+
+        // Find the corresponding record 
+        $typeClient = TypeClient::find($id);
+        $typeClient->libelle = $request["elibelle"];
+        $typeClient->save();
+
+        return redirect('typeclients');
     }
 
     public function store(Request $request)
@@ -61,7 +68,7 @@ class TypeClientController extends Controller
 
         if ($validator->fails()) {
             //dd($validator);
-            return redirect('typelients')
+            return redirect('typeclients')
                         ->withErrors($validator)
                         ->withInput();
         }
@@ -71,18 +78,16 @@ class TypeClientController extends Controller
         $typeClient->libelle = $request["libelle"];
         $typeClient->save();
 
-        return redirect('typelients');
+        return redirect('typeclients');
     }
 
     public function destroy($id)
     {
-        // Find the corresponding record
+        // Find the corresponding record 
         $typeClient = TypeClient::find($id);
-        // Delete record
-        if ($typeClient != null) {
-            $typeClient->delete();
-            return $this->sendResponse(true, null, null);
-        }
-        return $this->sendResponse(false, "Data not found.", null);
+        $typeClient->desactive = 1;
+        $typeClient->save();
+        
+        return redirect('typeclients');
     }
 }

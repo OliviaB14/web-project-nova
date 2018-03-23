@@ -37,18 +37,27 @@ class VilleController extends Controller
 
     public function update($id, Request $request)
     {
-        // @TODO @Nathan please validate the data
+        //Validator
 
-        // Find the corresponding record
-        $ville = Ville::find($id);
-        // Populate data
-        if ($ville != null) {
-            $this->populateData($ville, $request);
-            // Save
-            $ville->save();
-            return $this->sendResponse(true, null, $ville);
+        $validator = Validator::make($request->all(), [
+            'enom' => 'required|max:32',
+            'ecode_postal' => 'required|max:12',
+        ]);
+
+        if ($validator->fails()) {
+            //dd($validator);
+            return redirect('villes')
+                        ->withErrors($validator)
+                        ->withInput();
         }
-        return $this->sendResponse(false, "Data not found.", null);
+
+        // Find the corresponding record 
+        $ville = Ville::find($id);
+        $ville->nom = $request["enom"];
+        $ville->code_postal = $request["ecode_postal"];
+        $ville->save();
+
+        return redirect('villes');
     }
 
     public function store(Request $request)
@@ -78,13 +87,11 @@ class VilleController extends Controller
 
     public function destroy($id)
     {
-        // Find the corresponding record
+        // Find the corresponding record 
         $ville = Ville::find($id);
-        // Delete record
-        if ($ville != null) {
-            $ville->delete();
-            return $this->sendResponse(true, null, null);
-        }
-        return $this->sendResponse(false, "Data not found.", null);
+        $ville->desactive = 1;
+        $ville->save();
+        
+        return redirect('villes');
     }
 }

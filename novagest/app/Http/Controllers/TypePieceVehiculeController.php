@@ -37,18 +37,29 @@ class TypePieceVehiculeController extends Controller
 
     public function update($id, Request $request)
     {
-        // @TODO @Nathan please validate the data
+        //Validator
 
-        // Find the corresponding record
-        $typePieceVehicule = $typePieceVehicule::find($id);
-        // Populate data
-        if ($typePieceVehicule != null) {
-            $this->populateData($typePieceVehicule, $request);
-            // Save
-            $typePieceVehicule->save();
-            return $this->sendResponse(true, null, $typePieceVehicule);
+        $validator = Validator::make($request->all(), [
+            'enom' => 'required|max:32',
+            'eidtypevehicule' => 'required|max:12',
+            'eprix_neuf' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            //dd($validator);
+            return redirect('typepiecevehicules')
+                        ->withErrors($validator)
+                        ->withInput();
         }
-        return $this->sendResponse(false, "Data not found.", null);
+
+        // Find the corresponding record 
+        $typePieceVehicule = TypePieceVehicule::find($id);
+        $typePieceVehicule->nom = $request["enom"];
+        $typePieceVehicule->idtypevehicule = $request["eidtypevehicule"];
+        $typePieceVehicule->prix_neuf = $request["eprix_neuf"];
+        $typePieceVehicule->save();
+
+        return redirect('typepiecevehicules');
     }
 
     public function store(Request $request)
@@ -80,13 +91,11 @@ class TypePieceVehiculeController extends Controller
 
     public function destroy($id)
     {
-        // Find the corresponding record
-        $$typePieceVehicule = $typePieceVehicule::find($id);
-        // Delete record
-        if ($$typePieceVehicule != null) {
-            $$typePieceVehicule->delete();
-            return $this->sendResponse(true, null, null);
-        }
-        return $this->sendResponse(false, "Data not found.", null);
+        // Find the corresponding record 
+        $typePieceVehicule = TypePieceVehicule::find($id);
+        $typePieceVehicule->desactive = 1;
+        $typePieceVehicule->save();
+        
+        return redirect('typepiecevehicules');
     }
 }
