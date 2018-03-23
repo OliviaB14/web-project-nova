@@ -37,18 +37,33 @@ class HistoriqueVehiculeController extends Controller
 
     public function update($id, Request $request)
     {
-        // @TODO @Nathan please validate the data
+        //Validator
 
-        // Find the corresponding record
-        $historiqueVehicule = HistoriqueVehicule::find($id);
-        // Populate data
-        if ($historiqueVehicule != null) {
-            $this->populateData($historiqueVehicule, $request);
-            // Save
-            $historiqueVehicule->save();
-            return $this->sendResponse(true, null, $historiqueVehicule);
+        $validator = Validator::make($request->all(), [
+            'edate_ligne' => 'required',
+            'ecommentaire' => 'required',
+            'eidutilisateur' => 'required|max:12',
+            'eidtypeevenement' => 'required|max:12',
+            'eidvehicule' => 'required|max:12',
+        ]);
+
+        if ($validator->fails()) {
+            //dd($validator);
+            return redirect('historiquevehicules')
+                        ->withErrors($validator)
+                        ->withInput();
         }
-        return $this->sendResponse(false, "Data not found.", null);
+
+        // Find the corresponding record 
+        $historiqueVehicule = HistoriqueVehicule::find($id);
+        $historiqueVehicule->date_ligne = $request["edate_ligne"];
+        $historiqueVehicule->commentaire = $request["ecommentaire"];
+        $historiqueVehicule->idutilisateur = $request["eidutilisateur"];
+        $historiqueVehicule->idtypeevenement = $request["eidtypeevenement"];
+        $historiqueVehicule->idvehicule = $request["eidvehicule"];
+        $historiqueVehicule->save();
+
+        return redirect('historiquevehicules');
     }
 
     public function store(Request $request)

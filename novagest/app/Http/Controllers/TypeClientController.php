@@ -37,18 +37,25 @@ class TypeClientController extends Controller
 
     public function update($id, Request $request)
     {
-        // @TODO @Nathan please validate the data
+        //Validator
 
-        // Find the corresponding record
-        $typeClient = TypeClient::find($id);
-        // Populate data
-        if ($typeClient != null) {
-            $this->populateData($typeClient, $request);
-            // Save
-            $typeClient->save();
-            return $this->sendResponse(true, null, $typeClient);
+        $validator = Validator::make($request->all(), [
+            'elibelle' => 'required|max:32',
+        ]);
+
+        if ($validator->fails()) {
+            //dd($validator);
+            return redirect('typelients')
+                        ->withErrors($validator)
+                        ->withInput();
         }
-        return $this->sendResponse(false, "Data not found.", null);
+
+        // Find the corresponding record 
+        $typeClient = TypeClient::find($id);
+        $typeClient->libelle = $request["elibelle"];
+        $typeClient->save();
+
+        return redirect('typelients');
     }
 
     public function store(Request $request)

@@ -37,18 +37,35 @@ class TypeVehiculeController extends Controller
 
     public function update($id, Request $request)
     {
-        // @TODO @Nathan please validate the data
+        //Validator
 
-        // Find the corresponding record
-        $typeVehicule = TypeVehicule::find($id);
-        // Populate data
-        if ($typeVehicule != null) {
-            $this->populateData($typeVehicule, $request);
-            // Save
-            $typeVehicule->save();
-            return $this->sendResponse(true, null, $typeVehicule);
+        $validator = Validator::make($request->all(), [
+            'emodele' => 'required|max:32',
+            'ehauteur' => 'required|max:16',
+            'elargeur' => 'required|max:16',
+            'epoids' => 'required|max:16',
+            'epuissance' => 'required|max:8',
+            'eprix_neuf' => 'required|'
+        ]);
+
+        if ($validator->fails()) {
+            //dd($validator);
+            return redirect('typevehicules')
+                        ->withErrors($validator)
+                        ->withInput();
         }
-        return $this->sendResponse(false, "Data not found.", null);
+
+        // Find the corresponding record 
+        $typeVehicule = TypeVehicule::find($id);
+        $typeVehicule->modele = $request["emodele"];
+        $typeVehicule->hauteur = $request["ehauteur"];
+        $typeVehicule->largeur = $request["elargeur"];
+        $typeVehicule->poids = $request["epoids"];
+        $typeVehicule->puissance = $request["epuissance"];
+        $typeVehicule->prix_neuf = $request["eprix_neuf"];
+        $typeVehicule->save();
+
+        return redirect('typevehicules');
     }
 
     public function store(Request $request)

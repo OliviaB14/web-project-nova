@@ -37,18 +37,25 @@ class DroitController extends Controller
 
     public function update($id, Request $request)
     {
-        // @TODO @Nathan please validate the data
+        //Validator
 
-        // Find the corresponding record
-        $droit = Droit::find($id);
-        // Populate data
-        if ($droit != null) {
-            $this->populateData($droit, $request);
-            // Save
-            $droit->save();
-            return $this->sendResponse(true, null, $droit);
+        $validator = Validator::make($request->all(), [
+            'elibelle' => 'required|max:32',
+        ]);
+
+        if ($validator->fails()) {
+            //dd($validator);
+            return redirect('droits')
+                        ->withErrors($validator)
+                        ->withInput();
         }
-        return $this->sendResponse(false, "Data not found.", null);
+
+        // Find the corresponding record 
+        $droit = Droit::find($id);
+        $droit->libelle = $request["elibelle"];
+        $droit->save();
+
+        return redirect('droits');
     }
 
     public function store(Request $request)
