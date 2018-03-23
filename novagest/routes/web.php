@@ -23,6 +23,7 @@ Route::get('vehicules', 'VehiculeController@index'); // show id
 Route::get('vehicule/destroy/{id}', 'VehiculeController@destroy');
 Route::get('vehicule/show/{id}', 'VehiculeController@show'); // index
 Route::post('vehicule/update/{id}', 'VehiculeController@update');
+Route::Get('single/{id}','VehiculeController@GetSingle');
 //Fin Vehicules
 
 //Clients
