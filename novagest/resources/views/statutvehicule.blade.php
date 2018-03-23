@@ -65,9 +65,9 @@
                     <tbody>
                     @foreach($statutvehicule as $statut)
                         <tr>
-                             <td>{{$statut->id}}</td>
+                            <td>{{$statut->id}}</td>
                             <td>{{$statut->libelle}}</td>
-                            <td><a class="btn-floating btn-large waves-effect waves-light red" href=""><i class="material-icons">cancel</i><a id="" class="btn-floating btn-large waves-effect waves-light yellow edit" href="#modal1"><i class="material-icons">edit</i></a></a></td>
+                            <td><a class="btn-floating btn-large waves-effect waves-light red" href="statut/destroy/{{$statut->id}}"><i class="material-icons">cancel</i><a id="{{$statut->id}}" class="btn-floating btn-large waves-effect waves-light yellow edit" href="#modal1"><i class="material-icons">edit</i></a></a></td>
                         </tr>
                     @endforeach
                     </tbody>
@@ -81,7 +81,7 @@
 <!-- Modal Structure -->
 <div id="modal1" class="modal modal-fixed-footer">
   <div class="modal-content">
-  {{ Form::open(array('url' => 'statut/add')) }}
+  {{ Form::open(array('url' => 'statut/update/', 'id'=>'form')) }}
             <div class="col s12">
                 <div class="row">
                     <div class="input-field col s12">
@@ -91,7 +91,7 @@
                 </div>
             </div>
             
-            {{ Form::submit('Ajouter', array('class' => 'waves-effect waves-light btn')) }}
+            {{ Form::submit('Modifier', array('class' => 'waves-effect waves-light btn')) }}
         {{ Form::close() }}
         </div>
   </div>
