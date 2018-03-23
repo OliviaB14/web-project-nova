@@ -5,7 +5,7 @@ Route::post('test','BasicController@Login');
 // Routes avec controlleurs
 Route::get('/','AccueilController@index');
 Route::get('villes', 'VilleController@GetVilles');
-Route::get('utilisateur', 'UtilisateurController@GetUtilisateurs');
+//Route::get('utilisateur', 'UtilisateurController@GetUtilisateurs');
 
 //Agences
 Route::get('agences', 'AgenceController@index'); // index
@@ -54,12 +54,12 @@ Route::post('ville/update/{id}', 'VilleVehiculeController@update');
 //Fin ville
 
 //utilisateur
-Route::get('utilisateurs', 'UtilisateurVehiculeController@index'); // index
-Route::post('utilisateur/add', 'UtilisateurVehiculeController@store'); // add
-Route::get('utilisateurs', 'UtilisateurVehiculeController@index'); // show id
-Route::get('utilisateur/destroy/{id}', 'UtilisateurVehiculeController@destroy');
-Route::get('utilisateurs/show/{id}', 'UtilisateurVehiculeController@show'); // index
-Route::post('utilisateur/update/{id}', 'UtilisateurVehiculeController@update');
+Route::get('utilisateurs', 'UtilisateurController@index'); // index
+Route::post('utilisateur/add', 'UtilisateurController@store'); // add
+Route::get('utilisateurs', 'UtilisateurController@index'); // show id
+Route::get('utilisateur/destroy/{id}', 'UtilisateurController@destroy');
+Route::get('utilisateurs/show/{id}', 'UtilisateurController@show'); // index
+Route::post('utilisateur/update/{id}', 'UtilisateurController@update');
 //Fin utilisateur
 
 //droit
