@@ -1,4 +1,6 @@
 <?php
+Route::get('logout','BasicController@Logout');
+
 // Routes avec controlleurs
 Route::get('/','AccueilController@index');
 Route::get('villes', 'VilleController@GetVilles');
