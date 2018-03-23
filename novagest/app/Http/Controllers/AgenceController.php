@@ -81,10 +81,14 @@ class AgenceController extends BasicController
 
         // Create a new agence from request param
         $agence = new Agence;
-        // Populate data
-        $this->populateData($agence, $request);
-        // Save
+        $agence->nom = $request["nom"];
+        $agence->adresse = $request["adresse"];
+        $agence->idville = $request["idville"];
+        $agence->telephone = $request["telephone"];
+        $agence->fax = $request["fax"];
+        $agence->mail = $request["mail"];
         $agence->save();
+
         return redirect('agences');
     }
 
