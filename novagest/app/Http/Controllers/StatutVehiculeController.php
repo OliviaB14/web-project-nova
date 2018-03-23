@@ -25,6 +25,8 @@ class StatutVehiculeController extends BasicController
     {
         $statutvehicule = StatutVehicule::all();
 
+        //dd($statutvehicule);
+
         return view('statutvehicule', ['statutvehicule' => $statutvehicule]);
     }
 

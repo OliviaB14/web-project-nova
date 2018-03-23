@@ -37,7 +37,6 @@ Route::get('droits', 'DroitController@index');
 Route::get('droittypeutilisateurs', 'DroitTypeUtilisateursController@index');
 Route::get('historiquevehicule', 'HistoriqueVehiculeController@index');
 Route::get('piecevehicule', 'PieceVehiculeController@index');
-Route::get('statutvehicule', 'StatutVehiculeController@index');
 Route::get('typeclient', 'TypeClientController@index');
 Route::get('typeetatpiece', 'TypeEtatPieceController@index');
 Route::get('typehistoriqueevenement', 'TypeHistoriqueEvenementController@index');

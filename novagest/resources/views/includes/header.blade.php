@@ -6,7 +6,7 @@
   <li><a href="vehicules">Vehicules</a></li>
   <li><a href="utilisateurs">Utilisateurs</a></li>
   <li><a href="villes">Villes</a></li>
-  <li><a href="statutvehicule">Statuts</a></li>
+  <li><a href="statut">Statuts</a></li>
   
 </ul>
 <ul id="dropdown2" class="dropdown-content">
@@ -38,7 +38,7 @@
       <li><a href="vehicules"><i class="material-icons">directions_car</i> Vehicules</a></li>
       <li><a href="utilisateurs"><i class="material-icons">supervisor_account</i> Utilisateurs</a></li>
       <li><a href="villes"><i class="material-icons">location_city</i> Villes</a></li>
-      <li><a href="statutvehicule"><i class="material-icons">view_list</i> Statuts</a></li>
+      <li><a href="statut"><i class="material-icons">view_list</i> Statuts</a></li>
         
       </ul>
       <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
