@@ -91,6 +91,7 @@ class StatutVehiculeController extends BasicController
                 // Create a new statut from request param
                 $statut = new StatutVehicule;
                 // Populate data
+               
                 $this->populateData($statut, $request);
                 // Save
                 $statut->save();
