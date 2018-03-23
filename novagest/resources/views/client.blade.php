@@ -8,6 +8,23 @@
         display: -ms-flexbox;
         display: flex;*/
     }
+    #pie-clients{
+            border: 1px dotted #FFC107;
+    }
+
+    .center-align .row {
+        display: flex;
+        flex-wrap: wrap;
+           
+    }
+    .card{
+        flex-direction: column;
+        height:400px;
+    }
+
+    .main-card{
+        height: auto;
+    }
     </style>
 @stop   
 
@@ -21,7 +38,7 @@
 
 <div class='center-align row'>
     <div class="col s12">
-        <div class="card amber accent-2">
+        <div class="card amber accent-2 main-card">
             <div class="card-content">
               <span class="card-title black-text"><b class="timer" data-to="{{$clients->count()+1}}" data-speed="1500"></b> clients</span>
             </div>
@@ -34,17 +51,26 @@
         $type['entreprise'] = DB::table('client')->where('idtypeclient', '=','2')->count();
     ?>
 
-    <div class="col s6">
+    <div class="col s4">
         <div class="card teal lighten-3">
             <div class="card-content">
               <span class="card-title black-text"><b class="timer" data-to="{{$type['commune']}}" data-speed="1500"></b> communes</span>
+              <input type="hidden" value="{{$type['commune']}}" id="communes_nb"/>
             </div>
         </div>
     </div>
-    <div class="col s6">
-        <div class="card brown lighten-3">
+    <div class="col s4" >
+        <div class="card brown lighten-3" height="400">
             <div class="card-content">
-              <span class="card-title black-text"><b class="timer" data-to="{{$type['entreprise']}}" data-speed="1500"></b> entreprises</span>
+              <span class="card-title black-text"><b class="timer" data-to="{{$type['entreprise']}}" data-speed="1500" ></b> entreprises</span>
+              <input type="hidden" value="{{$type['entreprise']}}" id="entreprises_nb"/>
+            </div>
+        </div>
+    </div>
+    <div class="col s4">
+        <div class="card white" id="pie-clients">
+            <div class="card-content">
+              <canvas id="myChart" width="400" height="400"></canvas>
             </div>
         </div>
     </div>
@@ -234,7 +260,30 @@ $(document).ready(function(){
 </div>
 </section>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+
 <script>
+
+var ctx = document.getElementById("myChart");
+
+
+var myDoughnutChart = new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+        labels: ['Communes', 'Entreprises'],
+        datasets: [{
+            data: [$("#communes_nb").val(),$('#entreprises_nb').val()],
+            backgroundColor: [
+                "#AB82FF",
+                "#F08080"
+            ]
+        }]
+    },
+    options: {
+        cutoutPercentage: 50
+    }
+});
+
 $(document).ready(function(){
     $('select').material_select();
 });

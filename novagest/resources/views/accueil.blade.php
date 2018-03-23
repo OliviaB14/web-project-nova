@@ -1,7 +1,6 @@
 @extends('layout.dashboard')
 
 
-
 @section('title', 'Accueil')
 
 @section('content')
