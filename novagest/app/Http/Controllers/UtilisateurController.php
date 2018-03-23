@@ -23,7 +23,7 @@ class UtilisateurController extends Controller
 	public function index()
     {
         $utilisateurs = Utilisateur::all();
-        return view('utilisateurs', ['utilisateurs' => $utilisateurs]);
+        return view('utilisateur', ['utilisateurs' => $utilisateurs]);
     }
 
     public function show($id)
