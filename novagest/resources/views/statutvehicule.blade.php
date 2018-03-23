@@ -39,7 +39,7 @@
             <div class="col s12">
                 <div class="row">
                     <div class="input-field col s12">
-                    {{ Form::label('nom', 'Nom de l\'agence')}}
+                    {{ Form::label('nom', 'Statut')}}
                         {{ Form::text('nom', null,array('class'=>'validate', 'required' => 'required'))}}
                     </div>
                 </div>
