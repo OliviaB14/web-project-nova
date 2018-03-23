@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Utilisateur;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
+use DB;
 
 class BasicController extends Controller
 {
@@ -24,8 +27,19 @@ class BasicController extends Controller
     protected function Logout()
     {
         $user = Auth::user();
-        dd($user);
         Auth::logout();
+        return redirect('login');
+    }
+
+    protected function Login(Request $request)
+    {
+        $user = DB::table('utilisateur')->where('username', $request["username"])->first();
+        $user = Utilisateur::find($user->id);
+        if($request["username"] == $user->username && $request["password"] == $user->password)
+        {
+            Auth::login($user,false);
+            return redirect('/');
+        }
         return redirect('login');
     }
 }

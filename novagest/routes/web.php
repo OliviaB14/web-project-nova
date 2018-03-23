@@ -1,5 +1,6 @@
 <?php
 Route::get('logout','BasicController@Logout');
+Route::post('test','BasicController@Login');
 
 // Routes avec controlleurs
 Route::get('/','AccueilController@index');
