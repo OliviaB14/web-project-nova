@@ -13,7 +13,7 @@
   <li><a href="/profil">Voir</a></li>
   <li><a href="/profil/parametres">Paramètres</a></li>
   <li class="divider"></li>
-  <li><a href="#!" class="red-text">Déconnexion</a></li>
+  <li><a href="logout" class="red-text">Déconnexion</a></li>
 </ul>
 <!-- Dropdown Structure -->
 <div class="navbar-fixed">
