@@ -32,8 +32,8 @@ class StatutVehiculeController extends BasicController
 
     public function show($id)
     {
-        $statutVehicule = StatutVehicule::find($id);
-        if ($statutVehicule != null) {
+        $statutvehicule = StatutVehicule::find($id);
+        if ($statutvehicule != null) {
             return $this->sendResponse(true, null, $statutVehicule);
         }
         return $this->sendResponse(false, "Data not found.", null);
@@ -41,18 +41,25 @@ class StatutVehiculeController extends BasicController
 
     public function update($id, Request $request)
     {
-        // @TODO @Nathan please validate the data
+        //Validator
+        $validator = Validator::make($request->all(), [
+            'elibelle' => 'required|max:32',
+        ]);
 
-        // Find the corresponding record
-        $statutVehicule = StatutVehicule::find($id);
-        // Populate data
-        if ($statutVehicule != null) {
-            $this->populateData($statutVehicule, $request);
-            // Save
-            $statutVehicule->save();
-            return $this->sendResponse(true, null, $statutVehicule);
+        if ($validator->fails()) {
+            dd($validator);
+            
+            return redirect('statuts')
+                        ->withErrors($validator)
+                        ->withInput();
         }
-        return $this->sendResponse(false, "Data not found.", null);
+
+        // Find the corresponding record 
+        $statut = StatutVehicule::find($id);
+        $statut->libelle = $request["elibelle"];
+        $statut->save();
+
+        return redirect('statuts');
     }
 
     public function store(Request $request)
@@ -101,6 +108,7 @@ class StatutVehiculeController extends BasicController
         // }
         // return $this->sendResponse(false, "Data not found.", null);
 
+                dd($id);
 
                 // Find the corresponding record 
                 $statut = StatutVehicule::find($id);
