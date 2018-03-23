@@ -89,7 +89,7 @@ $(document).ready(function(){
                 <div class="row">
                     <div class="input-field col s12">
                         {{ Form::label('code_postal', 'Code postal')}}
-                        {{ Form::text('code_psotal', null,array('class'=>'validate', 'required' => 'required'))}}
+                        {{ Form::text('code_postal', null,array('class'=>'validate', 'required' => 'required'))}}
                     </div>
                 </div>
             </div>
