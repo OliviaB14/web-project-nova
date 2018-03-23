@@ -53,15 +53,27 @@ class VilleController extends Controller
 
     public function store(Request $request)
     {
-        // @TODO @Nathan please validate the data
+        //Validator
 
-        // Create a new ville from request param
+        $validator = Validator::make($request->all(), [
+            'nom' => 'required|max:32',
+            'code_postal' => 'required|max:12',
+        ]);
+
+        if ($validator->fails()) {
+            //dd($validator);
+            return redirect('villes')
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+
+        // Create a new agence from request param
         $ville = new Ville;
-        // Populate data
-        $this->populateData($agence, $request);
-        // Save
+        $ville->nom = $request["nom"];
+        $ville->code_postal = $request["code_postal"];
         $ville->save();
-        return $this->sendResponse(true, null, $ville);
+
+        return redirect('villes');
     }
 
     public function destroy($id)

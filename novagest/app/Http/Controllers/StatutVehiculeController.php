@@ -64,18 +64,6 @@ class StatutVehiculeController extends BasicController
 
     public function store(Request $request)
     {
-        // // @TODO @Nathan please validate the data
-
-        // // Create a new StatutVehicule from request param
-        // $statutVehicule = new StatutVehicule;
-        // // Populate data
-        // $this->populateData($agence, $request);
-        // // Save
-        // $statutVehicule->save();
-        // return $this->sendResponse(true, null, $statutVehicule);
-
-                //dd($request);
-
                 //Validator
                 $validator = Validator::make($request->all(), [
                     'libelle' => 'required|max:32',
@@ -90,10 +78,7 @@ class StatutVehiculeController extends BasicController
         
                 // Create a new statut from request param
                 $statut = new StatutVehicule;
-                // Populate data
-               
-                $this->populateData($statut, $request);
-                // Save
+                $statut->libelle = $request["libelle"];
                 $statut->save();
                 return redirect('statuts');
     }
@@ -109,7 +94,7 @@ class StatutVehiculeController extends BasicController
         // }
         // return $this->sendResponse(false, "Data not found.", null);
 
-                dd($id);
+                //dd($id);
 
                 // Find the corresponding record 
                 $statut = StatutVehicule::find($id);

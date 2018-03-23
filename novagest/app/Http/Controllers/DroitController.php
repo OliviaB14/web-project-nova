@@ -53,15 +53,25 @@ class DroitController extends Controller
 
     public function store(Request $request)
     {
-        // @TODO @Nathan please validate the data
+        //Validator
 
-        // Create a new Droit from request param
+        $validator = Validator::make($request->all(), [
+            'libelle' => 'required|max:32',
+        ]);
+
+        if ($validator->fails()) {
+            //dd($validator);
+            return redirect('droits')
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+
+        // Create a new agence from request param
         $droit = new Droit;
-        // Populate data
-        $this->populateData($agence, $request);
-        // Save
+        $droit->libelle = $request["libelle"];
         $droit->save();
-        return $this->sendResponse(true, null, $droit);
+
+        return redirect('droits');
     }
 
     public function destroy($id)

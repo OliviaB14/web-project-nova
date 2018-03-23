@@ -53,15 +53,29 @@ class PieceVehiculeController extends Controller
 
     public function store(Request $request)
     {
-        // @TODO @Nathan please validate the data
+        //Validator
 
-        // Create a new PieceVehicule from request param
+        $validator = Validator::make($request->all(), [
+            'date_entree' => 'required',
+            'idtypeetatpiece' => 'required|max:12',
+            'idtypepiece' => 'required|max:12',
+        ]);
+
+        if ($validator->fails()) {
+            //dd($validator);
+            return redirect('piecevehicules')
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+
+        // Create a new agence from request param
         $pieceVehicule = new PieceVehicule;
-        // Populate data
-        $this->populateData($agence, $request);
-        // Save
+        $pieceVehicule->date_entree = $request["date_entree"];
+        $pieceVehicule->idtypeetatpiece = $request["idtypeetatpiece"];
+        $pieceVehicule->idtypepiece = $request["idtypepiece"];
         $pieceVehicule->save();
-        return $this->sendResponse(true, null, $pieceVehicule);
+
+        return redirect('piecevehicules');
     }
 
     public function destroy($id)

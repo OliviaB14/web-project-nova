@@ -53,15 +53,39 @@ class UtilisateurController extends Controller
 
     public function store(Request $request)
     {
-        // @TODO @Nathan please validate the data
+        //Validator
+
+        $validator = Validator::make($request->all(), [
+            'nom' => 'required|max:32',
+            'prenom' => 'required|max:32',
+            'date_naissance' => 'required',
+            'idtypeutilisateur' => 'required|max:12',
+            'username' => 'required|max:32',
+            'password' => 'required|max:256',
+            'telephone' => 'required|max:24',
+            'fax' => 'required|max:24'
+        ]);
+
+        if ($validator->fails()) {
+            //dd($validator);
+            return redirect('utilisateurs')
+                        ->withErrors($validator)
+                        ->withInput();
+        }
 
         // Create a new utilisateur from request param
         $utilisateur = new Utilisateur;
-        // Populate data
-        $this->populateData($agence, $request);
-        // Save
+        $utilisateur->nom = $request["nom"];
+        $utilisateur->prenom = $request["prenom"];
+        $utilisateur->date_naissance = $request["date_naissance"];
+        $utilisateur->idtypeutilisateur = $request["idtypeutilisateur"];
+        $utilisateur->username = $request["username"];
+        $utilisateur->password = $request["password"];
+        $utilisateur->telephone = $request["telephone"];
+        $utilisateur->fax = $request["fax"];
         $utilisateur->save();
-        return $this->sendResponse(true, null, $utilisateur);
+
+        return redirect('utilisateurs');
     }
 
     public function destroy($id)

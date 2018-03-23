@@ -113,7 +113,7 @@ $(".edit").on('click',function(){
             Materialize.updateTextFields();
             // var ville = response["idville"];
             // $('#eville option[value=' + ville + ']').attr('selected','selected');
-            // },
+            },
             error: function(response){
                 alert('Error'+response);
                 }

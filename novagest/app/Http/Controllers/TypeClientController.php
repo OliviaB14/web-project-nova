@@ -53,15 +53,25 @@ class TypeClientController extends Controller
 
     public function store(Request $request)
     {
-        // @TODO @Nathan please validate the data
+        //Validator
 
-        // Create a new TypeClient from request param
+        $validator = Validator::make($request->all(), [
+            'libelle' => 'required|max:32',
+        ]);
+
+        if ($validator->fails()) {
+            //dd($validator);
+            return redirect('typelients')
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+
+        // Create a new typeClient from request param
         $typeClient = new TypeClient;
-        // Populate data
-        $this->populateData($agence, $request);
-        // Save
+        $typeClient->libelle = $request["libelle"];
         $typeClient->save();
-        return $this->sendResponse(true, null, $typeClient);
+
+        return redirect('typelients');
     }
 
     public function destroy($id)

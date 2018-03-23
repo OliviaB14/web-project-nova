@@ -53,15 +53,33 @@ class HistoriqueVehiculeController extends Controller
 
     public function store(Request $request)
     {
-        // @TODO @Nathan please validate the data
+        //Validator
 
-        // Create a new HistoriqueVehicule from request param
+        $validator = Validator::make($request->all(), [
+            'date_ligne' => 'required',
+            'commentaire' => 'required',
+            'idutilisateur' => 'required|max:12',
+            'idtypeevenement' => 'required|max:12',
+            'idvehicule' => 'required|max:12',
+        ]);
+
+        if ($validator->fails()) {
+            //dd($validator);
+            return redirect('historiquevehicules')
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+
+        // Create a new historiquevehicule from request param
         $historiqueVehicule = new HistoriqueVehicule;
-        // Populate data
-        $this->populateData($agence, $request);
-        // Save
+        $historiqueVehicule->date_ligne = $request["date_ligne"];
+        $historiqueVehicule->commentaire = $request["commentaire"];
+        $historiqueVehicule->idutilisateur = $request["idutilisateur"];
+        $historiqueVehicule->idtypeevenement = $request["idtypeevenement"];
+        $historiqueVehicule->idvehicule = $request["idvehicule"];
         $historiqueVehicule->save();
-        return $this->sendResponse(true, null, $historiqueVehicule);
+
+        return redirect('historiquevehicules');
     }
 
     public function destroy($id)

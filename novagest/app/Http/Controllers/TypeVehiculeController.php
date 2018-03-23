@@ -53,15 +53,35 @@ class TypeVehiculeController extends Controller
 
     public function store(Request $request)
     {
-        // @TODO @Nathan please validate the data
+        //Validator
 
-        // Create a new TypeVehicule from request param
+        $validator = Validator::make($request->all(), [
+            'modele' => 'required|max:32',
+            'hauteur' => 'required|max:16',
+            'largeur' => 'required|max:16',
+            'poids' => 'required|max:16',
+            'puissance' => 'required|max:8',
+            'prix_neuf' => 'required|'
+        ]);
+
+        if ($validator->fails()) {
+            //dd($validator);
+            return redirect('typevehicules')
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+
+        // Create a new typevehicule from request param
         $typeVehicule = new TypeVehicule;
-        // Populate data
-        $this->populateData($agence, $request);
-        // Save
+        $typeVehicule->modele = $request["modele"];
+        $typeVehicule->hauteur = $request["hauteur"];
+        $typeVehicule->largeur = $request["largeur"];
+        $typeVehicule->poids = $request["poids"];
+        $typeVehicule->puissance = $request["puissance"];
+        $typeVehicule->prix_neuf = $request["prix_neuf"];
         $typeVehicule->save();
-        return $this->sendResponse(true, null, $typeVehicule);
+
+        return redirect('typevehicules');
     }
 
     public function destroy($id)

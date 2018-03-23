@@ -28,9 +28,9 @@ class TypePieceVehiculeController extends Controller
 
     public function show($id)
     {
-        $$typePieceVehicule = $typePieceVehicule::find($id);
-        if ($$typePieceVehicule != null) {
-            return $this->sendResponse(true, null, $$typePieceVehicule);
+        $typePieceVehicule = $typePieceVehicule::find($id);
+        if ($typePieceVehicule != null) {
+            return $this->sendResponse(true, null, $typePieceVehicule);
         }
         return $this->sendResponse(false, "Data not found.", null);
     }
@@ -40,28 +40,42 @@ class TypePieceVehiculeController extends Controller
         // @TODO @Nathan please validate the data
 
         // Find the corresponding record
-        $$typePieceVehicule = $typePieceVehicule::find($id);
+        $typePieceVehicule = $typePieceVehicule::find($id);
         // Populate data
-        if ($$typePieceVehicule != null) {
-            $this->populateData($$typePieceVehicule, $request);
+        if ($typePieceVehicule != null) {
+            $this->populateData($typePieceVehicule, $request);
             // Save
-            $$typePieceVehicule->save();
-            return $this->sendResponse(true, null, $$typePieceVehicule);
+            $typePieceVehicule->save();
+            return $this->sendResponse(true, null, $typePieceVehicule);
         }
         return $this->sendResponse(false, "Data not found.", null);
     }
 
     public function store(Request $request)
     {
-        // @TODO @Nathan please validate the data
+        //Validator
 
-        // Create a new $typePieceVehicule from request param
-        $$typePieceVehicule = new $typePieceVehicule;
-        // Populate data
-        $this->populateData($agence, $request);
-        // Save
-        $$typePieceVehicule->save();
-        return $this->sendResponse(true, null, $$typePieceVehicule);
+        $validator = Validator::make($request->all(), [
+            'nom' => 'required|max:32',
+            'idtypevehicule' => 'required|max:12',
+            'prix_neuf' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            //dd($validator);
+            return redirect('typepiecevehicules')
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+
+        // Create a new typePieceVehicule from request param
+        $typePieceVehicule = new TypePieceVehicule;
+        $typePieceVehicule->nom = $request["nom"];
+        $typePieceVehicule->idtypevehicule = $request["idtypevehicule"];
+        $typePieceVehicule->prix_neuf = $request["prix_neuf"];
+        $typePieceVehicule->save();
+
+        return redirect('typepiecevehicules');
     }
 
     public function destroy($id)

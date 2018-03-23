@@ -53,15 +53,25 @@ class TypeEtatPieceController extends Controller
 
     public function store(Request $request)
     {
-        // @TODO @Nathan please validate the data
+        //Validator
 
-        // Create a new TypeEtatPiece from request param
+        $validator = Validator::make($request->all(), [
+            'libelle' => 'required|max:32',
+        ]);
+
+        if ($validator->fails()) {
+            //dd($validator);
+            return redirect('typeetatpieces')
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+
+        // Create a new agence from request param
         $typeEtatPiece = new TypeEtatPiece;
-        // Populate data
-        $this->populateData($agence, $request);
-        // Save
+        $typeEtatPiece->libelle = $request["libelle"];
         $typeEtatPiece->save();
-        return $this->sendResponse(true, null, $typeEtatPiece);
+
+        return redirect('typeetatpieces');
     }
 
     public function destroy($id)

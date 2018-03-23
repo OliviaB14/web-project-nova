@@ -53,15 +53,25 @@ class TypeHistoriqueEvenementController extends Controller
 
     public function store(Request $request)
     {
-        // @TODO @Nathan please validate the data
+        //Validator
 
-        // Create a new TypeHistoriqueEvenement from request param
+        $validator = Validator::make($request->all(), [
+            'libelle' => 'required|max:32',
+        ]);
+
+        if ($validator->fails()) {
+            //dd($validator);
+            return redirect('typehistoriqueevenements')
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+
+        // Create a new typeHistoriqueEvenement from request param
         $typeHistoriqueEvenement = new TypeHistoriqueEvenement;
-        // Populate data
-        $this->populateData($agence, $request);
-        // Save
+        $typeHistoriqueEvenement->libelle = $request["libelle"];
         $typeHistoriqueEvenement->save();
-        return $this->sendResponse(true, null, $typeHistoriqueEvenement);
+
+        return redirect('typehistoriqueevenements');
     }
 
     public function destroy($id)

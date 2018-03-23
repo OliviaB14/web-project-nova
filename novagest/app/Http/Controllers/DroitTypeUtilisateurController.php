@@ -53,15 +53,27 @@ class DroitTypeUtilisateurController extends Controller
 
     public function store(Request $request)
     {
-        // @TODO @Nathan please validate the data
+        //Validator
 
-        // Create a new DroitTypeUtilisateur from request param
+        $validator = Validator::make($request->all(), [
+            'iddroit' => 'required|max:12',
+            'idtypeutilisateur' => 'required|max:12',
+        ]);
+
+        if ($validator->fails()) {
+            //dd($validator);
+            return redirect('droittypeutilisateurs')
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+
+        // Create a new droitTypeUtilisateur from request param
         $droitTypeUtilisateur = new DroitTypeUtilisateur;
-        // Populate data
-        $this->populateData($agence, $request);
-        // Save
+        $droitTypeUtilisateur->iddroit = $request["iddroit"];
+        $droitTypeUtilisateur->idtypeutilisateur = $request["idtypeutilisateur"];
         $droitTypeUtilisateur->save();
-        return $this->sendResponse(true, null, $droitTypeUtilisateur);
+
+        return redirect('droittypeutilisateurs');
     }
 
     public function destroy($id)

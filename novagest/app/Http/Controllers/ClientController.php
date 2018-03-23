@@ -80,7 +80,7 @@ class ClientController extends BasicController
             'telephone' => 'required|max:24',
             'fax' => 'required|max:24',
             'mail' => 'required|email|max:64',
-            'idtypeclient' => 'required'
+            'idtypeclient' => 'required|max:12'
         ]);
 
         if ($validator->fails()) {
@@ -91,9 +91,13 @@ class ClientController extends BasicController
 
         // Create a new client from request param
         $client = new Client;
-        // Populate data
-        $this->populateData($client, $request);
-        // Save
+        $client->raison_sociale = $request["raison_sociale"];
+        $client->adresse = $request["adresse"];
+        $client->idville = $request["idville"];
+        $client->telephone = $request["telephone"];
+        $client->fax = $request["fax"];
+        $client->mail = $request["mail"];
+        $client->idtypeclient = $request["idtypeclient"];
         $client->save();
         return redirect('clients');
     }
