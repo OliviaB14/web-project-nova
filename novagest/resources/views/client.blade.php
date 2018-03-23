@@ -51,7 +51,7 @@
         $type['entreprise'] = DB::table('client')->where('idtypeclient', '=','2')->count();
     ?>
 
-    <div class="col s4">
+    <div class="col l4 s12">
         <div class="card teal lighten-3">
             <div class="card-content">
               <span class="card-title black-text"><b class="timer" data-to="{{$type['commune']}}" data-speed="1500"></b> communes</span>
@@ -59,7 +59,7 @@
             </div>
         </div>
     </div>
-    <div class="col s4" >
+    <div class="col l4 s12" >
         <div class="card brown lighten-3" height="400">
             <div class="card-content">
               <span class="card-title black-text"><b class="timer" data-to="{{$type['entreprise']}}" data-speed="1500" ></b> entreprises</span>
@@ -67,7 +67,7 @@
             </div>
         </div>
     </div>
-    <div class="col s4">
+    <div class="col l4 s12">
         <div class="card white" id="pie-clients">
             <div class="card-content">
               <canvas id="myChart" width="400" height="400"></canvas>
