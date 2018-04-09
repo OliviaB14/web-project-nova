@@ -46,12 +46,14 @@
                     <thead>
                         <tr>
                             <th>Type de client</th>
+                            <th>Status</th>
                         </tr>
                     </thead>
                     <tbody>
                     @foreach($typeclients as $typeclient)
                         <tr>
                             <td>{{$typeclient->libelle}}</td>
+                            <td>{{$typeclient->desactive}}</td>
                         </tr>
                     @endforeach
                     </tbody>

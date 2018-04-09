@@ -67,6 +67,7 @@
                             <th>Date d'entrée</th>
                             <th>Etat de la pièce</th>
                             <th>Type de pièce</th>
+                            <th>Status</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -76,6 +77,7 @@
                             <td>{{$pieceVehicule->date_entree}}</td>
                             <td>{{$pieceVehicule->idtypeetatpiece}}</td>
                             <td>{{$pieceVehicule->idtypepiece}}</td>
+                            <td>{{$pieceVehicule->desactive}}</td>
                         </tr>
                     @endforeach
                     </tbody>

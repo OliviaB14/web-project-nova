@@ -60,6 +60,7 @@
                             <th>Nom de la pièce</th>
                             <th>Type de véhicule</th>
                             <th>Prix neuf</th>
+                            <th>Status</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -68,6 +69,7 @@
                             <td>{{$typepiecevehicule->nom}}</td>
                             <td>{{$typepiecevehicule->idtypevehicule}}</td>
                             <td>{{$typepiecevehicule->prix_neuf}}</td>
+                            <td>{{$typepiecevehicule->desactive}}</td>
                         </tr>
                     @endforeach
                     </tbody>

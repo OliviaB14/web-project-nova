@@ -224,6 +224,7 @@ $(document).ready(function(){
                             <th>Fax</th>
                             <th>Mail</th>
                             <th>Type de client</th>
+                            <th>Status</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -237,6 +238,7 @@ $(document).ready(function(){
                             <td>{{$client->fax}}</td>
                             <td>{{$client->mail}}</td>
                             <td>{{$client->idtypeclient}}</td>
+                            <td>{{$client->desactive}}</td>
                             <td><a class="btn-floating btn-large waves-effect waves-light red" href="client/destroy/{{$client->id}}"><i class="material-icons">cancel</i><a id="{{$client->id}}" class="btn-floating btn-large waves-effect waves-light yellow edit" href="#modal1"><i class="material-icons">edit</i></a></a></td>
                         </tr>
                     @endforeach

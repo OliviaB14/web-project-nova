@@ -46,12 +46,14 @@
                     <thead>
                         <tr>
                             <th>Type d'historique évènement</th>
+                            <th>Status</th>
                         </tr>
                     </thead>
                     <tbody>
                     @foreach($typehistoriqueevenements as $typehistoriqueevenement)
                         <tr>
                             <td>{{$typehistoriqueevenement->libelle}}</td>
+                            <td>{{$typehistoriqueevenement->desactive}}</td>
                         </tr>
                     @endforeach
                     </tbody>

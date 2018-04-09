@@ -46,12 +46,14 @@
                     <thead>
                         <tr>
                             <th>Type d'état - pièces de véhicule</th>
+                            <th>Status</th>
                         </tr>
                     </thead>
                     <tbody>
                     @foreach($typeetatpieces as $typeetatpiece)
                         <tr>
                             <td>{{$typeetatpiece->libelle}}</td>
+                            <td>{{$typeetatpiece->desactive}}</td>
                         </tr>
                     @endforeach
                     </tbody>

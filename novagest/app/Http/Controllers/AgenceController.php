@@ -20,8 +20,7 @@ class AgenceController extends BasicController
 
     public function show($id)
     {
-        $agence = Agence::find($id);
-  
+        $agence = Agence::find($id);  
         return response()->json($agence);
     }
 

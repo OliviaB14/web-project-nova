@@ -29,7 +29,7 @@
     </div>
 </div>
 
-
+<!-- Modal Structure -->
 <div id="modal1" class="modal modal-fixed-footer">
   <div class="modal-content">
   {{ Form::open(array('url' => 'ville/update/', 'id'=>'form')) }}

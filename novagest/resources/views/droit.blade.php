@@ -49,12 +49,14 @@
                     <thead>
                         <tr>
                             <th>Libelle</th>
+                            <th>Status</th>
                         </tr>
                     </thead>
                     <tbody>
                     @foreach($droits as $droit)
                         <tr>
                             <td>{{$droit->libelle}}</td>
+                            <td>{{$droit->desactive}}</td>
                         </tr>
                     @endforeach
                     </tbody>

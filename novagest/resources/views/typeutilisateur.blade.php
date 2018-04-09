@@ -46,12 +46,14 @@
                     <thead>
                         <tr>
                             <th>Type utilisateur</th>
+                            <th>Status</th>
                         </tr>
                     </thead>
                     <tbody>
                     @foreach($typeutilisateurs as $typeutilisateur)
                         <tr>
                             <td>{{$typeutilisateur->libelle}}</td>
+                            <td>{{$typeutilisateur->desactive}}</td>
                         </tr>
                     @endforeach
                     </tbody>

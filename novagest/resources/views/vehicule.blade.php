@@ -120,7 +120,8 @@
                         <th class="mobile">Id</th> 
                         <th>Immatriculation</th> 
                         <th>Date d'achat</th> 
-                        <th>Date de mise en circulation</th> 
+                        <th>Date de mise en circulation</th>
+                        <th>Status</th>
                     </tr> 
                 </thead> 
                 <tbody> 
@@ -129,7 +130,8 @@
                         <td>{{$car->id}}</td> 
                         <td>{{$car->immatriculation}}</td> 
                         <td>{{$car->date_achat}}</td> 
-                        <td>{{$car->date_misecirculation}}</td> 
+                        <td>{{$car->date_misecirculation}}</td>
+                        <td>{{$car->desactive}}</td> 
                     </tr> 
                 @endforeach 
                 </tbody> 

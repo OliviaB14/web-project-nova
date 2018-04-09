@@ -81,6 +81,7 @@
                             <th>Poids</th>
                             <th>Puissance</th>
                             <th>Prix neuf</th>
+                            <th>Status</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -92,6 +93,7 @@
                             <td>{{$typevehicule->poids}}</td>
                             <td>{{$typevehicule->puissance}}</td>
                             <td>{{$typevehicule->prix_neuf}}</td>
+                            <td>{{$typevehicule->desactive}}</td>
                         </tr>
                     @endforeach
                     </tbody>

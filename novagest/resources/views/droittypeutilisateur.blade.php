@@ -46,6 +46,7 @@
                     <thead>
                         <tr>
                             <th>Droits accordés aux utilisateurs</th>
+                            <th>Status</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -53,6 +54,7 @@
                         <tr>
                             <td>{{$droittypeutilisateur->iddroit}}</td>
                             <td>{{$droittypeutilisateur->idtypeutilisateur}}</td>
+                            <td>{{$droittypeutilisateur->desactive}}</td>
                         </tr>
                     @endforeach
                     </tbody>

@@ -59,6 +59,7 @@
                         <tr>
                             <th>ID</th>
                             <th>Statut du véhicule</th>
+                            <td>Status</td>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -67,6 +68,7 @@
                         <tr>
                             <td>{{$statut->id}}</td>
                             <td>{{$statut->libelle}}</td>
+                            <td>{{$statut->desactive}}</td>
                             <td><a class="btn-floating btn-large waves-effect waves-light red" href="statut/destroy/{{$statut->id}}"><i class="material-icons">cancel</i><a id="{{$statut->id}}" class="btn-floating btn-large waves-effect waves-light yellow edit" href="#modal1"><i class="material-icons">edit</i></a></a></td>
                         </tr>
                     @endforeach

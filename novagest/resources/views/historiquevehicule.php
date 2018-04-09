@@ -81,6 +81,7 @@
                             <th>Utilisateur</th>
                             <th>Type d'évènement</th>
                             <th>Véhicule</th>
+                            <th>Status</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -92,6 +93,7 @@
                             <td>{{$historique_vehicule->idutilisateur}}</td>
                             <td>{{$historique_vehicule->idtypeevenement}}</td>
                             <td>{{$historique_vehicule->idvehicule}}</td>
+                            <td>{{$historique_vehicule->desactive}}</td>
                         </tr>
                     @endforeach
                     </tbody>
