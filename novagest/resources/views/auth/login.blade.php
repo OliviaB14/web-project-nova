@@ -101,7 +101,4 @@
         </center>
     </div>
 </main>
-<?php 
-echo password_hash('moi', PASSWORD_DEFAULT)."\n";
-?>
 @endsection
