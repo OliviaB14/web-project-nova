@@ -30,10 +30,7 @@ class VilleController extends BasicController
     public function show($id)
     {
         $ville = Ville::find($id);
-        if ($ville != null) {
-            return $this->sendResponse(true, null, $ville);
-        }
-        return $this->sendResponse(false, "Data not found.", null);
+        return response()->json($ville);
     }
 
     public function update($id, Request $request)
