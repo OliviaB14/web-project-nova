@@ -142,7 +142,6 @@ $(document).ready(function(){
 
 <script>
 $(".edit").on('click',function(){
-    console.log("ajax");
     var data = $('.edit').attr('id')
     $.ajax({
           url: 'villes/show/' + data,
@@ -152,9 +151,9 @@ $(".edit").on('click',function(){
             $('#modal1').modal('open');
             $('#enom').val(response['nom']);
             $('#ecode_postal').val(response['code_postal']);
-            
+
             $('#form').attr('action', 'ville/update/' + response['id']);
-            Materialize.updateTextFields();
+            //Materialize.updateTextFields();
             var ville = response["id"];
             $('#eville option[value=' + ville + ']').attr('selected','selected');
             },
