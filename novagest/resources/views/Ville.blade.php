@@ -108,6 +108,7 @@ $(document).ready(function(){
                 <th>Id</th>
                 <th>Nom</th>
                 <th>Code Postal</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -164,6 +165,10 @@ $(".edit").on('click',function(){
 });
 
 $(document).ready(function() {
+    $(document).ready(function() {
+    $('select').material_select();
+}); 
+
         $('#example').DataTable( {
             columnDefs: [
                 {
@@ -177,9 +182,7 @@ $(document).ready(function() {
   });
 
 
-  $(document).ready(function() {
-    $('select').material_select();
-});
+  
 } );
           
 </script>
