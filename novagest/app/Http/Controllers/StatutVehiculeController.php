@@ -32,6 +32,7 @@ class StatutVehiculeController extends BasicController
 
     public function show($id)
     {
+        var_dump($id);
         $statutvehicule = StatutVehicule::find($id);
         if ($statutvehicule != null) {
             return $this->sendResponse(true, null, $statutVehicule);
