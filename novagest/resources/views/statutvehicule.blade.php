@@ -108,7 +108,8 @@ $(document).ready(function(){
 <script>
 $(".edit").on('click',function(){
     console.log("ajax");
-    var data = $('.edit').attr('id')
+    var data = $(this).attr('id')
+    console.log(data);
     $.ajax({
           url: 'statuts/show/' + data,
           type: "get",
