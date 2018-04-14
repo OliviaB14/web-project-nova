@@ -124,7 +124,7 @@ $(".edit").on('click',function(){
             // $('#eville option[value=' + ville + ']').attr('selected','selected');
             },
             error: function(response){
-                alert('Error'+response);
+                console.log('Error'+response);
                 }
         });
 });
