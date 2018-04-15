@@ -81,7 +81,7 @@ class TypeVehiculeController extends BasicController
             'puissance' => 'required|max:8',
             'prix_neuf' => 'required|'
         ]);
-
+        
         if ($validator->fails()) {
             //dd($validator);
             return redirect('typevehicules')
@@ -92,6 +92,7 @@ class TypeVehiculeController extends BasicController
         // Create a new typevehicule from request param
         $typeVehicule = new TypeVehicule;
         $typeVehicule->modele = $request["modele"];
+        $typeVehicule->description = $request["description"];
         $typeVehicule->hauteur = $request["hauteur"];
         $typeVehicule->largeur = $request["largeur"];
         $typeVehicule->poids = $request["poids"];

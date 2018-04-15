@@ -17,7 +17,7 @@
 <!-- Modal Structure -->
 <div id="modal1" class="modal modal-fixed-footer">
   <div class="modal-content">
-  {{ Form::open(array('url' => 'type_vehicule/update/', 'id'=>'form')) }}
+  {{ Form::open(array('url' => 'typevehicule/update/', 'id'=>'form')) }}
             <div class="col s12">
                 <div class="row">
                     <div class="input-field col s12">
@@ -71,12 +71,18 @@
             </ul>
         </div>
       @endif
-      {{ Form::open(array('url' => 'type_vehicule/add')) }}
+      {{ Form::open(array('url' => 'typevehicule/add')) }}
             <div class="col s12">
                 <div class="row">
                     <div class="input-field col s12">
                         {{ Form::label('modele', 'Modèle')}}
                         {{ Form::text('modele', null,array('class'=>'validate', 'required' => 'required'))}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        {{ Form::label('description', 'Description')}}
+                        {{ Form::text('description', null,array('class'=>'validate', 'required' => 'required'))}}
                     </div>
                 </div>
                 <div class="row">
@@ -137,7 +143,7 @@
                             <td>{{$typevehicule->puissance}}</td>
                             <td>{{$typevehicule->prix_neuf}}</td>
                             <td>{{$typevehicule->desactive}}</td>
-                            <td><a class="btn-floating btn-large waves-effect waves-light red" href="typevehicules/destroy/{{$typevehicule->id}}"><i class="material-icons">cancel</i><a id="{{$typevehicule->id}}" class="btn-floating btn-large waves-effect waves-light yellow edit" href="#modal1"><i class="material-icons">edit</i></a></a></td>
+                            <td><a class="btn-floating btn-large waves-effect waves-light red" href="typevehicule/destroy/{{$typevehicule->id}}"><i class="material-icons">cancel</i><a id="{{$typevehicule->id}}" class="btn-floating btn-large waves-effect waves-light yellow edit" href="#modal1"><i class="material-icons">edit</i></a></a></td>
                         </tr>
                     @endforeach
                     </tbody>
