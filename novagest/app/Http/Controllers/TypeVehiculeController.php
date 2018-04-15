@@ -30,10 +30,7 @@ class TypeVehiculeController extends BasicController
     public function show($id)
     {
         $typeVehicule = TypeVehicule::find($id);
-        if ($typeVehicule != null) {
-            return $this->sendResponse(true, null, $typeVehicule);
-        }
-        return $this->sendResponse(false, "Data not found.", null);
+        return response()->json($typeVehicule);
     }
 
     public function update($id, Request $request)

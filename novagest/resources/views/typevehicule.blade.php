@@ -26,6 +26,12 @@
                     </div>
                 </div>
                 <div class="row">
+                    <div class="input-field col s12">
+                        {{ Form::label('edescription', 'Description')}}
+                        {{ Form::text('edescription', null,array('class'=>'validate', 'required' => 'required'))}}
+                    </div>
+                </div>
+                <div class="row">
                     <div class="input-field col s6">
                         {{ Form::label('ehauteur', 'Hauteur')}}
                         {{ Form::text('ehauteur', null,array('class'=>'validate', 'required' => 'required'))}}
@@ -56,6 +62,13 @@
         {{ Form::close() }}
 </div>
 </div>
+
+<script>
+$(document).ready(function(){
+    // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
+    $('.modal').modal();
+  });
+</script>
 
 <ul class="collapsible" style="margin-left:2%" data-collapsible="accordion">
     <li>
@@ -152,15 +165,49 @@
     </li>
   </ul>
 <script>
+$(".edit").on('click',function(){
+    console.log("ajax");
+    var data = $('.edit').attr('id')
+    $.ajax({
+          url: 'typevehicule/show/' + data,
+          type: "get",
+           success: function(response){
+            console.log(response); 
+            $('#modal1').modal('open');
+            $('#emodele').val(response['modele']);
+            $('#edescription').val(response['description']);
+            $('#ehauteur').val(response['hauteur']);
+            $('#elargeur').val(response['largeur']);
+            $('#epoids').val(response['poids']);
+            $('#epuissance').val(response['puissance']);
+            $('#eprix_neuf').val(response['prix_neuf']);
+            
+            $('#form').attr('action', 'typevehicule/update/' + response['id']);
+            Materialize.updateTextFields();
+            },
+            error: function(response){
+                alert('Error'+response);
+                }
+        });
+});
+
 $(document).ready(function() {
-    $('#example').DataTable( {
-        columnDefs: [
-            {
-                targets: [ 0, 1],
-                className: 'mdl-data-table__cell--non-numeric'
-            }
-        ]
-    } );
+        $('#example').DataTable( {
+            columnDefs: [
+                {
+                    targets: [ 0, 1],
+                    className: 'mdl-data-table__cell--non-numeric'
+                }
+            ]
+        } );
+    $(document).ready(function(){
+    $('.collapsible').collapsible();
+  });
+
+
+  $(document).ready(function() {
+    $('select').material_select();
+});
 } );
           
 </script>

@@ -150,7 +150,7 @@ Route::get('typevehicules', 'TypeVehiculeController@index'); // index
 Route::post('typevehicule/add', 'TypeVehiculeController@store'); // add
 Route::get('typevehicules', 'TypeVehiculeController@index'); // show id
 Route::get('typevehicule/destroy/{id}', 'TypeVehiculeController@destroy');
-Route::get('typevehicules/show/{id}', 'TypeVehiculeController@show'); // index
+Route::get('typevehicule/show/{id}', 'TypeVehiculeController@show'); // index
 Route::post('typevehicule/update/{id}', 'TypeVehiculeController@update');
 //Fin typevehicule
 
