@@ -85,7 +85,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                    @foreach($typevehicules as $typevehicule)
+                    @foreach($typeVehicules as $typevehicule)
                         <tr>
                             <td>{{$typevehicule->modele}}</td>
                             <td>{{$typevehicule->hauteur}}</td>
