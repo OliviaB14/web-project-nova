@@ -13,14 +13,6 @@ use Illuminate\Support\Facades\Validator;
 
 class TypeVehiculeController extends BasicController
 {
-	// public function GetTypeVehicules()
-	// {
-	// 	$typeVehicules = DB::table('TypeVehicule')
-    //     ->get();
-    //     //dd($typeVehicules);
-	// 	return view('TypeVehicule', ['TypeVehicules' => $typeVehicules]);
-	// }
-
 	public function index()
     {
         $typeVehicules = TypeVehicule::all();
