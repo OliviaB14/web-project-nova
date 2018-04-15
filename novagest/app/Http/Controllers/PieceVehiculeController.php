@@ -23,8 +23,8 @@ class PieceVehiculeController extends BasicController
 
 	public function index()
     {
-        $piecevehicule = PieceVehicule::all();
-        return view('piecevehicule', ['piecevehicule' => $piecevehicule]);
+        $piecevehicules = PieceVehicule::all();
+        return view('piecevehicule', ['piecevehicules' => $piecevehicules]);
     }
 
     public function show($id)

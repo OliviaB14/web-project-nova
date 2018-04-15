@@ -17,50 +17,57 @@
 
 
 <section>
-    <div class="container">
-        <div class="row">
-        {{ Form::open(array('url' => 'piece_vehicule/add')) }}
-            <div class="col s12">
-                <div class="row">
-                    <div class="input-field col s6">
-                        {{ Form::label('id', 'Id')}}
-                        {{ Form::text('id', null,array('class'=>'validate', 'required' => 'required'))}}
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="input-field col s12">
-                        {{ Form::label('date_entree', 'Date_entree')}}
-                        {{ Form::text('date_entree', null,array('class'=>'validate', 'required' => 'required'))}}
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="input-field col s6">
-                        {{ Form::label('typeetatpiece', 'Typeetatpiece')}}
-                        {{ Form::text('typeetatpiece', null,array('class'=>'validate', 'required' => 'required'))}}
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="input-field col s6">
-                        {{ Form::label('typepiece', 'Typepiece')}}
-                        {{ Form::text('typepiece', null,array('class'=>'validate', 'required' => 'required'))}}
-                    </div>
-                </div>
-            </div>
-            {{ Form::submit('Ajouter', array('class' => 'btn-sm btn-success')) }}
-        {{ Form::close() }}
+
+<ul class="collapsible" style="margin-left:2%" data-collapsible="accordion">
+    <li>
+      <div class="collapsible-header"><i class="material-icons">add</i>Ajouter</div>
+      <div class="collapsible-body">
+      <div class="row">
+      @if ($errors->any())
+        <div style="font-color:red">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li class="w3-red">{{ $error }}</li>
+                @endforeach
+            </ul>
         </div>
-    </div>
-</section>
-
-
-<section>
-<div class="container">
-<div class="row" style="padding-top:15px">
-<!--<a class="btn btn-floating btn-large cyan pulse"><i class="material-icons">add</i></a>-->
-</div>
-        <div class="row" style="padding-top:10px">
-        <div>
-            <table id="example" class="mdl-data-table responsive-table" cellspacing="0" width="100%">
+      @endif
+      {{ Form::open(array('url' => 'piece_vehicule/add')) }}
+      <div class="col s12">
+          <div class="row">
+              <div class="input-field col s6">
+                  {{ Form::label('id', 'Id')}}
+                  {{ Form::text('id', null,array('class'=>'validate', 'required' => 'required'))}}
+              </div>
+          </div>
+          <div class="row">
+              <div class="input-field col s12">
+                  {{ Form::label('date_entree', 'Date_entree')}}
+                  {{ Form::text('date_entree', null,array('class'=>'validate', 'required' => 'required'))}}
+              </div>
+          </div>
+          <div class="row">
+              <div class="input-field col s6">
+                  {{ Form::label('typeetatpiece', 'Typeetatpiece')}}
+                  {{ Form::text('typeetatpiece', null,array('class'=>'validate', 'required' => 'required'))}}
+              </div>
+          </div>
+          <div class="row">
+              <div class="input-field col s6">
+                  {{ Form::label('typepiece', 'Typepiece')}}
+                  {{ Form::text('typepiece', null,array('class'=>'validate', 'required' => 'required'))}}
+              </div>
+          </div>
+      </div>
+      {{ Form::submit('Ajouter', array('class' => 'btn-sm btn-success')) }}
+  {{ Form::close() }}
+        </div>
+      </div>
+    </li>
+    <li>
+      <div class="collapsible-header"><i class="material-icons">dvr</i>Données</div>
+      <div class="collapsible-body">
+      <table id="example" class="mdl-data-table responsive-table" cellspacing="0" width="100%">
                     <thead>
                         <tr>
                             <th>N°</th>
@@ -71,7 +78,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                    @foreach($pieceVehicules as $pieceVehicule)
+                    @foreach($piecevehicules as $pieceVehicule)
                         <tr>
                             <td>{{$pieceVehicule->id}}</td>
                             <td>{{$pieceVehicule->date_entree}}</td>
@@ -82,9 +89,9 @@
                     @endforeach
                     </tbody>
                 </table>
-        </div>
-    </div>
-</div>
+      </div>
+    </li>
+  </ul>
 </section>
 
 <script>
