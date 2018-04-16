@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\BasicController;
 use App\Utilisateur;
+use App\typeutilisateur;
 use DB;
 use Input;
 use Illuminate\Support\Facades\Validator;
@@ -24,7 +25,8 @@ class UtilisateurController extends BasicController
 	public function index()
     {
         $utilisateurs = Utilisateur::all();
-        return view('utilisateur', ['utilisateurs' => $utilisateurs]);
+        $typeutilisateurs = typeutilisateur::pluck('libelle', 'id');
+        return view('utilisateur', ['utilisateurs' => $utilisateurs, 'typeutilisateurs' => $typeutilisateurs]);
     }
 
     public function show($id)
@@ -45,7 +47,8 @@ class UtilisateurController extends BasicController
             'eusername' => 'required|max:32',
             'epassword' => 'required|max:256',
             'etelephone' => 'required|max:24',
-            'efax' => 'required|max:24'
+            'efax' => 'required|max:24',
+            'email' => 'required|max:64'
         ]);
 
         if ($validator->fails()) {
@@ -65,6 +68,7 @@ class UtilisateurController extends BasicController
         $utilisateur->password = $request["epassword"];
         $utilisateur->telephone = $request["etelephone"];
         $utilisateur->fax = $request["efax"];
+        $utilisateur->mail = $request["email"];
         $utilisateur->save();
 
         return redirect('utilisateurs');
@@ -82,7 +86,8 @@ class UtilisateurController extends BasicController
             'username' => 'required|max:32',
             'password' => 'required|max:256',
             'telephone' => 'required|max:24',
-            'fax' => 'required|max:24'
+            'fax' => 'required|max:24',
+            'mail' => 'required|max:64'
         ]);
 
         if ($validator->fails()) {
@@ -102,6 +107,7 @@ class UtilisateurController extends BasicController
         $utilisateur->password = $request["password"];
         $utilisateur->telephone = $request["telephone"];
         $utilisateur->fax = $request["fax"];
+        $utilisateur->mail = $request["mail"];
         $utilisateur->save();
 
         return redirect('utilisateurs');
