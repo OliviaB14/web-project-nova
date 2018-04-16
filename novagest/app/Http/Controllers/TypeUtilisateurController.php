@@ -6,32 +6,32 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\BasicController;
-use App\TypeUtilisateur;
+use App\typeutilisateur;
 use DB;
 use Input;
 use Illuminate\Support\Facades\Validator;
 
-class TypeUtilisateurController extends BasicController
+class typeutilisateurController extends BasicController
 {
-	// public function GetTypeUtilisateurs()
+	// public function Gettypeutilisateurs()
 	// {
-	// 	$typeUtilisateurs = DB::table('TypeUtilisateur')
+	// 	$typeutilisateurs = DB::table('typeutilisateur')
     //     ->get();
-    //     //dd($typeUtilisateurs);
-	// 	return view('TypeUtilisateur', ['TypeUtilisateurs' => $typeUtilisateurs]);
+    //     //dd($typeutilisateurs);
+	// 	return view('typeutilisateur', ['typeutilisateurs' => $typeutilisateurs]);
 	// }
 
 	public function index()
     {
-        $typeUtilisateurs = TypeUtilisateur::all();
-        return view('typeUtilisateur', ['typeUtilisateurs' => $typeUtilisateurs]);
+        $typeutilisateurs = typeutilisateur::all();
+        return view('typeutilisateur', ['typeutilisateurs' => $typeutilisateurs]);
     }
 
     public function show($id)
     {
-        $typeUtilisateur = TypeUtilisateur::find($id);
-        if ($typeUtilisateur != null) {
-            return $this->sendResponse(true, null, $typeUtilisateur);
+        $typeutilisateur = typeutilisateur::find($id);
+        if ($typeutilisateur != null) {
+            return $this->sendResponse(true, null, $typeutilisateur);
         }
         return $this->sendResponse(false, "Data not found.", null);
     }
@@ -52,9 +52,9 @@ class TypeUtilisateurController extends BasicController
         }
 
         // Find the corresponding record 
-        $typeUtilisateur = TypeUtilisateur::find($id);
-        $typeUtilisateur->libelle = $request["elibelle"];
-        $typeUtilisateur->save();
+        $typeutilisateur = typeutilisateur::find($id);
+        $typeutilisateur->libelle = $request["elibelle"];
+        $typeutilisateur->save();
 
         return redirect('typeutilisateurs');
     }
@@ -75,9 +75,9 @@ class TypeUtilisateurController extends BasicController
         }
 
         // Create a new typeutilisateur from request param
-        $typeUtilisateur = new TypeUtilisateur;
-        $typeUtilisateur->libelle = $request["libelle"];
-        $typeUtilisateur->save();
+        $typeutilisateur = new typeutilisateur;
+        $typeutilisateur->libelle = $request["libelle"];
+        $typeutilisateur->save();
 
         return redirect('typeutilisateurs');
     }
@@ -85,9 +85,9 @@ class TypeUtilisateurController extends BasicController
     public function destroy($id)
     {
         // Find the corresponding record 
-        $typeUtilisateur = TypeUtilisateur::find($id);
-        $typeUtilisateur->desactive = 1;
-        $typeUtilisateur->save();
+        $typeutilisateur = typeutilisateur::find($id);
+        $typeutilisateur->desactive = 1;
+        $typeutilisateur->save();
         
         return redirect('typeutilisateurs');
     }
