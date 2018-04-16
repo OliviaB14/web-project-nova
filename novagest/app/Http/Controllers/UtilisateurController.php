@@ -30,10 +30,7 @@ class UtilisateurController extends BasicController
     public function show($id)
     {
         $utilisateur = Utilisateur::find($id);
-        if ($utilisateur != null) {
-            return $this->sendResponse(true, null, $utilisateur);
-        }
-        return $this->sendResponse(false, "Data not found.", null);
+        return response()->json($utilisateur);
     }
 
     public function update($id, Request $request)

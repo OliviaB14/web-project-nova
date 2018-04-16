@@ -205,7 +205,7 @@ $(document).ready(function(){
                             <td>{{$utilisateur->fax}}</td>
                             <td>{{$utilisateur->mail}}</td>
                             <td>{{$utilisateur->desactive}}</td>
-                            <td><a class="btn-floating btn-large waves-effect waves-light red" href="utilisateur/destroy/{{$utilisateur->id}}"><i class="material-icons">cancel</i><a id="{{$utilisateur->id}}" class="btn-floating btn-large waves-effect waves-light yellow edit" href="#modal1"><i class="material-icons">edit</i></a></a></td>
+                            <td><a class="btn-floating btn-large waves-effect waves-light red" href="utilisateur/destroy/{{$utilisateur->id}}"><i class="material-icons">cancel</i><a id="{{$utilisateur->id}}" class="btn-floating btn-large waves-effect waves-light yellow editedit" href="#modal1"><i class="material-icons">edit</i></a></a></td>
                         </tr>
                     @endforeach
                     </tbody>
@@ -231,7 +231,7 @@ $(document).ready(function(){
 <script>
 $(".edit").on('click',function(){
     console.log("ajax");
-    var data = $('.edit').attr('id')
+    var data = $(this).attr('id')
     $.ajax({
           url: 'utilisateurs/show/' + data,
           type: "get",
