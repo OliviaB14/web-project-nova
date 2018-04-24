@@ -17,52 +17,52 @@
 <!-- Modal Structure -->
 <div id="modal1" class="modal modal-fixed-footer">
   <div class="modal-content">
-  {{ Form::open(array('url' => 'vehicule/add')) }}
+  {{ Form::open(array('url' => 'vehicule/update', 'id'=>'form')) }}
   <h4 style="position: fixed;left: 0;top: 0;width: 100%;text-align: center;margin-top:15px;margin-bottom:15px;">Edition</h4>
             <div class="col s12">
                 <div class="row">
                     <div class="input-field col s12">
-                        {{ Form::label('immatriculation', 'Immatriculation')}}
-                         {{ Form::text('immatriculation', null,array('class'=>'validate', 'required' => 'required'))}}
+                        {{ Form::label('eimmatriculation', 'Immatriculation')}}
+                         {{ Form::text('eimmatriculation', null,array('class'=>'validate', 'required' => 'required'))}}
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s6">
-                        {{ Form::label('date_achat', 'Date d\'achat')}}
-                         {{ Form::text('date_achat', null,array('class'=>'datepicker', 'required' => 'required'))}}
+                        {{ Form::label('edate_achat', 'Date d\'achat')}}
+                         {{ Form::text('edate_achat', null,array('class'=>'datepicker', 'required' => 'required'))}}
                     </div>
                     <div class="input-field col s6">
-                        {{ Form::label('date_misecirculation', 'Date de mise en circulation')}}
-                         {{ Form::text('date_misecirculation', null,array('class'=>'datepicker', 'required' => 'required'))}}
+                        {{ Form::label('edate_misecirculation', 'Date de mise en circulation')}}
+                         {{ Form::text('edate_misecirculation', null,array('class'=>'datepicker', 'required' => 'required'))}}
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s4">
-                        {{ Form::label('idtypevehicule', 'Type de vehicule')}} 
+                        {{ Form::label('eidtypevehicule', 'Type de vehicule')}} 
                          </br>
-                         {{ Form::select('idtypevehicule', $idtypevehicule) }}
+                         {{ Form::select('eidtypevehicule', $idtypevehicule) }}
                     </div>
                     <div class="input-field col s4">
-                        {{ Form::label('idtypeetatvehicule', 'Etat du vehicule')}} 
+                        {{ Form::label('eidtypeetatvehicule', 'Etat du vehicule')}} 
                          </br>
-                         {{ Form::select('idtypeetatvehicule', $idtypeetatvehicule) }}
+                         {{ Form::select('eidtypeetatvehicule', $idtypeetatvehicule) }}
                     </div>
                     <div class="input-field col s4">
-                        {{ Form::label('idstatut', 'Statut du vehicule')}} 
+                        {{ Form::label('eidstatut', 'Statut du vehicule')}} 
                          </br>
-                         {{ Form::select('idstatut', $idstatut) }}
+                         {{ Form::select('eidstatut', $idstatut) }}
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s6">
-                        {{ Form::label('idclient', 'Client')}} 
+                        {{ Form::label('eidclient', 'Client')}} 
                          </br>
-                         {{ Form::select('idclient', $idclient) }}
+                         {{ Form::select('eidclient', $idclient) }}
                     </div>
                     <div class="input-field col s6">
-                        {{ Form::label('idagence', 'Agence')}} 
+                        {{ Form::label('eidagence', 'Agence')}} 
                          </br>
-                         {{ Form::select('idagence', $idagence) }}
+                         {{ Form::select('eidagence', $idagence) }}
                     </div>
                 </div>
             </div>
@@ -231,16 +231,39 @@ $(document).ready(function() {
   }); 
 } ); 
            
-</script> 
-<script>
+$(".edit").on('click',function(){
+    console.log("ajax");
+    var data = $(this).attr('id')
+    $.ajax({
+          url: 'vehicule/show/' + data,
+          type: "get",
+           success: function(response){
+            console.log(response); 
+            $('#modal1').modal('open');
+            $('#eimmatriculation').val(response['immatriculation']);
+            $('#edate_achat').val(response['date_achat']);
+            $('#edate_misecirculation').val(response['date_misecirculation']);
+            $('#eidtypevehicule').val(response['idtypevehicule']);
+            $('#eidtypeetatvehicule').val(response['idtypeetatvehicule']);
+            $('#eidstatut').val(response['idstatut']);
+            $('#eidclient').val(response['idclient']);
+            $('#eidagence').val(response['idagence']);
+
+            $('#form').attr('action', 'vehicule/update/' + response['id']);
+            Materialize.updateTextFields();
+            },
+            error: function(response){
+                alert('Error'+response);
+                }
+        });
+});
+
 var $btns = $('.btn').click(function() {
   if (this.id == 'all') {
     $('#parent > div').fadeIn(450);
-    console.log("1");
   } else {
     var $el = $('.' + this.id).fadeIn(450);
     $('#parent > div').not($el).hide();
-    console.log($el);
   }
 })
 

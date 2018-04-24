@@ -34,17 +34,13 @@ class VehiculeController extends BasicController
 
     public function show($id)
     {
-        $vehicule = Vehicule::find($id);
-        if ($vehicule != null) {
-            return $this->sendResponse(true, null, $vehicule);
-        }
-        return $this->sendResponse(false, "Data not found.", null);
+        $vehicule = Vehicule::find($id);  
+        return response()->json($vehicule);
     }
 
     public function update($id, Request $request)
     {
                 //Validator
-
                 $validator = Validator::make($request->all(), [
                     'eimmatriculation' => 'required|max:16',
                     'edate_achat' => 'required',
@@ -55,9 +51,8 @@ class VehiculeController extends BasicController
                     'eidclient' => 'required|max:12',
                     'eidagence' => 'required|max:12'
                 ]);
-        
+
                 if ($validator->fails()) {
-                    //dd($validator);
                     return redirect('vehicule')
                                 ->withErrors($validator)
                                 ->withInput();
