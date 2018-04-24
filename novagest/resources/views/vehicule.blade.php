@@ -14,6 +14,64 @@
     <div class="col s12"><h1><i class="material-icons">build</i> Gestion des véhicules</h1></div>
 </div>
 
+<!-- Modal Structure -->
+<div id="modal1" class="modal modal-fixed-footer">
+  <div class="modal-content">
+  {{ Form::open(array('url' => 'vehicule/add')) }}
+  <h4 style="position: fixed;left: 0;top: 0;width: 100%;text-align: center;margin-top:15px;margin-bottom:15px;">Edition</h4>
+            <div class="col s12">
+                <div class="row">
+                    <div class="input-field col s12">
+                        {{ Form::label('immatriculation', 'Immatriculation')}}
+                         {{ Form::text('immatriculation', null,array('class'=>'validate', 'required' => 'required'))}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        {{ Form::label('date_achat', 'Date d\'achat')}}
+                         {{ Form::text('date_achat', null,array('class'=>'datepicker', 'required' => 'required'))}}
+                    </div>
+                    <div class="input-field col s6">
+                        {{ Form::label('date_misecirculation', 'Date de mise en circulation')}}
+                         {{ Form::text('date_misecirculation', null,array('class'=>'datepicker', 'required' => 'required'))}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s4">
+                        {{ Form::label('idtypevehicule', 'Type de vehicule')}} 
+                         </br>
+                         {{ Form::select('idtypevehicule', $idtypevehicule) }}
+                    </div>
+                    <div class="input-field col s4">
+                        {{ Form::label('idtypeetatvehicule', 'Etat du vehicule')}} 
+                         </br>
+                         {{ Form::select('idtypeetatvehicule', $idtypeetatvehicule) }}
+                    </div>
+                    <div class="input-field col s4">
+                        {{ Form::label('idstatut', 'Statut du vehicule')}} 
+                         </br>
+                         {{ Form::select('idstatut', $idstatut) }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        {{ Form::label('idclient', 'Client')}} 
+                         </br>
+                         {{ Form::select('idclient', $idclient) }}
+                    </div>
+                    <div class="input-field col s6">
+                        {{ Form::label('idagence', 'Agence')}} 
+                         </br>
+                         {{ Form::select('idagence', $idagence) }}
+                    </div>
+                </div>
+            </div>
+            
+            {{ Form::submit('Modifier', array('class' => 'waves-effect waves-light btn','style' => 'position: fixed;left: 0;bottom: 0;width: 100%;text-align: center;')) }}
+        {{ Form::close() }}
+</div>
+</div>
+
 <ul class="collapsible">
 <li>
       <div class="collapsible-header"><i class="material-icons">whatshot</i>Ajouter un vehicule</div>
@@ -122,6 +180,7 @@
                         <th>Date d'achat</th> 
                         <th>Date de mise en circulation</th>
                         <th>Status</th>
+                        <th>Actions</th>
                     </tr> 
                 </thead> 
                 <tbody> 
@@ -132,6 +191,7 @@
                         <td>{{$car->date_achat}}</td> 
                         <td>{{$car->date_misecirculation}}</td>
                         <td>{{$car->desactive}}</td> 
+                        <td><a class="btn-floating btn-large waves-effect waves-light red" href="vehicule/destroy/{{$car->id}}"><i class="material-icons">cancel</i><a id="{{$car->id}}" class="btn-floating btn-large waves-effect waves-light yellow edit" href="#modal1"><i class="material-icons">edit</i></a></a></td>
                     </tr> 
                 @endforeach 
                 </tbody> 
@@ -151,6 +211,11 @@
 
 </script>
 <script> 
+$(document).ready(function(){
+    // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
+    $('.modal').modal();
+  });
+
 $(document).ready(function() { 
     $('#example').DataTable( { 
         columnDefs: [ 
