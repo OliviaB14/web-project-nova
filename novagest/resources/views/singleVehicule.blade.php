@@ -12,8 +12,25 @@
         <h5 class="header col s12 light">{{$type_vehicule->description}}</h5>
       </div>
       <div class="row center">
-        <image style="width:30%" src="http://shiny4kwallpapers.com/Uploads/2-3-2017/1368/thumb2-mercedes-benz-cls63-vorsteiner-tuning-mercedes-blue-cls-black-wheels.jpg"></image>
+        <?php 
+              $blob = DB::table('type_vehicule')->where('id' ,'=', $vehicule->idtypevehicule)->select('photo')->first();
+              echo '<img style="width:30%;" src="data:image/jpeg;base64,'.base64_encode( $blob->photo ).'"/>';
+                ?>
       </div>
+      <div class="row center">
+      <button id="printBTN" class="btn btn-primary" onclick="myFunction()">Print this page</button>
+      </div>
+
+<script>
+function myFunction() {
+  $("#printBTN").hide();
+    window.print();
+    setTimeout(
+    function() {
+      $("#printBTN").show();
+    }, 100);
+}
+</script>
       <div class="row center">
       <div class="col s3"></div>
       <table class="col s6 striped centered">
