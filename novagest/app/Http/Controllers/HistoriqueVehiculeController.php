@@ -23,8 +23,8 @@ class HistoriqueVehiculeController extends BasicController
 
 	public function index()
     {
-        $historiqueVehicule = HistoriqueVehicule::all();
-        return view('historiqueVehicule', ['historiqueVehicule' => $historiqueVehicule]);
+        $historiqueVehicules = HistoriqueVehicule::all();
+        return view('historiqueVehicule', ['historiqueVehicules' => $historiqueVehicules]);
     }
 
     public function show($id)

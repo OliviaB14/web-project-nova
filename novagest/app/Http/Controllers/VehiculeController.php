@@ -13,9 +13,11 @@ use App\StatutVehicule;
 use App\Client;
 use App\Agence;
 use App\Ville;
+use App\TypeHistoriqueEvenement;
 use DB;
 use Input;
 use Illuminate\Support\Facades\Validator;
+use App\HistoriqueVehicule;
 
 class VehiculeController extends BasicController
 {
@@ -105,6 +107,19 @@ class VehiculeController extends BasicController
         $vehicule->idclient = $request["idclient"];
         $vehicule->idagence = $request["idagence"];
         $vehicule->save();
+
+
+//TODO
+        $id = DB::table('vehicule')->orderBy('id', 'DESC')->first();
+
+        $evenement = new HistoriqueVehicule;
+        $evenement->date_ligne = $request["eimmatriculation"];
+        $evenement->commentaire = "Ajout";
+        $evenement->id_utilisateur = 5;//TODO
+        $evenement->idtypeevenement = 1;
+        $evenement->idvehicule = $id;
+        $evenement->desactive = 0;
+        $evenement->save();
 
         return redirect('vehicule');
     }
