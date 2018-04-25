@@ -6,11 +6,13 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('profil', 'ProfileController@index')->name('profile'); 
 Route::get('profil/parametres', 'ProfileController@update')->name('profile');
+Route::post('test','BasicController@Login'); // route du login TODO = a changer le nom
+
 Route::group(['middleware' => ['auth']], function() {
     Route::get('whoami','BasicController@whoami');
 
 Route::get('logout','BasicController@Logout');
-Route::post('test','BasicController@Login');
+
 
 // Routes avec controlleurs
 Route::get('/','AccueilController@index');
