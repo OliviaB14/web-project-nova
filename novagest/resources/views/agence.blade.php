@@ -129,7 +129,7 @@ $(document).ready(function(){
                     </div>
                 </div>
             </div>
-            
+            <!--TODO REPORT-->
             {{ Form::submit('Ajouter', array('class' => 'waves-effect waves-light btn')) }}
         {{ Form::close() }}
         </div>

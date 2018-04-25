@@ -1,5 +1,13 @@
 <?php
-Route::get('whoami','BasicController@whoami');
+//authentification
+Auth::routes();
+Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('lieux', 'VilleController@index');
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('profil', 'ProfileController@index')->name('profile'); 
+Route::get('profil/parametres', 'ProfileController@update')->name('profile');
+Route::group(['middleware' => ['auth']], function() {
+    Route::get('whoami','BasicController@whoami');
 
 Route::get('logout','BasicController@Logout');
 Route::post('test','BasicController@Login');
@@ -11,10 +19,9 @@ Route::get('villes', 'VilleController@GetVilles');
 
 //report
 Route::get('/signaler', function () {
-
     return view('report');
-
 });
+Route::post('report/add', 'BasiceController@store'); // add
 //fin report
 Route::get('agences', 'AgenceController@index'); // index
 //Agences
@@ -163,10 +170,6 @@ Route::post('typevehicule/update/{id}', 'TypeVehiculeController@update');
 //Fin typevehicule
 
 
-//authentification
-Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home');
-//Route::get('lieux', 'VilleController@index');
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('profil', 'ProfileController@index')->name('profile'); 
-Route::get('profil/parametres', 'ProfileController@update')->name('profile');
+
+
+});
