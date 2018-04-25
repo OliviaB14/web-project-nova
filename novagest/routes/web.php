@@ -9,6 +9,14 @@ Route::get('/','AccueilController@index');
 Route::get('villes', 'VilleController@GetVilles');
 //Route::get('utilisateur', 'UtilisateurController@GetUtilisateurs');
 
+//report
+Route::get('/signaler', function () {
+
+    return view('report');
+
+});
+//fin report
+Route::get('agences', 'AgenceController@index'); // index
 //Agences
 Route::get('agences', 'AgenceController@index'); // index
 Route::post('agence/add', 'AgenceController@store'); // add
