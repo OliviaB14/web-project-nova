@@ -4,8 +4,12 @@
 
     <title></title>
 </header>
-<body style="background-color:#487AA1">
-<div class="container z-depth-2" style="margin-top:25px;background-color:white">
+
+<style>
+
+</style>
+<body  style="background-color:#487AA1">
+<div id="section-to-print" class="container" style="margin-top:25px;background-color:white">
       <br><br>
       <h1 class="header center orange-text">{{$type_vehicule->modele}}</h1>
       <div class="row center">
