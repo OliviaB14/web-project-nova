@@ -26,7 +26,7 @@ Route::get('/signaler', function () {
 Route::post('report/add', 'BasiceController@store'); // add
 //fin report
 //droits
-Route::get('switch/{typeDroit}/{typeUser}', 'DroitTypeUtilisateurController@switch');
+Route::post('switch/{typeDroit}/{typeUser}', 'DroitTypeUtilisateurController@switch');
 // fin
 
 Route::get('agences', 'AgenceController@index'); // index
