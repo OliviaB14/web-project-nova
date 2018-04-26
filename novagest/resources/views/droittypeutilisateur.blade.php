@@ -15,26 +15,6 @@
 
 @section('content')
 
-
-<section>
-    <div class="container">
-        <div class="row">
-        {{ Form::open(array('url' => 'droit_type_utilisateur/add')) }}
-            <div class="col s12">
-                <div class="row">
-                    <div class="input-field col s6">
-                        {{ Form::label('libelle', 'Libelle')}}
-                        {{ Form::text('libelle', null,array('class'=>'validate', 'required' => 'required'))}}
-                    </div>
-                </div>
-            </div>
-            {{ Form::submit('Ajouter', array('class' => 'btn-sm btn-success')) }}
-        {{ Form::close() }}
-        </div>
-    </div>
-</section>
-
-
 <section>
 <div class="container">
 <div class="row" style="padding-top:15px">
@@ -45,16 +25,28 @@
             <table id="example" class="mdl-data-table responsive-table" cellspacing="0" width="100%">
                     <thead>
                         <tr>
-                            <th>Droits accordés aux utilisateurs</th>
-                            <th>Status</th>
+                        <th>Droits</th>
+                        @foreach($typeUtilisateurs as $tu)
+                            <th id="{{$tu->id}}">{{$tu->libelle}}</th>
+                        @endforeach
                         </tr>
                     </thead>
                     <tbody>
-                    @foreach($droittypeutilisateurs as $droittypeutilisateur)
+                    @foreach($droits as $d)
                         <tr>
-                            <td>{{$droittypeutilisateur->iddroit}}</td>
-                            <td>{{$droittypeutilisateur->idtypeutilisateur}}</td>
-                            <td>{{$droittypeutilisateur->desactive}}</td>
+                            <td id="{{$d->id}}">{{$d->libelle}}</td>
+                            @foreach($typeUtilisateurs as $tu)
+                                <td id="{{$tu->id}}">
+                                <div class="switch">
+                                    <label>
+                                    Off
+                                    <input type="checkbox">
+                                    <span class="lever"></span>
+                                    On
+                                    </label>
+                                </div>
+                                </td>
+                            @endforeach
                         </tr>
                     @endforeach
                     </tbody>
@@ -62,6 +54,7 @@
         </div>
     </div>
 </div>
+</section>
 </section>
 
 <script>
@@ -78,13 +71,6 @@ $(document).ready(function() {
           
 </script>
 @stop
-                        </tr>
-                    @endforeach
-                    </tbody>
-                </table>
-        </div>
-    </div>
-</div>
 </section>
 
 <script>
@@ -100,4 +86,3 @@ $(document).ready(function() {
 } );
           
 </script>
-@stop

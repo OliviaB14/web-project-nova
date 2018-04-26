@@ -7,24 +7,20 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\BasicController;
 use App\DroitTypeUtilisateur;
+use App\TypeUtilisateur;
+use App\Droit;
 use DB;
 use Input;
 use Illuminate\Support\Facades\Validator;
 
 class DroitTypeUtilisateurController extends BasicController
 {
-	// public function GetDroitTypeUtilisateurs()
-	// {
-	// 	$droitTypeUtilisateurs = DB::table('DroitTypeUtilisateur')
-    //     ->get();
-    //     //dd($droitTypeUtilisateurs);
-	// 	return view('DroitTypeUtilisateur', ['DroitTypeUtilisateurs' => $droitTypeUtilisateurs]);
-	// }
-
 	public function index()
     {
         $droitTypeUtilisateurs = DroitTypeUtilisateur::all();
-        return view('droittypeutilisateur', ['droitTypeUtilisateurs' => $droitTypeUtilisateurs]);
+        $droits = Droit::all();
+        $typeUtilisateurs = TypeUtilisateur::all();
+        return view('droittypeutilisateur', ['typeUtilisateurs' => $typeUtilisateurs,'droitTypeUtilisateurs' => $droitTypeUtilisateurs,'droits' => $droits]);
     }
 
     public function show($id)
