@@ -23,6 +23,12 @@ class DroitTypeUtilisateurController extends BasicController
         return view('droittypeutilisateur', ['typeUtilisateurs' => $typeUtilisateurs,'droitTypeUtilisateurs' => $droitTypeUtilisateurs,'droits' => $droits]);
     }
 
+    public function switch($typeDroit,$typeUser)
+    {
+        $switchverif = DroitTypeUtilisateur::where('iddroit','=',$typeDroit)->and('idtypeutilisateur','=',$typeUser)->first();
+        return response()->json($switchverif);
+    }
+
     public function show($id)
     {
         $droitTypeUtilisateur = DroitTypeUtilisateur::find($id);

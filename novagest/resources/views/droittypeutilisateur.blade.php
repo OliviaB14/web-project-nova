@@ -40,7 +40,7 @@
                                 <div class="switch">
                                     <label>
                                     Off
-                                    <input type="checkbox">
+                                    <input class="{{$d->id}} btnDroit" id="{{$tu->id}}" type="checkbox">
                                     <span class="lever"></span>
                                     On
                                     </label>
@@ -58,8 +58,28 @@
 </section>
 
 <script>
-$(document).ready(function() {
-    $('#example').DataTable( {
+$(".btnDroit").on("click",function(){
+    console.log("click");
+    var val = $(this).attr('class');
+    
+    var split = val.split(' ');
+    data = split[0];
+    console.log(data);
+    var data2 = $(this).attr('id');
+    $.ajax({
+          url: 'switch/' + data + "/" + data2,
+          type: "post",
+           success: function(response){
+            console.log(response);
+            },
+            error: function(response){
+                console.log('Error'+response);
+                }
+        });
+});
+          
+
+$('#example').DataTable( {
         columnDefs: [
             {
                 targets: [ 0, 1],
@@ -67,22 +87,5 @@ $(document).ready(function() {
             }
         ]
     } );
-} );
-          
 </script>
 @stop
-</section>
-
-<script>
-$(document).ready(function() {
-    $('#example').DataTable( {
-        columnDefs: [
-            {
-                targets: [ 0, 1],
-                className: 'mdl-data-table__cell--non-numeric'
-            }
-        ]
-    } );
-} );
-          
-</script>
