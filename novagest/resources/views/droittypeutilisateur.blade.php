@@ -69,6 +69,9 @@ $(".btnDroit").on("click",function(){
     $.ajax({
           url: 'switch/' + data + "/" + data2,
           type: "post",
+          data: {   
+            '_token': '{!! csrf_token() !!}'
+        },
            success: function(response){
             console.log(response);
             },
