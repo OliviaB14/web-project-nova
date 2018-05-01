@@ -40,8 +40,16 @@
                                 <div class="switch">
                                     <label>
                                     Off
-                                    <input class="{{$d->id}} btnDroit" id="{{$tu->id}}" type="checkbox">
-                                    <span class="lever"></span>
+                                    <?php 
+                                        $switchexist =  DB::table('droit_type_utilisateur')->where('iddroit', '=', $d->id)->where('idtypeutilisateur', '=',$tu->id)->first();
+                                    ?>
+                                    @if($switchexist)
+                                        <input checked class="{{$d->id}} btnDroit" id="{{$tu->id}}" type="checkbox">
+                                    @else
+                                        <input  class="{{$d->id}} btnDroit" id="{{$tu->id}}" type="checkbox">
+                                    @endif
+                                    
+                                    <span  class="lever"></span>
                                     On
                                     </label>
                                 </div>
