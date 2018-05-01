@@ -11,6 +11,7 @@ use App\typeutilisateur;
 use DB;
 use Input;
 use Illuminate\Support\Facades\Validator;
+use carbon\Carbon;  //extension dates
 
 class UtilisateurController extends BasicController
 {
@@ -37,7 +38,8 @@ class UtilisateurController extends BasicController
 
     public function update($id, Request $request)
     {
-        //Validator
+        //formattage des dates
+        $request['edate_naissance'] = Carbon::parse($request['edate_naissance'])->format('Y-m-d');
 
         $validator = Validator::make($request->all(), [
             'enom' => 'required|alpha|max:32',
@@ -76,7 +78,8 @@ class UtilisateurController extends BasicController
 
     public function store(Request $request)
     {
-        //Validator
+        //formattage des dates
+        $request['date_naissance'] = Carbon::parse($request['date_naissance'])->format('Y-m-d');
 
         $validator = Validator::make($request->all(), [
             'nom' => 'required|alpha|max:32',

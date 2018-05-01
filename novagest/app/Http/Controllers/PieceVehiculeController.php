@@ -10,6 +10,7 @@ use App\PieceVehicule;
 use DB;
 use Input;
 use Illuminate\Support\Facades\Validator;
+use carbon\Carbon;  //extension dates
 
 class PieceVehiculeController extends BasicController
 {
@@ -38,7 +39,8 @@ class PieceVehiculeController extends BasicController
 
     public function update($id, Request $request)
     {
-        //Validator
+        //formattage des dates
+        $request['edate_entree'] = Carbon::parse($request['edate_entree'])->format('Y-m-d');
 
         $validator = Validator::make($request->all(), [
             'edate_entree' => 'required|date',
@@ -65,7 +67,8 @@ class PieceVehiculeController extends BasicController
 
     public function store(Request $request)
     {
-        //Validator
+        //formattage des dates
+        $request['date_entree'] = Carbon::parse($request['date_entree'])->format('Y-m-d');
 
         $validator = Validator::make($request->all(), [
             'date_entree' => 'required|date',

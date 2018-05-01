@@ -18,6 +18,7 @@ use DB;
 use Input;
 use Illuminate\Support\Facades\Validator;
 use App\HistoriqueVehicule;
+use carbon\Carbon;  //extension dates
 
 class VehiculeController extends BasicController
 {
@@ -42,7 +43,11 @@ class VehiculeController extends BasicController
 
     public function update($id, Request $request)
     {
-                //Validator
+                //formattage des dates
+                $request['edate_achat'] = Carbon::parse($request['edate_achat'])->format('Y-m-d');
+                $request['edate_misecirculation'] = Carbon::parse($request['edate_misecirculation'])->format('Y-m-d');
+
+
                 $validator = Validator::make($request->all(), [
                     'eimmatriculation' => 'required|alpha_dash|max:16',
                     'edate_achat' => 'required|date',
@@ -77,7 +82,9 @@ class VehiculeController extends BasicController
 
     public function store(Request $request)
     {
-                //Validator
+        //formattage des dates
+        $request['date_achat'] = Carbon::parse($request['date_achat'])->format('Y-m-d');
+        $request['date_misecirculation'] = Carbon::parse($request['date_misecirculation'])->format('Y-m-d');
 
                 $validator = Validator::make($request->all(), [
                     'immatriculation' => 'required|alpha_dash|max:16',
