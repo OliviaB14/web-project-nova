@@ -1,9 +1,9 @@
 <?php
 //authentification
 Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('/');
 //Route::get('lieux', 'VilleController@index');
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('/');
 Route::get('profil', 'ProfileController@index')->name('profile'); 
 Route::get('profil/parametres', 'ProfileController@update')->name('profile');
 Route::post('test','BasicController@Login'); // route du login TODO = a changer le nom

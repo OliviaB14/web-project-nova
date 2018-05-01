@@ -27,8 +27,8 @@ class DroitTypeUtilisateurController extends BasicController
     public function switch($typeDroit,$typeUser,Request $request)
     {
             //$switchverif = DB::select( DB::raw("SELECT * FROM droit_type_utilisateur WHERE iddroit = '$typeDroit' and idtypeutilisateur = '$typeUser'"));
-            $switchverif = DroitTypeUtilisateur::where(`iddroit`, `=`, $typeDroit)
-            ->where(`idtypeutilisateur`, `=`, $typeUser)
+            $switchverif = DroitTypeUtilisateur::where(`iddroit`, `=`, 41)
+            ->where(`idtypeutilisateur`, `=`, 41)
             ->select('*');
 
             if (count($switchverif)) {
