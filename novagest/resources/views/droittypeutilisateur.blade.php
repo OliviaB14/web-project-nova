@@ -40,8 +40,16 @@
                                 <div class="switch">
                                     <label>
                                     Off
-                                    <input class="{{$d->id}} btnDroit" id="{{$tu->id}}" type="checkbox">
-                                    <span class="lever"></span>
+                                    <?php 
+                                        $switchexist =  DB::table('droit_type_utilisateur')->where('iddroit', '=', $d->id)->where('idtypeutilisateur', '=',$tu->id)->first();
+                                    ?>
+                                    @if($switchexist)
+                                        <input checked class="{{$d->id}} btnDroit" id="{{$tu->id}}" type="checkbox">
+                                    @else
+                                        <input  class="{{$d->id}} btnDroit" id="{{$tu->id}}" type="checkbox">
+                                    @endif
+                                    
+                                    <span  class="lever"></span>
                                     On
                                     </label>
                                 </div>
@@ -66,6 +74,7 @@ $(".btnDroit").on("click",function(){
     data = split[0];
     console.log(data);
     var data2 = $(this).attr('id');
+    
     $.ajax({
           url: 'switch/' + data + "/" + data2,
           type: "post",
@@ -75,8 +84,8 @@ $(".btnDroit").on("click",function(){
            success: function(response){
             console.log(response);
             },
-            error: function(response){
-                console.log('Error'+response);
+            error: function(xhr, status, error){
+                console.log(xhr + " + " + status + " + " + error);
                 }
         });
 });

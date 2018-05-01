@@ -17,6 +17,8 @@ class DroitTypeUtilisateurController extends BasicController
 {
 	public function index()
     {
+        
+        //
         $droitTypeUtilisateurs = DroitTypeUtilisateur::all();
         $droits = Droit::all();
         $typeUtilisateurs = TypeUtilisateur::all();
@@ -26,22 +28,18 @@ class DroitTypeUtilisateurController extends BasicController
 
     public function switch($typeDroit,$typeUser,Request $request)
     {
-            //$switchverif = DB::select( DB::raw("SELECT * FROM droit_type_utilisateur WHERE iddroit = '$typeDroit' and idtypeutilisateur = '$typeUser'"));
-            $switchverif = DroitTypeUtilisateur::where(`iddroit`, `=`, $typeDroit)
-            ->where(`idtypeutilisateur`, `=`, $typeUser)
-            ->select('*');
-
-            if (count($switchverif)) {
-                
-            }
-            else
-            {
-                // Create a new droitTypeUtilisateur from request param
-                $droitTypeUtilisateur = new DroitTypeUtilisateur;
-                $droitTypeUtilisateur->iddroit = $typeDroit;
-                $droitTypeUtilisateur->idtypeutilisateur = $typeUser;
-                $droitTypeUtilisateur->save();
-            }
+        $switchexist = DroitTypeUtilisateur::where('iddroit', '=', $typeDroit)->where('idtypeutilisateur', '=',$typeUser)->first();
+        
+        if ($switchexist) {
+            DroitTypeUtilisateur::where('iddroit', '=', $typeDroit)->where('idtypeutilisateur', '=',$typeUser)->delete();
+         }
+          else
+          {
+            // Create a new droitTypeUtilisateur from request param
+            DB::table('droit_type_utilisateur')->insert(
+                ['iddroit' => $typeDroit, 'idtypeutilisateur' => $typeUser]
+            );
+        }
     }
 
     public function show($id)
