@@ -41,9 +41,9 @@ class PieceVehiculeController extends BasicController
         //Validator
 
         $validator = Validator::make($request->all(), [
-            'edate_entree' => 'required',
-            'eidtypeetatpiece' => 'required|max:12',
-            'eidtypepiece' => 'required|max:12',
+            'edate_entree' => 'required|date',
+            'eidtypeetatpiece' => 'required|integer|max:12',
+            'eidtypepiece' => 'required|integer|max:12',
         ]);
 
         if ($validator->fails()) {
@@ -68,9 +68,9 @@ class PieceVehiculeController extends BasicController
         //Validator
 
         $validator = Validator::make($request->all(), [
-            'date_entree' => 'required',
-            'idtypeetatpiece' => 'required|max:12',
-            'idtypepiece' => 'required|max:12',
+            'date_entree' => 'required|date',
+            'idtypeetatpiece' => 'required|integer|max:12',
+            'idtypepiece' => 'required|integer|max:12',
         ]);
 
         if ($validator->fails()) {

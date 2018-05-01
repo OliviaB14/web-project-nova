@@ -30,12 +30,12 @@ class TypeVehiculeController extends BasicController
         //Validator
 
         $validator = Validator::make($request->all(), [
-            'emodele' => 'required|max:32',
-            'ehauteur' => 'required|max:16',
-            'elargeur' => 'required|max:16',
-            'epoids' => 'required|max:16',
-            'epuissance' => 'required|max:8',
-            'eprix_neuf' => 'required|'
+            'emodele' => 'required|alpha_dash|max:32',
+            'ehauteur' => 'required|alpha_num|max:16',
+            'elargeur' => 'required|alpha_num|max:16',
+            'epoids' => 'required|alpha_num|max:16',
+            'epuissance' => 'required|alpha_num|max:8',
+            'eprix_neuf' => 'required|numeric|'
         ]);
 
         if ($validator->fails()) {
@@ -63,12 +63,12 @@ class TypeVehiculeController extends BasicController
         //Validator
 
         $validator = Validator::make($request->all(), [
-            'modele' => 'required|max:32',
-            'hauteur' => 'required|max:16',
-            'largeur' => 'required|max:16',
-            'poids' => 'required|max:16',
-            'puissance' => 'required|max:8',
-            'prix_neuf' => 'required|'
+            'modele' => 'required|alpha_dash|max:32',
+            'hauteur' => 'required|alpha_num|max:16',
+            'largeur' => 'required|alpha_num|max:16',
+            'poids' => 'required|alpha_num|max:16',
+            'puissance' => 'required|alpha_num|max:8',
+            'prix_neuf' => 'required|numeric'
         ]);
         
         if ($validator->fails()) {

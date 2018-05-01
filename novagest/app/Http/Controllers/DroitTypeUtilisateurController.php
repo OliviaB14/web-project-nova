@@ -47,8 +47,8 @@ class DroitTypeUtilisateurController extends BasicController
         //Validator
 
         $validator = Validator::make($request->all(), [
-            'eiddroit' => 'required|max:12',
-            'eidtypeutilisateur' => 'required|max:12',
+            'eiddroit' => 'required|integer|max:12',
+            'eidtypeutilisateur' => 'required|integer|max:12',
         ]);
 
         if ($validator->fails()) {
@@ -72,8 +72,8 @@ class DroitTypeUtilisateurController extends BasicController
         //Validator
 
         $validator = Validator::make($request->all(), [
-            'iddroit' => 'required|max:12',
-            'idtypeutilisateur' => 'required|max:12',
+            'iddroit' => 'required|integer|max:12',
+            'idtypeutilisateur' => 'required|integer|max:12',
         ]);
 
         if ($validator->fails()) {

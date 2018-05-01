@@ -29,11 +29,11 @@ class AgenceController extends BasicController
         //Validator
         //dd($request["eidville"]);
         $validator = Validator::make($request->all(), [
-            'enom' => 'required|max:64',
-            'eadresse' => 'required|max:256',
-            'eidville' => 'required',
-            'etelephone' => 'required|max:24',
-            'efax' => 'required|max:24',
+            'enom' => 'required|alpha_dash|max:64',
+            'eadresse' => 'required|alpha_dash|max:256',
+            'eidville' => 'required|integer',
+            'etelephone' => 'required|alpha_dash|max:24',
+            'efax' => 'required|alpha_dash|max:24',
             'email' => 'required|email|max:64'
         ]);
 
@@ -63,11 +63,11 @@ class AgenceController extends BasicController
         //Validator
 
         $validator = Validator::make($request->all(), [
-            'nom' => 'required|max:64',
-            'adresse' => 'required|max:256',
-            'idville' => 'required',
-            'telephone' => 'required|max:24',
-            'fax' => 'required|max:24',
+            'nom' => 'required|alpha_dash|max:64',
+            'adresse' => 'required|alpha_dash|max:256',
+            'idville' => 'required|integer',
+            'telephone' => 'required|alpha_dash|max:24',
+            'fax' => 'required|alpha_dash|max:24',
             'mail' => 'required|email|max:64'
         ]);
 

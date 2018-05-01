@@ -44,14 +44,14 @@ class VehiculeController extends BasicController
     {
                 //Validator
                 $validator = Validator::make($request->all(), [
-                    'eimmatriculation' => 'required|max:16',
-                    'edate_achat' => 'required',
-                    'edate_misecirculation' => 'required',
-                    'eidtypevehicule' => 'required|max:12',
-                    'eidtypeetatvehicule' => 'required|max:12',
-                    'eidstatut' => 'required|max:12',
-                    'eidclient' => 'required|max:12',
-                    'eidagence' => 'required|max:12'
+                    'eimmatriculation' => 'required|alpha_dash|max:16',
+                    'edate_achat' => 'required|date',
+                    'edate_misecirculation' => 'required|date',
+                    'eidtypevehicule' => 'required|integer|max:12',
+                    'eidtypeetatvehicule' => 'required|integer|max:12',
+                    'eidstatut' => 'required|integer|max:12',
+                    'eidclient' => 'required|integer|max:12',
+                    'eidagence' => 'required|integer|max:12'
                 ]);
 
                 if ($validator->fails()) {
@@ -80,14 +80,14 @@ class VehiculeController extends BasicController
                 //Validator
 
                 $validator = Validator::make($request->all(), [
-                    'immatriculation' => 'required|max:16',
-                    'date_achat' => 'required',
-                    'date_misecirculation' => 'required',
-                    'idtypevehicule' => 'required|max:12',
-                    'idtypeetatvehicule' => 'required|max:12',
-                    'idstatut' => 'required|max:12',
-                    'idclient' => 'required|max:12',
-                    'idagence' => 'required|max:12'
+                    'immatriculation' => 'required|alpha_dash|max:16',
+                    'date_achat' => 'required|date',
+                    'date_misecirculation' => 'required|date',
+                    'idtypevehicule' => 'required|integer|ax:12',
+                    'idtypeetatvehicule' => 'required|integer|max:12',
+                    'idstatut' => 'required|integer|max:12',
+                    'idclient' => 'required|integer|max:12',
+                    'idagence' => 'required|integer|max:12'
                 ]);
         
                 if ($validator->fails()) {

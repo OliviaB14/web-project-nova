@@ -38,13 +38,13 @@ class ClientController extends BasicController
         //Validator
         //dd($request);
         $validator = Validator::make($request->all(), [
-            'eraison_sociale' => 'required|max:64',
-            'eadresse' => 'required|max:256',
-            'eidville' => 'required',
-            'etelephone' => 'required|max:24',
-            'efax' => 'required|max:24',
+            'eraison_sociale' => 'required|alpha_dash|max:64',
+            'eadresse' => 'required|alpha_dash|max:256',
+            'eidville' => 'required|integer',
+            'etelephone' => 'required|alpha_dash|max:24',
+            'efax' => 'required|alpha_dash|max:24',
             'email' => 'required|email|max:64',
-            'eidtypeclient' => 'required'
+            'eidtypeclient' => 'required|integer'
         ]);
 
         if ($validator->fails()) {
@@ -74,13 +74,13 @@ class ClientController extends BasicController
         //Validator
 
         $validator = Validator::make($request->all(), [
-            'raison_sociale' => 'required|max:64',
-            'adresse' => 'required|max:256',
-            'idville' => 'required',
-            'telephone' => 'required|max:24',
-            'fax' => 'required|max:24',
+            'raison_sociale' => 'required|alpha_dash|max:64',
+            'adresse' => 'required|alpha_dash|max:256',
+            'idville' => 'required|integer',
+            'telephone' => 'required|alpha_dash|max:24',
+            'fax' => 'required|alpha_dash|max:24',
             'mail' => 'required|email|max:64',
-            'idtypeclient' => 'required|max:12'
+            'idtypeclient' => 'required|integer'
         ]);
 
         if ($validator->fails()) {

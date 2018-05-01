@@ -39,8 +39,8 @@ class VilleController extends BasicController
         dd($id);
 
         $validator = Validator::make($request->all(), [
-            'enom' => 'required|max:32',
-            'ecode_postal' => 'required|max:12',
+            'enom' => 'required|alpha_num|max:32',
+            'ecode_postal' => 'required|Integer|max:12',
         ]);
 
         if ($validator->fails()) {
@@ -65,8 +65,8 @@ class VilleController extends BasicController
         //dd($request);
 
         $validator = Validator::make($request->all(), [
-            'nom' => 'required|max:32',
-            'code_postal' => 'required|max:12',
+            'nom' => 'required|alpha_num|max:32',
+            'code_postal' => 'required|Integer|max:12',
         ]);
 
         if ($validator->fails()) {

@@ -40,15 +40,15 @@ class UtilisateurController extends BasicController
         //Validator
 
         $validator = Validator::make($request->all(), [
-            'enom' => 'required|max:32',
-            'eprenom' => 'required|max:32',
-            'edate_naissance' => 'required',
-            'eidtypeutilisateur' => 'required|max:12',
-            'eusername' => 'required|max:32',
-            'epassword' => 'required|max:256',
-            'etelephone' => 'required|max:24',
-            'efax' => 'required|max:24',
-            'email' => 'required|max:64'
+            'enom' => 'required|alpha|max:32',
+            'eprenom' => 'required|alpha|max:32',
+            'edate_naissance' => 'required|alpha_dash',
+            'eidtypeutilisateur' => 'required|integer|max:12',
+            'eusername' => 'required|alpha_num|max:32',
+            'epassword' => 'required|alpha_num|max:256',
+            'etelephone' => 'required|alpha_dash|max:24',
+            'efax' => 'required|alpha_dash|max:24',
+            'email' => 'required|email|max:64'
         ]);
 
         if ($validator->fails()) {
@@ -79,15 +79,15 @@ class UtilisateurController extends BasicController
         //Validator
 
         $validator = Validator::make($request->all(), [
-            'nom' => 'required|max:32',
-            'prenom' => 'required|max:32',
-            'date_naissance' => 'required',
-            'idtypeutilisateur' => 'required|max:12',
-            'username' => 'required|max:32',
-            'password' => 'required|max:256',
-            'telephone' => 'required|max:24',
-            'fax' => 'required|max:24',
-            'mail' => 'required|max:64'
+            'nom' => 'required|alpha|max:32',
+            'prenom' => 'required|alpha|max:32',
+            'date_naissance' => 'required|alpha_dash',
+            'idtypeutilisateur' => 'required|integer|max:12',
+            'username' => 'required|alpha_num|max:32',
+            'password' => 'required|alpha_num|max:256',
+            'telephone' => 'required|alpha_dash|max:24',
+            'fax' => 'required|alpha_dash|max:24',
+            'mail' => 'required|email|max:64'
         ]);
 
         if ($validator->fails()) {

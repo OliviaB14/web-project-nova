@@ -41,11 +41,11 @@ class HistoriqueVehiculeController extends BasicController
         //Validator
 
         $validator = Validator::make($request->all(), [
-            'edate_ligne' => 'required',
-            'ecommentaire' => 'required',
-            'eidutilisateur' => 'required|max:12',
-            'eidtypeevenement' => 'required|max:12',
-            'eidvehicule' => 'required|max:12',
+            'edate_ligne' => 'required|date',
+            'ecommentaire' => 'required|alpha_num',
+            'eidutilisateur' => 'required|integer|max:12',
+            'eidtypeevenement' => 'required|integer|max:12',
+            'eidvehicule' => 'required|integer|max:12',
         ]);
 
         if ($validator->fails()) {
@@ -72,11 +72,11 @@ class HistoriqueVehiculeController extends BasicController
         //Validator
 
         $validator = Validator::make($request->all(), [
-            'date_ligne' => 'required',
-            'commentaire' => 'required',
-            'idutilisateur' => 'required|max:12',
-            'idtypeevenement' => 'required|max:12',
-            'idvehicule' => 'required|max:12',
+            'date_ligne' => 'required|date',
+            'commentaire' => 'required|alpha_num',
+            'idutilisateur' => 'required|integer|max:12',
+            'idtypeevenement' => 'required|integer|max:12',
+            'idvehicule' => 'required|integer|max:12',
         ]);
 
         if ($validator->fails()) {

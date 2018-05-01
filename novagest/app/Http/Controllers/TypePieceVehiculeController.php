@@ -41,9 +41,9 @@ class TypePieceVehiculeController extends BasicController
         //Validator
 
         $validator = Validator::make($request->all(), [
-            'enom' => 'required|max:32',
-            'eidtypevehicule' => 'required|max:12',
-            'eprix_neuf' => 'required',
+            'enom' => 'required|alpha_dash|max:32',
+            'eidtypevehicule' => 'required|integer|max:12',
+            'eprix_neuf' => 'required|numeric',
         ]);
 
         if ($validator->fails()) {
@@ -68,9 +68,9 @@ class TypePieceVehiculeController extends BasicController
         //Validator
 
         $validator = Validator::make($request->all(), [
-            'nom' => 'required|max:32',
-            'idtypevehicule' => 'required|max:12',
-            'prix_neuf' => 'required',
+            'nom' => 'required|alpha_dash|max:32',
+            'idtypevehicule' => 'required|integer|max:12',
+            'prix_neuf' => 'required|numeric',
         ]);
 
         if ($validator->fails()) {
