@@ -2,6 +2,7 @@
 <html>
   @include('includes.head')
 <body >
+
     @include('includes.header')
     <div class="container" id="main">
         <div class="section">

@@ -190,7 +190,6 @@ $(document).ready(function(){
     </div>
 </div>
 </section>
-
 <script>
 $(".edit").on('click',function(){
     console.log("ajax");

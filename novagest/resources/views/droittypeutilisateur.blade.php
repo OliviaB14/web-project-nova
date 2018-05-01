@@ -66,17 +66,8 @@ $(".btnDroit").on("click",function(){
     data = split[0];
     console.log(data);
     var data2 = $(this).attr('id');
-    <?php 
-
-        //$switchexist = DB::table('droit_type_utilisateur')->where(`iddroit`, `=`, 41)->where(`idtypeutilisateur`, `=`, 41)->exists();
-    ?>
-        @if(switchexist)
-        
-        @else
-            {{DB::table('droit_type_utilisateur')->insert(['iddroit' => 'john@example.com', 'idtypeutilisateur' => 0])}}
-        @endif
     
-    /*$.ajax({
+    $.ajax({
           url: 'switch/' + data + "/" + data2,
           type: "post",
           data: {   
@@ -88,7 +79,7 @@ $(".btnDroit").on("click",function(){
             error: function(xhr, status, error){
                 console.log(xhr + " + " + status + " + " + error);
                 }
-        });*/
+        });
 });
           
 

@@ -1,3 +1,8 @@
+
+<?php 
+$user = Auth::user();
+$idtypeutilisateur = $user->idtypeutilisateur;
+?>
 <ul id="dropdown0" class="dropdown-content">
   <!-- Toutes les pages -->
   <li><a href="agences">Agences</a></li>

@@ -89,9 +89,9 @@ class VehiculeController extends BasicController
                     'idclient' => 'required|integer|max:12',
                     'idagence' => 'required|integer|max:12'
                 ]);
-        
+                
                 if ($validator->fails()) {
-                    //dd($validator);
+                    dd($validator);
                     return redirect('vehicule')
                                 ->withErrors($validator)
                                 ->withInput();
