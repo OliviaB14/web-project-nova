@@ -2,29 +2,14 @@
 
 @section('css-links')
     <link rel="stylesheet" type="text/css" href="{{ asset('css/welcome.css')}}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/client.css') }}">
     <style>
         .card.horizontal {
         /*display: -webkit-flex;
         display: -ms-flexbox;
         display: flex;*/
     }
-    #pie-clients{
-            border: 1px dotted #FFC107;
-    }
-
-    .center-align .row {
-        display: flex;
-        flex-wrap: wrap;
-           
-    }
-    .card{
-        flex-direction: column;
-        height:400px;
-    }
-
-    .main-card{
-        height: auto;
-    }
+    
     </style>
 @stop   
 
@@ -37,13 +22,7 @@
 </div>
 
 <div class='center-align row'>
-    <div class="col s12">
-        <div class="card amber accent-2 main-card">
-            <div class="card-content">
-              <span class="card-title black-text"><b class="timer" data-to="{{$clients->count()+1}}" data-speed="1500"></b> clients</span>
-            </div>
-        </div>
-    </div>
+    
 
     <?php
         // count clients for each type : "Commune", "Entreprise"
@@ -51,21 +30,25 @@
         $type['entreprise'] = DB::table('client')->where('idtypeclient', '=','2')->count();
     ?>
 
-    <div class="col l4 s12">
-        <div class="card teal lighten-3">
+    <div class="col l8 s12">
+        <div class="card s12 main-card">
             <div class="card-content">
-              <span class="card-title black-text"><b class="timer" data-to="{{$type['commune']}}" data-speed="1500"></b> communes</span>
+              <span class="card-title black-text"><b class="timer" data-to="{{$clients->count()+1}}" data-speed="1500"></b> clients</span>
+            </div>
+        </div>
+        <div class="card l12" id="entreprises_card">
+            <div class="card-content">
+              <span class="card-title black-text"><i class="material-icons">business</i> <b class="timer" data-to="{{$type['commune']}}" data-speed="1500"></b> communes</span>
               <input type="hidden" value="{{$type['commune']}}" id="communes_nb"/>
             </div>
         </div>
-    </div>
-    <div class="col l4 s12" >
-        <div class="card brown lighten-3" height="400">
-            <div class="card-content">
-              <span class="card-title black-text"><b class="timer" data-to="{{$type['entreprise']}}" data-speed="1500" ></b> entreprises</span>
-              <input type="hidden" value="{{$type['entreprise']}}" id="entreprises_nb"/>
+        <div class="col l12"></div>
+            <div class="card col s12" id="communes_card">
+                <div class="card-content">
+                  <span class="card-title black-text"><i class="material-icons">business_center</i> <b class="timer" data-to="{{$type['entreprise']}}" data-speed="1500"></b> entreprises</span>
+                  <input type="hidden" value="{{$type['entreprise']}}" id="entreprises_nb"/>
+                </div>
             </div>
-        </div>
     </div>
     <div class="col l4 s12">
         <div class="card white" id="pie-clients">
@@ -237,7 +220,13 @@ $(document).ready(function(){
                             <td>{{$client->telephone}}</td>
                             <td>{{$client->fax}}</td>
                             <td>{{$client->mail}}</td>
-                            <td>{{$client->idtypeclient}}</td>
+                            <td>
+                                @if($client->idtypeclient == '1')
+                                    Commune
+                                @else
+                                    Entreprise
+                                @endif
+                            </td>
                             <td>{{$client->desactive}}</td>
                             <td><a class="btn-floating btn-large waves-effect waves-light red" href="client/destroy/{{$client->id}}"><i class="material-icons">cancel</i><a id="{{$client->id}}" class="btn-floating btn-large waves-effect waves-light yellow edit" href="#modal1"><i class="material-icons">edit</i></a></a></td>
                         </tr>
@@ -276,7 +265,7 @@ var myDoughnutChart = new Chart(ctx, {
         datasets: [{
             data: [$("#communes_nb").val(),$('#entreprises_nb').val()],
             backgroundColor: [
-                "#AB82FF",
+                "#AEDEDD",
                 "#F08080"
             ]
         }]
