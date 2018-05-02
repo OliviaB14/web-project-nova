@@ -91,7 +91,7 @@ $(document).ready(function(){
             </ul>
         </div>
       @endif
-        {{ Form::open(array('url' => 'agence/add')) }}
+        {{ Form::open(array('url' => 'agence/add', 'files' => true)) }}
             <div class="col s12">
                 <div class="row">
                     <div class="input-field col s12">
@@ -126,6 +126,11 @@ $(document).ready(function(){
                     {{ Form::label('idville', 'Ville')}} 
                          </br>
                          {{ Form::select('idville', $villes) }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                         {{ Form::file('photo') }}
                     </div>
                 </div>
             </div>

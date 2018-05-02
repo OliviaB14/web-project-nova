@@ -9,6 +9,7 @@ use App\Http\Controllers\BasicController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Validator;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class AgenceController extends BasicController
 {
@@ -69,7 +70,8 @@ class AgenceController extends BasicController
             'idville' => 'required|integer',
             'telephone' => 'required|alpha_dash|max:24',
             'fax' => 'required|alpha_dash|max:24',
-            'mail' => 'required|email|max:64'
+            'mail' => 'required|email|max:64',
+            'image' => 'required|image'
         ]);
 
         if ($validator->fails()) {
@@ -79,6 +81,9 @@ class AgenceController extends BasicController
                         ->withInput();
         }
 
+        // create a new image directly from Laravel file upload
+        $img = Image::make($request['photo'])->encode('data-url');
+
         // Create a new agence from request param
         $agence = new Agence;
         $agence->nom = $request["nom"];
@@ -87,6 +92,7 @@ class AgenceController extends BasicController
         $agence->telephone = $request["telephone"];
         $agence->fax = $request["fax"];
         $agence->mail = $request["mail"];
+        $agence->photo = base64_encode($img);
         $agence->save();
 
         return redirect('agences');
