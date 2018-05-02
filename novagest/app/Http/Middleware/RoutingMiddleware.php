@@ -20,7 +20,7 @@ class RoutingMiddleware
     {
         $user = Auth::user();
   
-  
+        //agence
         if($route == "agence")
         {
             if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',12)->exists())
@@ -29,6 +29,25 @@ class RoutingMiddleware
             }
             return back();
         }
+        //vehicule
+        if($route == "vehicule")
+        {
+            if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',17)->exists())
+            {
+                return $next($request);
+            }
+            return back();
+        }
+        //Utilisateur
+        if($route == "utilisateur")
+        {
+            if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',16)->exists())
+            {
+                return $next($request);
+            }
+            return back();
+        }
+        
         return back();
     }
 }
