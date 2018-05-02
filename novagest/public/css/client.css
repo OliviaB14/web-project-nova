@@ -1,0 +1,30 @@
+#pie-clients{
+        border: 1px dotted #FFC107;
+}
+
+.center-align .row {
+    display: flex;
+    flex-wrap: wrap;
+       
+}
+.card{
+    flex-direction: column;
+}
+
+.main-card{
+    height: auto;
+    background:white;
+    border-bottom: 1px solid;
+}
+
+#communes_card{
+    background: #F08080;
+}
+
+#entreprises_card{
+    background: #AEDEDD;
+}
+
+.card .material-icons{
+	margin:3%;
+}
