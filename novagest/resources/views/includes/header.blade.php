@@ -4,6 +4,10 @@ if($user = Auth::user())
 {
   $user = Auth::user();
   $idtypeutilisateur = $user->idtypeutilisateur;
+
+  $user = Auth::user();
+  
+  $userPrivilage = DB::table('droit_type_utilisateur')->where('iddroit','=',$user->idtypeutilisateur)->where('iddroit','=',1)->exists();
 }
 ?>
 @if(Auth::user())
@@ -29,6 +33,7 @@ if($user = Auth::user())
   
 </ul>
 @endif
+@if(Auth::user())
 <ul id="dropdown1" class="dropdown-content">
   <!-- Main catagories ( les autres sont des sous categories presentes dans les pages maitres) -->
   <li><a href="agences">Agences</a></li>
@@ -40,21 +45,27 @@ if($user = Auth::user())
   <li><a href="statuts">Statuts</a></li>
   
 </ul>
+@endif
+@if(Auth::user())
 <ul id="dropdown2" class="dropdown-content">
   <li><a href="/profil">Voir</a></li>
   <li><a href="/profil/parametres">Paramètres</a></li>
   <li class="divider"></li>
   <li><a href="logout" class="red-text">Déconnexion</a></li>
 </ul>
-
-<ul class="dropdown-content" id="dropdown3">
-  <li>
-    <a href="whoami">WhoAmI?</a>
-  </li>
-</ul>
-
+@endif
+@if(Auth::user())
+  @if($idtypeutilisateur == 1)
+  <ul class="dropdown-content" id="dropdown3">
+    <li>
+      <a href="whoami">WhoAmI?</a>
+    </li>
+  </ul>
+  @endif
+@endif
 <!-- Dropdown Structure -->
-<div class="navbar-fixed">@if(Auth::user())
+<div class="navbar-fixed">
+@if(Auth::user())
   <nav role="navigation">
     <div class="nav-wrapper container">
       
@@ -68,7 +79,9 @@ if($user = Auth::user())
         <li><a href="#">Navbar Link</a></li>
         -->
         <li><a class="dropdown-button" href="#!" data-activates="dropdown2">Mon profil<i class="material-icons right">arrow_drop_down</i></a></li>
+        @if($idtypeutilisateur == 1)
         <li><a class="dropdown-button" href="#!" data-activates="dropdown3">WhoAmI?<i class="material-icons right">arrow_drop_down</i></a></li>
+        @endif
       </ul>
 
       <ul id="nav-mobile" class="side-nav">
@@ -84,5 +97,6 @@ if($user = Auth::user())
       </ul>
       <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
     </div>
-  </nav>@endif
+  </nav>
+  @endif
 </div>
