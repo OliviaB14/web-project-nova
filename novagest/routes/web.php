@@ -57,7 +57,8 @@ Route::Get('single/{id}','VehiculeController@GetSingle');
 //Fin Vehicules
 });
 
-
+Route::group(['middleware' => 'App\Http\Middleware\RoutingMiddleware:client'], function()
+{
 //Clients
 Route::get('clients', 'ClientController@index'); // index
 Route::post('client/add', 'ClientController@store'); // add
@@ -66,7 +67,10 @@ Route::get('client/destroy/{id}', 'ClientController@destroy');
 Route::get('clients/show/{id}', 'ClientController@show'); // index
 Route::post('client/update/{id}', 'ClientController@update');
 //Fin clients
+});
 
+Route::group(['middleware' => 'App\Http\Middleware\RoutingMiddleware:status'], function()
+{
 //Statuts
 Route::get('statuts', 'StatutVehiculeController@index'); // index
 Route::post('statut/add', 'StatutVehiculeController@store'); // add
@@ -75,7 +79,10 @@ Route::get('statut/destroy/{id}', 'StatutVehiculeController@destroy');
 Route::get('statuts/show/{id}', 'StatutVehiculeController@show'); // index
 Route::post('statut/update/{id}', 'StatutVehiculeController@update');
 //Fin Status
+});
 
+Route::group(['middleware' => 'App\Http\Middleware\RoutingMiddleware:ville'], function()
+{
 //ville
 Route::get('villes', 'VilleController@index'); // index
 Route::post('ville/add', 'VilleController@store'); // add
@@ -84,6 +91,8 @@ Route::get('ville/destroy/{id}', 'VilleController@destroy');
 Route::get('villes/show/{id}', 'VilleController@show'); // index
 Route::post('ville/update/{id}', 'VilleController@update');
 //Fin ville
+});
+
 
 Route::group(['middleware' => 'App\Http\Middleware\RoutingMiddleware:utilisateur'], function()
 {
@@ -97,7 +106,8 @@ Route::post('utilisateur/update/{id}', 'UtilisateurController@update');
 //Fin utilisateur
 });
 
-
+Route::group(['middleware' => 'App\Http\Middleware\RoutingMiddleware:droit'], function()
+{
 //droit
 Route::get('droits', 'DroitController@index'); // index
 Route::post('droit/add', 'DroitController@store'); // add
@@ -106,7 +116,10 @@ Route::get('droit/destroy/{id}', 'DroitController@destroy');
 Route::get('droits/show/{id}', 'DroitController@show'); // index
 Route::post('droit/update/{id}', 'DroitController@update');
 //Fin droit
+});
 
+Route::group(['middleware' => 'App\Http\Middleware\RoutingMiddleware:autorisations'], function()
+{
 //DroitTypeUtilisateur
 Route::get('droittypeutilisateurs', 'DroitTypeUtilisateurController@index'); // index
 Route::post('droittypeutilisateur/add', 'DroitTypeUtilisateurController@store'); // add
@@ -115,7 +128,10 @@ Route::get('droittypeutilisateur/destroy/{id}', 'DroitTypeUtilisateurController@
 Route::get('droittypeutilisateurs/show/{id}', 'DroitTypeUtilisateurController@show'); // index
 Route::post('droittypeutilisateur/update/{id}', 'DroitTypeUtilisateurController@update');
 //Fin DroitTypeUtilisateur
+});
 
+Route::group(['middleware' => 'App\Http\Middleware\RoutingMiddleware:histovehi'], function()
+{
 //HistoriqueVehicule
 Route::get('historiquevehicules', 'HistoriqueVehiculeController@index'); // index
 Route::post('historiquevehicule/add', 'HistoriqueVehiculeController@store'); // add
@@ -124,6 +140,8 @@ Route::get('historiquevehicule/destroy/{id}', 'HistoriqueVehiculeController@dest
 Route::get('historiquevehicules/show/{id}', 'HistoriqueVehiculeController@show'); // index
 Route::post('historiquevehicule/update/{id}', 'HistoriqueVehiculeController@update');
 //Fin HistoriqueVehicule
+});
+
 
 //PieceVehicule
 Route::get('piecevehicules', 'PieceVehiculeController@index'); // index

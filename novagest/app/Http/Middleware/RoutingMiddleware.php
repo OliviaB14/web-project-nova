@@ -47,6 +47,60 @@ class RoutingMiddleware
             }
             return back();
         }
+        //Client
+        if($route == "client")
+        {
+            if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',14)->exists())
+            {
+                return $next($request);
+            }
+            return back();
+        }
+        //Status
+        if($route == "status")
+        {
+            if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',18)->exists())
+            {
+                return $next($request);
+            }
+            return back();
+        }
+        //Ville
+        if($route == "ville")
+        {
+            if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',19)->exists())
+            {
+                return $next($request);
+            }
+            return back();
+        }
+        //Droit
+        if($route == "droit")
+        {
+            if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',20)->exists())
+            {
+                return $next($request);
+            }
+            return back();
+        } 
+        //autorisations
+        if($route == "autorisations")
+        {
+            if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',21)->exists())
+            {
+                return $next($request);
+            }
+            return back();
+        }
+        //histovehi
+        if($route == "histovehi")
+        {
+            if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',22)->exists())
+            {
+                return $next($request);
+            }
+            return back();
+        }
         
         return back();
     }
