@@ -15,13 +15,12 @@
 
 @section('content')
 
-
-<h1><i class="material-icons">settings_application</i> Gérer les droits</h1>
-
-
 <section>
-    <div class="container">
-        <div class="row">
+<ul class="collapsible" style="margin-left:2%" data-collapsible="accordion">
+<li>
+      <div class="collapsible-header"><i class="material-icons">settings_application</i>Données</div>
+      <div class="collapsible-body">
+      <div class="row">
         {{ Form::open(array('url' => 'droit/add')) }}
             <div class="col s12">
                 <div class="row">
@@ -34,18 +33,12 @@
             {{ Form::submit('Ajouter', array('class' => 'btn-sm btn-success')) }}
         {{ Form::close() }}
         </div>
-    </div>
-</section>
-
-
-<section>
-<div class="container">
-<div class="row" style="padding-top:15px">
-<!--<a class="btn btn-floating btn-large cyan pulse"><i class="material-icons">add</i></a>-->
-</div>
-        <div class="row" style="padding-top:10px">
-        <div>
-            <table id="example" class="mdl-data-table responsive-table" cellspacing="0" width="100%">
+      </div>
+    </li>
+    <li>
+      <div class="collapsible-header"><i class="material-icons">dvr</i>Données</div>
+      <div class="collapsible-body">
+      <table id="example" class="mdl-data-table responsive-table" cellspacing="0" width="100%">
                     <thead>
                         <tr>
                             <th>Libelle</th>
@@ -61,9 +54,9 @@
                     @endforeach
                     </tbody>
                 </table>
-        </div>
-    </div>
-</div>
+      </div>
+    </li>
+  </ul>
 </section>
 
 <script>

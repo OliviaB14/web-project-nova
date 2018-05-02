@@ -16,7 +16,7 @@
 @section('content')
 
 <section>
-<div class="container z-depth-1">
+<div class="container">
 <div class="row" style="padding-top:15px">
 <!--<a class="btn btn-floating btn-large cyan pulse"><i class="material-icons">add</i></a>-->
 </div>
