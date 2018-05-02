@@ -1,5 +1,12 @@
 
   
+<?php 
+if($user = Auth::user())
+{
+  $user = Auth::user();
+  $idtypeutilisateur = $user->idtypeutilisateur;
+}
+?>
   
   <style>
   @media screen and (max-width: 640px) {
@@ -7,6 +14,7 @@
   }
 }
   </style>
+  @if(Auth::user())
   <footer class="page-footer brown-text darken-4"></footer>
     <div class="container">
       <div class="row">
@@ -34,7 +42,7 @@
           <h5 class="">Mon Profil</h5>
           <ul>
           <li><a href="/profil/parametres"> <i class="material-icons tiny">settings</i> Paramètres</a></li>
-            <li><a href="#!" class="red-text"><i class="material-icons tiny">input</i> Déconnexion</a></li>
+            <li><a href="logout" class="red-text"><i class="material-icons tiny">input</i> Déconnexion</a></li>
           </ul>
         </div>
         <div class="col l3 s12">
@@ -43,6 +51,7 @@
             <li><a href="signaler" class="red-text"><i class="material-icons tiny">input</i> Envoyer un rapport</a></li>
           </ul>
         </div>
+        
       </div>
     </div>
     <div class="footer-copyright black-text">
@@ -51,7 +60,11 @@
       </div>
     </div>
   </footer>
-
+  @endif
   <script>
+  @if(!Auth::user())
+    $('#bottom-arrow').hide();
+  @endif
+
      $('.timer').countTo();
   </script>

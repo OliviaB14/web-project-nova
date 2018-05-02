@@ -9,12 +9,14 @@ use App\Http\Controllers\BasicController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Validator;
+use DB;
 use Intervention\Image\ImageManagerStatic as Image;
 
 class AgenceController extends BasicController
 {
     public function index()
     {
+        
         $agences = Agence::all();
         $villes = Ville::pluck('nom','id');
         return view('agence', ['agences' => $agences,'villes' => $villes]);
