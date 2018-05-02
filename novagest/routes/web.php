@@ -30,7 +30,10 @@ Route::post('report/add', 'BasiceController@store'); // add
 Route::post('switch/{typeDroit}/{typeUser}', 'DroitTypeUtilisateurController@switch');
 // fin
 
-Route::get('agences', 'AgenceController@index'); // index
+
+
+Route::group(['middleware' => 'App\Http\Middleware\RoutingMiddleware:agence'], function()
+{
 //Agences
 Route::get('agences', 'AgenceController@index'); // index
 Route::post('agence/add', 'AgenceController@store'); // add
@@ -39,6 +42,8 @@ Route::get('agence/destroy/{id}', 'AgenceController@destroy');
 Route::get('agences/show/{id}', 'AgenceController@show'); // index
 Route::post('agence/update/{id}', 'AgenceController@update');
 //Fin Agences
+});
+
 
 //Vehicules
 Route::get('vehicules', 'VehiculeController@index'); // index
