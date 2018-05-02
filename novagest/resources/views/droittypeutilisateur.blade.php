@@ -16,13 +16,12 @@
 @section('content')
 
 <section>
-<div class="container">
-<div class="row" style="padding-top:15px">
-<!--<a class="btn btn-floating btn-large cyan pulse"><i class="material-icons">add</i></a>-->
-</div>
-        <div class="row" style="padding-top:10px">
-        <div>
-            <table id="example" class="mdl-data-table responsive-table" cellspacing="0" width="100%">
+
+<ul class="collapsible" style="margin-left:2%" data-collapsible="accordion">
+    <li>
+      <div class="collapsible-header"><i class="material-icons">dvr</i>Données</div>
+      <div class="collapsible-body">
+      <table id="example" class="mdl-data-table responsive-table" cellspacing="0" width="100%">
                     <thead>
                         <tr>
                         <th>Droits</th>
@@ -59,10 +58,9 @@
                     @endforeach
                     </tbody>
                 </table>
-        </div>
-    </div>
-</div>
-</section>
+      </div>
+    </li>
+  </ul>
 
 <script>
 $(".btnDroit").on("click",function(){
