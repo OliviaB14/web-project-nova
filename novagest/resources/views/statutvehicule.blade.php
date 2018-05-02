@@ -77,7 +77,7 @@
       </div>
     </li>
   </ul>
-
+</section>
 
 
 <!-- Modal Structure -->

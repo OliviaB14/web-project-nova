@@ -36,7 +36,7 @@
 	              <span class="card-title"><b class="timer" id="lollipop" data-to="{{$utilisateurs}}" data-speed="1500"></b> agents</span>
 	            </div>
 	            <div class="card-action">
-	              <a href="utilisateur">Gérer</a>
+	              <a href="utilisateurs">Gérer</a>
 	            </div>
 	          </div>
 		</div>
@@ -46,7 +46,7 @@
 	              <span class="card-title">Statuts</span>
 	            </div>
 	            <div class="card-action">
-	              <a href="statut">Gérer</a>	
+	              <a href="statuts">Gérer</a>	
 	            </div>
 	          </div>
 		</div>
