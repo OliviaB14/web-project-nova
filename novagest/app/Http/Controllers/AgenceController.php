@@ -38,7 +38,8 @@ class AgenceController extends BasicController
             'eidville' => 'required|integer',
             'etelephone' => 'required|alpha_dash|max:24',
             'efax' => 'required|alpha_dash|max:24',
-            'email' => 'required|email|max:64'
+            'email' => 'required|email|max:64',
+            'ephoto' => 'image'
         ]);
 
         if ($validator->fails()) {
@@ -49,6 +50,9 @@ class AgenceController extends BasicController
                         ->withInput();
         }
 
+        // create a new image directly from Laravel file upload
+        $img = Image::make($request['ephoto'])->encode('data-url');
+
         // Find the corresponding record 
         $agence = Agence::find($id);
         $agence->nom = $request["enom"];
@@ -57,6 +61,7 @@ class AgenceController extends BasicController
         $agence->telephone = $request["etelephone"];
         $agence->fax = $request["efax"];
         $agence->mail = $request["email"];
+        $agence->photo = base64_encode($img);
         $agence->save();
 
         return redirect('agences');
@@ -73,7 +78,7 @@ class AgenceController extends BasicController
             'telephone' => 'required|alpha_dash|max:24',
             'fax' => 'required|alpha_dash|max:24',
             'mail' => 'required|email|max:64',
-            'image' => 'required|image'
+            'photo' => 'required|image'
         ]);
 
         if ($validator->fails()) {
