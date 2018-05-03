@@ -16,7 +16,7 @@
 @section('title', 'Clients')
 
 @section('content')
-
+<?php $user = Auth::user();?>
 <div class="row">
     <div class="col s12"><h1><i class="material-icons">build</i> Gestion des clients</h1></div>
 </div>
@@ -129,6 +129,7 @@ $(document).ready(function(){
 
 <section>
 <ul class="collapsible" data-collapsible="accordion">
+@if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',44)->exists())
     <li>
       <div class="collapsible-header"><i class="material-icons">add</i>Ajouter</div>
       <div class="collapsible-body">
@@ -194,6 +195,8 @@ $(document).ready(function(){
         </div>
       </div>
     </li>
+    @endif
+    @if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',45)->exists())
     <li>
       <div class="collapsible-header"><i class="material-icons">dvr</i>Données</div>
       <div class="collapsible-body">
@@ -228,7 +231,14 @@ $(document).ready(function(){
                                 @endif
                             </td>
                             <td>{{$client->desactive}}</td>
-                            <td><a class="btn-floating btn-large waves-effect waves-light red" href="client/destroy/{{$client->id}}"><i class="material-icons">cancel</i><a id="{{$client->id}}" class="btn-floating btn-large waves-effect waves-light yellow edit" href="#modal1"><i class="material-icons">edit</i></a></a></td>
+                            <td>
+                            @if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',47)->exists())
+                            <a class="btn-floating btn-large waves-effect waves-light red" href="client/destroy/{{$client->id}}"><i class="material-icons">cancel</i></a>
+                            @endif
+                            @if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',46)->exists())
+                            <a id="{{$client->id}}" class="btn-floating btn-large waves-effect waves-light yellow edit" href="#modal1"><i class="material-icons">edit</i></a>
+                            @endif
+                            </td>
                         </tr>
                     @endforeach
                     </tbody>
@@ -236,6 +246,8 @@ $(document).ready(function(){
         </div>
     </div>
 </div>
+</li>
+@endif
 </section>
 
 <section>
