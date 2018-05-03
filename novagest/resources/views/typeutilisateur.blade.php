@@ -19,7 +19,7 @@
 <section>
     <div class="container">
         <div class="row">
-        {{ Form::open(array('url' => 'type_utilisateur/add')) }}
+        {{ Form::open(array('url' => 'typeutilisateur/add')) }}
             <div class="col s12">
                 <div class="row">
                     <div class="input-field col s6">

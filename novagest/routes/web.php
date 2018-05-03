@@ -142,7 +142,8 @@ Route::post('historiquevehicule/update/{id}', 'HistoriqueVehiculeController@upda
 //Fin HistoriqueVehicule
 });
 
-
+Route::group(['middleware' => 'App\Http\Middleware\RoutingMiddleware:piecevehicule'], function()
+{
 //PieceVehicule
 Route::get('piecevehicules', 'PieceVehiculeController@index'); // index
 Route::post('piecevehicule/add', 'PieceVehiculeController@store'); // add
@@ -151,7 +152,10 @@ Route::get('piecevehicule/destroy/{id}', 'PieceVehiculeController@destroy');
 Route::get('piecevehicules/show/{id}', 'PieceVehiculeController@show'); // index
 Route::post('piecevehicule/update/{id}', 'PieceVehiculeController@update');
 //Fin PieceVehicule
+});
 
+Route::group(['middleware' => 'App\Http\Middleware\RoutingMiddleware:typeclient'], function()
+{
 //TypeClient
 Route::get('typeclients', 'TypeClientController@index'); // index
 Route::post('typeclient/add', 'TypeClientController@store'); // add
@@ -160,7 +164,10 @@ Route::get('typeclient/destroy/{id}', 'TypeClientController@destroy');
 Route::get('typeclients/show/{id}', 'TypeClientController@show'); // index
 Route::post('typeclient/update/{id}', 'TypeClientController@update');
 //Fin TypeClient
+});
 
+Route::group(['middleware' => 'App\Http\Middleware\RoutingMiddleware:typeetatpiece'], function()
+{
 //TypeEtatPiece
 Route::get('typeetatpieces', 'TypeEtatPieceController@index'); // index
 Route::post('typeetatpiece/add', 'TypeEtatPieceController@store'); // add
@@ -169,7 +176,10 @@ Route::get('typeetatpiece/destroy/{id}', 'TypeEtatPieceController@destroy');
 Route::get('typeetatpieces/show/{id}', 'TypeEtatPieceController@show'); // index
 Route::post('typeetatpiece/update/{id}', 'TypeEtatPieceController@update');
 //Fin TypeEtatPiece
+});
 
+Route::group(['middleware' => 'App\Http\Middleware\RoutingMiddleware:typehistoriqueevenement'], function()
+{
 //TypeHistoriqueEvenement
 Route::get('typehistoriqueevenements', 'TypeHistoriqueEvenementController@index'); // index
 Route::post('typehistoriqueevenement/add', 'TypeHistoriqueEvenementController@store'); // add
@@ -178,7 +188,10 @@ Route::get('typehistoriqueevenement/destroy/{id}', 'TypeHistoriqueEvenementContr
 Route::get('typehistoriqueevenements/show/{id}', 'TypeHistoriqueEvenementController@show'); // index
 Route::post('typehistoriqueevenement/update/{id}', 'TypeHistoriqueEvenementController@update');
 //Fin TypeHistoriqueEvenement
+});
 
+Route::group(['middleware' => 'App\Http\Middleware\RoutingMiddleware:typepiecevehicule'], function()
+{
 //typepiecevehicule
 Route::get('typepiecevehicules', 'TypePieceVehiculeController@index'); // index
 Route::post('typepiecevehicule/add', 'TypePieceVehiculeController@store'); // add
@@ -187,6 +200,8 @@ Route::get('typepiecevehicule/destroy/{id}', 'TypePieceVehiculeController@destro
 Route::get('typepiecevehicules/show/{id}', 'TypePieceVehiculeController@show'); // index
 Route::post('typepiecevehicule/update/{id}', 'TypePieceVehiculeController@update');
 //Fin typepiecevehicule
+});
+
 
 //typeutilisateur
 Route::get('typeutilisateurs', 'TypeUtilisateurController@index'); // index
