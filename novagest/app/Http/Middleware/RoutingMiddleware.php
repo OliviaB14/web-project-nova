@@ -146,6 +146,24 @@ class RoutingMiddleware
             }
             return back();
         }
+        //typeutilisateur
+        if($route == "typeutilisateur")
+        {
+            if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',28)->exists())
+            {
+                return $next($request);
+            }
+            return back();
+        }
+        //typevehicule
+        if($route == "typevehicule")
+        {
+            if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',29)->exists())
+            {
+                return $next($request);
+            }
+            return back();
+        }
         
         return back();
     }

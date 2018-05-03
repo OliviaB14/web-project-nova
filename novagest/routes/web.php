@@ -202,7 +202,8 @@ Route::post('typepiecevehicule/update/{id}', 'TypePieceVehiculeController@update
 //Fin typepiecevehicule
 });
 
-
+Route::group(['middleware' => 'App\Http\Middleware\RoutingMiddleware:typeutilisateur'], function()
+{
 //typeutilisateur
 Route::get('typeutilisateurs', 'TypeUtilisateurController@index'); // index
 Route::post('typeutilisateur/add', 'TypeUtilisateurController@store'); // add
@@ -211,7 +212,10 @@ Route::get('typeutilisateur/destroy/{id}', 'TypeUtilisateurController@destroy');
 Route::get('typeutilisateurs/show/{id}', 'TypeUtilisateurController@show'); // index
 Route::post('typeutilisateur/update/{id}', 'TypeUtilisateurController@update');
 //Fin typeutilisateur
+});
 
+Route::group(['middleware' => 'App\Http\Middleware\RoutingMiddleware:typevehicule'], function()
+{
 //typevehicule
 Route::get('typevehicules', 'TypeVehiculeController@index'); // index
 Route::post('typevehicule/add', 'TypeVehiculeController@store'); // add
@@ -220,8 +224,5 @@ Route::get('typevehicule/destroy/{id}', 'TypeVehiculeController@destroy');
 Route::get('typevehicule/show/{id}', 'TypeVehiculeController@show'); // index
 Route::post('typevehicule/update/{id}', 'TypeVehiculeController@update');
 //Fin typevehicule
-
-
-
-
+});
 });
