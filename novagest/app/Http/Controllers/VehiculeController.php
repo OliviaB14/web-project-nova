@@ -86,23 +86,31 @@ class VehiculeController extends BasicController
         $request['date_achat'] = Carbon::parse($request['date_achat'])->format('Y-m-d');
         $request['date_misecirculation'] = Carbon::parse($request['date_misecirculation'])->format('Y-m-d');
 
-                $validator = Validator::make($request->all(), [
-                    'immatriculation' => 'required|alpha_dash|max:16',
-                    'date_achat' => 'required|date',
-                    'date_misecirculation' => 'required|date',
-                    'idtypevehicule' => 'required|integer|ax:12',
-                    'idtypeetatvehicule' => 'required|integer|max:12',
-                    'idstatut' => 'required|integer|max:12',
-                    'idclient' => 'required|integer|max:12',
-                    'idagence' => 'required|integer|max:12'
-                ]);
-                
-                if ($validator->fails()) {
-                    dd($validator);
-                    return redirect('vehicule')
-                                ->withErrors($validator)
-                                ->withInput();
-                }
+        $validator = Validator::make($request->all(), [
+            'immatriculation' => 'required|alpha_dash|max:16',
+            'date_achat' => 'required|date',
+            'date_misecirculation' => 'required|date',
+            'idtypevehicule' => 'required|integer|ax:12',
+            'idtypeetatvehicule' => 'required|integer|max:12',
+            'idstatut' => 'required|integer|max:12',
+            'idclient' => 'required|integer|max:12',
+            'idagence' => 'required|integer|max:12',
+            'photo1' => 'required|image',
+            'photo2' => 'image',
+            'photo3' => 'image'
+        ]);
+        
+        if ($validator->fails()) {
+            dd($validator);
+            return redirect('vehicule')
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+
+        // create a new image directly from Laravel file upload
+        $img1 = Image::make($request['photo1'])->encode('data-url');
+        $img2 = Image::make($request['photo2'])->encode('data-url');
+        $img3 = Image::make($request['photo3'])->encode('data-url');
         
         $vehicule = new Vehicule;
         $vehicule->immatriculation = $request["immatriculation"];
@@ -112,6 +120,9 @@ class VehiculeController extends BasicController
         $vehicule->idtypeetatvehicule = $request["idtypeetatvehicule"];
         $vehicule->idstatut = $request["idstatut"];
         $vehicule->idclient = $request["idclient"];
+        $vehicule->photo_1 = base64_encode($request['photo1']);
+        $vehicule->photo_2 = base64_encode($request['photo2']);
+        $vehicule->photo_3 = base64_encode($request['photo3']);
         $vehicule->idagence = $request["idagence"];
         $vehicule->save();
 

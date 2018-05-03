@@ -123,6 +123,17 @@
                          {{ Form::select('idagence', $idagence) }}
                     </div>
                 </div>
+                <div class="row">
+                    <div class="input-field col s4">
+                         {{ Form::file('photo1') }}
+                    </div>
+                    <div class="input-field col s4">
+                         {{ Form::file('photo2') }}
+                    </div>
+                    <div class="input-field col s4">
+                         {{ Form::file('photo3') }}
+                    </div>
+                </div>
             </div>
             
             {{ Form::submit('Ajouter', array('class' => 'waves-effect waves-light btn')) }}
