@@ -14,7 +14,7 @@
 @section('title', 'Agences')
 
 @section('content')
-
+<?php $user = Auth::user();?>
 <div class="row">
     <div class="col s12"><h1><i class="material-icons">build</i> Gestion des agences</h1></div>
 </div>
@@ -78,6 +78,7 @@ $(document).ready(function(){
 
 <section>
 <ul class="collapsible" style="margin-left:2%" data-collapsible="accordion">
+@if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',41)->exists())
     <li>
       <div class="collapsible-header"><i class="material-icons">add</i>Ajouter</div>
       <div class="collapsible-body">
@@ -140,6 +141,8 @@ $(document).ready(function(){
         </div>
       </div>
     </li>
+    @endif
+    @if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',40)->exists())
     <li>
       <div class="collapsible-header"><i class="material-icons">dvr</i>Données</div>
       <div class="collapsible-body">
@@ -173,13 +176,21 @@ $(document).ready(function(){
                             <td>{{$agence->fax}}</td>
                             <td>{{$agence->mail}}</td>
                             <td>{{$agence->desactive}}</td>
-                            <td><a class="btn-floating btn-large waves-effect waves-light red" href="agence/destroy/{{$agence->id}}"><i class="material-icons">cancel</i><a id="{{$agence->id}}" class="btn-floating btn-large waves-effect waves-light yellow edit" href="#modal1"><i class="material-icons">edit</i></a></a></td>
+                            <td>
+                            @if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',42)->exists())
+                            <a class="btn-floating btn-large waves-effect waves-light red" href="agence/destroy/{{$agence->id}}"><i class="material-icons">cancel</i></a>
+                            @endif
+                            @if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',43)->exists())
+                            <a id="{{$agence->id}}" class="btn-floating btn-large waves-effect waves-light yellow edit" href="#modal1"><i class="material-icons">edit</i></a>
+                            @endif
+                            </td>
                         </tr>
                     @endforeach
                     </tbody>
                 </table>
       </div>
     </li>
+    @endif
   </ul>
 </section>
 

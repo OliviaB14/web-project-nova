@@ -14,9 +14,10 @@
 @section('title', 'Droit')
 
 @section('content')
-
+<?php $user = Auth::user();?>
 <section>
 <ul class="collapsible" style="margin-left:2%" data-collapsible="accordion">
+@if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',39)->exists())
 <li>
       <div class="collapsible-header"><i class="material-icons">settings_application</i>Données</div>
       <div class="collapsible-body">
@@ -35,6 +36,8 @@
         </div>
       </div>
     </li>
+    @endif
+    @if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',38)->exists())
     <li>
       <div class="collapsible-header"><i class="material-icons">dvr</i>Données</div>
       <div class="collapsible-body">
@@ -56,6 +59,7 @@
                 </table>
       </div>
     </li>
+    @endif
   </ul>
 </section>
 

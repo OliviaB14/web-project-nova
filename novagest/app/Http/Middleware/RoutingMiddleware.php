@@ -101,6 +101,69 @@ class RoutingMiddleware
             }
             return back();
         }
+        //piecevehicule
+        if($route == "piecevehicule")
+        {
+            if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',23)->exists())
+            {
+                return $next($request);
+            }
+            return back();
+        }
+        //typeclient
+        if($route == "typeclient")
+        {
+            if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',24)->exists())
+            {
+                return $next($request);
+            }
+            return back();
+        }
+        //typeetatpiece
+        if($route == "typeetatpiece")
+        {
+            if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',25)->exists())
+            {
+                return $next($request);
+            }
+            return back();
+        }
+        //typehistoriqueevenement
+        if($route == "typehistoriqueevenement")
+        {
+            if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',26)->exists())
+            {
+                return $next($request);
+            }
+            return back();
+        }
+        //typepiecevehicule
+        if($route == "typepiecevehicule")
+        {
+            if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',27)->exists())
+            {
+                return $next($request);
+            }
+            return back();
+        }
+        //typeutilisateur
+        if($route == "typeutilisateur")
+        {
+            if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',28)->exists())
+            {
+                return $next($request);
+            }
+            return back();
+        }
+        //typevehicule
+        if($route == "typevehicule")
+        {
+            if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',29)->exists())
+            {
+                return $next($request);
+            }
+            return back();
+        }
         
         return back();
     }

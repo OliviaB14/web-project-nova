@@ -14,7 +14,7 @@
 @section('title', 'utilisateurs')
 
 @section('content')
-
+<?php $user = Auth::user();?>
 <div class="row">
     <div class="col s12"><h1><i class="material-icons">build</i> Gestion des utilisateurs</h1></div>
 </div>
@@ -92,6 +92,7 @@ $(document).ready(function(){
 
 <section>
 <ul class="collapsible" style="margin-left:2%" data-collapsible="accordion">
+@if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',35)->exists())
     <li>
       <div class="collapsible-header"><i class="material-icons">add</i>Ajouter</div>
       <div class="collapsible-body">
@@ -168,6 +169,8 @@ $(document).ready(function(){
         </div>
       </div>
     </li>
+    @endif
+    @if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',34)->exists())
     <li>
       <div class="collapsible-header"><i class="material-icons">dvr</i>Données</div>
       <div class="collapsible-body">
@@ -205,13 +208,21 @@ $(document).ready(function(){
                             <td>{{$utilisateur->fax}}</td>
                             <td>{{$utilisateur->mail}}</td>
                             <td>{{$utilisateur->desactive}}</td>
-                            <td><a class="btn-floating btn-large waves-effect waves-light red" href="utilisateur/destroy/{{$utilisateur->id}}"><i class="material-icons">cancel</i><a id="{{$utilisateur->id}}" class="btn-floating btn-large waves-effect waves-light yellow editedit" href="#modal1"><i class="material-icons">edit</i></a></a></td>
+                            <td>
+                            @if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',37)->exists())
+                            <a class="btn-floating btn-large waves-effect waves-light red" href="utilisateur/destroy/{{$utilisateur->id}}"><i class="material-icons">cancel</i></a>
+                            @endif
+                            @if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',36)->exists())
+                            <a id="{{$utilisateur->id}}" class="btn-floating btn-large waves-effect waves-light yellow editedit" href="#modal1"><i class="material-icons">edit</i></a>
+                            @endif
+                            </td>
                         </tr>
                     @endforeach
                     </tbody>
                 </table>
       </div>
     </li>
+    @endif
   </ul>
 </section>
 
