@@ -46,7 +46,7 @@ class StatutVehiculeController extends BasicController
         ]);
 
         if ($validator->fails()) {
-            dd($validator);
+            //dd($validator);
             
             return redirect('statuts')
                         ->withErrors($validator)
