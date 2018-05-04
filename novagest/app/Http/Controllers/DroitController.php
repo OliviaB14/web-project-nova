@@ -12,6 +12,7 @@ use Input;
 use Illuminate\Support\Facades\Validator;
 require app_path().'/validators.php';   //regex customs
 
+
 class DroitController extends BasicController
 {
 	// public function GetDroits()
@@ -65,11 +66,7 @@ class DroitController extends BasicController
         //Validator
 
         $validator = Validator::make($request->all(), [
-<<<<<<< HEAD
-            'libelle' => 'required|max:64',
-=======
-            'libelle' => 'required|alpha_spaces|max:32',
->>>>>>> 5fa48547da2f4a46100b867a4dbf0294eb39d516
+            'libelle' => 'required|alpha_spaces|max:64',
         ]);
 
         if ($validator->fails()) {
