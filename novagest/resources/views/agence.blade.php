@@ -14,9 +14,23 @@
 @section('title', 'Agences')
 
 @section('content')
-<?php $user = Auth::user();?>
+<?php $user = Auth::user();
+$nb = $agences->count();
+?>
+
 <div class="row">
     <div class="col s12"><h1><i class="material-icons">build</i> Gestion des agences</h1></div>
+        <div class="card col s12 center-align amber accent-2 main-card">
+            <div class="card-content">
+              <span class="card-title black-text"><b class="timer" data-to="{{$nb+1}}" data-speed="1500"></b> agences</span>
+            </div>
+        </div>
+</div>
+
+<div class='center-align row'>
+   
+
+    
 </div>
 
 <!-- Modal Structure -->
@@ -209,7 +223,7 @@ $(document).ready(function(){
 <script>
 $(".edit").on('click',function(){
     console.log("ajax");
-    var data = $('.edit').attr('id')
+    var data = $(this).attr('id')
     $.ajax({
           url: 'agences/show/' + data,
           type: "get",
