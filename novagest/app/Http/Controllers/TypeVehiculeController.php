@@ -10,6 +10,8 @@ use App\TypeVehicule;
 use DB;
 use Input;
 use Illuminate\Support\Facades\Validator;
+require app_path().'/validators.php';   //regex customs
+
 
 class TypeVehiculeController extends BasicController
 {
@@ -30,12 +32,12 @@ class TypeVehiculeController extends BasicController
         //Validator
 
         $validator = Validator::make($request->all(), [
-            'emodele' => 'required|alpha_dash|max:32',
-            'ehauteur' => 'required|alpha_num|max:16',
-            'elargeur' => 'required|alpha_num|max:16',
-            'epoids' => 'required|alpha_num|max:16',
-            'epuissance' => 'required|alpha_num|max:8',
-            'eprix_neuf' => 'required|numeric|'
+            'emodele' => 'required|alphanum_spaces|max:32',
+            'ehauteur' => 'required|alphanum_spaces|max:16',
+            'elargeur' => 'required|alphanum_spaces|max:16',
+            'epoids' => 'required|alphanum_spaces|max:16',
+            'epuissance' => 'required|alphanum_spaces|max:8',
+            'eprix_neuf' => 'required|numeric'
         ]);
 
         if ($validator->fails()) {
@@ -63,11 +65,11 @@ class TypeVehiculeController extends BasicController
         //Validator
 
         $validator = Validator::make($request->all(), [
-            'modele' => 'required|alpha_dash|max:32',
-            'hauteur' => 'required|alpha_num|max:16',
-            'largeur' => 'required|alpha_num|max:16',
-            'poids' => 'required|alpha_num|max:16',
-            'puissance' => 'required|alpha_num|max:8',
+            'modele' => 'required|alphanum_spaces|max:32',
+            'hauteur' => 'required|alphanum_spaces|max:16',
+            'largeur' => 'required|alphanum_spaces|max:16',
+            'poids' => 'required|alphanum_spaces|max:16',
+            'puissance' => 'required|alphanum_spaces|max:8',
             'prix_neuf' => 'required|numeric'
         ]);
         

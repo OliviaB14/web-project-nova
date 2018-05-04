@@ -10,6 +10,8 @@ use App\StatutVehicule;
 use DB;
 use Input;
 use Illuminate\Support\Facades\Validator;
+require app_path().'/validators.php';   //regex customs
+
 
 class StatutVehiculeController extends BasicController
 {
@@ -40,7 +42,7 @@ class StatutVehiculeController extends BasicController
     {
         //Validator
         $validator = Validator::make($request->all(), [
-            'elibelle' => 'required|alpha|max:32',
+            'elibelle' => 'required|alpha_spaces|max:32',
         ]);
 
         if ($validator->fails()) {
@@ -63,7 +65,7 @@ class StatutVehiculeController extends BasicController
     {
                 //Validator
                 $validator = Validator::make($request->all(), [
-                    'libelle' => 'required|alpha|max:32',
+                    'libelle' => 'required|alpha_spaces|max:32',
                 ]);
         
                 if ($validator->fails()) {

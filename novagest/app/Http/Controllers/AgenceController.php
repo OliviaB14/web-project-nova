@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Validator;
 use DB;
 use Intervention\Image\ImageManagerStatic as Image;
+require app_path().'/validators.php';   //regex customs
 
 class AgenceController extends BasicController
 {
@@ -33,11 +34,11 @@ class AgenceController extends BasicController
         //Validator
         //dd($request["eidville"]);
         $validator = Validator::make($request->all(), [
-            'enom' => 'required|alpha_dash|max:64',
-            'eadresse' => 'required|alpha_dash|max:256',
+            'enom' => 'required|alpha_spaces|max:64',
+            'eadresse' => 'required|alpha_spaces|max:256',
             'eidville' => 'required|integer',
-            'etelephone' => 'required|alpha_dash|max:24',
-            'efax' => 'required|alpha_dash|max:24',
+            'etelephone' => 'required|alpha_spaces|max:24',
+            'efax' => 'required|alpha_spaces|max:24',
             'email' => 'required|email|max:64',
             'ephoto' => 'image'
         ]);
@@ -72,13 +73,13 @@ class AgenceController extends BasicController
         //Validator
 
         $validator = Validator::make($request->all(), [
-            'nom' => 'required|alpha_dash|max:64',
-            'adresse' => 'required|alpha_dash|max:256',
+            'nom' => 'required|alpha_spaces|max:64',
+            'adresse' => 'required|alpha_spaces|max:256',
             'idville' => 'required|integer',
-            'telephone' => 'required|alpha_dash|max:24',
-            'fax' => 'required|alpha_dash|max:24',
+            'telephone' => 'required|alpha_spaces|max:24',
+            'fax' => 'required|alpha_spaces|max:24',
             'mail' => 'required|email|max:64',
-            'photo' => 'required|image'
+            'photo' => 'image'
         ]);
 
         if ($validator->fails()) {
