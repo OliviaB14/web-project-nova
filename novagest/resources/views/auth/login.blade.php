@@ -89,7 +89,7 @@
                             <div class="form-group">
                                 <div class="row">
                                     <div class='col s12'>
-                                    {{ Form::submit('Ajouter', array('class' => 'waves-effect waves-light btn')) }}
+                                    {{ Form::submit('Se connecter', array('class' => 'waves-effect waves-light btn')) }}
                                     </div>
                                 </div>
                             </div>
