@@ -223,7 +223,7 @@ $(document).ready(function(){
 <script>
 $(".edit").on('click',function(){
     console.log("ajax");
-    var data = $('.edit').attr('id')
+    var data = $(this).attr('id')
     $.ajax({
           url: 'agences/show/' + data,
           type: "get",
