@@ -10,6 +10,8 @@ use App\TypePieceVehicule;
 use DB;
 use Input;
 use Illuminate\Support\Facades\Validator;
+require app_path().'/validators.php';   //regex customs
+
 
 class TypePieceVehiculeController extends BasicController
 {
@@ -41,8 +43,8 @@ class TypePieceVehiculeController extends BasicController
         //Validator
 
         $validator = Validator::make($request->all(), [
-            'enom' => 'required|alpha_dash|max:32',
-            'eidtypevehicule' => 'required|integer|max:12',
+            'enom' => 'required|alphanum_spaces|max:32',
+            'eidtypevehicule' => 'required|integer',
             'eprix_neuf' => 'required|numeric',
         ]);
 
@@ -68,11 +70,11 @@ class TypePieceVehiculeController extends BasicController
         //Validator
 
         $validator = Validator::make($request->all(), [
-            'nom' => 'required|alpha_dash|max:32',
-            'idtypevehicule' => 'required|integer|max:12',
+            'nom' => 'required|alphanum_spaces|max:32',
+            'idtypevehicule' => 'required|integer',
             'prix_neuf' => 'required|numeric',
         ]);
-
+        
         if ($validator->fails()) {
             //dd($validator);
             return redirect('typepiecevehicules')

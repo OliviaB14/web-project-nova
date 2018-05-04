@@ -10,6 +10,8 @@ use App\HistoriqueVehicule;
 use DB;
 use Input;
 use Illuminate\Support\Facades\Validator;
+require app_path().'/validators.php';   //regex customs
+
 
 class HistoriqueVehiculeController extends BasicController
 {
@@ -42,10 +44,10 @@ class HistoriqueVehiculeController extends BasicController
 
         $validator = Validator::make($request->all(), [
             'edate_ligne' => 'required|date',
-            'ecommentaire' => 'required|alpha_num',
-            'eidutilisateur' => 'required|integer|max:12',
-            'eidtypeevenement' => 'required|integer|max:12',
-            'eidvehicule' => 'required|integer|max:12',
+            'ecommentaire' => 'required|alphanum_spaces',
+            'eidutilisateur' => 'required|integer',
+            'eidtypeevenement' => 'required|integer',
+            'eidvehicule' => 'required|integer',
         ]);
 
         if ($validator->fails()) {
@@ -73,10 +75,10 @@ class HistoriqueVehiculeController extends BasicController
 
         $validator = Validator::make($request->all(), [
             'date_ligne' => 'required|date',
-            'commentaire' => 'required|alpha_num',
-            'idutilisateur' => 'required|integer|max:12',
-            'idtypeevenement' => 'required|integer|max:12',
-            'idvehicule' => 'required|integer|max:12',
+            'commentaire' => 'required|alphanum_spaces',
+            'idutilisateur' => 'required|integer',
+            'idtypeevenement' => 'required|integer',
+            'idvehicule' => 'required|integer',
         ]);
 
         if ($validator->fails()) {

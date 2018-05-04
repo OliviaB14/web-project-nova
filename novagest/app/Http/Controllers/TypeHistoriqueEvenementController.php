@@ -10,6 +10,8 @@ use App\TypeHistoriqueEvenement;
 use DB;
 use Input;
 use Illuminate\Support\Facades\Validator;
+require app_path().'/validators.php';   //regex customs
+
 
 class TypeHistoriqueEvenementController extends BasicController
 {
@@ -41,7 +43,7 @@ class TypeHistoriqueEvenementController extends BasicController
         //Validator
 
         $validator = Validator::make($request->all(), [
-            'elibelle' => 'required|alpha|max:32',
+            'elibelle' => 'required|alpha_spaces|max:32',
         ]);
 
         if ($validator->fails()) {
@@ -64,7 +66,7 @@ class TypeHistoriqueEvenementController extends BasicController
         //Validator
 
         $validator = Validator::make($request->all(), [
-            'libelle' => 'required|alpha|max:32',
+            'libelle' => 'required|alpha_spaces|max:32',
         ]);
 
         if ($validator->fails()) {
