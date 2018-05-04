@@ -153,7 +153,7 @@ $(document).ready(function(){
 
 <script>
 $(".edit").on('click',function(){
-    var data = $('.edit').attr('id')
+    var data = $(this).attr('id')
     $.ajax({
           url: 'villes/show/' + data,
           type: "get",
