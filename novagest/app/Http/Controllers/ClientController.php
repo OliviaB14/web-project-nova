@@ -12,7 +12,7 @@ use App\TypeClient;
 use DB;
 use Input;
 use Illuminate\Support\Facades\Validator;
-
+require app_path().'/validators.php';   //regex customs
 
 
 class ClientController extends BasicController
@@ -38,11 +38,11 @@ class ClientController extends BasicController
         //Validator
         //dd($request);
         $validator = Validator::make($request->all(), [
-            'eraison_sociale' => 'required|alpha_dash|max:64',
-            'eadresse' => 'required|alpha_dash|max:256',
+            'eraison_sociale' => 'required|alphanum_spaces|max:64',
+            'eadresse' => 'required|alphanum_spaces|max:256',
             'eidville' => 'required|integer',
-            'etelephone' => 'required|alpha_dash|max:24',
-            'efax' => 'required|alpha_dash|max:24',
+            'etelephone' => 'required|alphanum_spaces|max:24',
+            'efax' => 'required|alphanum_spaces|max:24',
             'email' => 'required|email|max:64',
             'eidtypeclient' => 'required|integer'
         ]);
@@ -74,11 +74,11 @@ class ClientController extends BasicController
         //Validator
 
         $validator = Validator::make($request->all(), [
-            'raison_sociale' => 'required|alpha_dash|max:64',
-            'adresse' => 'required|alpha_dash|max:256',
+            'raison_sociale' => 'required|alphanum_spaces|max:64',
+            'adresse' => 'required|alphanum_spaces|max:256',
             'idville' => 'required|integer',
-            'telephone' => 'required|alpha_dash|max:24',
-            'fax' => 'required|alpha_dash|max:24',
+            'telephone' => 'required|alphanum_spaces|max:24',
+            'fax' => 'required|alphanum_spaces|max:24',
             'mail' => 'required|email|max:64',
             'idtypeclient' => 'required|integer'
         ]);

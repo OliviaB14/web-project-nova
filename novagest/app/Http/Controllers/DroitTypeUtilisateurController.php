@@ -12,6 +12,8 @@ use App\Droit;
 use DB;
 use Input;
 use Illuminate\Support\Facades\Validator;
+require app_path().'/validators.php';   //regex customs
+
 
 class DroitTypeUtilisateurController extends BasicController
 {
@@ -56,8 +58,8 @@ class DroitTypeUtilisateurController extends BasicController
         //Validator
 
         $validator = Validator::make($request->all(), [
-            'eiddroit' => 'required|integer|max:12',
-            'eidtypeutilisateur' => 'required|integer|max:12',
+            'eiddroit' => 'required|integer',
+            'eidtypeutilisateur' => 'required|integer',
         ]);
 
         if ($validator->fails()) {
@@ -81,8 +83,8 @@ class DroitTypeUtilisateurController extends BasicController
         //Validator
 
         $validator = Validator::make($request->all(), [
-            'iddroit' => 'required|integer|max:12',
-            'idtypeutilisateur' => 'required|integer|max:12',
+            'iddroit' => 'required|integer',
+            'idtypeutilisateur' => 'required|integer',
         ]);
 
         if ($validator->fails()) {

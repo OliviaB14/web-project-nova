@@ -4,6 +4,17 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Custom regex NOVA Rules
+    |--------------------------------------------------------------------------
+    |
+    | Custom rules created in app/validators.php
+    |
+    */
+    "alpha_spaces"     => "The :attribute may only contain letters, dashes and spaces.",
+    "alphanum_spaces"     => "The :attribute may only contain letters, numbers, dashes and spaces.",
+
+    /*
+    |--------------------------------------------------------------------------
     | Validation Language Lines
     |--------------------------------------------------------------------------
     |

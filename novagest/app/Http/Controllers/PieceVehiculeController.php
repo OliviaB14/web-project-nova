@@ -11,6 +11,8 @@ use DB;
 use Input;
 use Illuminate\Support\Facades\Validator;
 use carbon\Carbon;  //extension dates
+require app_path().'/validators.php';   //regex customs
+
 
 class PieceVehiculeController extends BasicController
 {
@@ -44,8 +46,8 @@ class PieceVehiculeController extends BasicController
 
         $validator = Validator::make($request->all(), [
             'edate_entree' => 'required|date',
-            'eidtypeetatpiece' => 'required|integer|max:12',
-            'eidtypepiece' => 'required|integer|max:12',
+            'eidtypeetatpiece' => 'required|integer',
+            'eidtypepiece' => 'required|integer',
         ]);
 
         if ($validator->fails()) {
@@ -72,8 +74,8 @@ class PieceVehiculeController extends BasicController
 
         $validator = Validator::make($request->all(), [
             'date_entree' => 'required|date',
-            'idtypeetatpiece' => 'required|integer|max:12',
-            'idtypepiece' => 'required|integer|max:12',
+            'idtypeetatpiece' => 'required|integer',
+            'idtypepiece' => 'required|integer',
         ]);
 
         if ($validator->fails()) {

@@ -12,6 +12,8 @@ use DB;
 use Input;
 use Illuminate\Support\Facades\Validator;
 use carbon\Carbon;  //extension dates
+require app_path().'/validators.php';   //regex customs
+
 
 class UtilisateurController extends BasicController
 {
@@ -42,10 +44,10 @@ class UtilisateurController extends BasicController
         $request['edate_naissance'] = Carbon::parse($request['edate_naissance'])->format('Y-m-d');
 
         $validator = Validator::make($request->all(), [
-            'enom' => 'required|alpha|max:32',
-            'eprenom' => 'required|alpha|max:32',
+            'enom' => 'required|alpha_spaces|max:32',
+            'eprenom' => 'required|alpha_spaces|max:32',
             'edate_naissance' => 'required|alpha_dash',
-            'eidtypeutilisateur' => 'required|integer|max:12',
+            'eidtypeutilisateur' => 'required|integer',
             'eusername' => 'required|alpha_num|max:32',
             'epassword' => 'required|alpha_num|max:256',
             'etelephone' => 'required|alpha_dash|max:24',
@@ -82,10 +84,10 @@ class UtilisateurController extends BasicController
         $request['date_naissance'] = Carbon::parse($request['date_naissance'])->format('Y-m-d');
 
         $validator = Validator::make($request->all(), [
-            'nom' => 'required|alpha|max:32',
-            'prenom' => 'required|alpha|max:32',
+            'nom' => 'required|alpha_spaces|max:32',
+            'prenom' => 'required|alpha_spaces|max:32',
             'date_naissance' => 'required|alpha_dash',
-            'idtypeutilisateur' => 'required|integer|max:12',
+            'idtypeutilisateur' => 'required|integer',
             'username' => 'required|alpha_num|max:32',
             'password' => 'required|alpha_num|max:256',
             'telephone' => 'required|alpha_dash|max:24',

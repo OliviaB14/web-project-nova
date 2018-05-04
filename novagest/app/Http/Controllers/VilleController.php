@@ -10,6 +10,8 @@ use App\Ville;
 use DB;
 use Input;
 use Illuminate\Support\Facades\Validator;
+require app_path().'/validators.php';   //regex customs
+
 
 class VilleController extends BasicController
 {
@@ -36,11 +38,11 @@ class VilleController extends BasicController
     public function update($id, Request $request)
     {
         //Validator
-        dd($id);
+        //dd($id);
 
         $validator = Validator::make($request->all(), [
-            'enom' => 'required|alpha_num|max:32',
-            'ecode_postal' => 'required|Integer|max:12',
+            'enom' => 'required|alpha_spaces|max:32',
+            'ecode_postal' => 'required|alphanum_spaces|max:12',
         ]);
 
         if ($validator->fails()) {
@@ -65,8 +67,8 @@ class VilleController extends BasicController
         //dd($request);
 
         $validator = Validator::make($request->all(), [
-            'nom' => 'required|alpha_num|max:32',
-            'code_postal' => 'required|Integer|max:12',
+            'nom' => 'required|alpha_spaces|max:32',
+            'code_postal' => 'required|alphanum_spaces|max:12',
         ]);
 
         if ($validator->fails()) {
