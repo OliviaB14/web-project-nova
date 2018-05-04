@@ -64,7 +64,7 @@ class DroitController extends BasicController
         //Validator
 
         $validator = Validator::make($request->all(), [
-            'libelle' => 'required|max:32',
+            'libelle' => 'required|max:64',
         ]);
 
         if ($validator->fails()) {
