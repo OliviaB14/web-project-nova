@@ -110,12 +110,10 @@
                 </div>
             </div>
             
-            {{ Form::submit('Modifier', array('class' => 'waves-effect waves-light btn yellow')) }}
+            {{ Form::submit('Modifier', array('class' => 'waves-effect waves-light btn','style' => 'position: fixed;left: 0;bottom: 0;width: 100%;text-align: center;')) }}
         
   </div>
-  <div class="modal-footer">
-    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat " href="#">Modifier</a>
-  </div>
+
   {{ Form::close() }}
 </div>
 
@@ -293,7 +291,7 @@ $(document).ready(function(){
 
 $(".edit").on('click',function(){
     console.log("ajax");
-    var data = $('.edit').attr('id')
+    var data = $(this).attr('id')
     $.ajax({
           url: 'clients/show/' + data,
           type: "get",
