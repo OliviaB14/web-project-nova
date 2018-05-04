@@ -38,7 +38,7 @@ class VilleController extends BasicController
     public function update($id, Request $request)
     {
         //Validator
-        dd($id);
+        //dd($id);
 
         $validator = Validator::make($request->all(), [
             'enom' => 'required|alpha_spaces|max:32',
