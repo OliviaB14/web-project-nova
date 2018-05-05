@@ -14,12 +14,19 @@
 @section('title', 'Type_utilisateur')
 
 @section('content')
-
+<?php $user = Auth::user();?>
 
 <section>
-    <div class="container">
-        <div class="row">
-        {{ Form::open(array('url' => 'typeutilisateur/add')) }}
+<div class="row">
+    <div class="col s12"><h1><i class="material-icons">build</i> Types Utilisateurs</h1></div>
+</div>
+<ul class="collapsible" style="margin-left:2%" data-collapsible="accordion">
+@if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',68)->exists())
+<li>
+<div class="collapsible-header"><i class="material-icons">add</i>Ajouter</div>
+      <div class="collapsible-body">
+      <div class="row">
+      {{ Form::open(array('url' => 'typeutilisateur/add')) }}
             <div class="col s12">
                 <div class="row">
                     <div class="input-field col s6">
@@ -31,18 +38,14 @@
             {{ Form::submit('Ajouter', array('class' => 'btn-sm btn-success')) }}
         {{ Form::close() }}
         </div>
-    </div>
-</section>
-
-
-<section>
-<div class="container">
-<div class="row" style="padding-top:15px">
-<!--<a class="btn btn-floating btn-large cyan pulse"><i class="material-icons">add</i></a>-->
-</div>
-        <div class="row" style="padding-top:10px">
-        <div>
-            <table id="example" class="mdl-data-table responsive-table" cellspacing="0" width="100%">
+      </div>
+    </li>
+    @endif
+    @if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',67)->exists())
+    <li>
+      <div class="collapsible-header"><i class="material-icons">dvr</i>Données</div>
+      <div class="collapsible-body">
+      <table id="example" class="mdl-data-table responsive-table" cellspacing="0" width="100%">
                     <thead>
                         <tr>
                             <th>Type utilisateur</th>
@@ -58,9 +61,10 @@
                     @endforeach
                     </tbody>
                 </table>
-        </div>
-    </div>
-</div>
+      </div>
+    </li>
+    @endif
+  </ul>
 </section>
 
 <script>

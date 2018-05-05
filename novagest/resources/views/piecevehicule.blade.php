@@ -14,11 +14,12 @@
 @section('title', 'Piece_vehicule')
 
 @section('content')
-
+<?php $user = Auth::user();?>
 
 <section>
 
 <ul class="collapsible" style="margin-left:2%" data-collapsible="accordion">
+@if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',56)->exists())
     <li>
       <div class="collapsible-header"><i class="material-icons">add</i>Ajouter</div>
       <div class="collapsible-body">
@@ -35,35 +36,28 @@
       {{ Form::open(array('url' => 'piece_vehicule/add')) }}
       <div class="col s12">
           <div class="row">
-              <div class="input-field col s6">
-                  {{ Form::label('id', 'Id')}}
-                  {{ Form::text('id', null,array('class'=>'validate', 'required' => 'required'))}}
-              </div>
-          </div>
-          <div class="row">
-              <div class="input-field col s12">
+              <div class="input-field col s4">
                   {{ Form::label('date_entree', 'Date_entree')}}
                   {{ Form::text('date_entree', null,array('class'=>'validate', 'required' => 'required'))}}
               </div>
-          </div>
-          <div class="row">
-              <div class="input-field col s6">
+          
+              <div class="input-field col s4">
                   {{ Form::label('typeetatpiece', 'Typeetatpiece')}}
                   {{ Form::text('typeetatpiece', null,array('class'=>'validate', 'required' => 'required'))}}
               </div>
-          </div>
-          <div class="row">
-              <div class="input-field col s6">
+              <div class="input-field col s4">
                   {{ Form::label('typepiece', 'Typepiece')}}
                   {{ Form::text('typepiece', null,array('class'=>'validate', 'required' => 'required'))}}
               </div>
-          </div>
+              </div>
       </div>
       {{ Form::submit('Ajouter', array('class' => 'btn-sm btn-success')) }}
   {{ Form::close() }}
         </div>
       </div>
     </li>
+    @endif
+    @if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',55)->exists())
     <li>
       <div class="collapsible-header"><i class="material-icons">dvr</i>Données</div>
       <div class="collapsible-body">
@@ -91,6 +85,7 @@
                 </table>
       </div>
     </li>
+    @endif
   </ul>
 </section>
 
