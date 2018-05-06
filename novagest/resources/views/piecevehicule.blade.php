@@ -38,20 +38,22 @@
       {{ Form::open(array('url' => 'piece_vehicule/add')) }}
       <div class="col s12">
           <div class="row">
-              <div class="input-field col s4">
+              <div class="input-field col s6">
                   {{ Form::label('date_entree', 'Date_entree')}}
                   {{ Form::text('date_entree', null,array('class'=>'validate', 'required' => 'required'))}}
               </div>
           
-              <div class="input-field col s4">
+              <div class="input-field col s6">
                   {{ Form::label('typeetatpiece', 'Typeetatpiece')}}
                   {{ Form::text('typeetatpiece', null,array('class'=>'validate', 'required' => 'required'))}}
               </div>
-              <div class="input-field col s4">
-                  {{ Form::label('typepiece', 'Typepiece')}}
-                  {{ Form::text('typepiece', null,array('class'=>'validate', 'required' => 'required'))}}
-              </div>
-              </div>
+              <div class="row">
+              <div class="input-field col s12">
+                    {{ Form::label('typepiece', 'Type Piéce')}} 
+                         </br>
+                         {{ Form::select('typepiece', $typepiece) }}
+                    </div>
+                </div>
       </div>
       {{ Form::submit('Ajouter', array('class' => 'waves-effect waves-light btn')) }}
   {{ Form::close() }}
@@ -93,6 +95,10 @@
 
 <script>
 $(document).ready(function() {
+    $(document).ready(function() {
+    $('select').material_select();
+});
+
     $('#example').DataTable( {
         columnDefs: [
             {
