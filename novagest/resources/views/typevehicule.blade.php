@@ -146,21 +146,21 @@ $(document).ready(function(){
                         </tr>
                     </thead>
                     <tbody>
-                    @foreach($typeVehicules as $typevehicule)
+                    @foreach($typeVehicules as $typeVehicule)
                         <tr>
-                            <td>{{$typevehicule->modele}}</td>
-                            <td>{{$typevehicule->hauteur}}</td>
-                            <td>{{$typevehicule->largeur}}</td>
-                            <td>{{$typevehicule->poids}}</td>
-                            <td>{{$typevehicule->puissance}}</td>
-                            <td>{{$typevehicule->prix_neuf}}</td>
-                            <td>{{$typevehicule->desactive}}</td>
+                            <td>{{$typeVehicule->modele}}</td>
+                            <td>{{$typeVehicule->hauteur}}</td>
+                            <td>{{$typeVehicule->largeur}}</td>
+                            <td>{{$typeVehicule->poids}}</td>
+                            <td>{{$typeVehicule->puissance}}</td>
+                            <td>{{$typeVehicule->prix_neuf}}</td>
+                            <td>{{$typeVehicule->desactive}}</td>
                             <td>
                             @if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',72)->exists())
-                            <a class="btn-floating btn-large waves-effect waves-light red" href="typevehicule/destroy/{{$typevehicule->id}}"><i class="material-icons">cancel</i></a>
+                            <a class="btn-floating btn-large waves-effect waves-light red" href="typevehicule/destroy/{{$typeVehicule->id}}"><i class="material-icons">cancel</i></a>
                             @endif
                             @if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',71)->exists())
-                            <a id="{{$typevehicule->id}}" class="btn-floating btn-large waves-effect waves-light yellow edit" href="#modal1"><i class="material-icons">edit</i></a>
+                            <a id="{{$typeVehicule->id}}" class="btn-floating btn-large waves-effect waves-light yellow edit" href="#modal1"><i class="material-icons">edit</i></a>
                             @endif
                             </td>
                         </tr>
