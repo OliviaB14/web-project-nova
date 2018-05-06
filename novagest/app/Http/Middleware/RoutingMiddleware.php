@@ -23,7 +23,7 @@ class RoutingMiddleware
         //agence
         if($route == "agence")
         {
-            if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',12)->exists())
+            if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',48)->exists())
             {
                 return $next($request);
             }
@@ -32,7 +32,7 @@ class RoutingMiddleware
         //vehicule
         if($route == "vehicule")
         {
-            if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',17)->exists())
+            if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',49)->exists())
             {
                 return $next($request);
             }
@@ -41,7 +41,7 @@ class RoutingMiddleware
         //Utilisateur
         if($route == "utilisateur")
         {
-            if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',16)->exists())
+            if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',50)->exists())
             {
                 return $next($request);
             }
@@ -50,7 +50,7 @@ class RoutingMiddleware
         //Client
         if($route == "client")
         {
-            if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',14)->exists())
+            if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',51)->exists())
             {
                 return $next($request);
             }
@@ -59,7 +59,7 @@ class RoutingMiddleware
         //Status
         if($route == "status")
         {
-            if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',18)->exists())
+            if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',52)->exists())
             {
                 return $next($request);
             }
@@ -68,7 +68,7 @@ class RoutingMiddleware
         //Ville
         if($route == "ville")
         {
-            if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',19)->exists())
+            if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',53)->exists())
             {
                 return $next($request);
             }
@@ -77,7 +77,7 @@ class RoutingMiddleware
         //Droit
         if($route == "droit")
         {
-            if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',20)->exists())
+            if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',54)->exists())
             {
                 return $next($request);
             }
@@ -86,7 +86,7 @@ class RoutingMiddleware
         //autorisations
         if($route == "autorisations")
         {
-            if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',21)->exists())
+            if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',47)->exists())
             {
                 return $next($request);
             }
@@ -95,7 +95,7 @@ class RoutingMiddleware
         //histovehi
         if($route == "histovehi")
         {
-            if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',22)->exists())
+            if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',55)->exists())
             {
                 return $next($request);
             }
@@ -104,7 +104,7 @@ class RoutingMiddleware
         //piecevehicule
         if($route == "piecevehicule")
         {
-            if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',23)->exists())
+            if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',56)->exists())
             {
                 return $next($request);
             }
@@ -113,7 +113,7 @@ class RoutingMiddleware
         //typeclient
         if($route == "typeclient")
         {
-            if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',24)->exists())
+            if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',57)->exists())
             {
                 return $next($request);
             }
@@ -122,7 +122,7 @@ class RoutingMiddleware
         //typeetatpiece
         if($route == "typeetatpiece")
         {
-            if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',25)->exists())
+            if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',58)->exists())
             {
                 return $next($request);
             }
@@ -131,7 +131,7 @@ class RoutingMiddleware
         //typehistoriqueevenement
         if($route == "typehistoriqueevenement")
         {
-            if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',26)->exists())
+            if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',59)->exists())
             {
                 return $next($request);
             }
@@ -140,7 +140,7 @@ class RoutingMiddleware
         //typepiecevehicule
         if($route == "typepiecevehicule")
         {
-            if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',27)->exists())
+            if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',62)->exists())
             {
                 return $next($request);
             }
@@ -149,7 +149,7 @@ class RoutingMiddleware
         //typeutilisateur
         if($route == "typeutilisateur")
         {
-            if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',28)->exists())
+            if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',60)->exists())
             {
                 return $next($request);
             }
@@ -158,7 +158,7 @@ class RoutingMiddleware
         //typevehicule
         if($route == "typevehicule")
         {
-            if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',29)->exists())
+            if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',61)->exists())
             {
                 return $next($request);
             }
