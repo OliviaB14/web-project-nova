@@ -20,7 +20,7 @@
 </div>
 <section>
 <ul class="collapsible" style="margin-left:2%" data-collapsible="accordion">
-@if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',62)->exists())
+@if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',26)->exists())
 <li>
 <div class="collapsible-header"><i class="material-icons">add</i>Ajouter</div>
       <div class="collapsible-body">
@@ -40,7 +40,7 @@
       </div>
     </li>
     @endif
-    @if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',61)->exists())
+    @if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',25)->exists())
     <li>
       <div class="collapsible-header"><i class="material-icons">dvr</i>Données</div>
       <div class="collapsible-body">

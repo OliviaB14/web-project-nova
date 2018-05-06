@@ -16,7 +16,7 @@
 @section('content')
 <?php $user = Auth::user();?>
 <section>
-@if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',54)->exists())
+@if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',24)->exists())
 <div class="container">
 <div class="row" style="padding-top:15px">
 <!--<a class="btn btn-floating btn-large cyan pulse"><i class="material-icons">add</i></a>-->

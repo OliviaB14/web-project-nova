@@ -21,7 +21,7 @@
 </div>
 
 <section>
-@if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',52)->exists())
+@if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',22)->exists())
 <ul class="collapsible" style="margin-left:2%" data-collapsible="accordion">
     <li>
       <div class="collapsible-header"><i class="material-icons">dvr</i>Données</div>
@@ -48,13 +48,13 @@
                                         $switchexist =  DB::table('droit_type_utilisateur')->where('iddroit', '=', $d->id)->where('idtypeutilisateur', '=',$tu->id)->first();
                                     ?>
                                     @if($switchexist)
-                                        @if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',53)->exists())
+                                        @if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',23)->exists())
                                             <input checked class="{{$d->id}} btnDroit" id="{{$tu->id}}" type="checkbox">
                                         @else
                                             <input disabled checked class="{{$d->id}} btnDroit" id="{{$tu->id}}" type="checkbox">
                                         @endif
                                     @else
-                                    @if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',53)->exists())
+                                    @if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',23)->exists())
                                             <input class="{{$d->id}} btnDroit" id="{{$tu->id}}" type="checkbox">
                                         @else
                                             <input disabled class="{{$d->id}} btnDroit" id="{{$tu->id}}" type="checkbox">

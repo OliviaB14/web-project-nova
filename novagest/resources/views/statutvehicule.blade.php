@@ -20,7 +20,7 @@
 <div class="row" style="padding-top:15px">
 
 <ul class="collapsible" style="margin-left:2%" data-collapsible="accordion">
-@if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',48)->exists())
+@if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',64)->exists())
     <li>
       <div class="collapsible-header"><i class="material-icons">add</i>Ajouter</div>
       <div class="collapsible-body">
@@ -51,7 +51,7 @@
       </div>
     </li>
     @endif
-    @if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',49)->exists())
+    @if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',63)->exists())
     <li>
       <div class="collapsible-header"><i class="material-icons">dvr</i>Données</div>
       <div class="collapsible-body">
@@ -71,10 +71,10 @@
                             <td>{{$statut->libelle}}</td>
                             <td>{{$statut->desactive}}</td>
                             <td>
-                            @if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',51)->exists())
+                            @if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',66)->exists())
                             <a class="btn-floating btn-large waves-effect waves-light red" href="statut/destroy/{{$statut->id}}"><i class="material-icons">cancel</i></a>
                             @endif
-                            @if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',50)->exists())
+                            @if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',65)->exists())
                             <a id="{{$statut->id}}" class="btn-floating btn-large waves-effect waves-light yellow edit" href="#modal1"><i class="material-icons">edit</i></a>
                             @endif
                             </td>

@@ -72,7 +72,7 @@ Route::post('client/update/{id}', 'ClientController@update');
 Route::group(['middleware' => 'App\Http\Middleware\RoutingMiddleware:status'], function()
 {
 //Statuts
-Route::get('statuts', 'StatutVehiculeController@index'); // index
+Route::get('statutvehicules', 'StatutVehiculeController@index'); // index
 Route::post('statut/add', 'StatutVehiculeController@store'); // add
 Route::get('statuts', 'StatutVehiculeController@index'); // show id
 Route::get('statut/destroy/{id}', 'StatutVehiculeController@destroy');

@@ -21,7 +21,7 @@
     <div class="col s12"><h1><i class="material-icons">build</i> Type de piéces de véhicule</h1></div>
 </div>
 <ul class="collapsible" style="margin-left:2%" data-collapsible="accordion">
-@if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',66)->exists())
+@if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',26)->exists())
 <li>
 <div class="collapsible-header"><i class="material-icons">add</i>Ajouter</div>
       <div class="collapsible-body">
@@ -53,7 +53,7 @@
       </div>
     </li>
     @endif
-    @if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',65)->exists())
+    @if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',25)->exists())
     <li>
       <div class="collapsible-header"><i class="material-icons">dvr</i>Données</div>
       <div class="collapsible-body">
