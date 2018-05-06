@@ -7,6 +7,7 @@ Route::get('/home', 'HomeController@index')->name('/');
 Route::get('/home', 'HomeController@index')->name('/');
 Route::get('profil', 'ProfileController@index')->name('profile'); 
 Route::post('profil/update/{id}', 'ProfileController@update');
+Route::get('profil/show/{id}', 'ProfileController@show'); // index
 Route::post('test','BasicController@Login'); // route du login TODO = a changer le nom
 
 Route::group(['middleware' => ['auth']], function() {

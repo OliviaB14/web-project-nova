@@ -9,23 +9,31 @@ img#main{
 	background-size: cover;
 }
 
-#card-title{
-	background: #8ad238;
+#card-title {
+    background: #EFEBDC;
     text-align: center;
     padding: 2%;
     margin: 3% 0;
     text-transform: uppercase;
     letter-spacing: 2px;
-    color: white;
+    color: black;
 }
 
-.card-content{
-	padding: 3%;
-    background: white;
+.card-content {
+    padding: 3%;
+    background: #fff;
     margin: 3%;
 }
 
+#edit{
+    background: #3DCD58 !important;
+}
 
 #logout{
 	background: #B53935;
+}
+
+#statut{
+    padding:3%;
+    text-transform: uppercase;
 }

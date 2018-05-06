@@ -48,8 +48,7 @@ if($user = Auth::user())
 @endif
 @if(Auth::user())
 <ul id="dropdown2" class="dropdown-content">
-  <li><a href="/profil">Voir</a></li>
-  <li><a href="/profil/parametres">Paramètres</a></li>
+  <li><a href="profil">Voir</a></li>
   <li class="divider"></li>
   <li><a href="logout" class="red-text">Déconnexion</a></li>
 </ul>

@@ -9,6 +9,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Utilisateur;
 use Input;
+use Illuminate\Support\Facades\Validator;
 
 
 class ProfileController extends Controller
@@ -22,22 +23,27 @@ class ProfileController extends Controller
         ]);
     }
 
+    public function show($id)
+    {
+        $user = Auth::user();  
+        return response()->json($user);
+    }
+
     public function update($id, Request $request)
     {
         //Validator
         //dd($request["eidville"]);
         $validator = Validator::make($request->all(), [
-            'enom' => 'max:32',
-            'eprenom' => 'max:32',
-            'epseudo' => 'max:32',
-            'etelephone' => 'max:24',
-            'efax' => 'max:24',
+            'eusername' => 'required|max:32',
+            'etelephone' => 'required|max:24',
+            'efax' => 'required|max:24',
+            'email' => 'required|max:64'
         ]);
 
         if ($validator->fails()) {
             dd($validator);
             
-            return redirect('profil/parametres')
+            return redirect('profil')
                         ->withErrors($validator)
                         ->withInput();
         }
@@ -45,21 +51,14 @@ class ProfileController extends Controller
         // Find the corresponding record 
         $user = Utilisateur::find($id);
 
-        $user->nom = $this->updated($request["enom"], $user->nom);
-        $user->prenom = $this->updated($request["eprenom"], $user->prenom);
-        $user->username = $this->updated($request["epseudo"], $user->username);
-        $user->telephone = $this->updated($request["etelephone"], $user->telephone);
-        $user->fax = $this->updated($request["efax"], $user->fax);
+        $user->username = $request["eusername"];
+        $user->telephone = $request["etelephone"];
+        $user->fax = $request["efax"];
+        $user->mail = $request["email"];
 
         $user->save();
 
-        return redirect('profil/parametres');
-    }
-
-    public function updated($new, $old){
-    	if(($new != null)&&($new != $old)){
-    		return $new;
-    	} else { return $old; }
+        return redirect('profil');
     }
 
 }
