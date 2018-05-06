@@ -183,7 +183,6 @@ $(document).ready(function(){
                             <th>Date de naissance</th>
                             <th>Type utilisateur</th>
                             <th>Username</th>
-                            <th>Password</th>
                             <th>Telephone</th>
                             <th>Fax</th>
                             <th>Mail</th>
@@ -204,7 +203,6 @@ $(document).ready(function(){
                             {{$typeutilisateurs->libelle}}
                             </td>
                             <td>{{$utilisateur->username}}</td>
-                            <td>{{$utilisateur->password}}</td>
                             <td>{{$utilisateur->fax}}</td>
                             <td>{{$utilisateur->mail}}</td>
                             <td>{{$utilisateur->desactive}}</td>

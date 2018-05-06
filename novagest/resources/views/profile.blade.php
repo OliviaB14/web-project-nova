@@ -68,13 +68,10 @@
 		       	<div class="card-content">
 		       		
 		       		<h4 class="center-align" id="statut">
-		            		<?php 
-		            		if($user->idtypeutilisateur == '1'){
-		            			echo "Administrateur";
-		            		} else {
-		            			echo "Agent";
-		            		}
-		            		?>
+		            		<?php
+                            $typeutilisateurs = DB::table('type_utilisateur')->where('id', '=',$user->idtypeutilisateur)->first();
+                            //echo $test["nom"];?>
+                            {{$typeutilisateurs->libelle}}
 		            </h4>
 		            <p><i class="material-icons tiny">person_outline</i> {{$user->username}}</p>
 		            <p><i class="material-icons tiny">today</i> {{$user->date_naissance}}</p>
@@ -115,6 +112,9 @@ if ((statut.text().indexOf("Administrateur") >= 0)){
 } 
 if ((statut.text().indexOf("Développeur") >= 0)){
 	statut.attr('style', 'background:#AEDEDD;');
+} 
+if ((statut.text().indexOf("Péon") >= 0)){
+    statut.attr('style', 'background:#F08080;');
 } 
 
 
