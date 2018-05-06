@@ -213,7 +213,7 @@ $(document).ready(function(){
                             <a class="btn-floating btn-large waves-effect waves-light red" href="utilisateur/destroy/{{$utilisateur->id}}"><i class="material-icons">cancel</i></a>
                             @endif
                             @if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',36)->exists())
-                            <a id="{{$utilisateur->id}}" class="btn-floating btn-large waves-effect waves-light yellow editedit" href="#modal1"><i class="material-icons">edit</i></a>
+                            <a id="{{$utilisateur->id}}" class="btn-floating btn-large waves-effect waves-light yellow edit" href="#modal1"><i class="material-icons">edit</i></a>
                             @endif
                             </td>
                         </tr>
@@ -250,7 +250,7 @@ $(".edit").on('click',function(){
             console.log(response); 
             $('#modal1').modal('open');
             $('#enom').val(response['nom']);
-            $('#eprenom').val(response['code_postal']);
+            $('#eprenom').val(response['prenom']);
             $('#edate_naissance').val(response['date_naissance']);
             $('#eidtypeutilisateur').val(response['typeutilisateur']);
             $('#eusername').val(response['username']);
@@ -261,8 +261,9 @@ $(".edit").on('click',function(){
             
             $('#form').attr('action', 'utilisateur/update/' + response['id']);
             Materialize.updateTextFields();
+            
             var idtypeutilisateur = response["typeutilisateur"];
-            $('#eidtypeutilisateur option[value=' + typeutilisateur + ']').attr('selected','selected');
+            $('#eidtypeutilisateur option[value=' + idtypeutilisateur + ']').attr('selected','selected');
             },
             error: function(response){
                 alert('Error'+response);
