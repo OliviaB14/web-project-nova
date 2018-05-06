@@ -69,6 +69,12 @@
                     <div class="input-field col s4">
                          {{ Form::file('ephotomain') }}
                     </div>
+                    <div class="input-field col s4">
+                         {{ Form::file('ephoto_2') }}
+                    </div>
+                    <div class="input-field col s4">
+                         {{ Form::file('ephoto_3') }}
+                    </div>
                 </div>
             </div>
             
@@ -215,7 +221,7 @@
                         <td>{{$car->date_achat}}</td> 
                         <td>{{$car->date_misecirculation}}</td>
                         <td>{{$car->desactive}}</td> 
-                        <td><a class="btn-floating btn-large waves-effect waves-light red" href="vehicule/destroy/{{$car->id}}"><i class="material-icons">cancel</i><a id="{{$car->id}}" class="btn-floating btn-large waves-effect waves-light yellow edit" href="#modal1"><i class="material-icons">edit</i></a></a></td>
+                        <td><a class="btn-floating btn-large waves-effect waves-light red" href="vehicule/destroy/{{$car->id}}"><i class="material-icons">cancel</i></a><a id="{{$car->id}}" class="btn-floating btn-large waves-effect waves-light yellow edit" href="#modal1"><i class="material-icons">edit</i></a></td>
                     </tr> 
                 @endforeach 
                 </tbody> 
@@ -272,7 +278,7 @@ $(".edit").on('click',function(){
             $('#eidstatut').val(response['idstatut']);
             $('#eidclient').val(response['idclient']);
             $('#eidagence').val(response['idagence']);
-
+            console.log(response['photo_1']);
             $('#form').attr('action', 'vehicule/update/' + response['id']);
             Materialize.updateTextFields();
             },

@@ -68,10 +68,6 @@ class VehiculeController extends BasicController
                         ->withInput();
         }
 
-        // create a new image directly from Laravel file upload
-        $img = Image::make($request['ephotomain'])->encode('data-url');
-       /* $img = Image::make($request['ephoto2'])->encode('data-url');
-        $img = Image::make($request['ephoto3'])->encode('data-url');*/
         
         // Find the corresponding record 
         $vehicule = Vehicule::find($id);
@@ -83,12 +79,25 @@ class VehiculeController extends BasicController
         $vehicule->idstatut = $request["eidstatut"];
         $vehicule->idclient = $request["eidclient"];
         $vehicule->idagence = $request["eidagence"];
-        $vehicule->photo_1 = $request["ephotomain"];
-        //echo $request['ephoto1'];
-/*        $vehicule->photo_2 = $request["ephoto2"];
-        $vehicule->photo_3 = $request["ephoto3"];*/
         $vehicule->save();
+        // create a new image directly from Laravel file upload
+        if ($request->hasFile('ephotomain')) {
+            $img = Image::make($request['ephotomain'])->encode('data-url');
+            $vehicule->photo_1 = $img;
+        }
 
+        if ($request->hasFile('ephoto_2')) {
+            $img2 = Image::make($request['ephoto_2'])->encode('data-url');
+            $vehicule->photo_2 = $img2;
+        }
+
+        if ($request->hasFile('ephoto_3')) {
+            $img3 = Image::make($request['ephoto_3'])->encode('data-url');
+            $vehicule->photo_3 = $img3;
+        }
+
+        $vehicule->save();
+        
         return redirect('vehicules');
     }
 
