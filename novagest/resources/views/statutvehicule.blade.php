@@ -15,9 +15,13 @@
 
 @section('content')
 <?php $user = Auth::user();?>
+
+<div class="row">
+    <div class="col s12"><h1><i class="material-icons">build</i> Statuts des véhicules</h1></div>
+</div>
+
 <section>
-<div class="container">
-<div class="row" style="padding-top:15px">
+
 
 <ul class="collapsible" style="margin-left:2%" data-collapsible="accordion">
 @if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',64)->exists())
