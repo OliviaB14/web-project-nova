@@ -19,6 +19,7 @@ use Input;
 use Illuminate\Support\Facades\Validator;
 use App\HistoriqueVehicule;
 use carbon\Carbon;  //extension dates
+use Intervention\Image\ImageManagerStatic as Image;
 require app_path().'/validators.php';   //regex customs
 
 
@@ -45,27 +46,32 @@ class VehiculeController extends BasicController
 
     public function update($id, Request $request)
     {
-                //formattage des dates
-                $request['edate_achat'] = Carbon::parse($request['edate_achat'])->format('Y-m-d');
-                $request['edate_misecirculation'] = Carbon::parse($request['edate_misecirculation'])->format('Y-m-d');
+        //formattage des dates
+        $request['edate_achat'] = Carbon::parse($request['edate_achat'])->format('Y-m-d');
+        $request['edate_misecirculation'] = Carbon::parse($request['edate_misecirculation'])->format('Y-m-d');
 
 
-                $validator = Validator::make($request->all(), [
-                    'eimmatriculation' => 'required|alpha_dash|max:16',
-                    'edate_achat' => 'required|date',
-                    'edate_misecirculation' => 'required|date',
-                    'eidtypevehicule' => 'required|integer',
-                    'eidtypeetatvehicule' => 'required|integer',
-                    'eidstatut' => 'required|integer',
-                    'eidclient' => 'required|integer',
-                    'eidagence' => 'required|integer'
-                ]);
+        $validator = Validator::make($request->all(), [
+            'eimmatriculation' => 'required|alpha_dash|max:16',
+            'edate_achat' => 'required|date',
+            'edate_misecirculation' => 'required|date',
+            'eidtypevehicule' => 'required|integer',
+            'eidtypeetatvehicule' => 'required|integer',
+            'eidstatut' => 'required|integer',
+            'eidclient' => 'required|integer',
+            'eidagence' => 'required|integer'
+        ]);
 
-                if ($validator->fails()) {
-                    return redirect('vehicule')
-                                ->withErrors($validator)
-                                ->withInput();
-                }
+        if ($validator->fails()) {
+            return redirect('vehicules')
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+
+        // create a new image directly from Laravel file upload
+        $img = Image::make($request['ephotomain'])->encode('data-url');
+       /* $img = Image::make($request['ephoto2'])->encode('data-url');
+        $img = Image::make($request['ephoto3'])->encode('data-url');*/
         
         // Find the corresponding record 
         $vehicule = Vehicule::find($id);
@@ -77,9 +83,13 @@ class VehiculeController extends BasicController
         $vehicule->idstatut = $request["eidstatut"];
         $vehicule->idclient = $request["eidclient"];
         $vehicule->idagence = $request["eidagence"];
+        $vehicule->photo_1 = $request["ephotomain"];
+        //echo $request['ephoto1'];
+/*        $vehicule->photo_2 = $request["ephoto2"];
+        $vehicule->photo_3 = $request["ephoto3"];*/
         $vehicule->save();
 
-        return redirect('vehicule');
+        return redirect('vehicules');
     }
 
     public function store(Request $request)
@@ -96,15 +106,12 @@ class VehiculeController extends BasicController
             'idtypeetatvehicule' => 'required|integer',
             'idstatut' => 'required|integer',
             'idclient' => 'required|integer',
-            'idagence' => 'required|integer'
-            'photo1' => 'required|image',
-            'photo2' => 'image',
-            'photo3' => 'image'
+            'idagence' => 'required|integer',
         ]);
         
         if ($validator->fails()) {
             dd($validator);
-            return redirect('vehicule')
+            return redirect('vehicules')
                         ->withErrors($validator)
                         ->withInput();
         }
@@ -122,9 +129,9 @@ class VehiculeController extends BasicController
         $vehicule->idtypeetatvehicule = $request["idtypeetatvehicule"];
         $vehicule->idstatut = $request["idstatut"];
         $vehicule->idclient = $request["idclient"];
-        $vehicule->photo_1 = base64_encode($request['photo1']);
-        $vehicule->photo_2 = base64_encode($request['photo2']);
-        $vehicule->photo_3 = base64_encode($request['photo3']);
+        $vehicule->photo_1 = $img1;
+        $vehicule->photo_2 = $img2;
+        $vehicule->photo_3 = $img3;
         $vehicule->idagence = $request["idagence"];
         $vehicule->save();
 
@@ -141,7 +148,7 @@ class VehiculeController extends BasicController
         $evenement->desactive = 0;
         $evenement->save();
 
-        return redirect('vehicule');
+        return redirect('vehicules');
     }
 
     public function destroy($id)
@@ -151,7 +158,7 @@ class VehiculeController extends BasicController
         $vehicule->desactive = 1;
         $vehicule->save();
         
-        return redirect('vehicule');
+        return redirect('vehicules');
     }
 
     public function GetSingle($id)

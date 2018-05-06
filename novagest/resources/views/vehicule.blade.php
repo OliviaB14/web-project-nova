@@ -17,7 +17,7 @@
 <!-- Modal Structure -->
 <div id="modal1" class="modal modal-fixed-footer">
   <div class="modal-content">
-  {{ Form::open(array('url' => 'vehicule/update', 'id'=>'form')) }}
+  {{ Form::open(array('url' => 'vehicule/update', 'id'=>'form', 'files' => true)) }}
   <h4 style="position: fixed;left: 0;top: 0;width: 100%;text-align: center;margin-top:15px;margin-bottom:15px;">Edition</h4>
             <div class="col s12">
                 <div class="row">
@@ -65,6 +65,11 @@
                          {{ Form::select('eidagence', $idagence) }}
                     </div>
                 </div>
+                <div class="row">
+                    <div class="input-field col s4">
+                         {{ Form::file('ephotomain') }}
+                    </div>
+                </div>
             </div>
             
             {{ Form::submit('Modifier', array('class' => 'waves-effect waves-light btn','style' => 'position: fixed;left: 0;bottom: 0;width: 100%;text-align: center;')) }}
@@ -76,7 +81,7 @@
 <li>
       <div class="collapsible-header"><i class="material-icons">whatshot</i>Ajouter un vehicule</div>
       <div class="collapsible-body">
-      {{ Form::open(array('url' => 'vehicule/add')) }}
+      {{ Form::open(array('url' => 'vehicule/add', 'files' => true)) }}
             <div class="col s12">
                 <div class="row">
                     <div class="input-field col s12">
@@ -162,7 +167,12 @@
               <div class="card-image">
               <?php 
               $blob = DB::table('type_vehicule')->where('id' ,'=', $car->idtypevehicule)->select('photo')->first();
-              echo '<img style="width:300px;height:200px" src="data:image/jpeg;base64,'.base64_encode( $blob->photo ).'"/>';
+              if(!empty($car->photo_1)){
+                echo "<img style='width:300px;height:200px' src='".$car->photo_1."'/>";
+              } else{
+                echo '<img style="width:300px;height:200px" src="data:image/jpeg;base64,'.base64_encode( $blob->photo ).'"/>';
+              }
+              
                 ?>
                 <a href="single/{{$car->id}}" class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
               </div>
@@ -174,8 +184,8 @@
                   {{$test->modele}} 
                   </h1>
                   <p>Immatriculation : {{$car->immatriculation}}</p>
-                  <p>Immatriculation : {{$car->immatriculation}}</p>
-                  <p>Immatriculation : {{$car->immatriculation}}</p>
+                  <p>Mise en circulation : {{$car->date_misecirculation}}</p>
+                  <p>Date d'achat : {{$car->date_achat}}</p>
               </div>
             </div>
           </div>
@@ -247,7 +257,7 @@ $(document).ready(function() {
            
 $(".edit").on('click',function(){
     console.log("ajax");
-    var data = $(this).attr('id')
+    var data = $(this).attr('id');
     $.ajax({
           url: 'vehicule/show/' + data,
           type: "get",
@@ -272,14 +282,16 @@ $(".edit").on('click',function(){
         });
 });
 
+
+
 var $btns = $('.btn').click(function() {
   if (this.id == 'all') {
-    $('#parent > div').fadeIn(450);
+    $("#parent > div").fadeIn(450);
   } else {
     var $el = $('.' + this.id).fadeIn(450);
-    $('#parent > div').not($el).hide();
+    $("#parent > div").not($el).hide();
   }
-})
+});
 
   $('.datepicker').pickadate({
     selectMonths: true, // Creates a dropdown to control month

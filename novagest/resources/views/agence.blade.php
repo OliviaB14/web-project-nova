@@ -2,6 +2,7 @@
 
 @section('css-links')
     <link rel="stylesheet" type="text/css" href="{{ asset('css/welcome.css')}}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/agence.css')}}"/>
     <style>
         .card.horizontal {
         /*display: -webkit-flex;
@@ -14,15 +15,13 @@
 @section('title', 'Agences')
 
 @section('content')
-<?php $user = Auth::user();
-$nb = $agences->count();
-?>
+<?php $user = Auth::user();?>
 
 <div class="row">
     <div class="col s12"><h1><i class="material-icons">build</i> Gestion des agences</h1></div>
         <div class="card col s12 center-align amber accent-2 main-card">
             <div class="card-content">
-              <span class="card-title black-text"><b class="timer" data-to="{{$nb+1}}" data-speed="1500"></b> agences</span>
+              <span class="card-title black-text"><b class="timer" data-to="{{$agences->count()}}" data-speed="1500"></b> agences</span>
             </div>
         </div>
 </div>
@@ -36,9 +35,11 @@ $nb = $agences->count();
 <!-- Modal Structure -->
 <div id="modal1" class="modal modal-fixed-footer">
   <div class="modal-content">
-  {{ Form::open(array('url' => 'agence/update/', 'id'=>'form')) }}
+  {{ Form::open(array('url' => 'agence/update/', 'id'=>'form', 'files' => true)) }}
     <h4 style="position: fixed;left: 0;top: 0;width: 100%;text-align: center;margin-top:15px;margin-bottom:15px;">Edition</h4>
-    
+    <div class="row center-align" id="aphoto-container">
+        <div class="col l12" id="aphoto"></div>
+    </div>
             <div class="col s12">
             <div class="row" style="margin-top:30px">
                     <div class="input-field col s12">
@@ -73,6 +74,11 @@ $nb = $agences->count();
                     {{ Form::label('eidville', 'Ville')}} 
                          </br>
                          {{ Form::select('eidville', $villes) }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                         {{ Form::file('ephoto') }}
                     </div>
                 </div>
             </div>
@@ -220,6 +226,7 @@ $(document).ready(function(){
     </div>
 </div>
 </section>
+
 <script>
 $(".edit").on('click',function(){
     console.log("ajax");
@@ -230,6 +237,17 @@ $(".edit").on('click',function(){
            success: function(response){
             console.log(response); 
             $('#modal1').modal('open');
+            //show image
+            var newImage = document.createElement('img');
+            if(response['photo'] != null){
+                newImage.src = response['photo'];
+            } else{
+                newImage.src = "http://www.laforet.com/sites/default/files/styles/image-defaut-video__480x360_/public/agence-immobiliere-laforet-cagnes-sur-mer-interieur.jpg";
+            }
+            
+            newImage.width = "300";
+            document.querySelector('#aphoto').innerHTML = newImage.outerHTML;//where to insert your image
+
             $('#enom').val(response['nom']);
             $('#ecode_postal').val(response['code_postal']);
             $('#eadresse').val(response['adresse']);

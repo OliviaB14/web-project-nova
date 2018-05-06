@@ -40,7 +40,6 @@ class AgenceController extends BasicController
             'etelephone' => 'required|alpha_spaces|max:24',
             'efax' => 'required|alpha_spaces|max:24',
             'email' => 'required|email|max:64',
-            'ephoto' => 'image'
         ]);
 
         if ($validator->fails()) {
@@ -62,7 +61,7 @@ class AgenceController extends BasicController
         $agence->telephone = $request["etelephone"];
         $agence->fax = $request["efax"];
         $agence->mail = $request["email"];
-        $agence->photo = base64_encode($img);
+        $agence->photo = $img;
         $agence->save();
 
         return redirect('agences');
@@ -100,7 +99,7 @@ class AgenceController extends BasicController
         $agence->telephone = $request["telephone"];
         $agence->fax = $request["fax"];
         $agence->mail = $request["mail"];
-        $agence->photo = base64_encode($img);
+        $agence->photo = $img;
         $agence->save();
 
         return redirect('agences');
