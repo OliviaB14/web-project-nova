@@ -17,7 +17,9 @@
 <?php $user = Auth::user();?>
 
 <section>
-
+<div class="row">
+    <div class="col s12"><h1><i class="material-icons">build</i> Piéces Véhicules</h1></div>
+</div>
 <ul class="collapsible" style="margin-left:2%" data-collapsible="accordion">
 @if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',26)->exists())
     <li>
@@ -51,7 +53,7 @@
               </div>
               </div>
       </div>
-      {{ Form::submit('Ajouter', array('class' => 'btn-sm btn-success')) }}
+      {{ Form::submit('Ajouter', array('class' => 'waves-effect waves-light btn')) }}
   {{ Form::close() }}
         </div>
       </div>
