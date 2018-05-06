@@ -18,7 +18,10 @@ class TypeVehiculeController extends BasicController
 	public function index()
     {
         $typeVehicules = TypeVehicule::all();
-        return view('typeVehicule', ['typeVehicules' => $typeVehicules]);
+
+        //dd($typeVehicules);
+
+        return view('typevehicule', ['typeVehicules' => $typeVehicules]);
     }
 
     public function show($id)
@@ -63,6 +66,7 @@ class TypeVehiculeController extends BasicController
     public function store(Request $request)
     {
         //Validator
+        //dd($request);
 
         $validator = Validator::make($request->all(), [
             'modele' => 'required|alphanum_spaces|max:32',
