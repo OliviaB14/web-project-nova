@@ -1,0 +1,16 @@
+#admin_card{
+	background: #FFD740;
+}
+
+#agent_card{
+	background: #d4e157;
+	color: white;
+}
+
+#peon_card{
+	background:#F08080;
+}
+
+#dev_card{
+	background:#AEDEDD;
+}

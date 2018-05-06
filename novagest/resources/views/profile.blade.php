@@ -105,7 +105,7 @@ var statut = $('#statut');
 
 console.log(statut.text());
 if ((statut.text().indexOf("Agent") >= 0)){
-	statut.attr('style', 'background:#487AA1;');
+	statut.attr('style', 'background:#d4e157;');
 } 
 if ((statut.text().indexOf("Administrateur") >= 0)){
 	statut.attr('style', 'background:#FFD740;');

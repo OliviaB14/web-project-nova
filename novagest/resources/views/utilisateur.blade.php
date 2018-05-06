@@ -2,6 +2,7 @@
 
 @section('css-links')
     <link rel="stylesheet" type="text/css" href="{{ asset('css/welcome.css')}}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/user.css')}}">
     <style>
         .card.horizontal {
         /*display: -webkit-flex;
@@ -17,6 +18,54 @@
 <?php $user = Auth::user();?>
 <div class="row">
     <div class="col s12"><h1><i class="material-icons">build</i> Gestion des utilisateurs</h1></div>
+
+    <?php
+        // count clients for each type : "Commune", "Entreprise"
+        $type['admin'] = DB::table('utilisateur')->where('idtypeutilisateur', '=','1')->count();
+        $type['agent'] = DB::table('utilisateur')->where('idtypeutilisateur', '=','2')->count();
+        $type['peon'] = DB::table('utilisateur')->where('idtypeutilisateur', '=','3')->count();
+        $type['dev'] = DB::table('utilisateur')->where('idtypeutilisateur', '=','4')->count();
+    ?>
+
+    <div class="col l8 s12">
+        <div class="card s12 main-card center-align">
+            <div class="card-content">
+              <span class="card-title black-text"><b class="timer" data-to="{{$utilisateurs->count()}}" data-speed="1500"></b> clients</span>
+            </div>
+        </div>
+        <div class="card col l6 s12 m6" id="admin_card">
+            <div class="card-content">
+              <span class="card-title black-text"><i class="material-icons">business</i> <b class="timer" data-to="{{$type['admin']}}" data-speed="1500"></b> administrateur<?php if($type['admin'] > 1){ echo 's'; } ?></span>
+              <input type="hidden" value="{{$type['admin']}}" id="admin_nb"/>
+            </div>
+        </div>
+        <div class="card col l6 s12 m6" id="agent_card">
+            <div class="card-content">
+              <span class="card-title black-text"><i class="material-icons">business_center</i> <b class="timer" data-to="{{$type['agent']}}" data-speed="1500"></b> agent<?php if($type['agent'] > 1){ echo 's'; } ?></span>
+              <input type="hidden" value="{{$type['agent']}}" id="agent_nb"/>
+            </div>
+        </div>
+
+        <div class="card col l6 s12 m6" id="peon_card">
+            <div class="card-content">
+              <span class="card-title black-text"><i class="material-icons">business_center</i> <b class="timer" data-to="{{$type['peon']}}" data-speed="1500"></b> péon<?php if($type['peon'] > 1){ echo 's'; } ?></span>
+              <input type="hidden" value="{{$type['peon']}}" id="peon_nb"/>
+            </div>
+        </div>
+        <div class="card col l6 s12 m6" id="dev_card">
+            <div class="card-content">
+              <span class="card-title black-text"><i class="material-icons">business_center</i> <b class="timer" data-to="{{$type['dev']}}" data-speed="1500"></b> développeur<?php if($type['dev'] > 1){ echo 's'; } ?></span>
+              <input type="hidden" value="{{$type['dev']}}" id="dev_nb"/>
+            </div>
+        </div>
+    </div>
+    <div class="col l4 s12">
+        <div class="card white" id="pie-clients">
+            <div class="card-content">
+              <canvas id="myChart" width="400" height="400"></canvas>
+            </div>
+        </div>
+    </div>
 </div>
 
 <!-- Modal Structure -->
@@ -184,7 +233,6 @@ $(document).ready(function(){
                             <th>Type utilisateur</th>
                             <th>Username</th>
                             <th>Telephone</th>
-                            <th>Fax</th>
                             <th>Mail</th>
                             <th>Desactive</th>
                         </tr>
@@ -203,7 +251,7 @@ $(document).ready(function(){
                             {{$typeutilisateurs->libelle}}
                             </td>
                             <td>{{$utilisateur->username}}</td>
-                            <td>{{$utilisateur->fax}}</td>
+                            <td>{{$utilisateur->telephone}}</td>
                             <td>{{$utilisateur->mail}}</td>
                             <td>{{$utilisateur->desactive}}</td>
                             <td>
@@ -237,7 +285,32 @@ $(document).ready(function(){
 </div>
 </section>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+
 <script>
+
+var ctx = document.getElementById("myChart");
+
+
+var myDoughnutChart = new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+        labels: ['Admin', 'Agents', 'Développeurs', 'Péons'],
+        datasets: [{
+            data: [$("#admin_nb").val(),$('#agent_nb').val(),$('#dev_nb').val(),$('#peon_nb').val()],
+            backgroundColor: [
+                "#FFD740",
+                "#d4e157",
+                "#AEDEDD",
+                "#F08080"
+            ]
+        }]
+    },
+    options: {
+        cutoutPercentage: 50
+    }
+});
+
 $(".edit").on('click',function(){
     console.log("ajax");
     var data = $(this).attr('id')
