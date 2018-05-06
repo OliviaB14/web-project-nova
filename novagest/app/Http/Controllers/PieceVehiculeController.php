@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\BasicController;
 use App\PieceVehicule;
+use App\TypePieceVehicule;
 use DB;
 use Input;
 use Illuminate\Support\Facades\Validator;
@@ -26,8 +27,9 @@ class PieceVehiculeController extends BasicController
 
 	public function index()
     {
+        $typepiece = TypePieceVehicule::pluck('nom', 'id');
         $piecevehicules = PieceVehicule::all();
-        return view('piecevehicule', ['piecevehicules' => $piecevehicules]);
+        return view('piecevehicule', ['piecevehicules' => $piecevehicules,'typepiece' => $typepiece]);
     }
 
     public function show($id)
