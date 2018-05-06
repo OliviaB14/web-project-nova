@@ -1,10 +1,7 @@
 @extends('layout.dashboard')
 
 @section('css-links')
-
-    <style>
-
-    </style>
+<link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
 @stop   
 
 @section('title', 'Vehicules')
@@ -66,13 +63,17 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="input-field col s4">
+                    <div class="input-field col s12">
                          {{ Form::file('ephotomain') }}
                     </div>
-                    <div class="input-field col s4">
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s12">
                          {{ Form::file('ephoto_2') }}
                     </div>
-                    <div class="input-field col s4">
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s12">
                          {{ Form::file('ephoto_3') }}
                     </div>
                 </div>

@@ -38,3 +38,9 @@ nav{
 #bottom-arrow{
 	background: #487aa1;
 }
+
+a#example_next, a#example_previous {
+    padding: 3% !important;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
