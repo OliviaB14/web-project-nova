@@ -58,9 +58,10 @@
                     </div>
                 </div>
             </div>
-            {{ Form::submit('Ajouter', array('class' => 'waves-effect waves-light btn')) }}
+            {{ Form::submit('Modifier', array('class' => 'waves-effect waves-light btn','style' => 'position: fixed;left: 0;bottom: 0;width: 100%;text-align: center;')) }}
+            </div>
         {{ Form::close() }}
-</div>
+
 </div>
 
 <script>
@@ -135,6 +136,7 @@ $(document).ready(function(){
       <table id="example" class="mdl-data-table responsive-table" cellspacing="0" width="100%">
                     <thead>
                         <tr>
+                            <th>Id</th>
                             <th>Modèle</th>
                             <th>Hauteur</th>
                             <th>Largeur</th>
@@ -148,6 +150,7 @@ $(document).ready(function(){
                     <tbody>
                     @foreach($typeVehicules as $typeVehicule)
                         <tr>
+                            <th>{{$typeVehicule->id}}</th>
                             <td>{{$typeVehicule->modele}}</td>
                             <td>{{$typeVehicule->hauteur}}</td>
                             <td>{{$typeVehicule->largeur}}</td>
@@ -175,9 +178,10 @@ $(document).ready(function(){
 <script>
 $(".edit").on('click',function(){
     console.log("ajax");
-    var data = $('.edit').attr('id')
-    $.ajax({
-          url: 'typevehicule/show/' + data,
+    var data = $(this).attr('id')
+        $.ajax({
+          url: 'typevehicules/show/' + data,
+          
           type: "get",
            success: function(response){
             console.log(response); 
