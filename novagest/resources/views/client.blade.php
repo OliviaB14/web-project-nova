@@ -144,7 +144,7 @@ $(document).ready(function(){
         {{ Form::open(array('url' => 'client/add')) }}
             <div class="col s12">
                 <div class="row">
-                    <div class="input-field col s6">
+                    <div class="input-field col s12">
                         {{ Form::label('raison_sociale', 'Raison sociale')}}
                         {{ Form::text('raison_sociale', null,array('class'=>'validate', 'required' => 'required'))}}
                     </div>
@@ -166,16 +166,14 @@ $(document).ready(function(){
                     <div class="input-field col s6">
                         {{ Form::label('telephone', 'Téléphone')}}
                         {{ Form::text('telephone', null,array('class'=>'validate', 'required' => 'required'))}}
-                    </div>
-                </div>
-                <div class="row">
+                    </div>  
                     <div class="input-field col s6">
                         {{ Form::label('fax', 'Fax')}}
                         {{ Form::text('fax', null,array('class'=>'validate', 'required' => 'required'))}}
                     </div>
                 </div>
                 <div class="row">
-                    <div class="input-field col s6">
+                    <div class="input-field col s12">
                         {{ Form::label('mail', 'E-mail')}}
                         {{ Form::text('mail', null,array('class'=>'validate', 'required' => 'required'))}}
                     </div>
