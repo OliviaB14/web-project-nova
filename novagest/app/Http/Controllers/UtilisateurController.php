@@ -113,6 +113,7 @@ class UtilisateurController extends BasicController
         $utilisateur->telephone = $request["telephone"];
         $utilisateur->fax = $request["fax"];
         $utilisateur->mail = $request["mail"];
+        $utilisateur->remember_token = 0;
         $utilisateur->save();
 
         return redirect('utilisateurs');
