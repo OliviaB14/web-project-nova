@@ -5,10 +5,12 @@
     <title></title>
 </header>
 
-<style>
-
-</style>
+<?php
+  $imgs = [$vehicule->photo_1, $vehicule->photo_2, $vehicule->photo_3];
+  $final = [];
+?>
 <body  style="background-color:#487AA1">
+
 <div id="section-to-print" class="container" style="margin-top:25px;background-color:white">
       <br><br>
       <h1 class="header center orange-text">{{$type_vehicule->modele}}</h1>
@@ -17,9 +19,23 @@
       </div>
       <div class="row center">
         <?php 
-              $blob = DB::table('type_vehicule')->where('id' ,'=', $vehicule->idtypevehicule)->select('photo')->first();
-              echo '<img style="width:30%;" src="data:image/jpeg;base64,'.base64_encode( $blob->photo ).'"/>';
-                ?>
+          $blob = DB::table('type_vehicule')->where('id' ,'=', $vehicule->idtypevehicule)->select('photo')->first(); //default image
+
+          foreach ($imgs as $img) {
+            if(!empty($img)){
+              array_push($final, "<img style='width:250px;height:auto' src='".$img."'/>");
+            }
+          }
+
+          if(!empty($final)){
+            foreach ($final as $photo) {
+              print_r($photo);
+            }
+          } else{
+            echo '<img style="width:300px;height:200px" src="data:image/jpeg;base64,'.base64_encode( $blob->photo ).'"/>';
+          }
+         
+        ?>
       </div>
       <div class="row center">
       <button id="printBTN" class="btn btn-primary" onclick="myFunction()">Print this page</button>

@@ -15,15 +15,13 @@
 @section('title', 'Agences')
 
 @section('content')
-<?php $user = Auth::user();
-$nb = $agences->count();
-?>
+<?php $user = Auth::user();?>
 
 <div class="row">
     <div class="col s12"><h1><i class="material-icons">build</i> Gestion des agences</h1></div>
         <div class="card col s12 center-align amber accent-2 main-card">
             <div class="card-content">
-              <span class="card-title black-text"><b class="timer" data-to="{{$nb}}" data-speed="1500"></b> agences</span>
+              <span class="card-title black-text"><b class="timer" data-to="{{$agences->count()}}" data-speed="1500"></b> agences</span>
             </div>
         </div>
 </div>
@@ -228,6 +226,7 @@ $(document).ready(function(){
     </div>
 </div>
 </section>
+
 <script>
 $(".edit").on('click',function(){
     console.log("ajax");
@@ -240,8 +239,13 @@ $(".edit").on('click',function(){
             $('#modal1').modal('open');
             //show image
             var newImage = document.createElement('img');
-            newImage.src = response['photo'];
-            newImage.width = newImage.height = "80";
+            if(response['photo'] != null){
+                newImage.src = response['photo'];
+            } else{
+                newImage.src = "http://www.laforet.com/sites/default/files/styles/image-defaut-video__480x360_/public/agence-immobiliere-laforet-cagnes-sur-mer-interieur.jpg";
+            }
+            
+            newImage.width = "300";
             document.querySelector('#aphoto').innerHTML = newImage.outerHTML;//where to insert your image
 
             $('#enom').val(response['nom']);
