@@ -43,7 +43,7 @@ class AgenceController extends BasicController
         ]);
 
         if ($validator->fails()) {
-            dd($validator);
+            //dd($validator);
             
             return redirect('agences')
                         ->withErrors($validator)
