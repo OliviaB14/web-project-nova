@@ -28,7 +28,7 @@
 <!-- Modal Structure -->
 <div id="modal1" class="modal modal-fixed-footer">
   <div class="modal-content">
-  {{ Form::open(array('url' => 'typeutilisateur/update/', 'id'=>'form', 'files' => true)) }}
+  {{ Form::open(array('url' => 'typeutilisateur/update', 'id'=>'form', 'files' => true)) }}
     <h4 style="position: fixed;left: 0;top: 0;width: 100%;text-align: center;margin-top:15px;margin-bottom:15px;">Edition</h4>
     <div class="row center-align" id="aphoto-container">
     </div>
@@ -132,7 +132,7 @@ $(".edit").on('click',function(){
             $('#modal1').modal('open');
             $('#elibelle').val(response['libelle']);
             
-            $('#form').attr('action', 'typeutilisateurs/update/' + response['id']);
+            $('#form').attr('action', 'typeutilisateur/update/' + response['id']);
             Materialize.updateTextFields();
             },
             error: function(response){
