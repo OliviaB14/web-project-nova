@@ -41,7 +41,6 @@
 <main>
     <div class="container text-center">
         <center>
-            
                 <div class="section"></div>
             <div class="z-depth-1 grey lighten-4 row" style="display: inline-block; padding: 32px 48px 0px 48px; border: 1px solid #EEE;">
                 <div class="panel panel-default">
