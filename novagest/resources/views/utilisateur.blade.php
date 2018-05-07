@@ -71,7 +71,7 @@
 <!-- Modal Structure -->
 <div id="modal1" class="modal modal-fixed-footer">
   <div class="modal-content">
-  {{ Form::open(array('url' => 'utilisateur/update/', 'id'=>'form')) }}
+  {{ Form::open(array('url' => 'utilisateur/update', 'id'=>'form')) }}
     <h4 style="position: fixed;left: 0;top: 0;width: 100%;text-align: center;margin-top:15px;margin-bottom:15px;">Edition</h4>
     
             <div class="col s12">
@@ -303,6 +303,7 @@ $(".edit").on('click',function(){
         type: "get",
         success: function(response){
         console.log(response); 
+        console.log(url);
         $('#modal1').modal('open');
         $('#enom').val(response['nom']);
         $('#eprenom').val(response['prenom']);
@@ -315,10 +316,10 @@ $(".edit").on('click',function(){
         $('#email').val(response['mail']);
         
         $('#form').attr('action', 'utilisateur/update/' + response['id']);
-        Materialize.updateTextFields();
-        
-        var idtypeutilisateur = response["idtypeutilisateur"];
+         var idtypeutilisateur = response["idtypeutilisateur"];
         $('#eidtypeutilisateur option[value=' + idtypeutilisateur + ']').attr('selected','selected');
+        Materialize.updateTextFields();
+       
         },
             error: function(response){
                 alert('Error'+response);

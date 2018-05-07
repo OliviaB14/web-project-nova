@@ -126,11 +126,7 @@ class VehiculeController extends BasicController
                         ->withErrors($validator)
                         ->withInput();
         }
-
-        // create a new image directly from Laravel file upload
-        $img1 = Image::make($request['photo1'])->encode('data-url');
-        $img2 = Image::make($request['photo2'])->encode('data-url');
-        $img3 = Image::make($request['photo3'])->encode('data-url');
+        
 
         $vehicule = new Vehicule;
         $vehicule->immatriculation = $request["immatriculation"];
@@ -140,9 +136,21 @@ class VehiculeController extends BasicController
         $vehicule->idtypeetatvehicule = $request["idtypeetatvehicule"];
         $vehicule->idstatut = $request["idstatut"];
         $vehicule->idclient = $request["idclient"];
-        $vehicule->photo_1 = $img1;
-        $vehicule->photo_2 = $img2;
-        $vehicule->photo_3 = $img3;
+        // create a new image directly from Laravel file upload
+        if ($request->hasFile('photo1')) {
+            $img = Image::make($request['photo1'])->encode('data-url');
+            $vehicule->photo_1 = $img;
+        }
+
+        if ($request->hasFile('photo2')) {
+            $img2 = Image::make($request['photo2'])->encode('data-url');
+            $vehicule->photo_2 = $img2;
+        }
+
+        if ($request->hasFile('photo3')) {
+            $img3 = Image::make($request['photo3'])->encode('data-url');
+            $vehicule->photo_3 = $img3;
+        }
         $vehicule->idagence = $request["idagence"];
         $vehicule->save();
 
