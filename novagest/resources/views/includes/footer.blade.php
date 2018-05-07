@@ -29,14 +29,14 @@ if($user = Auth::user())
         <div class="col l3 s12">
           <h5>Gestion</h5>
           <ul>
-            <li><a href="/"><i class="material-icons">home</i> Tableau de bord</a></li>
+            <li><a href=""><i class="material-icons">home</i> Tableau de bord</a></li>
             <li><a href="agences"><i class="material-icons">work</i> Agences</a></li>
             <li><a href="clients"><i class="material-icons">people</i> Clients</a></li>
             <li><a href="droits"><i class="material-icons">assignment_ind</i> Droits</a></li>
             <li><a href="vehicules"><i class="material-icons">directions_car</i> Vehicules</a></li>
             <li><a href="utilisateurs"><i class="material-icons">supervisor_account</i> Utilisateurs</a></li>
             <li><a href="villes"><i class="material-icons">location_city</i> Villes</a></li>
-            <li><a href="statut"><i class="material-icons">view_list</i> Statuts</a></li>
+            <li><a href="statuts"><i class="material-icons">view_list</i> Statuts</a></li>
           </ul>
         </div>
         <div class="col l3 s12">
