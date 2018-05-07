@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Auth;
 use App\Http\Requests;
 use App\Http\Controllers\BasicController;
 use App\TypePieceVehicule;
+use App\TypeVehicule;
 use DB;
 use Input;
 use Illuminate\Support\Facades\Validator;
@@ -15,33 +16,22 @@ require app_path().'/validators.php';   //regex customs
 
 class TypePieceVehiculeController extends BasicController
 {
-	// public function Get$typePieceVehicules()
-	// {
-	// 	$$typePieceVehicules = DB::table('$typePieceVehicule')
-    //     ->get();
-    //     //dd($$typePieceVehicules);
-	// 	return view('$typePieceVehicule', ['$typePieceVehicules' => $$typePieceVehicules]);
-	// }
 
-	public function index()
+    public function index()
     {
         $typePieceVehicules = TypePieceVehicule::all();
-        return view('typePieceVehicule', ['typePieceVehicules' => $typePieceVehicules]);
+        $typevehicules = TypeVehicule::pluck('modele','id');
+        return view('typePieceVehicule', ['typePieceVehicules' => $typePieceVehicules, 'typevehicules' => $typevehicules]);
     }
 
     public function show($id)
     {
-        $typePieceVehicule = $typePieceVehicule::find($id);
-        if ($typePieceVehicule != null) {
-            return $this->sendResponse(true, null, $typePieceVehicule);
-        }
-        return $this->sendResponse(false, "Data not found.", null);
+        $typePieceVehicule = TypePieceVehicule::find($id);  
+        return response()->json($typePieceVehicule);
     }
 
     public function update($id, Request $request)
     {
-        //Validator
-
         $validator = Validator::make($request->all(), [
             'enom' => 'required|alphanum_spaces|max:32',
             'eidtypevehicule' => 'required|integer',
@@ -49,7 +39,7 @@ class TypePieceVehiculeController extends BasicController
         ]);
 
         if ($validator->fails()) {
-            //dd($validator);
+
             return redirect('typepiecevehicules')
                         ->withErrors($validator)
                         ->withInput();
@@ -67,8 +57,6 @@ class TypePieceVehiculeController extends BasicController
 
     public function store(Request $request)
     {
-        //Validator
-
         $validator = Validator::make($request->all(), [
             'nom' => 'required|alphanum_spaces|max:32',
             'idtypevehicule' => 'required|integer',
@@ -76,7 +64,7 @@ class TypePieceVehiculeController extends BasicController
         ]);
         
         if ($validator->fails()) {
-            //dd($validator);
+
             return redirect('typepiecevehicules')
                         ->withErrors($validator)
                         ->withInput();
