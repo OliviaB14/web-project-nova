@@ -207,19 +207,20 @@ class VehiculeController extends BasicController
         $agence = Agence::find($vehicule->idagence);
         $client = Client::find($vehicule->idclient);
         $type_vehicule = TypeVehicule::find($vehicule->idtypevehicule);
-
+        $etatvehicule = TypeEtatVehicule::find($vehicule->idtypeetatvehicule);
+        $idstatut = StatutVehicule::find($vehicule->idstatut);
         if($agence != null)
         {
             $ville = Ville::find($agence->idville);
-            return view('singleVehicule', ['vehicule' => $vehicule,'type_vehicule' => $type_vehicule,'agence' => $agence,'ville' => $ville]);
+            return view('singleVehicule', ['vehicule' => $vehicule,'type_vehicule' => $type_vehicule,'agence' => $agence,'ville' => $ville, 'etatvehicule' => $etatvehicule, 'idstatut' => $idstatut]);
         }
         elseif($client != null)
         {
             $ville = Ville::find($client->idville);
-            return view('singleVehicule', ['vehicule' => $vehicule,'type_vehicule' => $type_vehicule,'client' => $client,'ville' => $ville]);
+            return view('singleVehicule', ['vehicule' => $vehicule,'type_vehicule' => $type_vehicule,'client' => $client,'ville' => $ville, 'etatvehicule' => $etatvehicule, 'idstatut' => $idstatut]);
         }
 
         
-        return view('singleVehicule', ['vehicule' => $vehicule,'type_vehicule' => $type_vehicule]);
+        return view('singleVehicule', ['vehicule' => $vehicule,'type_vehicule' => $type_vehicule, 'etatvehicule' => $etatvehicule, 'idstatut' => $idstatut]);
     }
 }

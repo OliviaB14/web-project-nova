@@ -171,9 +171,9 @@ $(document).ready(function(){
                             <th>Adresse</th>
                             <th>Ville</th>
                             <th>Téléphone</th>
-                            <th>fax</th>
-                            <th>mail</th>
-                            <th>Statuts</th>
+                            <th>Fax</th>
+                            <th>Mail</th>
+                            <th>Statut</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -239,7 +239,8 @@ $(".edit").on('click',function(){
             if(response['photo'] != null){
                 newImage.src = response['photo'];
             } else{
-                newImage.src = "http://www.laforet.com/sites/default/files/styles/image-defaut-video__480x360_/public/agence-immobiliere-laforet-cagnes-sur-mer-interieur.jpg";
+                //newImage.src = "http://www.laforet.com/sites/default/files/styles/image-defaut-video__480x360_/public/agence-immobiliere-laforet-cagnes-sur-mer-interieur.jpg";
+                "{{ asset('images/agence-default.jpg') }}";
             }
             
             newImage.width = "300";

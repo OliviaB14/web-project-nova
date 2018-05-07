@@ -2,18 +2,23 @@
 <header>
 @include('includes.head')
 
-    <title></title>
+    <title>{{$vehicule->immatriculation}} - {{$type_vehicule->modele}}</title>
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/single.css')}}"/>
 </header>
 
 <?php
   $imgs = [$vehicule->photo_1, $vehicule->photo_2, $vehicule->photo_3];
   $final = [];
 ?>
-<body  style="background-color:#487AA1">
+<body>
 
-<div id="section-to-print" class="container" style="margin-top:25px;background-color:white">
-      <br><br>
-      <h1 class="header center orange-text">{{$type_vehicule->modele}}</h1>
+
+
+<div id="section-to-print" class="container">
+
+      <br>
+      <h1 class="header center orange-text">{{$type_vehicule->modele}} -{{$vehicule->immatriculation}}</h1>
+      <h3 id="statut">{{$idstatut->libelle}}</h3>
       <div class="row center">
         <h5 class="header col s12 light">{{$type_vehicule->description}}</h5>
       </div>
@@ -23,7 +28,7 @@
 
           foreach ($imgs as $img) {
             if(!empty($img)){
-              array_push($final, "<img style='width:250px;height:auto' src='".$img."'/>");
+              array_push($final, "<img style='width:200px;height:auto' src='".$img."'/>");
             }
           }
 
@@ -32,13 +37,13 @@
               print_r($photo);
             }
           } else{
-            echo '<img style="width:300px;height:200px" src="data:image/jpeg;base64,'.base64_encode( $blob->photo ).'"/>';
+            echo '<img style="width:200px;height:auto" src="data:image/jpeg;base64,'.base64_encode( $blob->photo ).'"/>';
           }
          
         ?>
       </div>
       <div class="row center">
-      <button id="printBTN" class="btn btn-primary" onclick="myFunction()">Print this page</button>
+      <button id="printBTN" class="btn btn-primary" onclick="myFunction()">IMPRIMER CETTE PAGE</button>
       </div>
 
 <script>
@@ -52,24 +57,44 @@ function myFunction() {
 }
 </script>
       <div class="row center">
-      <div class="col s3"></div>
-      <table class="col s6 striped centered">
+      <div class="col s1"></div>
+      <table class="col s10 striped centered">
+        <thead>
+            <tr>
+                <th>Date d'achat</th>
+                <th>Largeur</th>
+                <th>Hauteur</th>
+                <th>Puissance</th>
+                <th>Prix neuf</th>
+            </tr>
+        </thead>
         <tbody>
           <tr>
-            <td>Immatriculation</td>
-            <td>{{$vehicule->immatriculation}}</td>
-          </tr>
-          <tr>
-            <td>Date d'achat</td>
             <td>{{$vehicule->date_achat}}</td>
+            <td>{{$type_vehicule->largeur}}m</td>
+            <td>{{$type_vehicule->hauteur}}m</td>
+            <td>{{$type_vehicule->puissance}}cv</td>
+            <td>@if($type_vehicule->prix_neuf==0)
+                    NC
+                @else
+                    {{$type_vehicule->prix_neuf}} €
+                @endif
+            </td>
           </tr>
         </tbody>
       </table>
       </div>
+      <div class="s12"><p>
+        Etat actuel : <b>{{$etatvehicule->libelle}}</b>
+        @if(isset($agence))
+            , actuellement à <b>{{$agence->nom}}</b> située au {{$agence->adresse}}
+            @endif
+      </p>
+      </div>
       <div class="col s3"></div>
       <div class="row ">
         <div class="col s12">
-            <div style="height: 30%; width :70%; margin-left:auto; margin-right:auto;" id="map"></div>
+            <div id="map"></div>
         </div>
       </div>
       <br><br>

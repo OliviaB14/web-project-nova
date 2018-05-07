@@ -98,7 +98,7 @@
              {{ Form::select('eidtypeutilisateur', $typeutilisateurs) }}
         </div>
         <div class="input-field col s12">
-                {{ Form::label('eusername', 'Username')}} 
+                {{ Form::label('eusername', 'Nom d\'utilisateur')}} 
                 {{ Form::text('eusername', null,array('class'=>'validate', 'required' => 'required'))}}
         </div>
         <div class="input-field col s12">
@@ -228,7 +228,7 @@ $(document).ready(function(){
                             <th>Prenom</th>
                             <th>Date de naissance</th>
                             <th>Type utilisateur</th>
-                            <th>Username</th>
+                            <th>Nom d'utilisateur</th>
                             <th>Telephone</th>
                             <th>Mail</th>
                             <th>Desactive</th>

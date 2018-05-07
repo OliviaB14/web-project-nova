@@ -1,0 +1,35 @@
+body{
+	background-color:#487AA1;
+}
+
+table{
+  font-size:0.8em;
+}
+
+p{
+	font-size:0.8em;
+}
+
+#section-to-print{
+  text-align: center;
+  margin-top:25px;
+  background-color:white;
+}
+
+#statut {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-align: center;
+    background: #FFD740;
+    color: #fff;
+    padding: 1%;
+    width: 30%;
+    margin: 0 auto;
+}
+
+#map{
+	height: 30%; 
+	width :70%; 
+	margin-left:auto; 
+	margin-right:auto;
+}
