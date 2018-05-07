@@ -47,6 +47,7 @@ class VehiculeController extends BasicController
 
     public function update($id, Request $request)
     {
+        $user = Auth::user();
         //formattage des dates
         $request['edate_achat'] = Carbon::parse($request['edate_achat'])->format('Y-m-d');
         $request['edate_misecirculation'] = Carbon::parse($request['edate_misecirculation'])->format('Y-m-d');
@@ -162,7 +163,7 @@ class VehiculeController extends BasicController
         $histo->commentaire = "Add";
         $histo->idutilisateur = $user->id;
         $histo->idtypeevenement = 1;
-        $histo->idvehicule = $id;
+        $histo->idvehicule = $id->id;
         $histo->desactive = 0;
         $histo->save();
 
@@ -171,6 +172,7 @@ class VehiculeController extends BasicController
 
     public function destroy($id)
     {
+        $user = Auth::user();
         // Find the corresponding record 
         $vehicule = Vehicule::find($id);
         if($vehicule->desactive == 1)
@@ -184,7 +186,14 @@ class VehiculeController extends BasicController
             $vehicule->desactive = 1;
             $vehicule->save();
         }
-        
+
+        $histo = new HistoriqueVehicule;
+        $histo->commentaire = "Delete";
+        $histo->idutilisateur = $user->id;
+        $histo->idtypeevenement = 11;
+        $histo->idvehicule = $id;
+        $histo->desactive = 0;
+        $histo->save();
         
         return redirect('vehicules');
     }
