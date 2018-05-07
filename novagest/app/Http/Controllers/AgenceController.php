@@ -49,9 +49,7 @@ class AgenceController extends BasicController
                         ->withErrors($validator)
                         ->withInput();
         }
-
-        // create a new image directly from Laravel file upload
-        $img = Image::make($request['ephoto'])->encode('data-url');
+        
 
         // Find the corresponding record 
         $agence = Agence::find($id);
@@ -61,7 +59,11 @@ class AgenceController extends BasicController
         $agence->telephone = $request["etelephone"];
         $agence->fax = $request["efax"];
         $agence->mail = $request["email"];
-        $agence->photo = $img;
+        if($request->hasFile('ephoto')){
+            // create a new image directly from Laravel file upload
+            $img = Image::make($request['ephoto'])->encode('data-url');
+            $agence->photo = $img;
+        }
         $agence->save();
 
         return redirect('agences');
