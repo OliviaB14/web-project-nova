@@ -90,9 +90,9 @@ $(document).ready(function(){
       <table id="example" class="mdl-data-table responsive-table" cellspacing="0" width="100%">
                     <thead>
                         <tr>
-                            <th>Type utilisateur</th>
-                            <th>Statuts</th>
+                            <th>ID</th>
                             <th>Libelle</th>
+                            <th>Statut</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
