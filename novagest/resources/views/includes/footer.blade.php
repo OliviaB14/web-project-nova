@@ -66,6 +66,5 @@ if($user = Auth::user())
   @if(!Auth::user())
     $('#bottom-arrow').hide();
   @endif
-
      $('.timer').countTo();
   </script>
