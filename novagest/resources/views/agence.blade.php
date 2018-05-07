@@ -26,11 +26,8 @@
         </div>
 </div>
 
-<div class='center-align row'>
-   
-
-    
-</div>
+<!-- <div class='center-align row'>   
+</div> -->
 
 <!-- Modal Structure -->
 <div id="modal1" class="modal modal-fixed-footer">

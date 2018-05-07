@@ -45,6 +45,13 @@
   {{ Form::close() }}
 </div>
 
+<script>
+$(document).ready(function(){
+    // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
+    $('.modal').modal();
+  });
+</script>
+
 <section>
 <ul class="collapsible" style="margin-left:2%" data-collapsible="accordion">
 @if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',44)->exists())
@@ -81,6 +88,7 @@
                     <tbody>
                     @foreach($typeutilisateurs as $typeutilisateur)
                         <tr>
+                            <td>{{$typeutilisateur->id}}</td>
                             <td>{{$typeutilisateur->libelle}}</td>
                             <td>{{$typeutilisateur->desactive}}</td>
                             <td>
@@ -105,6 +113,7 @@
 $(".edit").on('click',function(){
     console.log("ajax");
     var data = $(this).attr('id')
+    console.log(data);
     $.ajax({
           url: 'typeutilisateurs/show/' + data,
           type: "get",
