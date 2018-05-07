@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Auth;
 use App\Http\Requests;
 use App\Http\Controllers\BasicController;
 use App\PieceVehicule;
+use App\TypeEtatPiece;
 use App\TypePieceVehicule;
 use DB;
 use Input;
@@ -17,28 +18,19 @@ require app_path().'/validators.php';   //regex customs
 
 class PieceVehiculeController extends BasicController
 {
-	// public function GetPieceVehicules()
-	// {
-	// 	$pieceVehicules = DB::table('PieceVehicule')
-    //     ->get();
-    //     //dd($pieceVehicules);
-	// 	return view('PieceVehicule', ['PieceVehicules' => $pieceVehicules]);
-	// }
 
 	public function index()
     {
         $typepiece = TypePieceVehicule::pluck('nom', 'id');
+        $typeetatpiece = TypeEtatPiece::pluck('libelle', 'id');
         $piecevehicules = PieceVehicule::all();
-        return view('piecevehicule', ['piecevehicules' => $piecevehicules,'typepiece' => $typepiece]);
+        return view('piecevehicule', ['piecevehicules' => $piecevehicules,'typepiece' => $typepiece, 'typeetatpiece' => $typeetatpiece]);
     }
 
     public function show($id)
     {
-        $pieceVehicule = PieceVehicule::find($id);
-        if ($pieceVehicule != null) {
-            return $this->sendResponse(true, null, $pieceVehicule);
-        }
-        return $this->sendResponse(false, "Data not found.", null);
+        $piecevehicule = PieceVehicule::find($id);  
+        return response()->json($piecevehicule);
     }
 
     public function update($id, Request $request)
@@ -53,7 +45,7 @@ class PieceVehiculeController extends BasicController
         ]);
 
         if ($validator->fails()) {
-            //dd($validator);
+
             return redirect('piecevehicules')
                         ->withErrors($validator)
                         ->withInput();
@@ -81,7 +73,7 @@ class PieceVehiculeController extends BasicController
         ]);
 
         if ($validator->fails()) {
-            //dd($validator);
+
             return redirect('piecevehicules')
                         ->withErrors($validator)
                         ->withInput();
