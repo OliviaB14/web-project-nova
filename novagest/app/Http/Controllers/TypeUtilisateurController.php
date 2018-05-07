@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Auth;
 use App\Http\Requests;
 use App\Http\Controllers\BasicController;
 use App\typeutilisateur;
@@ -15,46 +15,34 @@ require app_path().'/validators.php';   //regex customs
 
 class typeutilisateurController extends BasicController
 {
-	// public function Gettypeutilisateurs()
-	// {
-	// 	$typeutilisateurs = DB::table('typeutilisateur')
-    //     ->get();
-    //     //dd($typeutilisateurs);
-	// 	return view('typeutilisateur', ['typeutilisateurs' => $typeutilisateurs]);
-	// }
-
 	public function index()
     {
-        $typeutilisateurs = typeutilisateur::all();
+        $typeutilisateurs = Typeutilisateur::all();
         return view('typeutilisateur', ['typeutilisateurs' => $typeutilisateurs]);
     }
 
     public function show($id)
     {
-        $typeutilisateur = typeutilisateur::find($id);
-        if ($typeutilisateur != null) {
-            return $this->sendResponse(true, null, $typeutilisateur);
-        }
-        return $this->sendResponse(false, "Data not found.", null);
+        dd($id);
+        $typeutilisateur = TypeUtilisateur::find($id);  
+        return response()->json($typeutilisateur);
     }
 
     public function update($id, Request $request)
     {
-        //Validator
-
         $validator = Validator::make($request->all(), [
             'elibelle' => 'required|alpha_spaces|max:32',
         ]);
 
         if ($validator->fails()) {
-            //dd($validator);
+
             return redirect('typeutilisateurs')
                         ->withErrors($validator)
                         ->withInput();
         }
 
         // Find the corresponding record 
-        $typeutilisateur = typeutilisateur::find($id);
+        $typeutilisateur = TypeUtilisateur::find($id);
         $typeutilisateur->libelle = $request["elibelle"];
         $typeutilisateur->save();
 
@@ -77,7 +65,7 @@ class typeutilisateurController extends BasicController
         }
 
         // Create a new typeutilisateur from request param
-        $typeutilisateur = new typeutilisateur;
+        $typeutilisateur = new TypeUtilisateur;
         $typeutilisateur->libelle = $request["libelle"];
         $typeutilisateur->save();
 
@@ -87,7 +75,7 @@ class typeutilisateurController extends BasicController
     public function destroy($id)
     {
         // Find the corresponding record 
-        $typeutilisateur = typeutilisateur::find($id);
+        $typeutilisateur = TypeUtilisateur::find($id);
         $typeutilisateur->desactive = 1;
         $typeutilisateur->save();
         
