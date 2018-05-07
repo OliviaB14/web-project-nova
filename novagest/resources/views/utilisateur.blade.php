@@ -257,6 +257,7 @@ $(document).ready(function(){
                             @endif
                             @if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',37)->exists())
                             <a id="{{$utilisateur->id}}" class="btn-floating btn-large waves-effect waves-light yellow edit" href="#modal1"><i class="material-icons">edit</i></a>
+                            
                             @endif
                             </td>
                         </tr>
