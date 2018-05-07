@@ -32,7 +32,7 @@
                             <th>Utilisateur</th>
                             <th>Type d'évènement</th>
                             <th>Véhicule</th>
-                            <th>Status</th>
+                            <th>Statuts</th>
                         </tr>
                     </thead>
                     <tbody>

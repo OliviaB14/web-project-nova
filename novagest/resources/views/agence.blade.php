@@ -173,7 +173,7 @@ $(document).ready(function(){
                             <th>Téléphone</th>
                             <th>fax</th>
                             <th>mail</th>
-                            <th>Status</th>
+                            <th>Statuts</th>
                             <th>Actions</th>
                         </tr>
                     </thead>

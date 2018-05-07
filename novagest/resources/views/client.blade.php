@@ -206,7 +206,7 @@ $(document).ready(function(){
                             <th>Fax</th>
                             <th>Mail</th>
                             <th>Type de client</th>
-                            <th>Status</th>
+                            <th>Statuts</th>
                             <th>Actions</th>
                         </tr>
                     </thead>

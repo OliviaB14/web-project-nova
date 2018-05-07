@@ -152,7 +152,7 @@ $(document).ready(function(){
                             <th>Poids</th>
                             <th>Puissance</th>
                             <th>Prix neuf</th>
-                            <th>Status</th>
+                            <th>Statuts</th>
                             <th>Actions</th>
                         </tr>
                     </thead>

@@ -49,7 +49,7 @@
                     <thead>
                         <tr>
                             <th>Libelle</th>
-                            <th>Status</th>
+                            <th>Statuts</th>
                         </tr>
                     </thead>
                     <tbody>

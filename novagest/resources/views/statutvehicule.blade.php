@@ -64,7 +64,7 @@
                         <tr>
                             <th>ID</th>
                             <th>Statut du véhicule</th>
-                            <td>Status</td>
+                            <td>Statuts</td>
                             <th>Actions</th>
                         </tr>
                     </thead>

@@ -215,7 +215,7 @@
                         <th>Immatriculation</th> 
                         <th>Date d'achat</th> 
                         <th>Date de mise en circulation</th>
-                        <th>Status</th>
+                        <th>Statuts</th>
                         <th>Actions</th>
                     </tr> 
                 </thead> 
