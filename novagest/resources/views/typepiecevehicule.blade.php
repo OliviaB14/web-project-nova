@@ -64,7 +64,7 @@ $(document).ready(function(){
 
 <section>
 <ul class="collapsible" style="margin-left:2%" data-collapsible="accordion">
-@if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',26)->exists())
+@if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',75)->exists())
 <li>
 <div class="collapsible-header"><i class="material-icons">add</i>Ajouter</div>
       <div class="collapsible-body">
@@ -115,7 +115,7 @@ $(document).ready(function(){
                             <th>Nom de la pièce</th>
                             <th>Type de véhicule</th>
                             <th>Prix neuf</th>
-                            <th>Status</th>
+                            <th>Statuts</th>
                         </tr>
                     </thead>
                     <tbody>

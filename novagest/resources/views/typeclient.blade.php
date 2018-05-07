@@ -49,7 +49,7 @@
                     <thead>
                         <tr>
                             <th>Type de client</th>
-                            <th>Status</th>
+                            <th>Statuts</th>
                         </tr>
                     </thead>
                     <tbody>

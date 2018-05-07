@@ -72,7 +72,7 @@
                             <th>Date d'entrée</th>
                             <th>Etat de la pièce</th>
                             <th>Type de pièce</th>
-                            <th>Status</th>
+                            <th>Statuts</th>
                         </tr>
                     </thead>
                     <tbody>

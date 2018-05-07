@@ -48,7 +48,7 @@
                     <thead>
                         <tr>
                             <th>Type d'état - pièces de véhicule</th>
-                            <th>Status</th>
+                            <th>Statuts</th>
                         </tr>
                     </thead>
                     <tbody>

@@ -91,7 +91,7 @@ $(document).ready(function(){
                     <thead>
                         <tr>
                             <th>Type utilisateur</th>
-                            <th>Status</th>
+                            <th>Statuts</th>
                             <th>Libelle</th>
                             <th>Actions</th>
                         </tr>
