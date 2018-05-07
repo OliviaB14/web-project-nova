@@ -289,6 +289,59 @@ $(document).ready(function(){
 
 <script>
 
+
+
+  $(document).ready(function() {
+    $('select').material_select();
+});
+
+$(".edit").on('click',function(){
+    console.log("ajax");
+    var data = $(this).attr('id');
+    $.ajax({
+        url: 'utilisateurs/show/' + data,
+        type: "get",
+        success: function(response){
+        console.log(response); 
+        $('#modal1').modal('open');
+        $('#enom').val(response['nom']);
+        $('#eprenom').val(response['prenom']);
+        $('#edate_naissance').val(response['date_naissance']);
+        $('#eidtypeutilisateur').val(response['idtypeutilisateur']);
+        $('#eusername').val(response['username']);
+        $('#epassword').val(response['password']);
+        $('#etelephone').val(response['telephone']);
+        $('#efax').val(response['fax']);
+        $('#email').val(response['mail']);
+        
+        $('#form').attr('action', 'utilisateur/update/' + response['id']);
+        Materialize.updateTextFields();
+        
+        var idtypeutilisateur = response["idtypeutilisateur"];
+        $('#eidtypeutilisateur option[value=' + idtypeutilisateur + ']').attr('selected','selected');
+        },
+            error: function(response){
+                alert('Error'+response);
+                }
+        });
+});
+
+$(document).ready(function() {
+    $('#example').DataTable( {
+        columnDefs: [
+            {
+                targets: [ 0, 1],
+                className: 'mdl-data-table__cell--non-numeric'
+            }
+        ]
+    });
+
+    $(document).ready(function(){
+        $('.collapsible').collapsible();
+    });
+
+} );
+
 var ctx = document.getElementById("myChart");
 
 
@@ -310,56 +363,6 @@ var myDoughnutChart = new Chart(ctx, {
         cutoutPercentage: 50
     }
 });
-
-$(".edit").on('click',function(){
-    console.log("ajax");
-    var data = $(this).attr('id')
-    $.ajax({
-          url: 'utilisateurs/show/' + data,
-          type: "get",
-           success: function(response){
-            console.log(response); 
-            $('#modal1').modal('open');
-            $('#enom').val(response['nom']);
-            $('#eprenom').val(response['prenom']);
-            $('#edate_naissance').val(response['date_naissance']);
-            $('#eidtypeutilisateur').val(response['typeutilisateur']);
-            $('#eusername').val(response['username']);
-            $('#epassword').val(response['password']);
-            $('#etelephone').val(response['telephone']);
-            $('#efax').val(response['fax']);
-            $('#email').val(response['mail']);
-            
-            $('#form').attr('action', 'utilisateur/update/' + response['id']);
-            Materialize.updateTextFields();
-            
-            var idtypeutilisateur = response["typeutilisateur"];
-            $('#eidtypeutilisateur option[value=' + idtypeutilisateur + ']').attr('selected','selected');
-            },
-            error: function(response){
-                alert('Error'+response);
-                }
-        });
-});
-
-$(document).ready(function() {
-        $('#example').DataTable( {
-            columnDefs: [
-                {
-                    targets: [ 0, 1],
-                    className: 'mdl-data-table__cell--non-numeric'
-                }
-            ]
-        } );
-    $(document).ready(function(){
-    $('.collapsible').collapsible();
-  });
-
-
-  $(document).ready(function() {
-    $('select').material_select();
-});
-} );
           
 </script>
 @stop

@@ -13,7 +13,7 @@ Route::post('test','BasicController@Login'); // route du login TODO = a changer 
 Route::group(['middleware' => ['auth']], function() {
     Route::get('whoami','BasicController@whoami');
 
-Route::get('logout','BasicController@Logout');
+Route::get('deconnexion','BasicController@Logout');
 
 
 // Routes avec controlleurs
