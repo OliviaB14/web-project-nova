@@ -67,7 +67,7 @@ class UtilisateurController extends BasicController
         $utilisateur->nom = $request["enom"];
         $utilisateur->prenom = $request["eprenom"];
         $utilisateur->date_naissance = $request["edate_naissance"];
-        $utilisateur->idtypeutilisateur = $request["eidtypeutilisateur"];
+        //$utilisateur->idtypeutilisateur = $request["eidtypeutilisateur"];
         $utilisateur->username = $request["eusername"];
         $utilisateur->password = $request["epassword"];
         $utilisateur->telephone = $request["etelephone"];

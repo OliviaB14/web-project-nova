@@ -15,6 +15,7 @@ use App\Agence;
 use App\Ville;
 use App\TypeHistoriqueEvenement;
 use DB;
+use Auth;
 use Input;
 use Illuminate\Support\Facades\Validator;
 use App\HistoriqueVehicule;
@@ -46,6 +47,7 @@ class VehiculeController extends BasicController
 
     public function update($id, Request $request)
     {
+        $user = Auth::user();
         //formattage des dates
         $request['edate_achat'] = Carbon::parse($request['edate_achat'])->format('Y-m-d');
         $request['edate_misecirculation'] = Carbon::parse($request['edate_misecirculation'])->format('Y-m-d');
@@ -103,6 +105,7 @@ class VehiculeController extends BasicController
 
     public function store(Request $request)
     {
+        $user = Auth::user();
         //formattage des dates
         $request['date_achat'] = Carbon::parse($request['date_achat'])->format('Y-m-d');
         $request['date_misecirculation'] = Carbon::parse($request['date_misecirculation'])->format('Y-m-d');
@@ -124,12 +127,8 @@ class VehiculeController extends BasicController
                         ->withErrors($validator)
                         ->withInput();
         }
-
-        // create a new image directly from Laravel file upload
-        $img1 = Image::make($request['photo1'])->encode('data-url');
-        $img2 = Image::make($request['photo2'])->encode('data-url');
-        $img3 = Image::make($request['photo3'])->encode('data-url');
         
+
         $vehicule = new Vehicule;
         $vehicule->immatriculation = $request["immatriculation"];
         $vehicule->date_achat = $request["date_achat"];
@@ -138,30 +137,42 @@ class VehiculeController extends BasicController
         $vehicule->idtypeetatvehicule = $request["idtypeetatvehicule"];
         $vehicule->idstatut = $request["idstatut"];
         $vehicule->idclient = $request["idclient"];
-        $vehicule->photo_1 = $img1;
-        $vehicule->photo_2 = $img2;
-        $vehicule->photo_3 = $img3;
+        // create a new image directly from Laravel file upload
+        if ($request->hasFile('photo1')) {
+            $img = Image::make($request['photo1'])->encode('data-url');
+            $vehicule->photo_1 = $img;
+        }
+
+        if ($request->hasFile('photo2')) {
+            $img2 = Image::make($request['photo2'])->encode('data-url');
+            $vehicule->photo_2 = $img2;
+        }
+
+        if ($request->hasFile('photo3')) {
+            $img3 = Image::make($request['photo3'])->encode('data-url');
+            $vehicule->photo_3 = $img3;
+        }
         $vehicule->idagence = $request["idagence"];
         $vehicule->save();
 
-
+        
 //TODO
         $id = DB::table('vehicule')->orderBy('id', 'DESC')->first();
 
-        $evenement = new HistoriqueVehicule;
-        $evenement->date_ligne = $request["eimmatriculation"];
-        $evenement->commentaire = "Ajout";
-        $evenement->id_utilisateur = 5;//TODO
-        $evenement->idtypeevenement = 1;
-        $evenement->idvehicule = $id;
-        $evenement->desactive = 0;
-        $evenement->save();
+        $histo = new HistoriqueVehicule;
+        $histo->commentaire = "Add";
+        $histo->idutilisateur = $user->id;
+        $histo->idtypeevenement = 1;
+        $histo->idvehicule = $id->id;
+        $histo->desactive = 0;
+        $histo->save();
 
         return redirect('vehicules');
     }
 
     public function destroy($id)
     {
+        $user = Auth::user();
         // Find the corresponding record 
         $vehicule = Vehicule::find($id);
         if($vehicule->desactive == 1)
@@ -175,7 +186,14 @@ class VehiculeController extends BasicController
             $vehicule->desactive = 1;
             $vehicule->save();
         }
-        
+
+        $histo = new HistoriqueVehicule;
+        $histo->commentaire = "Delete";
+        $histo->idutilisateur = $user->id;
+        $histo->idtypeevenement = 11;
+        $histo->idvehicule = $id;
+        $histo->desactive = 0;
+        $histo->save();
         
         return redirect('vehicules');
     }

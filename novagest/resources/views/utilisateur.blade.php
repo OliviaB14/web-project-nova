@@ -2,7 +2,7 @@
 
 @section('css-links')
     <link rel="stylesheet" type="text/css" href="{{ asset('css/welcome.css')}}"/>
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/user.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/user.css')}}"/>
     <style>
         .card.horizontal {
         /*display: -webkit-flex;
@@ -71,61 +71,58 @@
 <!-- Modal Structure -->
 <div id="modal1" class="modal modal-fixed-footer">
   <div class="modal-content">
-  {{ Form::open(array('url' => 'utilisateur/update/', 'id'=>'form')) }}
+  {{ Form::open(array('url' => 'utilisateur/update', 'id'=>'form')) }}
     <h4 style="position: fixed;left: 0;top: 0;width: 100%;text-align: center;margin-top:15px;margin-bottom:15px;">Edition</h4>
-    
-            <div class="col s12">
-            <div class="row" style="margin-top:30px">
-                <div class="input-field col s12">
-                    {{ Form::label('enom', 'Nom de l\'utilisateur')}}
-                        {{ Form::text('enom', null,array('class'=>'validate', 'required' => 'required'))}}
-                    </div>
-                </div>
-                <div class="input-field col s12">
-                    {{ Form::label('eprenom', 'Prenom')}}
-                        {{ Form::text('eprenom', null,array('class'=>'validate', 'required' => 'required'))}}
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="input-field col s12">
-                        {{ Form::label('edate_naissance', 'Date de naissance')}}
-                        {{ Form::text('edate_naissance', null,array('class'=>'validate', 'required' => 'required'))}}
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="input-field col s12">
-                    {{ Form::label('eidtypeutilisateur', 'Type Utilisateur')}} 
-                         </br>
-                         {{ Form::select('eidtypeutilisateur', $typeutilisateurs) }}
-                </div>
-                <div class="input-field col s12">
-                        {{ Form::label('eusername', 'Username')}} 
-                        {{ Form::text('eusername', null,array('class'=>'validate', 'required' => 'required'))}}
-                </div>
-                <div class="input-field col s12">
-                        {{ Form::label('epassword', 'Password')}} 
-                        {{ Form::text('epassword', null,array('class'=>'validate', 'required' => 'required'))}}
-                </div>
-                <div class="row">
-                    <div class="input-field col s6">
-                        {{ Form::label('etelephone', 'Téléphone')}}
-                        {{ Form::text('etelephone', null,array('class'=>'validate', 'required' => 'required'))}}
-                    </div>
-                    <div class="input-field col s6">
-                            {{ Form::label('efax', 'Fax')}}
-                            {{ Form::text('efax', null,array('class'=>'validate', 'required' => 'required'))}}
-                    </div>
-                </div>
-                <div class="row">
-                <div class="input-field col s12">
-                        {{ Form::label('email', 'Email')}} 
-                        {{ Form::text('email', null,array('class'=>'validate', 'required' => 'required'))}}
-                </div>
-                </div>
-
+    <div class="col s12">
+        <div class="row" style="margin-top:30px">
+            <div class="input-field col s12">
+                {{ Form::label('enom', 'Nom de l\'utilisateur')}}
+                {{ Form::text('enom', null,array('class'=>'validate', 'required' => 'required'))}}
             </div>
-            </div>
-            {{ Form::submit('Modifier', array('class' => 'waves-effect waves-light btn','style' => 'position: fixed;left: 0;bottom: 0;width: 100%;text-align: center;')) }}
+        </div>
+        <div class="input-field col s12">
+            {{ Form::label('eprenom', 'Prenom')}}
+            {{ Form::text('eprenom', null,array('class'=>'validate', 'required' => 'required'))}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-field col s12">
+            {{ Form::label('edate_naissance', 'Date de naissance')}}
+            {{ Form::text('edate_naissance', null,array('class'=>'validate', 'required' => 'required'))}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-field col s12">
+            {{ Form::label('eidtypeutilisateur', 'Type Utilisateur')}} 
+             </br>
+             {{ Form::select('eidtypeutilisateur', $typeutilisateurs) }}
+        </div>
+        <div class="input-field col s12">
+                {{ Form::label('eusername', 'Username')}} 
+                {{ Form::text('eusername', null,array('class'=>'validate', 'required' => 'required'))}}
+        </div>
+        <div class="input-field col s12">
+                {{ Form::label('epassword', 'Password')}} 
+                {{ Form::text('epassword', null,array('class'=>'validate', 'required' => 'required'))}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-field col s6">
+            {{ Form::label('etelephone', 'Téléphone')}}
+            {{ Form::text('etelephone', null,array('class'=>'validate', 'required' => 'required'))}}
+        </div>
+        <div class="input-field col s6">
+                {{ Form::label('efax', 'Fax')}}
+                {{ Form::text('efax', null,array('class'=>'validate', 'required' => 'required'))}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-field col s12">
+                {{ Form::label('email', 'Email')}} 
+                {{ Form::text('email', null,array('class'=>'validate', 'required' => 'required'))}}
+        </div>
+    </div>
+    {{ Form::submit('Modifier', array('class' => 'waves-effect waves-light btn','style' => 'position: fixed;left: 0;bottom: 0;width: 100%;text-align: center;')) }}
   </div>
   
   {{ Form::close() }}
@@ -260,6 +257,7 @@ $(document).ready(function(){
                             @endif
                             @if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',37)->exists())
                             <a id="{{$utilisateur->id}}" class="btn-floating btn-large waves-effect waves-light yellow edit" href="#modal1"><i class="material-icons">edit</i></a>
+                            
                             @endif
                             </td>
                         </tr>
@@ -315,10 +313,10 @@ $(".edit").on('click',function(){
         $('#email').val(response['mail']);
         
         $('#form').attr('action', 'utilisateur/update/' + response['id']);
-        Materialize.updateTextFields();
-        
-        var idtypeutilisateur = response["idtypeutilisateur"];
+         var idtypeutilisateur = response["idtypeutilisateur"];
         $('#eidtypeutilisateur option[value=' + idtypeutilisateur + ']').attr('selected','selected');
+        Materialize.updateTextFields();
+       
         },
             error: function(response){
                 alert('Error'+response);

@@ -139,13 +139,17 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="input-field col s4">
+                    <div class="input-field col s12">
                          {{ Form::file('photo1') }}
                     </div>
-                    <div class="input-field col s4">
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s12">
                          {{ Form::file('photo2') }}
                     </div>
-                    <div class="input-field col s4">
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s12">
                          {{ Form::file('photo3') }}
                     </div>
                 </div>
@@ -159,10 +163,10 @@
       <div class="collapsible-header"><i class="material-icons">apps</i>Vehicules</div>
       <div class="collapsible-body">
           <div class='row'> 
-      <div class="page-header"> 
-        <h3>Véhicules</h3> 
-      </div> 
-    </div> 
+            <div class="page-header"> 
+              <h3>Véhicules</h3> 
+            </div> 
+          </div> 
     <button class="active btn" id="all">Show All</button>
 @foreach($typevehicules as $type)
     <button class="btn" id="{{$type->id}}">{{$type->modele}}</button>
@@ -219,7 +223,6 @@
                         <th>Immatriculation</th> 
                         <th>Date d'achat</th> 
                         <th>Date de mise en circulation</th>
-                        <th>Statuts</th>
                         <th>Actions</th>
                     </tr> 
                 </thead> 
@@ -230,7 +233,6 @@
                         <td>{{$car->immatriculation}}</td> 
                         <td>{{$car->date_achat}}</td> 
                         <td>{{$car->date_misecirculation}}</td>
-                        <td>{{$car->desactive}}</td> 
                         <td>
                         @if($car->desactive == 0)
                         <a class="btn-floating btn-large waves-effect waves-light red" href="vehicule/destroy/{{$car->id}}"><i class="material-icons">cancel</i></a>
@@ -325,6 +327,12 @@ var $btns = $('.btn').click(function() {
     close: 'Valider',
     closeOnSelect: false // Close upon selecting a date,
   });
+</script>
+
+<script>
+    $(document).ready(function(){
+      $('.tooltipped').tooltip();
+    });
 </script>
 @stop
 
