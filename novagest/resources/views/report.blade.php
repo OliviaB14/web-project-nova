@@ -2,12 +2,12 @@
 
 @section('content')
 <div class="row">
-{{ Form::open(array('url' => 'report/send/', 'id'=>'form')) }}
+{{ Form::open(array('url' => 'sendbasicemail', 'id'=>'form')) }}
     <div class="col s12">
       <div class="row">
         <div class="input-field col s12">
-          <textarea id="textarea1" class="materialize-textarea"></textarea>
-          <label for="textarea1">Contactez nous!</label>
+        {{ Form::label('text', 'Contactez nous!')}}
+        {{ Form::text('text', null,array('class'=>'materialize-textarea', 'required' => 'required'))}}
         </div>
       </div>
     </div>

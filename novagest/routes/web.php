@@ -226,4 +226,9 @@ Route::get('typevehicules/show/{id}', 'TypeVehiculeController@show'); // index
 Route::post('typevehicule/update/{id}', 'TypeVehiculeController@update');
 //Fin typevehicule
 });
+
+Route::get('sendhtmlemail','MailController@html_email');
+Route::get('sendattachmentemail','MailController@attachment_email');
+Route::post('sendbasicemail','MailCOntroller@basic_email');
+
 });
