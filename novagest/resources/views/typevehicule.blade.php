@@ -82,6 +82,15 @@ $(document).ready(function(){
 <div class="collapsible-header"><i class="material-icons">add</i>Ajouter</div>
       <div class="collapsible-body">
       <div class="row">
+      @if ($errors->any())
+        <div style="font-color:red">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li class="w3-red">{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+      @endif
       {{ Form::open(array('url' => 'typevehicule/add')) }}
             <div class="col s12">
                 <div class="row">
