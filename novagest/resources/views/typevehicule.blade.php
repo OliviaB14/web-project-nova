@@ -77,7 +77,7 @@ $(document).ready(function(){
     <div class="col s12"><h1><i class="material-icons">build</i> Type Vehicule</h1></div>
 </div>
 <ul class="collapsible" style="margin-left:2%" data-collapsible="accordion">
-@if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',70)->exists())
+@if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',72)->exists())
 <li>
 <div class="collapsible-header"><i class="material-icons">add</i>Ajouter</div>
       <div class="collapsible-body">
@@ -129,7 +129,7 @@ $(document).ready(function(){
       </div>
     </li>
     @endif
-    @if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',69)->exists())
+    @if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',71)->exists())
     <li>
       <div class="collapsible-header"><i class="material-icons">dvr</i>Données</div>
       <div class="collapsible-body">
@@ -159,10 +159,10 @@ $(document).ready(function(){
                             <td>{{$typeVehicule->prix_neuf}}</td>
                             <td>{{$typeVehicule->desactive}}</td>
                             <td>
-                            @if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',72)->exists())
+                            @if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',74)->exists())
                             <a class="btn-floating btn-large waves-effect waves-light red" href="typevehicule/destroy/{{$typeVehicule->id}}"><i class="material-icons">cancel</i></a>
                             @endif
-                            @if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',71)->exists())
+                            @if(DB::table('droit_type_utilisateur')->where('idtypeutilisateur','=',$user->idtypeutilisateur)->where('iddroit','=',73)->exists())
                             <a id="{{$typeVehicule->id}}" class="btn-floating btn-large waves-effect waves-light yellow edit" href="#modal1"><i class="material-icons">edit</i></a>
                             @endif
                             </td>
@@ -181,24 +181,23 @@ $(".edit").on('click',function(){
     var data = $(this).attr('id')
         $.ajax({
           url: 'typevehicules/show/' + data,
-          
           type: "get",
            success: function(response){
             console.log(response); 
             $('#modal1').modal('open');
-            $('#emodele').val(response['modele']);
-            $('#edescription').val(response['description']);
-            $('#ehauteur').val(response['hauteur']);
-            $('#elargeur').val(response['largeur']);
-            $('#epoids').val(response['poids']);
-            $('#epuissance').val(response['puissance']);
-            $('#eprix_neuf').val(response['prix_neuf']);
+            $('#emodele').val(response[0]['modele']);
+            $('#edescription').val(response[0]['description']);
+            $('#ehauteur').val(response[0]['hauteur']);
+            $('#elargeur').val(response[0]['largeur']);
+            $('#epoids').val(response[0]['poids']);
+            $('#epuissance').val(response[0]['puissance']);
+            $('#eprix_neuf').val(response[0]['prix_neuf']);
             
             $('#form').attr('action', 'typevehicule/update/' + response['id']);
             Materialize.updateTextFields();
             },
             error: function(response){
-                alert('Error'+response);
+                console.log('Error'+response);
                 }
         });
 });

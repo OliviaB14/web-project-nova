@@ -26,8 +26,18 @@ class TypeVehiculeController extends BasicController
 
     public function show($id)
     {
-        $typeVehicule = TypeVehicule::find($id);
-        return response()->json($typeVehicule);
+        try{
+            $type = DB::table("type_vehicule")
+            ->select('modele','hauteur','largeur','poids','puissance','prix_neuf','description')
+            ->where("id", $id)
+            ->get();
+
+            return response()->json($type);
+         } 
+         catch(\Exception $e){
+            return response()->json($e->getMessage());
+         }
+        
     }
 
     public function update($id, Request $request)
