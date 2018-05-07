@@ -71,9 +71,6 @@
                                         </span>
                                     @endif
                                 </div>
-                                <a class="pink-text" style='float: right;' href="{{ route('password.request') }}">
-                                    Mot de passe oublié?
-                                </a>
                             </div>
 
                             <!--<div class="form-group">
