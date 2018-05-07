@@ -223,7 +223,6 @@
                         <th>Immatriculation</th> 
                         <th>Date d'achat</th> 
                         <th>Date de mise en circulation</th>
-                        <th>Statuts</th>
                         <th>Actions</th>
                     </tr> 
                 </thead> 
@@ -234,7 +233,6 @@
                         <td>{{$car->immatriculation}}</td> 
                         <td>{{$car->date_achat}}</td> 
                         <td>{{$car->date_misecirculation}}</td>
-                        <td>{{$car->desactive}}</td> 
                         <td>
                         @if($car->desactive == 0)
                         <a class="btn-floating btn-large waves-effect waves-light red" href="vehicule/destroy/{{$car->id}}"><i class="material-icons">cancel</i></a>
