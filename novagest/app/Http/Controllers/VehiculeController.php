@@ -164,8 +164,18 @@ class VehiculeController extends BasicController
     {
         // Find the corresponding record 
         $vehicule = Vehicule::find($id);
-        $vehicule->desactive = 1;
-        $vehicule->save();
+        if($vehicule->desactive == 1)
+        {
+            $vehicule->desactive = 0;
+            $vehicule->save();
+        }
+        else
+        {
+
+            $vehicule->desactive = 1;
+            $vehicule->save();
+        }
+        
         
         return redirect('vehicules');
     }
