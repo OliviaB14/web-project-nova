@@ -9,7 +9,14 @@
 @section('content')
 <div class="row">
     <div class="col s12"><h1><i class="material-icons">build</i> Gestion des véhicules</h1></div>
+    <div class="card col s12 center-align amber accent-2 main-card">
+        <div class="card-content">
+          <span class="card-title black-text"><b class="timer" data-to="{{$vehicules->count()}}" data-speed="1500"></b> véhicules</span>
+        </div>
+    </div>
 </div>
+
+
 
 <!-- Modal Structure -->
 <div id="modal1" class="modal modal-fixed-footer">

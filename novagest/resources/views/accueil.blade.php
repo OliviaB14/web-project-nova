@@ -11,7 +11,7 @@
 		<div class="col s12 m6">
 			<div class="card amber accent-2">
 	            <div class="card-content">
-	              <span class="card-title black-text"><b class="timer" data-to="{{$agences+1}}" data-speed="1500"></b> agences</span>
+	              <span class="card-title black-text"><b class="timer" data-to="{{$agences}}" data-speed="1500"></b> agences</span>
 	            </div>
 	            <div class="card-action">
 	              <a href="agences">Gérer</a>
@@ -21,7 +21,7 @@
 		<div class="col s12 m6">
 			<div class="card teal lighten-3">
 	            <div class="card-content black-text">
-	              <span class="card-title"><b class="timer" id="lollipop" data-to="{{$vehicules+1}}" data-speed="1500"></b> véhicules</span>
+	              <span class="card-title"><b class="timer" id="lollipop" data-to="{{$vehicules}}" data-speed="1500"></b> véhicules</span>
 	            </div>
 	            <div class="card-action">
 	              <a href="vehicules">Gérer</a>
@@ -33,7 +33,7 @@
 		<div class="col s12 m6">
 			<div class="card brown lighten-3">
 	            <div class="card-content black-text">
-	              <span class="card-title"><b class="timer" id="lollipop" data-to="{{$utilisateurs+1}}" data-speed="1500"></b> agents</span>
+	              <span class="card-title"><b class="timer" id="lollipop" data-to="{{$utilisateurs}}" data-speed="1500"></b> agents</span>
 	            </div>
 	            <div class="card-action">
 	              <a href="utilisateurs">Gérer</a>
