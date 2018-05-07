@@ -35,10 +35,10 @@ class AgenceController extends BasicController
         //dd($request["eidville"]);
         $validator = Validator::make($request->all(), [
             'enom' => 'required|alpha_spaces|max:64',
-            'eadresse' => 'required|alpha_spaces|max:256',
+            'eadresse' => 'required|alphanum_spaces|max:256',
             'eidville' => 'required|integer',
-            'etelephone' => 'required|alpha_spaces|max:24',
-            'efax' => 'required|alpha_spaces|max:24',
+            'etelephone' => 'required|alphanum_spaces|max:24',
+            'efax' => 'required|alphanum_spaces|max:24',
             'email' => 'required|email|max:64',
         ]);
 
@@ -73,10 +73,10 @@ class AgenceController extends BasicController
 
         $validator = Validator::make($request->all(), [
             'nom' => 'required|alpha_spaces|max:64',
-            'adresse' => 'required|alpha_spaces|max:256',
+            'adresse' => 'required|alphanum_spaces|max:256',
             'idville' => 'required|integer',
-            'telephone' => 'required|alpha_spaces|max:24',
-            'fax' => 'required|alpha_spaces|max:24',
+            'telephone' => 'required|alphanum_spaces|max:24',
+            'fax' => 'required|alphanum_spaces|max:24',
             'mail' => 'required|email|max:64',
             'photo' => 'image'
         ]);
