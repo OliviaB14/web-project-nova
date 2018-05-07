@@ -15,6 +15,7 @@ use App\Agence;
 use App\Ville;
 use App\TypeHistoriqueEvenement;
 use DB;
+use Auth;
 use Input;
 use Illuminate\Support\Facades\Validator;
 use App\HistoriqueVehicule;
@@ -103,6 +104,7 @@ class VehiculeController extends BasicController
 
     public function store(Request $request)
     {
+        $user = Auth::user();
         //formattage des dates
         $request['date_achat'] = Carbon::parse($request['date_achat'])->format('Y-m-d');
         $request['date_misecirculation'] = Carbon::parse($request['date_misecirculation'])->format('Y-m-d');
@@ -129,7 +131,7 @@ class VehiculeController extends BasicController
         $img1 = Image::make($request['photo1'])->encode('data-url');
         $img2 = Image::make($request['photo2'])->encode('data-url');
         $img3 = Image::make($request['photo3'])->encode('data-url');
-        
+
         $vehicule = new Vehicule;
         $vehicule->immatriculation = $request["immatriculation"];
         $vehicule->date_achat = $request["date_achat"];
@@ -144,18 +146,17 @@ class VehiculeController extends BasicController
         $vehicule->idagence = $request["idagence"];
         $vehicule->save();
 
-
+        
 //TODO
         $id = DB::table('vehicule')->orderBy('id', 'DESC')->first();
 
-        $evenement = new HistoriqueVehicule;
-        $evenement->date_ligne = $request["eimmatriculation"];
-        $evenement->commentaire = "Ajout";
-        $evenement->id_utilisateur = 5;//TODO
-        $evenement->idtypeevenement = 1;
-        $evenement->idvehicule = $id;
-        $evenement->desactive = 0;
-        $evenement->save();
+        $histo = new HistoriqueVehicule;
+        $histo->commentaire = "Add";
+        $histo->idutilisateur = $user->id;
+        $histo->idtypeevenement = 1;
+        $histo->idvehicule = $id;
+        $histo->desactive = 0;
+        $histo->save();
 
         return redirect('vehicules');
     }
