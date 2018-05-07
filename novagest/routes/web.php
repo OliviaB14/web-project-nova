@@ -227,8 +227,9 @@ Route::post('typevehicule/update/{id}', 'TypeVehiculeController@update');
 //Fin typevehicule
 });
 
+//mail
 Route::get('sendhtmlemail','MailController@html_email');
 Route::get('sendattachmentemail','MailController@attachment_email');
 Route::post('sendbasicemail','MailCOntroller@basic_email');
-
+//endmail
 });

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Auth;
 use App\Http\Requests;
 use App\Http\Controllers\BasicController;
 use App\TypeEtatPiece;
@@ -15,13 +15,6 @@ require app_path().'/validators.php';   //regex customs
 
 class TypeEtatPieceController extends BasicController
 {
-	// public function GetTypeEtatPieces()
-	// {
-	// 	$typeEtatPieces = DB::table('TypeEtatPiece')
-    //     ->get();
-    //     //dd($typeEtatPieces);
-	// 	return view('TypeEtatPiece', ['TypeEtatPieces' => $typeEtatPieces]);
-	// }
 
 	public function index()
     {
@@ -31,23 +24,18 @@ class TypeEtatPieceController extends BasicController
 
     public function show($id)
     {
-        $typeEtatPiece = TypeEtatPiece::find($id);
-        if ($typeEtatPiece != null) {
-            return $this->sendResponse(true, null, $typeEtatPiece);
-        }
-        return $this->sendResponse(false, "Data not found.", null);
+        $typeetatpiece = TypeEtatPiece::find($id);  
+        return response()->json($typeetatpiece);
     }
 
     public function update($id, Request $request)
     {
-        //Validator
-
         $validator = Validator::make($request->all(), [
             'elibelle' => 'required|alpha_spaces|max:32',
         ]);
 
         if ($validator->fails()) {
-            //dd($validator);
+
             return redirect('typeetatpieces')
                         ->withErrors($validator)
                         ->withInput();
@@ -63,14 +51,12 @@ class TypeEtatPieceController extends BasicController
 
     public function store(Request $request)
     {
-        //Validator
-
         $validator = Validator::make($request->all(), [
             'libelle' => 'required|alpha_spaces|max:32',
         ]);
 
         if ($validator->fails()) {
-            //dd($validator);
+
             return redirect('typeetatpieces')
                         ->withErrors($validator)
                         ->withInput();
