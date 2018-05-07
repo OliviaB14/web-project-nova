@@ -184,7 +184,11 @@
               }
               
                 ?>
+                @if($car->desactive == 0)
                 <a class="btn-floating halfway-fab waves-effect waves-light red" style="margin-bottom:20%" href="vehicule/destroy/{{$car->id}}"><i class="material-icons">cancel</i></a>
+                @else
+                <a class="btn-floating halfway-fab waves-effect waves-light green" style="margin-bottom:20%" href="vehicule/destroy/{{$car->id}}"><i class="material-icons">check</i></a>
+                @endif
                 <a id="{{$car->id}}" class="btn-floating halfway-fab waves-effect waves-light yellow edit"style="margin-bottom:10%" href="#modal1"><i class="material-icons">edit</i></a>
                 <a href="single/{{$car->id}}" class="btn-floating halfway-fab waves-effect waves-light blue"><i class="material-icons">archive</i></a>
               </div>
@@ -228,7 +232,11 @@
                         <td>{{$car->date_misecirculation}}</td>
                         <td>{{$car->desactive}}</td> 
                         <td>
+                        @if($car->desactive == 0)
                         <a class="btn-floating btn-large waves-effect waves-light red" href="vehicule/destroy/{{$car->id}}"><i class="material-icons">cancel</i></a>
+                        @else
+                        <a class="btn-floating btn-large waves-effect waves-light green" href="vehicule/destroy/{{$car->id}}"><i class="material-icons">check</i></a>
+                        @endif
                         <a id="{{$car->id}}" class="btn-floating btn-large waves-effect waves-light yellow edit" href="#modal1"><i class="material-icons">edit</i></a>
                         <a id="{{$car->id}}" class="btn-floating btn-large waves-effect waves-light blue edit" href="single/{{$car->id}}"><i class="material-icons">archive</i></a>
                         </td>
