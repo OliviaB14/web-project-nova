@@ -23,7 +23,6 @@ class typeutilisateurController extends BasicController
 
     public function show($id)
     {
-        dd($id);
         $typeutilisateur = TypeUtilisateur::find($id);  
         return response()->json($typeutilisateur);
     }

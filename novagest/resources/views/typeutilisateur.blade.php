@@ -83,6 +83,8 @@ $(document).ready(function(){
                         <tr>
                             <th>Type utilisateur</th>
                             <th>Status</th>
+                            <th>Libelle</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -113,18 +115,17 @@ $(document).ready(function(){
 $(".edit").on('click',function(){
     console.log("ajax");
     var data = $(this).attr('id')
-    console.log(data);
     $.ajax({
-          url: 'typeutilisateurs/show/' + data,
+        url: 'typeutilisateurs/show/' + data,
           type: "get",
            success: function(response){
             console.log(response); 
-
             $('#modal1').modal('open');
-            $('#elibelle').val(response['libelle']);         
-            $('#form').attr('action', 'typeutilisateur/update/' + response['id']);
+            $('#elibelle').val(response['libelle']);
+            
+            $('#form').attr('action', 'typeutilisateurs/update/' + response['id']);
             Materialize.updateTextFields();
-
+            },
             error: function(response){
                 alert('Error'+response);
                 }
