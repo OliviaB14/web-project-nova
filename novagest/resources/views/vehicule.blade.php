@@ -93,7 +93,7 @@
 
 <ul class="collapsible">
 <li>
-      <div class="collapsible-header"><i class="material-icons">whatshot</i>Ajouter un vehicule</div>
+      <div class="collapsible-header"><i class="material-icons">add</i>Ajouter un vehicule</div>
       <div class="collapsible-body">
       {{ Form::open(array('url' => 'vehicule/add', 'files' => true)) }}
             <div class="col s12">
@@ -160,7 +160,7 @@
       </div>
     </li>
     <li>
-      <div class="collapsible-header"><i class="material-icons">filter_drama</i>Vehicules</div>
+      <div class="collapsible-header"><i class="material-icons">apps</i>Vehicules</div>
       <div class="collapsible-body">
           <div class='row'> 
       <div class="page-header"> 
@@ -188,7 +188,7 @@
               }
               
                 ?>
-                <a href="single/{{$car->id}}" class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
+                <a href="single/{{$car->id}}" class="btn-floating halfway-fab waves-effect waves-light blue"><i class="material-icons">archive</i></a>
               </div>
               <div class="card-content">
                 <h1>
@@ -208,7 +208,7 @@
       </span></div>
     </li>
     <li>
-      <div class="collapsible-header"><i class="material-icons">place</i>Tableau de vehicules</div>
+      <div class="collapsible-header"><i class="material-icons">dehaze</i>Tableau de vehicules</div>
       <div class="collapsible-body">
       <table id="example" class="mdl-data-table responsive-table responsive no-wrap" cellspacing="0" width="100%"> 
                 <thead> 
@@ -229,7 +229,11 @@
                         <td>{{$car->date_achat}}</td> 
                         <td>{{$car->date_misecirculation}}</td>
                         <td>{{$car->desactive}}</td> 
-                        <td><a class="btn-floating btn-large waves-effect waves-light red" href="vehicule/destroy/{{$car->id}}"><i class="material-icons">cancel</i></a><a id="{{$car->id}}" class="btn-floating btn-large waves-effect waves-light yellow edit" href="#modal1"><i class="material-icons">edit</i></a></td>
+                        <td>
+                        <a class="btn-floating btn-large waves-effect waves-light red" href="vehicule/destroy/{{$car->id}}"><i class="material-icons">cancel</i></a>
+                        <a id="{{$car->id}}" class="btn-floating btn-large waves-effect waves-light yellow edit" href="#modal1"><i class="material-icons">edit</i></a>
+                        <a id="{{$car->id}}" class="btn-floating btn-large waves-effect waves-light blue edit" href="single/{{$car->id}}"><i class="material-icons">archive</i></a>
+                        </td>
                     </tr> 
                 @endforeach 
                 </tbody> 
