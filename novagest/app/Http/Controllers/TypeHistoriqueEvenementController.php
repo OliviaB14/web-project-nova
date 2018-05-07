@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Auth;
 use App\Http\Requests;
 use App\Http\Controllers\BasicController;
 use App\TypeHistoriqueEvenement;
@@ -15,15 +15,8 @@ require app_path().'/validators.php';   //regex customs
 
 class TypeHistoriqueEvenementController extends BasicController
 {
-	// public function GetTypeHistoriqueEvenements()
-	// {
-	// 	$typeHistoriqueEvenements = DB::table('TypeHistoriqueEvenement')
-    //     ->get();
-    //     //dd($typeHistoriqueEvenements);
-	// 	return view('TypeHistoriqueEvenement', ['TypeHistoriqueEvenements' => $typeHistoriqueEvenements]);
-	// }
 
-	public function index()
+    public function index()
     {
         $typeHistoriqueEvenements = TypeHistoriqueEvenement::all();
         return view('typeHistoriqueEvenement', ['typeHistoriqueEvenements' => $typeHistoriqueEvenements]);
@@ -31,23 +24,18 @@ class TypeHistoriqueEvenementController extends BasicController
 
     public function show($id)
     {
-        $typeHistoriqueEvenement = TypeHistoriqueEvenement::find($id);
-        if ($typeHistoriqueEvenement != null) {
-            return $this->sendResponse(true, null, $typeHistoriqueEvenement);
-        }
-        return $this->sendResponse(false, "Data not found.", null);
+        $typeHistoriqueEvenement = TypeHistoriqueEvenement::find($id);  
+        return response()->json($typeHistoriqueEvenement);
     }
 
     public function update($id, Request $request)
     {
-        //Validator
-
         $validator = Validator::make($request->all(), [
             'elibelle' => 'required|alpha_spaces|max:32',
         ]);
 
         if ($validator->fails()) {
-            //dd($validator);
+
             return redirect('typehistoriqueevenements')
                         ->withErrors($validator)
                         ->withInput();
@@ -63,14 +51,12 @@ class TypeHistoriqueEvenementController extends BasicController
 
     public function store(Request $request)
     {
-        //Validator
-
         $validator = Validator::make($request->all(), [
             'libelle' => 'required|alpha_spaces|max:32',
         ]);
 
         if ($validator->fails()) {
-            //dd($validator);
+
             return redirect('typehistoriqueevenements')
                         ->withErrors($validator)
                         ->withInput();
