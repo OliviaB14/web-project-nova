@@ -1,35 +1,10 @@
 @extends('layout.dashboard')
 
 @section('css-links')
+
+<link rel="stylesheet" type="text/css" href="{{ asset('css/login.css') }}">
 <style>
-        body {
-            display: flex;
-            min-height: 100vh;
-            flex-direction: column;
-        }
         
-        main {
-            flex: 1 0 auto;
-        }
-        
-        body {
-            background: #fff;
-        }
-        
-        .input-field input[type=date]:focus+label,
-        .input-field input[type=text]:focus+label,
-        .input-field input[type=email]:focus+label,
-        .input-field input[type=password]:focus+label {
-            color: #487AA1;
-        }
-        
-        .input-field input[type=date]:focus,
-        .input-field input[type=text]:focus,
-        .input-field input[type=email]:focus,
-        .input-field input[type=password]:focus {
-            border-bottom: 2px solid #487AA1;
-            box-shadow: none;
-        }
     </style>
 @endsection
 

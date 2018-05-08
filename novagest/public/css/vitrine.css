@@ -1,0 +1,68 @@
+.parallax { 
+    /* The image used */
+    background-image: url("http://www.transportissimo.com/wp-content/uploads/2017/03/192.jpg");
+
+    /* Set a specific height */
+    height: 100%; 
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#intro{
+	margin-top:10%;
+}
+
+h1{
+	color:#487AA1;
+}
+
+h2{
+	color: #4f5c75;
+    font-style: italic;
+    letter-spacing: 3px;
+    opacity: 0.9;
+    text-transform: uppercase;
+    margin: 4%;
+}
+
+ul{
+	list-style-type: none;
+}
+
+#fonctions h3 {
+    letter-spacing: 2px;
+    color: #5cce9d;
+    text-shadow: 1px 1px 4px #6baf1c;
+}
+
+#fonctions p{
+	background: white !important;
+	color:black !important;
+}
+
+.col.s4 p{
+	background: #f07e00;
+    padding: 3%;
+    color: white;
+    letter-spacing: 3px;
+    font-style: italic;
+    opacity: 0.4;
+}
+
+.parallax-container {
+      height: 100px;
+    }
+
+.paragraph p{
+	background: #487AA1;
+	color: white;
+	padding: 3%;
+}
+
+i.tiny{
+	float:right;
+}
