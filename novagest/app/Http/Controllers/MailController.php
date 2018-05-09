@@ -10,7 +10,7 @@ use Auth;
 
 class MailController extends Controller {
    public function basic_email(Request $request){
-      $data = array('name'=>"Virat Gandhi");
+      $data = array('name'=>"NoVaGest");
    
       Mail::send(['text'=>'mail'], $data, function($message) use ($request){
         $user = Auth::user();

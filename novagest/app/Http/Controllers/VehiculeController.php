@@ -100,6 +100,14 @@ class VehiculeController extends BasicController
 
         $vehicule->save();
         
+        $histo = new HistoriqueVehicule;
+        $histo->commentaire = "Add";
+        $histo->idutilisateur = $user->id;
+        $histo->idtypeevenement = 1;
+        $histo->idvehicule = $id;
+        $histo->desactive = 0;
+        $histo->save();
+        
         return redirect('vehicules');
     }
 
