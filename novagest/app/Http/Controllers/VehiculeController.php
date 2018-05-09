@@ -60,8 +60,7 @@ class VehiculeController extends BasicController
             'eidtypevehicule' => 'required|integer',
             'eidtypeetatvehicule' => 'required|integer',
             'eidstatut' => 'required|integer',
-            'eidclient' => 'required|integer',
-            'eidagence' => 'required|integer'
+            'eidclient' => 'required|integer'
         ]);
 
         if ($validator->fails()) {
@@ -101,7 +100,7 @@ class VehiculeController extends BasicController
         $vehicule->save();
         
         $histo = new HistoriqueVehicule;
-        $histo->commentaire = "Add";
+        $histo->commentaire = "Update";
         $histo->idutilisateur = $user->id;
         $histo->idtypeevenement = 1;
         $histo->idvehicule = $id;
