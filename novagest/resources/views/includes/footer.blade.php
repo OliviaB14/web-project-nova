@@ -43,7 +43,7 @@ if($user = Auth::user())
           <h5 class="">Mon Profil</h5>
           <ul>
           <li><a href="profil"> <i class="material-icons tiny">settings</i> Voir</a></li>
-            <li><a href="logout" class="red-text"><i class="material-icons tiny">input</i> Déconnexion</a></li>
+            <li><a href="deconnexion" class="red-text"><i class="material-icons tiny">input</i> Déconnexion</a></li>
           </ul>
         </div>
         <div class="col l3 s12">
