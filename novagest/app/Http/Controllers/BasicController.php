@@ -35,12 +35,16 @@ class BasicController extends Controller
     {
         
         $user = DB::table('utilisateur')->where('username', $request["username"])->first();
-        $user = Utilisateur::find($user->id);
-        if($request["username"] == $user->username && $request["password"] == $user->password)
+        if($user <> null)
         {
-            Auth::login($user,false);
-            
-            return redirect('/');
+            $user = Utilisateur::find($user->id);
+            if($request["username"] == $user->username && $request["password"] == $user->password)
+            {
+                Auth::login($user,false);
+                
+                return redirect('/');
+            }
+            return redirect('login');
         }
         return redirect('login');
     }
