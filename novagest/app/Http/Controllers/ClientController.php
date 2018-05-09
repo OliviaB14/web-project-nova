@@ -9,6 +9,7 @@ use App\Http\Controllers\BasicController;
 use App\Client;
 use App\Ville;
 use App\TypeClient;
+use App\Vehicule;
 use DB;
 use Input;
 use Illuminate\Support\Facades\Validator;
@@ -23,8 +24,9 @@ class ClientController extends BasicController
         $clients = Client::all()->where('desactive' ,'==','0');
         $villes = Ville::pluck('nom','id');
         $typeclients = TypeClient::pluck('libelle','id');
+        $vehicules = Vehicule::all()->where('idclient', '!=', NULL)->count();
 
-        return view('client', ['clients' => $clients, 'villes' => $villes, 'typeclients' => $typeclients]);
+        return view('client', ['clients' => $clients, 'villes' => $villes, 'typeclients' => $typeclients, 'vehicules' => $vehicules]);
     }
 
     public function show($id)

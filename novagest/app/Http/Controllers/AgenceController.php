@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Auth;
 use App\Agence;
 use App\Ville;
+use App\Vehicule;
 use App\Http\Controllers\BasicController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
@@ -20,7 +21,8 @@ class AgenceController extends BasicController
         
         $agences = Agence::all();
         $villes = Ville::pluck('nom','id');
-        return view('agence', ['agences' => $agences,'villes' => $villes]);
+        $vehicules = Vehicule::all()->where('idagence', '!=', NULL)->count();
+        return view('agence', ['agences' => $agences,'villes' => $villes, 'vehicules' => $vehicules]);
     }
 
     public function show($id)
