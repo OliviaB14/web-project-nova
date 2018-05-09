@@ -55,3 +55,7 @@ a#example_next, a#example_previous {
 	z-index:950;
 }
 
+#vitrine.circle{
+	width: 30px;
+}
+
