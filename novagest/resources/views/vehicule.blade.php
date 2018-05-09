@@ -320,7 +320,7 @@ $(".edit").on('click',function(){
             $('#eidstatut').val(response['idstatut']);
             $('#eidclient').val(response['idclient']);
             $('#eidagence').val(response['idagence']);
-            console.log(response['photo_1']);
+            
             $('#form').attr('action', 'vehicule/update/' + response['id']);
             Materialize.updateTextFields();
             },
