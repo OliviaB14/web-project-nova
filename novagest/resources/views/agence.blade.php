@@ -21,7 +21,7 @@
     <div class="col s12"><h1><i class="material-icons">build</i> Gestion des agences</h1></div>
         <div class="card col s12 center-align amber accent-2 main-card">
             <div class="card-content">
-              <span class="card-title black-text"><b class="timer" data-to="{{$agences->count()}}" data-speed="1500"></b> agences, <b class="timer" data-to="{{$vehicules}}" data-speed="1500"></b> véhicules au total</span>
+              <span class="card-title black-text"><b class="timer" data-to="{{$agences->count()}}" data-speed="1500"></b> agences, <b class="timer" data-to="{{$vehicules}}" data-speed="1500"></b> véhicules dans les agences</span>
             </div>
         </div>
 </div>
