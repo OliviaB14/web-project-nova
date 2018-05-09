@@ -10,7 +10,7 @@ Route::post('profil/update/{id}', 'ProfileController@update');
 Route::get('profil/show/{id}', 'ProfileController@show'); // index
 Route::post('test','BasicController@Login'); // route du login TODO = a changer le nom
 
-Route::get('socopec', 'VitrineController@index');
+Route::get('socopec', 'VitrineController@index')->name('vitrine');
 
 Route::group(['middleware' => ['auth']], function() {
     Route::get('whoami','BasicController@whoami');
