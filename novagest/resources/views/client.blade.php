@@ -33,7 +33,7 @@
     <div class="col l8 s12">
         <div class="card s12 main-card">
             <div class="card-content">
-              <span class="card-title black-text"><b class="timer" data-to="{{$clients->count()}}" data-speed="1500"></b> clients, <b class="timer" data-to="{{$vehicules}}" data-speed="1500"></b> véhicules au total</span>
+              <span class="card-title black-text"><b class="timer" data-to="{{$clients->count()}}" data-speed="1500"></b> clients, <b class="timer" data-to="{{$vehicules}}" data-speed="1500"></b> véhicules chez les clients</span>
             </div>
         </div>
         <div class="card l12" id="entreprises_card">
