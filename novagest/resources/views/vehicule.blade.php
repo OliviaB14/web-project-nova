@@ -261,8 +261,8 @@
                         @else
                         <a class="btn-floating btn-large waves-effect waves-light green" href="vehicule/destroy/{{$car->id}}"><i class="material-icons">check</i></a>
                         @endif
-                        <a id="{{$car->id}}" class="btn-floating btn-large waves-effect waves-light yellow edit" href="#modal1"><i class="material-icons">edit</i></a>
-                        <a id="{{$car->id}}" class="btn-floating btn-large waves-effect waves-light blue edit" href="single/{{$car->id}}"><i class="material-icons">archive</i></a>
+                        <a id="{{$car->id}}" class="btn-floating btn-large waves-effect waves-light yellow" href="#modal1"><i class="material-icons">edit</i></a>
+                        <a id="{{$car->id}}" class="btn-floating btn-large waves-effect waves-light blue" href="single/{{$car->id}}"><i class="material-icons">archive</i></a>
                         </td>
                     </tr> 
                 @endforeach 
