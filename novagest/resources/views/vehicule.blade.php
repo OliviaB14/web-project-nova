@@ -219,6 +219,8 @@
                         <th>Immatriculation</th> 
                         <th>Date d'achat</th> 
                         <th>Date de mise en circulation</th>
+                        <th>Agence</th>
+                        <th>client</th>
                         <th>Actions</th>
                     </tr> 
                 </thead> 
@@ -229,6 +231,30 @@
                         <td>{{$car->immatriculation}}</td> 
                         <td>{{$car->date_achat}}</td> 
                         <td>{{$car->date_misecirculation}}</td>
+                        <?php 
+                        $agence = DB::table('agence')->where('id','=',$car->idagence)->exists();
+                        ?>
+                        <td>
+                        @if($agence)
+                        <?php
+                                $agence = DB::table('agence')->where('id','=',$car->idagence)->first();
+                            ?>
+                            {{$agence->nom}}
+                        @else
+                        NA
+                        @endif
+                        </td>
+                        <td>
+                        @if($agence == false)
+                            
+                            <?php
+                            $agence = DB::table('client')->where('id','=',$car->idclient)->first();
+                            ?>
+                            {{$agence->mail}}
+                        @else
+                        NA
+                        @endif
+                        </td>
                         <td>
                         @if($car->desactive == 0)
                         <a class="btn-floating btn-large waves-effect waves-light red" href="vehicule/destroy/{{$car->id}}"><i class="material-icons">cancel</i></a>
