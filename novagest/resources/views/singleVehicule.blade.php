@@ -87,8 +87,11 @@ function myFunction() {
       <div class="s12"><p>
         Etat actuel : <b>{{$etatvehicule->libelle}}</b>
         @if(isset($agence))
-            , actuellement à <b>{{$agence->nom}}</b> située au {{$agence->adresse}}
-            @endif
+            , actuellement à <b>{{$agence->nom}}</b> située au {{$agence->adresse}} {{$ville->nom}}
+        @endif
+        @if(isset($client))
+            , actuellement à <b>{{$client->adresse}}</b>, {{$ville->nom}}
+        @endif
       </p>
       </div>
       <div class="col s3"></div>
