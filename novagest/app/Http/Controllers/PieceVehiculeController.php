@@ -13,7 +13,7 @@ use DB;
 use Input;
 use Illuminate\Support\Facades\Validator;
 use carbon\Carbon;  //extension dates
-require app_path().'/validators.php';   //regex customs
+require app_path().'/Validators.php';   //regex customs
 
 
 class PieceVehiculeController extends BasicController

@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Validator;
 use DB;
 use Intervention\Image\ImageManagerStatic as Image;
-require app_path().'/validators.php';   //regex customs
+require app_path().'/Validators.php';   //regex customs
 
 class AgenceController extends BasicController
 {

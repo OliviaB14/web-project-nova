@@ -6,11 +6,11 @@ use Illuminate\Http\Request;
 use Auth;
 use App\Http\Requests;
 use App\Http\Controllers\BasicController;
-use App\typeutilisateur;
+use App\TypeUtilisateur;
 use DB;
 use Input;
 use Illuminate\Support\Facades\Validator;
-require app_path().'/validators.php';   //regex customs
+require app_path().'/Validators.php';   //regex customs
 
 
 class typeutilisateurController extends BasicController

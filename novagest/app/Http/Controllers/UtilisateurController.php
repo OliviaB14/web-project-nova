@@ -7,12 +7,12 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\BasicController;
 use App\Utilisateur;
-use App\typeutilisateur;
+use App\TypeUtilisateur;
 use DB;
 use Input;
 use Illuminate\Support\Facades\Validator;
 use carbon\Carbon;  //extension dates
-require app_path().'/validators.php';   //regex customs
+require app_path().'/Validators.php';   //regex customs
 
 
 class UtilisateurController extends BasicController

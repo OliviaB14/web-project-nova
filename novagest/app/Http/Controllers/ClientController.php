@@ -13,7 +13,7 @@ use App\Vehicule;
 use DB;
 use Input;
 use Illuminate\Support\Facades\Validator;
-require app_path().'/validators.php';   //regex customs
+require app_path().'/Validators.php';   //regex customs
 
 
 class ClientController extends BasicController

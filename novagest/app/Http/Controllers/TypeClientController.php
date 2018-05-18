@@ -10,7 +10,7 @@ use App\TypeClient;
 use DB;
 use Input;
 use Illuminate\Support\Facades\Validator;
-require app_path().'/validators.php';   //regex customs
+require app_path().'/Validators.php';   //regex customs
 
 
 class TypeClientController extends BasicController

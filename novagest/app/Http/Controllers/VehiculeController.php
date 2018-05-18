@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Validator;
 use App\HistoriqueVehicule;
 use carbon\Carbon;  //extension dates
 use Intervention\Image\ImageManagerStatic as Image;
-require app_path().'/validators.php';   //regex customs
+require app_path().'/Validators.php';   //regex customs
 
 
 class VehiculeController extends BasicController
